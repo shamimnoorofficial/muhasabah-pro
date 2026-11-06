@@ -17,7 +17,7 @@
     "typescript": "^7.0.2"
   },
   "type": "module",
-  "name": "muhasabah-plus",
+  "name": "muhasabah-pro",
   "version": "1.4.0",
   "private": true,
   "scripts": {

@@ -6,7 +6,7 @@
  * together. When the check passes, the app opens full-screen without a browser URL bar.
  *
  * Configure with environment variables (no code change or redeploy of code needed):
- *   TWA_PACKAGE_NAME         Android package id, defaults to "com.shamimnoor.muhasabahplus"
+ *   TWA_PACKAGE_NAME         Android package id, defaults to "com.shamimnoor.muhasabahpro"
  *   TWA_SHA256_FINGERPRINTS  One or more SHA-256 signing-certificate fingerprints,
  *                            separated by commas or spaces. Add both the Play App Signing
  *                            key (Play Console → Test and release → App integrity) and the
@@ -16,7 +16,7 @@
  */
 import type { Config } from '@netlify/functions';
 
-const DEFAULT_PACKAGE = 'com.shamimnoor.muhasabahplus';
+const DEFAULT_PACKAGE = 'com.shamimnoor.muhasabahpro';
 // SHA-256 of the upload key that signed the first .aab (download at /android-release).
 // Always included; TWA_SHA256_FINGERPRINTS adds more (e.g. the Play App Signing key).
 export const UPLOAD_KEY_FINGERPRINT =

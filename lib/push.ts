@@ -22,7 +22,7 @@ export async function vapidKeys(): Promise<Keys> {
 
 export async function configuredWebPush() {
   const keys = await vapidKeys();
-  webpush.setVapidDetails('https://muhasabah-plus.app', keys.publicKey, keys.privateKey);
+  webpush.setVapidDetails('https://muhasabah-pro.app', keys.publicKey, keys.privateKey);
   return webpush;
 }
 

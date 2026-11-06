@@ -6,7 +6,7 @@
     {
       "type": "ColumnSet",
       "columns": [
-        { "type": "Column", "width": "auto", "items": [{ "type": "Image", "url": "${icon}", "size": "Small", "altText": "Muhasabah Plus" }] },
+        { "type": "Column", "width": "auto", "items": [{ "type": "Image", "url": "${icon}", "size": "Small", "altText": "Muhasabah Pro" }] },
         { "type": "Column", "width": "stretch", "verticalContentAlignment": "Center", "items": [{ "type": "TextBlock", "text": "${title}", "weight": "Bolder", "size": "Medium", "wrap": true }] }
       ]
     },

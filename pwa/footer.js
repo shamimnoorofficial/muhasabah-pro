@@ -14,7 +14,7 @@
     var y = new Date().getFullYear();
     host.replaceChildren(X.el("footer", { class: "mhs-foot", dir: X.lang() === "ar" ? "rtl" : "ltr" }, [
       X.el("div", { class: "mhs-foot-row" }, [
-        X.el("span", { class: "mhs-foot-copy", text: "© " + X.num(y, { useGrouping: false }) + " Muhasabah Plus. " + t("rights") }),
+        X.el("span", { class: "mhs-foot-copy", text: "© " + X.num(y, { useGrouping: false }) + " Muhasabah Pro. " + t("rights") }),
         X.el("a", { class: "mhs-foot-dev", href: "https://github.com/shamimnoorofficial", target: "_blank", rel: "noopener noreferrer", "aria-label": t("gh"), title: "github.com/shamimnoorofficial" }, [
           X.el("span", { class: "gh", html: GH }),
           X.el("span", { class: "by", text: t("dev") }),
