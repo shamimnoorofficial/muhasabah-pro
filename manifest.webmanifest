@@ -1,8 +1,8 @@
 {
   "id": "/",
-  "name": "Muhasabah Plus",
+  "name": "Muhasabah Pro",
   "short_name": "Muhasabah",
-  "description": "Muhasabah Plus is an Islamic life app for all ages: habits, to-dos, Google Keep-style notes, a ledger (hisab khata), zikr counter, daily amol & namaz guide, Quran, Hadith, prayer times and Qibla — with a 360° Nafs · Qalb · Ruh analytics dashboard. Free, works offline and keeps your data on your device. No ads.",
+  "description": "Muhasabah Pro is an Islamic life app for all ages: habits, to-dos, Google Keep-style notes, a ledger (hisab khata), zikr counter, daily amol & namaz guide, Quran, Hadith, prayer times and Qibla — with a 360° Nafs · Qalb · Ruh analytics dashboard. Free, works offline and keeps your data on your device. No ads.",
   "lang": "en",
   "dir": "ltr",
   "start_url": "/?source=pwa",
@@ -400,12 +400,12 @@
   "related_applications": [
     {
       "platform": "play",
-      "url": "https://play.google.com/store/apps/details?id=com.shamimnoor.muhasabahplus",
-      "id": "com.shamimnoor.muhasabahplus"
+      "url": "https://play.google.com/store/apps/details?id=com.shamimnoor.muhasabahpro",
+      "id": "com.shamimnoor.muhasabahpro"
     },
     {
       "platform": "webapp",
-      "url": "https://muhasabah-plus.app/manifest.webmanifest"
+      "url": "https://muhasabah-pro.app/manifest.webmanifest"
     }
   ],
   "prefer_related_applications": false,
@@ -473,7 +473,7 @@
   "scope_extensions": [
     {
       "type": "origin",
-      "origin": "https://muhasabah-plus.netlify.app"
+      "origin": "https://muhasabah-pro.netlify.app"
     }
   ],
   "widgets": [

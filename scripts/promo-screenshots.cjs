@@ -112,7 +112,7 @@ async function compose(browser, png, { headline, sub, wide, idx }) {
   .lap .scr{width:100%;height:100%;border-radius:22px;overflow:hidden}.lap img{width:100%;display:block}
   .pill{position:absolute;${wide ? 'left:110px;bottom:120px' : 'left:0;right:0;bottom:22px;text-align:center'};font:500 22px Inter;color:#6f857a}
   </style></head><body><div class="bg"></div><div class="grid"></div>
-  <div class="brand"><img src="${BASE}/icons/logo.webp">Muhasabah Plus</div>
+  <div class="brand"><img src="${BASE}/icons/logo.webp">Muhasabah Pro</div>
   <h1>${headline.replace(/<br>(.*)$/, '<br><em>$1</em>')}</h1><p class="sub">${sub}</p>${phone}
   <div class="pill">Free · Offline · Private · Rated Everyone</div></body></html>`, { waitUntil: 'networkidle' });
   await pg.evaluate(() => document.fonts.ready);
