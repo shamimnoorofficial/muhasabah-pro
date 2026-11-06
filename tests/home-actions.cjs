@@ -36,7 +36,7 @@ const assert = require('node:assert/strict');
     // old floating buttons gone; unified FAB present
     assert.equal(await p.locator('.mhs-journal-fab').count(), 0);
     await p.locator('#mhs-fab').click(); await p.locator('.mhs-fab-menu.is-open').waitFor();
-    assert.equal(await p.locator('.mhs-fab-item button').count(), 6);
+    assert.equal(await p.locator('.mhs-fab-item button').count(), 10);
     await p.screenshot({ path: `/tmp/mhs-fab-${viewport.width}.png` });
     // Quran
     await p.locator('[data-action="quran"]').click(); const q = p.locator('#mhs-quran'); await q.waitFor();

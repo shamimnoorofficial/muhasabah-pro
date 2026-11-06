@@ -1,6 +1,6 @@
 [build]
   publish = "."
-  command = "node scripts/i18n-catalog.mjs && node scripts/optimize.mjs && node scripts/headers.mjs"
+  command = "node scripts/i18n-catalog.mjs && node scripts/manifest.mjs && node scripts/optimize.mjs && node scripts/headers.mjs"
 
 # Security headers for every page. The Content-Security-Policy is generated at deploy time
 # (scripts/headers.mjs → _headers) so it can list the exact hashes of the inline scripts.
@@ -12,7 +12,7 @@
     X-Frame-Options = "DENY"
     Referrer-Policy = "strict-origin-when-cross-origin"
     Cross-Origin-Opener-Policy = "same-origin-allow-popups"
-    Permissions-Policy = "camera=(), microphone=(), geolocation=(self), fullscreen=(self), payment=(self \"https://js.stripe.com\" \"https://app.lemonsqueezy.com\"), screen-wake-lock=(self), web-share=(self), clipboard-write=(self), display-capture=(), usb=(), serial=(), hid=(), bluetooth=(), midi=(), magnetometer=(self), gyroscope=(self), accelerometer=(self), browsing-topics=()"
+    Permissions-Policy = "camera=(), microphone=(self), geolocation=(self), fullscreen=(self), payment=(self \"https://js.stripe.com\" \"https://app.lemonsqueezy.com\"), screen-wake-lock=(self), web-share=(self), clipboard-write=(self), display-capture=(), usb=(), serial=(), hid=(), bluetooth=(), midi=(), magnetometer=(self), gyroscope=(self), accelerometer=(self), browsing-topics=()"
 
 [[headers]]
   for = "/sw.js"

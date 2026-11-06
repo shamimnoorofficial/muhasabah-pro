@@ -2,7 +2,7 @@
   "id": "/",
   "name": "Muhasabah Plus",
   "short_name": "Muhasabah",
-  "description": "Muhasabah Plus is an Islamic habit tracker for all ages: build daily habits, earn points, write a private journal and track your progress. Free, works offline and keeps your data on your device. No ads, no chat, no objectionable content.",
+  "description": "Muhasabah Plus is an Islamic life app for all ages: habits, to-dos, Google Keep-style notes, a ledger (hisab khata), zikr counter, daily amol & namaz guide, Quran, Hadith, prayer times and Qibla — with a 360° Nafs · Qalb · Ruh analytics dashboard. Free, works offline and keeps your data on your device. No ads.",
   "lang": "en",
   "dir": "ltr",
   "start_url": "/?source=pwa",
@@ -116,68 +116,187 @@
   ],
   "screenshots": [
     {
-      "src": "/screenshots/promo-narrow.svg",
-      "sizes": "1080x2400",
-      "type": "image/svg+xml",
-      "form_factor": "narrow",
-      "label": "Muhasabah Plus — Make habit, get reward. Free, offline and private, rated for everyone"
-    },
-    {
-      "src": "/screenshots/today-narrow.webp",
-      "sizes": "1082x2402",
+      "src": "/screenshots/promo/01-home-overview.webp",
+      "sizes": "1080x1920",
       "type": "image/webp",
       "form_factor": "narrow",
-      "label": "Today's checklist — tick off habits and todos to earn points"
+      "label": "Your whole life, one honest audit — Nafs · Qalb · Ruh scorecard and the Muhasabah Index"
     },
     {
-      "src": "/screenshots/habits-narrow.webp",
-      "sizes": "1082x2402",
+      "src": "/screenshots/promo/02-home-checklist.webp",
+      "sizes": "1080x1920",
       "type": "image/webp",
       "form_factor": "narrow",
-      "label": "Habits — build daily Islamic habits with points and repeat days"
+      "label": "Tick habits & to-dos right from Home — Circular check-ins that update instantly"
     },
     {
-      "src": "/screenshots/dashboard-narrow.webp",
-      "sizes": "1082x2402",
+      "src": "/screenshots/promo/03-home-dashboard.webp",
+      "sizes": "1080x1920",
       "type": "image/webp",
       "form_factor": "narrow",
-      "label": "Dashboard — point balance, streaks and progress at a glance"
+      "label": "Points, streaks & progress — Make habit, get reward"
     },
     {
-      "src": "/screenshots/promo-wide.svg",
-      "sizes": "1280x800",
-      "type": "image/svg+xml",
-      "form_factor": "wide",
-      "label": "Muhasabah Plus on desktop — custom title bar, tabs, offline journal. Free for all ages"
+      "src": "/screenshots/promo/04-todo.webp",
+      "sizes": "1080x1920",
+      "type": "image/webp",
+      "form_factor": "narrow",
+      "label": "A To Do list that respects your time — Deadlines, points and quick add"
     },
     {
-      "src": "/screenshots/dashboard-wide.webp",
-      "sizes": "1280x800",
+      "src": "/screenshots/promo/05-habits.webp",
+      "sizes": "1080x1920",
+      "type": "image/webp",
+      "form_factor": "narrow",
+      "label": "Build Islamic habits that last — Fard, Sunnah, Nafl & personal goals"
+    },
+    {
+      "src": "/screenshots/promo/06-quick-menu.webp",
+      "sizes": "1080x1920",
+      "type": "image/webp",
+      "form_factor": "narrow",
+      "label": "Everything is one tap away — 10 integrated mini-apps behind a single +"
+    },
+    {
+      "src": "/screenshots/promo/07-notes.webp",
+      "sizes": "1080x1920",
+      "type": "image/webp",
+      "form_factor": "narrow",
+      "label": "Notes like Keep, made for you — Text, checklists, photos, audio & video"
+    },
+    {
+      "src": "/screenshots/promo/08-notes-calculator.webp",
+      "sizes": "1080x1920",
+      "type": "image/webp",
+      "form_factor": "narrow",
+      "label": "A calculator inside every note — Work out zakat or bills without leaving"
+    },
+    {
+      "src": "/screenshots/promo/09-hisab.webp",
+      "sizes": "1080x1920",
+      "type": "image/webp",
+      "form_factor": "narrow",
+      "label": "হিসাব খাতা — your pocket ledger — Customer dues, daily cash & payroll"
+    },
+    {
+      "src": "/screenshots/promo/10-hisab-sheet.webp",
+      "sizes": "1080x1920",
+      "type": "image/webp",
+      "form_factor": "narrow",
+      "label": "Spreadsheet clarity, zero setup — Running balance for every entry"
+    },
+    {
+      "src": "/screenshots/promo/11-hisab-dues.webp",
+      "sizes": "1080x1920",
+      "type": "image/webp",
+      "form_factor": "narrow",
+      "label": "Know who owes you — and remind kindly — Share a polite reminder in one tap"
+    },
+    {
+      "src": "/screenshots/promo/12-zikr.webp",
+      "sizes": "1080x1920",
+      "type": "image/webp",
+      "form_factor": "narrow",
+      "label": "A tasbih that feels real — Vibration, targets, rounds and history"
+    },
+    {
+      "src": "/screenshots/promo/13-amol.webp",
+      "sizes": "1080x1920",
+      "type": "image/webp",
+      "form_factor": "narrow",
+      "label": "Daily amol with authentic sources — Morning, evening, after salah & before sleep"
+    },
+    {
+      "src": "/screenshots/promo/14-namaz.webp",
+      "sizes": "1080x1920",
+      "type": "image/webp",
+      "form_factor": "narrow",
+      "label": "Learn namaz step by step — Wudu, every position and its words"
+    },
+    {
+      "src": "/screenshots/promo/15-masail.webp",
+      "sizes": "1080x1920",
+      "type": "image/webp",
+      "form_factor": "narrow",
+      "label": "Everyday masail, clearly answered — Wudu, travel, qada, fasting, zakat & more"
+    },
+    {
+      "src": "/screenshots/promo/16-quran.webp",
+      "sizes": "1080x1920",
+      "type": "image/webp",
+      "form_factor": "narrow",
+      "label": "The Holy Quran, built in — All 114 surahs with translation"
+    },
+    {
+      "src": "/screenshots/promo/17-hadith.webp",
+      "sizes": "1080x1920",
+      "type": "image/webp",
+      "form_factor": "narrow",
+      "label": "Authentic hadith at your fingertips — Bukhari, Muslim and more"
+    },
+    {
+      "src": "/screenshots/promo/18-wisdom.webp",
+      "sizes": "1080x1920",
+      "type": "image/webp",
+      "form_factor": "narrow",
+      "label": "A reminder for every moment — Verses, hadith & sayings — share or save"
+    },
+    {
+      "src": "/screenshots/promo/19-prayer.webp",
+      "sizes": "1080x1920",
+      "type": "image/webp",
+      "form_factor": "narrow",
+      "label": "Prayer times & Qibla compass — Plus nearby mosques on the map"
+    },
+    {
+      "src": "/screenshots/promo/20-widget.webp",
+      "sizes": "1080x1920",
+      "type": "image/webp",
+      "form_factor": "narrow",
+      "label": "Check in without opening the app — Home-screen widget with live sync"
+    },
+    {
+      "src": "/screenshots/promo/21-plans.webp",
+      "sizes": "1080x1920",
+      "type": "image/webp",
+      "form_factor": "narrow",
+      "label": "Free forever. Pro when you're ready — Lifetime Drive sync or Cloud server sync"
+    },
+    {
+      "src": "/screenshots/promo/w1-home.webp",
+      "sizes": "1920x1080",
       "type": "image/webp",
       "form_factor": "wide",
-      "label": "Dashboard on desktop — point flow chart, works offline"
+      "label": "Your 360° Muhasabah on desktop — Analytics, habits and every mini-app side by side"
     },
     {
-      "src": "/screenshots/today-wide.webp",
-      "sizes": "1280x800",
+      "src": "/screenshots/promo/w2-habits.webp",
+      "sizes": "1920x1080",
       "type": "image/webp",
       "form_factor": "wide",
-      "label": "Today's checklist on desktop with tabbed app tabs"
+      "label": "Habits that build a better you — Fard, Sunnah and personal goals with points"
     },
     {
-      "src": "/screenshots/habits-wide.webp",
-      "sizes": "1280x800",
+      "src": "/screenshots/promo/w3-notes.webp",
+      "sizes": "1920x1080",
       "type": "image/webp",
       "form_factor": "wide",
-      "label": "Habits on desktop — manage routines side by side"
+      "label": "Notes, checklists and media — With a calculator built in"
+    },
+    {
+      "src": "/screenshots/promo/w4-hisab.webp",
+      "sizes": "1920x1080",
+      "type": "image/webp",
+      "form_factor": "wide",
+      "label": "হিসাব খাতা — dues, cash & payroll — A light-weight ledger with running balances"
     }
   ],
   "shortcuts": [
     {
-      "name": "To Do",
-      "short_name": "To Do",
-      "description": "Open your habits and to-dos for today",
-      "url": "/?tab=today&source=shortcut",
+      "name": "Quick check-in",
+      "short_name": "Check-in",
+      "description": "Tick today’s habits from a one-tap widget",
+      "url": "/widgets/?view=habits&source=shortcut",
       "icons": [
         {
           "src": "/icons/shortcut.png",
@@ -187,10 +306,10 @@
       ]
     },
     {
-      "name": "Habits",
-      "short_name": "Habits",
-      "description": "Create and manage your habits",
-      "url": "/?tab=habits&source=shortcut",
+      "name": "Quick to-do",
+      "short_name": "To-Do",
+      "description": "Add or complete a to-do instantly",
+      "url": "/widgets/?view=todo&add=1&source=shortcut",
       "icons": [
         {
           "src": "/icons/shortcut.png",
@@ -200,10 +319,36 @@
       ]
     },
     {
-      "name": "Home",
-      "short_name": "Home",
-      "description": "See your point balance, streak and today's checklist",
-      "url": "/?tab=dashboard&source=shortcut",
+      "name": "Zikr counter",
+      "short_name": "Zikr",
+      "description": "Open the digital tasbih",
+      "url": "/?open=zikr&source=shortcut",
+      "icons": [
+        {
+          "src": "/icons/shortcut.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "New note",
+      "short_name": "Note",
+      "description": "Write a note, checklist or voice memo",
+      "url": "/?open=notes&source=shortcut",
+      "icons": [
+        {
+          "src": "/icons/shortcut.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Hisab khata",
+      "short_name": "Ledger",
+      "description": "Record dues, income and expenses",
+      "url": "/?open=hisab&source=shortcut",
       "icons": [
         {
           "src": "/icons/shortcut.png",
@@ -215,7 +360,7 @@
     {
       "name": "Write in journal",
       "short_name": "Journal",
-      "description": "Open today's journal entry",
+      "description": "Open today’s journal entry",
       "url": "/?source=note",
       "icons": [
         {
@@ -226,10 +371,23 @@
       ]
     },
     {
-      "name": "Backup",
-      "short_name": "Backup",
-      "description": "Back up or restore your data",
-      "url": "/?tab=settings&source=shortcut",
+      "name": "Home",
+      "short_name": "Home",
+      "description": "Your 360° Muhasabah overview",
+      "url": "/?tab=dashboard&source=shortcut",
+      "icons": [
+        {
+          "src": "/icons/shortcut.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Prayer & Qibla",
+      "short_name": "Qibla",
+      "description": "Prayer times, Qibla compass and nearby mosques",
+      "url": "/?open=prayer&source=shortcut",
       "icons": [
         {
           "src": "/icons/shortcut.png",
@@ -330,9 +488,9 @@
       "type": "application/json",
       "screenshots": [
         {
-          "src": "/screenshots/today-wide.webp",
-          "sizes": "1280x800",
-          "label": "Today's checklist widget"
+          "src": "/screenshots/promo/20-widget.webp",
+          "sizes": "1080x1920",
+          "label": "Home-screen check-in widget"
         }
       ],
       "icons": [
