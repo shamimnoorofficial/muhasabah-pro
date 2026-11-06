@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Muhasabah — Quick check-in</title>
+<meta name="description" content="One-tap habit check-ins and to-dos from your home screen. Works offline, data stays on your device.">
+<meta name="robots" content="noindex">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0a0d14">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="192x192" href="/icons/icon-192.png">
+<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+<link rel="stylesheet" href="/widgets/widgetStyles.css">
+<script src="/pwa/bn.js" defer></script>
+<script src="/pwa/prayer.js" defer></script>
+<script src="/widgets/widgetStore.js" defer></script>
+<script src="/widgets/widgetRenderer.js" defer></script>
+<script src="/widgets/habitWidget.js" defer></script>
+<script src="/widgets/todoWidget.js" defer></script>
+<script src="/widgets/widgetApp.js" defer></script>
+</head>
+<body>
+<main class="wg" aria-labelledby="wg-h">
+  <header class="wg-top">
+    <img src="/icons/logo.webp" width="30" height="30" alt="">
+    <h1 id="wg-h">Muhasabah</h1>
+    <a class="wg-open" href="/?source=widget" data-t="open">Open app</a>
+  </header>
+  <section class="wg-card wg-summary" id="wg-summary" aria-live="polite"></section>
+  <nav class="wg-tabs" role="tablist" aria-label="Widget view">
+    <button type="button" class="wg-tab" role="tab" data-view="today" data-t="today">Today</button>
+    <button type="button" class="wg-tab" role="tab" data-view="habits" data-t="habits">Habits</button>
+    <button type="button" class="wg-tab" role="tab" data-view="todo" data-t="todo">To-Do</button>
+  </nav>
+  <section class="wg-card" id="wg-habits-sec" aria-labelledby="wg-hh"><h2 id="wg-hh" data-t="habits">Habits</h2><div id="wg-habits"></div></section>
+  <section class="wg-card" id="wg-todo-sec" aria-labelledby="wg-th"><h2 id="wg-th" data-t="todo">To-Do</h2><div id="wg-todos"></div></section>
+  <p class="wg-foot"><span id="wg-sync" data-t="synced">Saved on this device</span></p>
+  <p class="wg-tip" id="wg-tip" hidden data-t="pin">Tip: add this page to your home screen for one-tap check-ins.</p>
+</main>
+</body>
+</html>

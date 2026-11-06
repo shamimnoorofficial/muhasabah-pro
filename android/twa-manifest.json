@@ -25,21 +25,27 @@
   "appVersionCode": 1,
   "shortcuts": [
     {
-      "name": "Today's checklist",
-      "shortName": "Today",
-      "url": "/?tab=today&source=shortcut",
+      "name": "Quick check-in",
+      "shortName": "Check-in",
+      "url": "/widgets/?view=habits&source=shortcut",
       "chosenIconUrl": "https://muhasabah-plus.app/icons/shortcut.png"
     },
     {
-      "name": "Habits",
-      "shortName": "Habits",
-      "url": "/?tab=habits&source=shortcut",
+      "name": "Quick to-do",
+      "shortName": "To-Do",
+      "url": "/widgets/?view=todo&add=1&source=shortcut",
       "chosenIconUrl": "https://muhasabah-plus.app/icons/shortcut.png"
     },
     {
-      "name": "Backup",
-      "shortName": "Backup",
-      "url": "/?tab=settings&source=shortcut",
+      "name": "Zikr counter",
+      "shortName": "Zikr",
+      "url": "/?open=zikr&source=shortcut",
+      "chosenIconUrl": "https://muhasabah-plus.app/icons/shortcut.png"
+    },
+    {
+      "name": "New note",
+      "shortName": "Note",
+      "url": "/?open=notes&source=shortcut",
       "chosenIconUrl": "https://muhasabah-plus.app/icons/shortcut.png"
     }
   ],
@@ -47,7 +53,9 @@
   "webManifestUrl": "https://muhasabah-plus.app/manifest.webmanifest",
   "fallbackType": "customtabs",
   "features": {},
-  "alphaDependencies": { "enabled": false },
+  "alphaDependencies": {
+    "enabled": false
+  },
   "enableSiteSettingsShortcut": true,
   "isChromeOSOnly": false,
   "isMetaQuest": false,
