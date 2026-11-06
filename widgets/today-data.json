@@ -1,0 +1,13 @@
+{
+  "icon": "https://muhasabah-plus.app/icons/icon-96.png",
+  "title": "Muhasabah — Today",
+  "progressLabel": "Habits done",
+  "progress": "Open the app to load today",
+  "balanceLabel": "Point balance",
+  "balance": "—",
+  "nextLabel": "Next up",
+  "next": "Plan your day and track your habits.",
+  "allDone": "All of today's habits are handled. Alhamdulillah!",
+  "openLabel": "Today",
+  "journalLabel": "Journal"
+}

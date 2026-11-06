@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Offline — Muhasabah Plus</title>
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#0a0d14">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon.png">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+  <style>
+    :root { color-scheme: dark; }
+    html, body { margin: 0; min-height: 100%; background: #0a0d14; color: #e5eee8; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+    main { min-height: 100dvh; display: grid; place-items: center; padding: 2rem 1.5rem; box-sizing: border-box; text-align: center; }
+    .card { max-width: 24rem; display: grid; justify-items: center; gap: 1rem; }
+    .logo { width: 120px; height: 120px; display: grid; place-items: center; border-radius: 50%; background: radial-gradient(circle, rgba(0,230,118,.28) 0, rgba(0,200,83,.08) 45%, transparent 70%); }
+    .logo img { width: 76px; height: 76px; filter: drop-shadow(0 0 14px rgba(0,230,118,.45)); }
+    h1 { font-size: 1.5rem; margin: .5rem 0 0; }
+    p { margin: 0; color: #9fb3a6; line-height: 1.6; }
+    .bn { font-size: .95rem; }
+    a.btn { margin-top: .75rem; display: inline-block; border-radius: .75rem; padding: .8rem 1.6rem; background: #00c853; color: #0a0d14; font-weight: 600; text-decoration: none; }
+    a.btn:focus-visible { outline: 2px solid #e5eee8; outline-offset: 4px; }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="card" role="status" aria-live="polite">
+      <div class="logo" aria-hidden="true"><img src="/icons/logo.webp" width="76" height="76" alt=""></div>
+      <h1>You're offline</h1>
+      <p>Muhasabah Plus couldn't load this page without an internet connection. Your habits and journal stay safe on this device.</p>
+      <p class="bn" lang="bn">আপনি এখন অফলাইনে আছেন। ইন্টারনেট সংযোগ ফিরে এলে আবার চেষ্টা করুন — আপনার ডেটা এই ডিভাইসেই নিরাপদ আছে।</p>
+      <a class="btn" href="/">Try again · আবার চেষ্টা করুন</a>
+    </div>
+  </main>
+</body>
+</html>

@@ -1,0 +1,55 @@
+{
+  "packageId": "com.shamimnoor.muhasabahplus",
+  "host": "muhasabah-plus.app",
+  "name": "Muhasabah — Habit Tracker",
+  "launcherName": "Muhasabah",
+  "display": "standalone",
+  "orientation": "portrait",
+  "themeColor": "#0a0d14",
+  "themeColorDark": "#0a0d14",
+  "navigationColor": "#0a0d14",
+  "navigationColorDark": "#0a0d14",
+  "navigationDividerColor": "#0a0d14",
+  "navigationDividerColorDark": "#0a0d14",
+  "backgroundColor": "#0a0d14",
+  "enableNotifications": true,
+  "startUrl": "/?source=twa",
+  "iconUrl": "https://muhasabah-plus.app/icons/icon-512.png",
+  "maskableIconUrl": "https://muhasabah-plus.app/icons/maskable-512.png",
+  "splashScreenFadeOutDuration": 300,
+  "signingKey": {
+    "path": "./android.keystore",
+    "alias": "muhasabah"
+  },
+  "appVersionName": "1.3.0",
+  "appVersionCode": 1,
+  "shortcuts": [
+    {
+      "name": "Today's checklist",
+      "shortName": "Today",
+      "url": "/?tab=today&source=shortcut",
+      "chosenIconUrl": "https://muhasabah-plus.app/icons/shortcut.png"
+    },
+    {
+      "name": "Habits",
+      "shortName": "Habits",
+      "url": "/?tab=habits&source=shortcut",
+      "chosenIconUrl": "https://muhasabah-plus.app/icons/shortcut.png"
+    },
+    {
+      "name": "Backup",
+      "shortName": "Backup",
+      "url": "/?tab=settings&source=shortcut",
+      "chosenIconUrl": "https://muhasabah-plus.app/icons/shortcut.png"
+    }
+  ],
+  "generatorApp": "bubblewrap-cli",
+  "webManifestUrl": "https://muhasabah-plus.app/manifest.webmanifest",
+  "fallbackType": "customtabs",
+  "features": {},
+  "alphaDependencies": { "enabled": false },
+  "enableSiteSettingsShortcut": true,
+  "isChromeOSOnly": false,
+  "isMetaQuest": false,
+  "minSdkVersion": 24
+}

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
+ <title>Muhasabah Plus — Islamic Habit Tracker</title>
+ <meta name="description" content="Muhasabah Plus — Islamic habit tracker. Make habit, get reward. Offline habits and private daily journaling. Your data stays on your device.">
+ <meta name="author" content="Shamim Noor">
+ <meta name="publisher" content="Muhasabah Plus">
+ <meta name="keywords" content="Muhasabah, Islamic habit tracker, habit tracker, daily journal, prayer tracker, Quran habit, self accountability">
+ <meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="rating" content="general">
+<meta name="age-rating" content="everyone">
+<link rel="help" href="/legal/content-rating" title="Content rating: Everyone — suitable for all ages">
+ <link rel="canonical" href="https://muhasabah-plus.app/">
+ <link rel="author" href="https://github.com/shamimnoorofficial">
+ <meta property="og:type" content="website">
+ <meta property="og:site_name" content="Muhasabah Plus">
+ <meta property="og:url" content="https://muhasabah-plus.app/">
+ <meta property="og:title" content="Muhasabah Plus — Islamic Habit Tracker">
+ <meta property="og:description" content="Make habit, get reward. Track daily Islamic habits, earn points and keep a private journal — works offline, data stays on your device.">
+ <meta property="og:image" content="https://muhasabah-plus.app/icons/og-image.png">
+ <meta property="og:image:type" content="image/png">
+ <meta property="og:image:width" content="1200">
+ <meta property="og:image:height" content="630">
+ <meta property="og:image:alt" content="Muhasabah Plus shield logo with the tagline Islamic habit tracker">
+ <meta property="og:locale" content="en_US">
+ <meta property="og:locale:alternate" content="bn_BD">
+ <meta property="og:locale:alternate" content="ar_AR">
+ <meta name="twitter:card" content="summary_large_image">
+ <meta name="twitter:title" content="Muhasabah Plus — Islamic Habit Tracker">
+ <meta name="twitter:description" content="Make habit, get reward. Daily Islamic habits, points and a private journal — offline-first.">
+ <meta name="twitter:image" content="https://muhasabah-plus.app/icons/og-image.png">
+ <meta name="twitter:image:alt" content="Muhasabah Plus shield logo with the tagline Islamic habit tracker">
+ <meta name="color-scheme" content="dark">
+ <meta name="format-detection" content="telephone=no">
+ <meta name="theme-color" content="#0a0d14" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#0a0d14" media="(prefers-color-scheme: light)">
+ <meta name="msapplication-TileColor" content="#0a0d14">
+ <meta name="msapplication-TileImage" content="/icons/icon-144.png">
+ <meta name="mobile-web-app-capable" content="yes">
+ <meta name="apple-mobile-web-app-capable" content="yes">
+ <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+ <meta name="apple-mobile-web-app-title" content="Muhasabah">
+ <meta name="application-name" content="Muhasabah">
+ <style>html,body{background:#0a0d14}body{color:#e5eee8;margin:0}#root{min-height:100dvh}#mhs-install-bar{display:none}#mhs-install-bar.show{display:flex}.mhs-loading{position:fixed;inset:0;z-index:90;display:grid;place-items:center;padding:1.5rem;background:#0a0d14;text-align:center;font-family:system-ui,sans-serif}.mhs-loading p{color:#9fb3a6;line-height:1.6;margin:0;max-width:20rem}.mhs-splash{display:grid;justify-items:center;gap:1.5rem}.mhs-splash-logo{position:relative;width:150px;height:150px;display:grid;place-items:center}#mhs-startup .mhs-splash-logo img{position:relative;z-index:2;width:78px;height:78px;border-radius:0;animation:mhsSplashGlow 2.4s ease-in-out infinite;filter:drop-shadow(0 0 14px rgba(0,230,118,.45))}.mhs-splash-halo{position:absolute;inset:6px;border-radius:50%;background:radial-gradient(circle,rgba(0,230,118,.42) 0,rgba(0,200,83,.16) 42%,transparent 70%);animation:mhsSplashHalo 2.4s ease-in-out infinite}.mhs-splash-ring{position:absolute;inset:14px;border-radius:50%;background:conic-gradient(from 0deg,transparent 0 50%,rgba(0,230,118,.05) 60%,rgba(0,230,118,.95) 88%,transparent 100%);-webkit-mask:radial-gradient(farthest-side,transparent calc(100% - 3px),#000 calc(100% - 2.5px));mask:radial-gradient(farthest-side,transparent calc(100% - 3px),#000 calc(100% - 2.5px));animation:mhsSplashSpin 1.5s linear infinite;filter:drop-shadow(0 0 6px rgba(0,230,118,.9))}.mhs-splash-ring2{inset:24px;animation-duration:2.6s;animation-direction:reverse;opacity:.45}.mhs-splash-msg.is-quiet{position:absolute;width:1px;height:1px;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}.mhs-loading.is-failed .mhs-splash-ring{display:none}.mhs-loading.is-failed .mhs-splash-logo img,.mhs-loading.is-failed .mhs-splash-halo{animation:none}@keyframes mhsSplashGlow{0%,100%{transform:scale(1);filter:drop-shadow(0 0 10px rgba(0,230,118,.35))}50%{transform:scale(1.05);filter:drop-shadow(0 0 28px rgba(0,230,118,.85))}}@keyframes mhsSplashHalo{0%,100%{opacity:.5;transform:scale(.86)}50%{opacity:1;transform:scale(1.06)}}@keyframes mhsSplashSpin{to{transform:rotate(360deg)}}@media(prefers-reduced-motion:reduce){#mhs-startup .mhs-splash-logo img,.mhs-splash-halo,.mhs-splash-ring{animation:none}.mhs-splash-ring2{display:none}}.mhs-loading button{border:0;border-radius:.75rem;padding:.8rem 1.5rem;background:#00c853;color:#0a0d14;font:inherit;font-weight:600;cursor:pointer}.mhs-loading button:focus-visible{outline:2px solid #e5eee8;outline-offset:4px}</style>
+ <link rel="manifest" href="/manifest.webmanifest">
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link rel="preload" as="image" href="/icons/logo.webp" type="image/webp">
+<link rel="modulepreload" href="/assets/app.js" fetchpriority="high">
+ <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Amiri:wght@400;700&amp;display=swap" media="print" onload="this.media='all'">
+ <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Amiri:wght@400;700&amp;display=swap"></noscript>
+ <script>window.__mhsBIP=null;window.addEventListener("beforeinstallprompt",function(e){e.preventDefault();window.__mhsBIP=e;try{document.dispatchEvent(new Event("mhs:bip"))}catch(_){}});</script>
+ <script src="/pwa/bn.js" defer></script>
+ <script src="/pwa/i18n.js" defer></script>
+ <script src="/pwa/store.js" defer></script>
+ <script src="/pwa/theme.js" defer></script>
+ <script src="/pwa/prayer.js" defer></script>
+ <script src="/pwa/flow.js" defer></script>
+ <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon.png">
+ <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
+ <link rel="icon" type="image/png" sizes="192x192" href="/icons/icon-192.png">
+ <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Muhasabah Plus","alternateName":"Muhasabah","url":"https://muhasabah-plus.app/","description":"Islamic habit tracker for all ages with points, streaks and a private journal. Free, works offline, no ads.","applicationCategory":"LifestyleApplication","operatingSystem":"Any","inLanguage":["en","bn","ar"],"image":"https://muhasabah-plus.app/icons/og-image.png","author":{"@type":"Person","name":"Shamim Noor","url":"https://github.com/shamimnoorofficial"},"publisher":{"@type":"Organization","name":"Muhasabah Plus","url":"https://muhasabah-plus.app/","logo":"https://muhasabah-plus.app/icons/icon-512.png"},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"contentRating":"Everyone","isFamilyFriendly":true,"audience":{"@type":"PeopleAudience","suggestedMinAge":0,"suggestedMaxAge":99},"featureList":"Offline habits, to-do lists, points and streaks, private journal, Quran and Hadith readers, prayer times and Qibla compass, Window Controls Overlay title bar, tabbed app tabs"}</script>
+ <link rel="stylesheet" href="/assets/app.css">
+ <link rel="stylesheet" href="/pwa/premium.css">
+ <link rel="stylesheet" href="/pwa/motion.css">
+ <link rel="stylesheet" href="/pwa/donate.css">
+ <link rel="stylesheet" href="/pwa/pro.css">
+ <link rel="stylesheet" href="/pwa/polish.css">
+ <link rel="stylesheet" href="/pwa/chrome.css">
+ <link rel="stylesheet" href="/pwa/onboarding.css">
+ <link rel="stylesheet" href="/pwa/home.css">
+ <link rel="stylesheet" href="/pwa/actions.css">
+ <link rel="stylesheet" href="/pwa/miniapps.css">
+ <script>try{if(localStorage.getItem("mhs:pro")==="1")document.documentElement.classList.add("mhs-pro");if(localStorage.getItem("mhs:lock"))document.documentElement.classList.add("mhs-locked")}catch(e){}</script>
+ <style>html.mhs-locked body>*:not(#mhs-lock):not(.mhs-pt-toast){visibility:hidden!important}</style>
+</head>
+<body>
+ <div id="root"><div class="mhs-loading" id="mhs-startup" role="status" aria-live="polite"><div class="mhs-splash"><div class="mhs-splash-logo" aria-hidden="true"><span class="mhs-splash-halo"></span><span class="mhs-splash-ring"></span><span class="mhs-splash-ring mhs-splash-ring2"></span><img src="/icons/logo.webp" width="78" height="78" alt=""></div><p id="mhs-startup-message" class="mhs-splash-msg is-quiet">Opening…</p><button id="mhs-startup-retry" type="button" hidden>Try again</button></div></div></div>
+ <script src="/pwa/startup.js"></script>
+ <noscript><p style="padding:2rem;position:fixed;inset:0;background:#0a0d14;z-index:101">Enable JavaScript to open Muhasabah. মুহাসাবা খুলতে JavaScript চালু করুন।</p></noscript>
+
+ <script src="/pwa/penalties.js" defer></script>
+ <script type="module" src="/assets/app.js"></script>
+ <script>(function(){function m(a){var h=a.getAttribute("href");if(!h)return;try{var u=new URL(h,document.baseURI);if(((u.protocol==="http:"||u.protocol==="https:")&&u.host!==location.host)||u.protocol==="mailto:"||u.protocol==="tel:"||u.protocol==="sms:"){a.target="_blank";a.rel="noopener noreferrer";}}catch(e){}}function s(){document.querySelectorAll("a[href]").forEach(m);}if(document.readyState!=="loading"){s();}else{document.addEventListener("DOMContentLoaded",s);}document.addEventListener("click",function(e){var a=e.target&&e.target.closest&&e.target.closest("a[href]");if(a){m(a);}},true);})();</script>
+ <script type="application/json" data-clippy-inline-media-manifest="1">{"version":1,"slots":[]}</script>
+
+<script src="/pwa/journal.js" defer></script>
+<script src="/pwa/app.js" defer></script>
+<script src="/pwa/remind.js" defer></script>
+<script src="/pwa/insights.js" defer></script>
+<script src="/pwa/motion.js" defer></script>
+<script src="/pwa/donate.js" defer></script>
+<script src="/pwa/pro.js" defer></script>
+<script src="/pwa/protools.js" defer></script>
+<script src="/pwa/onboarding.js" defer></script>
+<script src="/pwa/actions.js" defer></script>
+<script src="/pwa/quran.js" defer></script>
+<script src="/pwa/hadith.js" defer></script>
+<script src="/pwa/wisdom.js" defer></script>
+<script src="/pwa/qibla.js" defer></script>
+<script src="/pwa/sync.js" defer></script>
+
+
+<div id="mhs-install-bar" role="dialog" aria-label="Install Muhasabah" hidden>
+  <img class="ico" src="/icons/icon-96.png" width="44" height="44" alt="" decoding="async">
+  <div class="txt"><b>Install Muhasabah</b><span>Free · offline · data stays on this device</span><span class="mhs-safe">Rated Everyone · All ages</span></div>
+  <button type="button" class="go" id="mhs-install-btn">Install</button>
+  <button type="button" class="x" id="mhs-install-dismiss" aria-label="Dismiss">×</button>
+</div>
+<script>
+(function(){
+  var root=document.documentElement, pending=null, focusEl=null;
+  function kbHeight(){
+    var vv=window.visualViewport; if(!vv) return 0;
+    var h=window.innerHeight-vv.height-vv.offsetTop; return h<40?0:Math.round(h);
+  }
+  function keepVisible(el){
+    if(!el||!el.getBoundingClientRect) return;
+    try{
+      var vv=window.visualViewport;
+      var top=vv?vv.offsetTop:0, bottom=vv?vv.offsetTop+vv.height:window.innerHeight;
+      var r=el.getBoundingClientRect();
+      if(r.bottom>bottom-24||r.top<top+8) el.scrollIntoView({block:"center",behavior:"smooth"});
+      var panel=el.closest&&el.closest(".kb-modal-panel");
+      if(panel){
+        var pr=panel.getBoundingClientRect(), er=el.getBoundingClientRect();
+        if(er.bottom>pr.bottom-16) panel.scrollTop+=(er.bottom-pr.bottom+56);
+      }
+    }catch(e){}
+  }
+  function apply(){
+    var h=kbHeight();
+    root.style.setProperty("--kb-offset", h+"px");
+    root.classList.toggle("kb-open", h>0);
+    if(focusEl) keepVisible(focusEl);
+  }
+  function schedule(){ if(pending) cancelAnimationFrame(pending); pending=requestAnimationFrame(function(){pending=null;apply();}); }
+  if(window.visualViewport){ window.visualViewport.addEventListener("resize",schedule); window.visualViewport.addEventListener("scroll",schedule); }
+  window.addEventListener("resize",schedule);
+  window.addEventListener("focusin",function(e){
+    var t=e.target; if(!t) return;
+    if(t.tagName==="INPUT"||t.tagName==="TEXTAREA"||t.tagName==="SELECT"){
+      focusEl=t; schedule();
+      [50,150,350,500].forEach(function(ms){ setTimeout(schedule,ms); });
+    }
+  });
+  window.addEventListener("focusout",function(){ focusEl=null; setTimeout(schedule,120); setTimeout(schedule,300); });
+  window.addEventListener("input",function(e){
+    var t=e.target; if(!t) return;
+    if(t.tagName!=="TEXTAREA"&&t.tagName!=="INPUT") return;
+    focusEl=t;
+    if(t.tagName==="TEXTAREA"&&!t.classList.contains("mhs-j-paper")){ t.style.height="auto"; t.style.height=Math.min(t.scrollHeight,160)+"px"; }
+    schedule(); setTimeout(function(){ keepVisible(t); },40);
+  },true);
+  schedule();
+})();
+</script>
+<script src="/pwa/install.js" defer></script>
+<script src="/pwa/titlebar.js" defer></script>
+<script src="/pwa/launch.js" defer></script>
+
+</body>
+</html>

@@ -1,0 +1,348 @@
+{
+  "id": "/",
+  "name": "Muhasabah Plus",
+  "short_name": "Muhasabah",
+  "description": "Muhasabah Plus is an Islamic habit tracker for all ages: build daily habits, earn points, write a private journal and track your progress. Free, works offline and keeps your data on your device. No ads, no chat, no objectionable content.",
+  "lang": "en",
+  "dir": "ltr",
+  "start_url": "/?source=pwa",
+  "scope": "/",
+  "display": "standalone",
+  "display_override": [
+    "window-controls-overlay",
+    "tabbed",
+    "standalone",
+    "minimal-ui"
+  ],
+  "tab_strip": {
+    "home_tab": {
+      "scope_patterns": [
+        {
+          "pathname": "/"
+        }
+      ],
+      "icons": [
+        {
+          "src": "/icons/icon-96.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        },
+        {
+          "src": "/icons/icon-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    },
+    "new_tab_button": {
+      "url": "/?source=tabbed-new-tab"
+    }
+  },
+  "orientation": "portrait",
+  "background_color": "#0a0d14",
+  "theme_color": "#0a0d14",
+  "categories": [
+    "lifestyle",
+    "productivity",
+    "education"
+  ],
+  "icons": [
+    {
+      "src": "/icons/icon-48.png",
+      "sizes": "48x48",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-256.png",
+      "sizes": "256x256",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-384.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/maskable-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icons/maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/screenshots/promo-narrow.svg",
+      "sizes": "1080x2400",
+      "type": "image/svg+xml",
+      "form_factor": "narrow",
+      "label": "Muhasabah Plus — Make habit, get reward. Free, offline and private, rated for everyone"
+    },
+    {
+      "src": "/screenshots/today-narrow.webp",
+      "sizes": "1082x2402",
+      "type": "image/webp",
+      "form_factor": "narrow",
+      "label": "Today's checklist — tick off habits and todos to earn points"
+    },
+    {
+      "src": "/screenshots/habits-narrow.webp",
+      "sizes": "1082x2402",
+      "type": "image/webp",
+      "form_factor": "narrow",
+      "label": "Habits — build daily Islamic habits with points and repeat days"
+    },
+    {
+      "src": "/screenshots/dashboard-narrow.webp",
+      "sizes": "1082x2402",
+      "type": "image/webp",
+      "form_factor": "narrow",
+      "label": "Dashboard — point balance, streaks and progress at a glance"
+    },
+    {
+      "src": "/screenshots/promo-wide.svg",
+      "sizes": "1280x800",
+      "type": "image/svg+xml",
+      "form_factor": "wide",
+      "label": "Muhasabah Plus on desktop — custom title bar, tabs, offline journal. Free for all ages"
+    },
+    {
+      "src": "/screenshots/dashboard-wide.webp",
+      "sizes": "1280x800",
+      "type": "image/webp",
+      "form_factor": "wide",
+      "label": "Dashboard on desktop — point flow chart, works offline"
+    },
+    {
+      "src": "/screenshots/today-wide.webp",
+      "sizes": "1280x800",
+      "type": "image/webp",
+      "form_factor": "wide",
+      "label": "Today's checklist on desktop with tabbed app tabs"
+    },
+    {
+      "src": "/screenshots/habits-wide.webp",
+      "sizes": "1280x800",
+      "type": "image/webp",
+      "form_factor": "wide",
+      "label": "Habits on desktop — manage routines side by side"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "To Do",
+      "short_name": "To Do",
+      "description": "Open your habits and to-dos for today",
+      "url": "/?tab=today&source=shortcut",
+      "icons": [
+        {
+          "src": "/icons/shortcut.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Habits",
+      "short_name": "Habits",
+      "description": "Create and manage your habits",
+      "url": "/?tab=habits&source=shortcut",
+      "icons": [
+        {
+          "src": "/icons/shortcut.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Home",
+      "short_name": "Home",
+      "description": "See your point balance, streak and today's checklist",
+      "url": "/?tab=dashboard&source=shortcut",
+      "icons": [
+        {
+          "src": "/icons/shortcut.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Write in journal",
+      "short_name": "Journal",
+      "description": "Open today's journal entry",
+      "url": "/?source=note",
+      "icons": [
+        {
+          "src": "/icons/shortcut.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Backup",
+      "short_name": "Backup",
+      "description": "Back up or restore your data",
+      "url": "/?tab=settings&source=shortcut",
+      "icons": [
+        {
+          "src": "/icons/shortcut.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    }
+  ],
+  "related_applications": [
+    {
+      "platform": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.shamimnoor.muhasabahplus",
+      "id": "com.shamimnoor.muhasabahplus"
+    },
+    {
+      "platform": "webapp",
+      "url": "https://muhasabah-plus.app/manifest.webmanifest"
+    }
+  ],
+  "prefer_related_applications": false,
+  "share_target": {
+    "action": "/share-target",
+    "method": "POST",
+    "enctype": "multipart/form-data",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url",
+      "files": [
+        {
+          "name": "backup",
+          "accept": [
+            "application/json",
+            ".json",
+            "text/plain",
+            ".txt"
+          ]
+        }
+      ]
+    }
+  },
+  "file_handlers": [
+    {
+      "action": "/?source=file",
+      "accept": {
+        "application/json": [
+          ".json"
+        ],
+        "text/plain": [
+          ".txt"
+        ]
+      },
+      "icons": [
+        {
+          "src": "/icons/icon-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ],
+      "launch_type": "single-client"
+    }
+  ],
+  "protocol_handlers": [
+    {
+      "protocol": "web+muhasabah",
+      "url": "/?protocol=%s"
+    }
+  ],
+  "edge_side_panel": {
+    "preferred_width": 420
+  },
+  "launch_handler": {
+    "client_mode": [
+      "navigate-existing",
+      "auto"
+    ]
+  },
+  "handle_links": "preferred",
+  "note_taking": {
+    "new_note_url": "/?source=note"
+  },
+  "scope_extensions": [
+    {
+      "type": "origin",
+      "origin": "https://muhasabah-plus.netlify.app"
+    }
+  ],
+  "widgets": [
+    {
+      "name": "Muhasabah — Today",
+      "short_name": "Today",
+      "description": "Today's habit progress, point balance and the next habit due.",
+      "tag": "mhs-today",
+      "template": "mhs-today",
+      "ms_ac_template": "/widgets/today-template.json",
+      "data": "/widgets/today-data.json",
+      "type": "application/json",
+      "screenshots": [
+        {
+          "src": "/screenshots/today-wide.webp",
+          "sizes": "1280x800",
+          "label": "Today's checklist widget"
+        }
+      ],
+      "icons": [
+        {
+          "src": "/icons/icon-96.png",
+          "sizes": "96x96"
+        }
+      ],
+      "auth": false,
+      "update": 3600
+    }
+  ]
+}

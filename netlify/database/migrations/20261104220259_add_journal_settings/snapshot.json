@@ -1,0 +1,148 @@
+{
+  "version": "8",
+  "dialect": "postgres",
+  "id": "810b00e7-2bf4-47fc-bfd1-d6888ef304b0",
+  "prevIds": [
+    "014fb34f-30e2-4860-9c25-05b45481cf04"
+  ],
+  "ddl": [
+    {
+      "isRlsEnabled": false,
+      "name": "app_preferences",
+      "entityType": "tables",
+      "schema": "public"
+    },
+    {
+      "isRlsEnabled": false,
+      "name": "journal_entries",
+      "entityType": "tables",
+      "schema": "public"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "owner",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "app_preferences"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "'en'",
+      "generated": null,
+      "identity": null,
+      "name": "language",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "app_preferences"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "'dark'",
+      "generated": null,
+      "identity": null,
+      "name": "theme",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "app_preferences"
+    },
+    {
+      "type": "jsonb",
+      "typeSchema": null,
+      "notNull": false,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "journal_settings",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "app_preferences"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "owner",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "journal_entries"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "day",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "journal_entries"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "''",
+      "generated": null,
+      "identity": null,
+      "name": "content",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "journal_entries"
+    },
+    {
+      "type": "bigint",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "updated_at",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "journal_entries"
+    },
+    {
+      "columns": [
+        "owner",
+        "day"
+      ],
+      "nameExplicit": false,
+      "name": "journal_entries_pkey",
+      "entityType": "pks",
+      "schema": "public",
+      "table": "journal_entries"
+    },
+    {
+      "columns": [
+        "owner"
+      ],
+      "nameExplicit": false,
+      "name": "app_preferences_pkey",
+      "schema": "public",
+      "table": "app_preferences",
+      "entityType": "pks"
+    }
+  ],
+  "renames": []
+}

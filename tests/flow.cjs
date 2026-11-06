@@ -1,0 +1,21 @@
+const assert = require('node:assert/strict');
+const vm = require('node:vm');
+const fs = require('node:fs');
+const sandbox = { window: {} }; vm.runInNewContext(fs.readFileSync('pwa/flow.js', 'utf8'), sandbox);
+const { periods, average } = sandbox.window.MHSFlow;
+const trade = (date, delta) => ({ ts: new Date(date).getTime(), delta });
+const ledger = [trade('2026-11-03T12:00:00', 10), trade('2026-11-02T12:00:00', 25), trade('2026-11-02T13:00:00', -5)];
+let result = periods(ledger, 'daily');
+assert.equal(result[0].open, 0); assert.equal(result[0].high, 25); assert.equal(result[0].close, 20); assert.equal(result[1].close, 30);
+assert.equal(periods(ledger, 'lod')[0].close, 20);
+const lod = periods([...ledger, trade('2026-11-04T12:00:00', 30)], 'lod');
+assert.equal(lod[1].open, 30); assert.equal(lod[1].close, 60); // hidden small trades still affect the balance
+assert.equal(periods([trade('2026-11-02T00:30:00', 1)], 'daily')[0].key, '2026-11-02');
+const weeks = periods([trade('2026-12-28T12:00:00', 10), trade('2027-01-01T12:00:00', 20)], 'weekly');
+assert.equal(weeks.length, 1); assert.equal(weeks[0].close, 30);
+const long = Array.from({ length: 35 }, (_, j) => trade(`2026-10-${String(j % 28 + 1).padStart(2, '0')}T12:00:00`, 1));
+assert.equal(average(Array.from({length: 30}, (_, j) => ({close:j+1})), 29, 30), 15.5);
+assert.equal(average(result, 1, 7), null);
+assert.equal(periods([{ts:NaN,delta:1},{ts:1,delta:Infinity}], 'daily').length, 0);
+assert.equal(periods([], 'daily').length, 0);
+console.log('Point flow: OHLC, local dates, year-crossing weeks, LOD balances, averages and empty data passed');

@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="800" viewBox="0 0 1280 800" role="img" aria-label="Muhasabah Plus promotional banner: Islamic habit tracker, free, offline, private, for all ages">
+  <defs>
+    <radialGradient id="bg" cx="18%" cy="0%" r="90%">
+      <stop offset="0%" stop-color="#123324"/>
+      <stop offset="45%" stop-color="#0a0d14"/>
+      <stop offset="100%" stop-color="#070a10"/>
+    </radialGradient>
+    <linearGradient id="cta" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#00e676"/>
+      <stop offset="100%" stop-color="#00c853"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#161c28"/>
+      <stop offset="100%" stop-color="#0d1119"/>
+    </linearGradient>
+    <linearGradient id="bar" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#00e676"/>
+      <stop offset="60%" stop-color="#00c853"/>
+      <stop offset="100%" stop-color="#0a3d22"/>
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="800" fill="url(#bg)"/>
+  <circle cx="1120" cy="120" r="220" fill="#00e676" opacity="0.07"/>
+  <circle cx="120" cy="700" r="180" fill="#00e676" opacity="0.06"/>
+
+  <!-- Title bar mock (Window Controls Overlay) -->
+  <g>
+    <rect x="120" y="72" width="1040" height="52" rx="14" fill="#10151f" stroke="#ffffff" stroke-opacity="0.1"/>
+    <rect x="120" y="72" width="1040" height="52" rx="14" fill="none" stroke="#00e676" stroke-opacity="0.18"/>
+    <circle cx="150" cy="98" r="9" fill="#00e676"/>
+    <text x="168" y="105" font-family="system-ui,Segoe UI,sans-serif" font-size="20" font-weight="700" fill="#f2f7f3">Muhasabah</text>
+    <text x="262" y="105" font-family="system-ui,Segoe UI,sans-serif" font-size="14" fill="#8fa398">HABIT TRACKER</text>
+    <g font-family="system-ui,Segoe UI,sans-serif" font-size="15" font-weight="600">
+      <rect x="470" y="82" width="120" height="32" rx="9" fill="#00e676" opacity="0.16"/>
+      <text x="530" y="103" text-anchor="middle" fill="#00e676">Dashboard</text>
+      <text x="640" y="103" text-anchor="middle" fill="#c6d4cb">Today</text>
+      <text x="730" y="103" text-anchor="middle" fill="#c6d4cb">Habits</text>
+      <text x="830" y="103" text-anchor="middle" fill="#c6d4cb">Journal</text>
+    </g>
+    <g fill="#5b6b62">
+      <rect x="1062" y="90" width="28" height="4" rx="2"/>
+      <rect x="1100" y="90" width="28" height="4" rx="2"/>
+      <rect x="1138" y="90" width="28" height="4" rx="2"/>
+    </g>
+  </g>
+
+  <!-- Headline -->
+  <text x="120" y="220" font-family="system-ui,Segoe UI,sans-serif" font-size="26" letter-spacing="4" fill="#00e676">ISLAMIC HABIT TRACKER</text>
+  <text x="118" y="292" font-family="system-ui,Segoe UI,sans-serif" font-size="72" font-weight="800" fill="#f4f8f5">Make habit,</text>
+  <text x="118" y="368" font-family="system-ui,Segoe UI,sans-serif" font-size="72" font-weight="800" fill="#f4f8f5">get reward.</text>
+  <text x="120" y="414" font-family="system-ui,Segoe UI,sans-serif" font-size="22" fill="#a9bbae">Daily habits, points, streaks and a private journal.</text>
+  <text x="120" y="444" font-family="system-ui,Segoe UI,sans-serif" font-size="22" fill="#a9bbae">Works offline — your data stays on your device.</text>
+
+  <!-- Trust badges -->
+  <g font-family="system-ui,Segoe UI,sans-serif" font-size="17" font-weight="700">
+    <rect x="120" y="478" width="150" height="44" rx="22" fill="#00e676"/>
+    <text x="195" y="506" text-anchor="middle" fill="#04140a">EVERYONE</text>
+    <rect x="282" y="478" width="120" height="44" rx="22" fill="none" stroke="#00e676" stroke-opacity="0.5"/>
+    <text x="342" y="506" text-anchor="middle" fill="#d9e6dd">FREE</text>
+    <rect x="414" y="478" width="140" height="44" rx="22" fill="none" stroke="#ffffff" stroke-opacity="0.25"/>
+    <text x="484" y="506" text-anchor="middle" fill="#d9e6dd">OFFLINE</text>
+    <rect x="566" y="478" width="140" height="44" rx="22" fill="none" stroke="#ffffff" stroke-opacity="0.25"/>
+    <text x="636" y="506" text-anchor="middle" fill="#d9e6dd">PRIVATE</text>
+  </g>
+  <text x="120" y="556" font-family="system-ui,Segoe UI,sans-serif" font-size="16" fill="#7d8f85">No ads · No chat · No objectionable content · All ages welcome</text>
+
+  <g>
+    <rect x="120" y="592" width="230" height="60" rx="16" fill="url(#cta)"/>
+    <text x="235" y="629" text-anchor="middle" font-family="system-ui,Segoe UI,sans-serif" font-size="22" font-weight="800" fill="#04140a">Install the app</text>
+    <rect x="362" y="592" width="250" height="60" rx="16" fill="none" stroke="#ffffff" stroke-opacity="0.3"/>
+    <text x="487" y="629" text-anchor="middle" font-family="system-ui,Segoe UI,sans-serif" font-size="20" font-weight="600" fill="#eef4ef">muhasabah-plus.app</text>
+  </g>
+
+  <!-- App cards mock -->
+  <g>
+    <rect x="800" y="180" width="360" height="480" rx="26" fill="url(#card)" stroke="#ffffff" stroke-opacity="0.12"/>
+    <rect x="800" y="180" width="360" height="480" rx="26" fill="none" stroke="#00e676" stroke-opacity="0.25"/>
+    <text x="832" y="228" font-family="system-ui,Segoe UI,sans-serif" font-size="13" letter-spacing="3" fill="#00e676">TODAY</text>
+    <text x="832" y="262" font-family="system-ui,Segoe UI,sans-serif" font-size="26" font-weight="700" fill="#f2f7f3">2,450 pts</text>
+    <text x="832" y="288" font-family="system-ui,Segoe UI,sans-serif" font-size="15" fill="#8fa398">12-day streak · 5 habits due</text>
+    <g font-family="system-ui,Segoe UI,sans-serif" font-size="17" font-weight="600">
+      <rect x="832" y="312" width="296" height="56" rx="14" fill="#00e676" opacity="0.14"/>
+      <circle cx="860" cy="340" r="12" fill="none" stroke="#00e676" stroke-width="3"/>
+      <path d="M854 340 l4 4 l8 -8" stroke="#00e676" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <text x="882" y="346" fill="#eaf3ed">Fajr on time · +25</text>
+      <rect x="832" y="378" width="296" height="56" rx="14" fill="#ffffff" opacity="0.05"/>
+      <circle cx="860" cy="406" r="12" fill="none" stroke="#5b6b62" stroke-width="3"/>
+      <text x="882" y="412" fill="#eaf3ed">Quran 1 page · +20</text>
+      <rect x="832" y="444" width="296" height="56" rx="14" fill="#ffffff" opacity="0.05"/>
+      <circle cx="860" cy="472" r="12" fill="none" stroke="#5b6b62" stroke-width="3"/>
+      <text x="882" y="478" fill="#eaf3ed">Dhikr 100x · +15</text>
+    </g>
+    <rect x="832" y="520" width="296" height="20" rx="10" fill="#ffffff" opacity="0.08"/>
+    <rect x="832" y="520" width="200" height="20" rx="10" fill="url(#bar)"/>
+    <text x="832" y="562" font-family="system-ui,Segoe UI,sans-serif" font-size="14" fill="#8fa398">Weekly progress · 68%</text>
+    <g>
+      <rect x="832" y="580" width="60" height="44" rx="10" fill="#00e676" opacity="0.9"/>
+      <rect x="900" y="580" width="60" height="44" rx="10" fill="#00e676" opacity="0.55"/>
+      <rect x="968" y="580" width="60" height="44" rx="10" fill="#00e676" opacity="0.35"/>
+      <rect x="1036" y="580" width="60" height="44" rx="10" fill="#ffffff" opacity="0.12"/>
+    </g>
+  </g>
+  <text x="1160" y="700" text-anchor="end" font-family="system-ui,Segoe UI,sans-serif" font-size="15" fill="#66766d">Free · No sign-up needed · muhasabah-plus.app</text>
+</svg>

@@ -1,0 +1,1 @@
+ALTER TABLE "app_preferences" ADD COLUMN "journal_settings" jsonb;
