@@ -6,8 +6,6 @@ const fs = require('node:fs');
 const { chromium } = require('playwright');
 (async () => {
   const codes = JSON.parse(fs.readFileSync(__dirname + '/../i18n/languages.json', 'utf8'));
-  const inline = JSON.parse(fs.readFileSync(__dirname + '/../pwa/i18n.js', 'utf8').match(/var CODES = (\[[^\]]+\])/)[1]);
-  assert.deepEqual(inline, codes, 'pwa/i18n.js and i18n/languages.json must list the same languages');
   assert.ok(codes.length > 90 && codes[0] === 'en');
   const browser = await chromium.launch({ headless: true });
   try {
@@ -22,6 +20,9 @@ const { chromium } = require('playwright');
         return route.fulfill({ json: { translations: Object.fromEntries(strings.map(s => [s, `[${lang}] ${s}`])) } });
       });
       await page.goto('http://localhost:8889');
+      await page.waitForFunction(() => window.MHSI18n);
+      assert.deepEqual(await page.evaluate(() => window.MHSI18n.codes), codes,
+        'the running interface and i18n/languages.json must list the same languages');
       assert.equal(await page.locator('html').getAttribute('lang'), 'en', 'English is the default');
       // The onboarding starts with the language step, then offers location and notifications.
       await page.locator('.mhs-ftue-langs').waitFor();
