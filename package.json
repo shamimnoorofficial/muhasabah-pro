@@ -1,19 +1,19 @@
 {
   "dependencies": {
-    "@anthropic-ai/sdk": "^1.5.0",
-    "@netlify/blobs": "^11.1.7",
-    "@netlify/database": "^2.0.1",
-    "@netlify/functions": "^6.1.0",
-    "@netlify/identity": "^2.0.0",
-    "drizzle-orm": "^1.0.0-beta.22",
-    "web-push": "^3.6.7"
+    "@anthropic-ai/sdk": "^1.6.0",
+    "@netlify/blobs": "^11.1.8",
+    "@netlify/database": "^2.0.3",
+    "@netlify/functions": "^6.1.1",
+    "@netlify/identity": "^2.0.1",
+    "drizzle-orm": "1.0.0-beta.22",
+    "web-push": "^4.0.0"
   },
   "devDependencies": {
-    "@playwright/test": "^1.64.1",
+    "@playwright/test": "^1.65.0",
     "@types/node": "^26.6.6",
     "@types/web-push": "^3.6.4",
-    "drizzle-kit": "^1.0.0-beta.22",
-    "esbuild": "^0.25.12",
+    "drizzle-kit": "1.0.0-beta.22",
+    "esbuild": "^0.28.2",
     "typescript": "^7.0.2"
   },
   "type": "module",
@@ -21,7 +21,9 @@
   "version": "1.5.0",
   "private": true,
   "scripts": {
-    "test": "node tests/penalties.cjs && node tests/qibla.cjs",
+    "test": "node tests/penalties.cjs && node tests/qibla.cjs && node tests/lemonsqueezy.mjs && node tests/push.mjs",
+    "check": "npm run typecheck && npm test && npm run test:ui",
+    "test:push": "node tests/push.mjs",
     "test:ui": "npm run -s test:startup && npm run -s test:languages && npm run -s test:celebrate && npm run -s test:donate && npm run -s test:flow && npm run -s test:settings && npm run -s test:journal && npm run -s test:home && npm run -s test:suite && npm run -s test:growth",
     "typecheck": "tsc --noEmit",
     "test:startup": "node tests/startup.cjs",

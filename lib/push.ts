@@ -1,7 +1,7 @@
 /* Web Push (VAPID) helpers shared by the push API and the scheduled daily reminder.
  * The VAPID key pair is generated once and kept in Netlify Blobs, so no manual key setup is needed. */
 import { getStore } from '@netlify/blobs';
-import webpush from 'web-push';
+import * as webpush from 'web-push';
 
 type Keys = { publicKey: string; privateKey: string };
 let cached: Keys | null = null;
