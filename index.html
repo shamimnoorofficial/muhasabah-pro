@@ -56,12 +56,16 @@
  <script src="/pwa/i18n.js" defer></script>
  <script src="/pwa/store.js" defer></script>
  <script src="/pwa/theme.js" defer></script>
+ <script src="/pwa/defaults.js" defer></script>
  <script src="/pwa/prayer.js" defer></script>
+ <script src="/pwa/prayer-times.js" defer></script>
+ <script src="/pwa/share-config.js" defer></script>
+ <script src="/pwa/share.js" defer></script>
  <script src="/pwa/flow.js" defer></script>
  <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon.png">
  <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
  <link rel="icon" type="image/png" sizes="192x192" href="/icons/icon-192.png">
- <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Muhasabah Pro","alternateName":"Muhasabah","url":"https://muhasabah-pro.app/","description":"Islamic habit tracker for all ages with points, streaks and a private journal. Free, works offline, no ads.","applicationCategory":"LifestyleApplication","operatingSystem":"Any","inLanguage":["en","bn","ar"],"image":"https://muhasabah-pro.app/icons/og-image.png","author":{"@type":"Person","name":"Shamim Noor","url":"https://github.com/shamimnoorofficial"},"publisher":{"@type":"Organization","name":"Muhasabah Pro","url":"https://muhasabah-pro.app/","logo":"https://muhasabah-pro.app/icons/icon-512.png"},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"contentRating":"Everyone","isFamilyFriendly":true,"audience":{"@type":"PeopleAudience","suggestedMinAge":0,"suggestedMaxAge":99},"featureList":"Offline habits, to-do lists, points and streaks, private journal, Quran and Hadith readers, prayer times and Qibla compass, Window Controls Overlay title bar, tabbed app tabs"}</script>
+ <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Muhasabah Pro","alternateName":"Muhasabah","url":"https://muhasabah-pro.app/","description":"Islamic habit tracker for all ages with points, streaks and a private journal. Free, works offline, no ads.","applicationCategory":"LifestyleApplication","operatingSystem":"Any","inLanguage":["en","bn","ar"],"image":"https://muhasabah-pro.app/icons/og-image.png","author":{"@type":"Person","name":"Shamim Noor","url":"https://github.com/shamimnoorofficial"},"publisher":{"@type":"Organization","name":"Muhasabah Pro","url":"https://muhasabah-pro.app/","logo":"https://muhasabah-pro.app/icons/icon-512.png"},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"contentRating":"Everyone","isFamilyFriendly":true,"audience":{"@type":"PeopleAudience","suggestedMinAge":0,"suggestedMaxAge":99},"featureList":"Offline habits, to-do lists, points and streaks, private journal, Quran and Hadith readers, Wisdom, Masnun duas and 99 Names of Allah, prayer times with Sehri/Iftar/Tahajjud countdowns, Qibla compass, nearby mosques, essential amol check-ins, configurable home-screen widgets, daily reminder notifications, share with link"}</script>
  <link rel="stylesheet" href="/assets/app.css">
  <link rel="stylesheet" href="/pwa/premium.css">
  <link rel="stylesheet" href="/pwa/motion.css">
@@ -76,6 +80,7 @@
  <link rel="stylesheet" href="/pwa/suite.css">
  <link rel="stylesheet" href="/pwa/notes.css">
  <link rel="stylesheet" href="/pwa/ledger.css">
+ <link rel="stylesheet" href="/pwa/hub.css">
  <script>try{if(localStorage.getItem("mhs:pro")==="1")document.documentElement.classList.add("mhs-pro");if(localStorage.getItem("mhs:lock"))document.documentElement.classList.add("mhs-locked")}catch(e){}</script>
  <style>html.mhs-locked body>*:not(#mhs-lock):not(.mhs-pt-toast){visibility:hidden!important}</style>
 </head>
@@ -105,15 +110,28 @@
 <script src="/pwa/ledger.js" defer></script>
 <script src="/pwa/zikr.js" defer></script>
 <script src="/pwa/amol.js" defer></script>
+<script src="/pwa/deeplink.js" defer></script>
 <script src="/pwa/actions.js" defer></script>
+<script src="/pwa/search-core.js" defer></script>
+<script src="/pwa/essential-amol.js" defer></script>
+<script src="/pwa/prayerhub.js" defer></script>
+<script src="/pwa/prayer-strip.js" defer></script>
+<script src="/pwa/knowledge.js" defer></script>
+<script src="/pwa/wisdom-app.js" defer></script>
+<script src="/pwa/bookmarks.js" defer></script>
+<script src="/pwa/quran-search.js" defer></script>
+<script src="/pwa/widget-wizard.js" defer></script>
 <script src="/pwa/quran.js" defer></script>
 <script src="/pwa/hadith.js" defer></script>
 <script src="/pwa/wisdom.js" defer></script>
+<script src="/pwa/reminder.js" defer></script>
 <script src="/pwa/qibla.js" defer></script>
 <script src="/pwa/sync.js" defer></script>
 <script src="/pwa/overview.js" defer></script>
 <script src="/pwa/footer.js" defer></script>
 <script src="/pwa/widget-bridge.js" defer></script>
+<script src="/pwa/savefx.js" defer></script>
+<script src="/pwa/engage.js" defer></script>
 
 
 <div id="mhs-install-bar" role="dialog" aria-label="Install Muhasabah" hidden>

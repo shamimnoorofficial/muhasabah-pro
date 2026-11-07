@@ -1,0 +1,233 @@
+[
+  {
+    "file": "01-home",
+    "en": {
+      "headline": "Master your day, mind & soul",
+      "sub": "Prayer strip, live countdown and a 360° Muhasabah overview"
+    },
+    "bn": {
+      "headline": "দিন, মন ও আত্মা — সব এক জায়গায়",
+      "sub": "নামাজের স্ট্রিপ, লাইভ কাউন্টডাউন ও ৩৬০° মুহাসাবা"
+    }
+  },
+  {
+    "file": "02-prayer-times",
+    "en": {
+      "headline": "Never miss a prayer",
+      "sub": "Start, end and live countdown for all five prayers"
+    },
+    "bn": {
+      "headline": "আর কোনো নামাজ মিস নয়",
+      "sub": "পাঁচ ওয়াক্তের শুরু, শেষ ও লাইভ কাউন্টডাউন"
+    }
+  },
+  {
+    "file": "03-special-times",
+    "en": {
+      "headline": "Sehri, Iftar, Tahajjud & more",
+      "sub": "Ishraq, Chasht, Awwabin and forbidden times — all with countdowns"
+    },
+    "bn": {
+      "headline": "সেহরি, ইফতার, তাহাজ্জুদ ও আরও",
+      "sub": "ইশরাক, চাশত, আউয়াবিন ও নিষিদ্ধ সময় — কাউন্টডাউনসহ"
+    }
+  },
+  {
+    "file": "04-widget",
+    "en": {
+      "headline": "Your deen on the home screen",
+      "sub": "Widget Wizard: pick prayers, amol, streaks — add in one tap"
+    },
+    "bn": {
+      "headline": "হোম স্ক্রিনেই আপনার দ্বীন",
+      "sub": "উইজেট উইজার্ড: নামাজ, আমল, ধারা — এক ট্যাপে যোগ"
+    }
+  },
+  {
+    "file": "05-qibla",
+    "en": {
+      "headline": "Find the Qibla anywhere",
+      "sub": "Sensor-based compass with calibration and distance to Makkah"
+    },
+    "bn": {
+      "headline": "যেকোনো জায়গায় কিবলা খুঁজুন",
+      "sub": "সেন্সরভিত্তিক কম্পাস, ক্যালিব্রেশন ও মক্কার দূরত্ব"
+    }
+  },
+  {
+    "file": "06-mosques",
+    "en": {
+      "headline": "Mosques near you",
+      "sub": "Google Maps integration — directions in one tap"
+    },
+    "bn": {
+      "headline": "আপনার কাছের মসজিদ",
+      "sub": "Google Maps সংযুক্ত — এক ট্যাপে দিকনির্দেশ"
+    }
+  },
+  {
+    "file": "07-essential-amol",
+    "en": {
+      "headline": "The amol that matter most",
+      "sub": "One-tap check-ins with virtue and source, synced to analytics"
+    },
+    "bn": {
+      "headline": "সবচেয়ে প্রয়োজনীয় আমল",
+      "sub": "ফজিলত ও সূত্রসহ এক-ট্যাপ চেক-ইন, অ্যানালিটিক্সে সিঙ্ক"
+    }
+  },
+  {
+    "file": "08-todo",
+    "en": {
+      "headline": "A To-Do list that respects your time",
+      "sub": "Deadlines, points and quick add"
+    },
+    "bn": {
+      "headline": "সময়কে সম্মান করে এমন করণীয় তালিকা",
+      "sub": "সময়সীমা, পয়েন্ট ও দ্রুত যোগ"
+    }
+  },
+  {
+    "file": "09-habits",
+    "en": {
+      "headline": "Build Islamic habits that last",
+      "sub": "Fard, Sunnah, Nafl & personal goals with streaks"
+    },
+    "bn": {
+      "headline": "টিকে থাকার মতো ইসলামি অভ্যাস",
+      "sub": "ফরজ, সুন্নত, নফল ও ব্যক্তিগত লক্ষ্য, ধারাসহ"
+    }
+  },
+  {
+    "file": "10-analytics",
+    "en": {
+      "headline": "See your whole life at a glance",
+      "sub": "Rings, trends and scorecards across every module"
+    },
+    "bn": {
+      "headline": "পুরো জীবন এক নজরে",
+      "sub": "প্রতিটি মডিউলের রিং, ট্রেন্ড ও স্কোরকার্ড"
+    }
+  },
+  {
+    "file": "11-muhasabah",
+    "en": {
+      "headline": "Nafs · Qalb · Ruh",
+      "sub": "An honest spiritual audit — self, heart and soul scores"
+    },
+    "bn": {
+      "headline": "নফস · কলব · রূহ",
+      "sub": "সততার আত্মহিসাব — নিজ, হৃদয় ও আত্মার স্কোর"
+    }
+  },
+  {
+    "file": "12-journal",
+    "en": {
+      "headline": "A journal for every day",
+      "sub": "Autosave with clear “Saved ✓” confirmation and streaks"
+    },
+    "bn": {
+      "headline": "প্রতিদিনের দিনলিপি",
+      "sub": "অটোসেভ, স্পষ্ট “সংরক্ষিত ✓” নিশ্চয়তা ও ধারা"
+    }
+  },
+  {
+    "file": "13-notes",
+    "en": {
+      "headline": "Notes like Keep, made for you",
+      "sub": "Text, checklists, photos, audio, video — and a calculator"
+    },
+    "bn": {
+      "headline": "Keep-এর মতো নোট, আপনার জন্য",
+      "sub": "লেখা, চেকলিস্ট, ছবি, অডিও, ভিডিও — এবং ক্যালকুলেটর"
+    }
+  },
+  {
+    "file": "14-ledger",
+    "en": {
+      "headline": "হিসাব খাতা — your pocket ledger",
+      "sub": "Customer dues, daily cash & payroll with running balances"
+    },
+    "bn": {
+      "headline": "হিসাব খাতা — পকেটের লেজার",
+      "sub": "বাকির খাতা, দৈনিক ক্যাশ ও বেতন — চলতি ব্যালেন্সসহ"
+    }
+  },
+  {
+    "file": "15-quran",
+    "en": {
+      "headline": "The Holy Quran, searchable offline",
+      "sub": "All 114 surahs, bookmarks and diacritics-free search"
+    },
+    "bn": {
+      "headline": "পবিত্র কুরআন — অফলাইনে খুঁজুন",
+      "sub": "১১৪ সূরা, বুকমার্ক ও হরকতবিহীন খোঁজ"
+    }
+  },
+  {
+    "file": "16-hadith",
+    "en": {
+      "headline": "Authentic hadith at your fingertips",
+      "sub": "Bukhari, Muslim and more — with bookmarks and share"
+    },
+    "bn": {
+      "headline": "হাতের মুঠোয় সহিহ হাদিস",
+      "sub": "বুখারী, মুসলিম ও আরও — বুকমার্ক ও শেয়ারসহ"
+    }
+  },
+  {
+    "file": "17-wisdom",
+    "en": {
+      "headline": "Wisdom of the Prophet ﷺ & scholars",
+      "sub": "Categories, authors, search, bookmarks and your own entries"
+    },
+    "bn": {
+      "headline": "নবী ﷺ ও আলেমদের হিকমাহ",
+      "sub": "বিষয়, বক্তা, খোঁজ, বুকমার্ক ও নিজের লেখা"
+    }
+  },
+  {
+    "file": "18-reminder",
+    "en": {
+      "headline": "A reminder for every moment",
+      "sub": "Quran · Hadith · Wisdom — tap to the source, share with one tap"
+    },
+    "bn": {
+      "headline": "প্রতিটি মুহূর্তের স্মরণ",
+      "sub": "কুরআন · হাদিস · হিকমাহ — উৎসে যান, এক ট্যাপে শেয়ার"
+    }
+  },
+  {
+    "file": "19-duas-names",
+    "en": {
+      "headline": "Masnun duas & 99 Names of Allah",
+      "sub": "Hisnul Muslim style, with meaning, source and bookmarks"
+    },
+    "bn": {
+      "headline": "মাসনুন দোয়া ও আল্লাহর ৯৯ নাম",
+      "sub": "হিসনুল মুসলিম ধাঁচে — অর্থ, সূত্র ও বুকমার্কসহ"
+    }
+  },
+  {
+    "file": "20-zikr",
+    "en": {
+      "headline": "A tasbih that feels real",
+      "sub": "Vibration, targets, rounds and history"
+    },
+    "bn": {
+      "headline": "সত্যিকারের অনুভূতির তাসবিহ",
+      "sub": "কম্পন, লক্ষ্য, রাউন্ড ও ইতিহাস"
+    }
+  },
+  {
+    "file": "21-pro",
+    "en": {
+      "headline": "Free forever. Pro when you’re ready",
+      "sub": "Google Drive sync, cloud backup and the golden crest"
+    },
+    "bn": {
+      "headline": "চিরকাল ফ্রি। প্রস্তুত হলে প্রো",
+      "sub": "Google Drive সিঙ্ক, ক্লাউড ব্যাকআপ ও গোল্ডেন ক্রেস্ট"
+    }
+  }
+]

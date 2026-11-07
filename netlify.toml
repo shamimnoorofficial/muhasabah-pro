@@ -40,9 +40,16 @@
     Access-Control-Allow-Origin = "*"
     Cross-Origin-Resource-Policy = "cross-origin"
 
+# Structured Islamic content (duas, 99 names, amol, wisdom, reminders) — cached, re-validated.
+[[headers]]
+  for = "/data/*"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+    Access-Control-Allow-Origin = "*"
+
 # Store listings and install prompts (PWABuilder, Microsoft Store, Chrome) fetch these cross-origin.
 [[headers]]
-  for = "/screenshots/*"
+  for = "/assets/screenshots/*"
   [headers.values]
     Cache-Control = "public, max-age=604800"
     Access-Control-Allow-Origin = "*"

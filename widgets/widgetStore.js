@@ -154,5 +154,33 @@
     });
   }
 
-  window.MHSWidgetStore = { load: load, save: save, habitsToday: habitsToday, balance: balance, streak: streak, checkHabit: checkHabit, checkTodo: checkTodo, addTodo: addTodo, onChange: function (fn) { listeners.push(fn); }, hm: hm };
+  /* Essential amol check-in (Prayer hub list) — via the app when open, else written directly. */
+  function toggleEssential(id) {
+    return ask({ type: "essential", itemId: id }).then(function (r) {
+      if (r) return { ok: true, via: "app", data: r.data };
+      var C = window.MHSEssentialCore; if (!C) return { ok: false, reason: "missing" };
+      return load().then(function (data) {
+        data.x = data.x || {};
+        var res = C.toggleIn(data.x.essential || {}, id);
+        data.x.essential = res.data;
+        return save(data).then(function () { return { ok: true, via: "widget", data: data, on: res.on }; });
+      });
+    });
+  }
+  /* One zikr tap: increments today's count for `zid` in the zikr log. */
+  function zikrTap(zid, n) {
+    n = n || 1;
+    return ask({ type: "zikr", itemId: zid, n: n }).then(function (r) {
+      if (r) return { ok: true, via: "app", data: r.data };
+      return load().then(function (data) {
+        data.x = data.x || {}; var z = data.x.zikr || {}; z.log = z.log || {};
+        var d = new Date(), k = d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
+        z.log[k] = z.log[k] || {}; z.log[k][zid] = (Number(z.log[k][zid]) || 0) + n; z.sel = zid;
+        data.x.zikr = z;
+        return save(data).then(function () { return { ok: true, via: "widget", data: data }; });
+      });
+    });
+  }
+
+  window.MHSWidgetStore = { load: load, save: save, habitsToday: habitsToday, balance: balance, streak: streak, checkHabit: checkHabit, checkTodo: checkTodo, addTodo: addTodo, toggleEssential: toggleEssential, zikrTap: zikrTap, ask: ask, onChange: function (fn) { listeners.push(fn); }, hm: hm };
 })();

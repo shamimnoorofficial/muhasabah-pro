@@ -36,7 +36,7 @@ const assert = require('node:assert/strict');
     // old floating buttons gone; unified FAB present
     assert.equal(await p.locator('.mhs-journal-fab').count(), 0);
     await p.locator('#mhs-fab').click(); await p.locator('.mhs-fab-menu.is-open').waitFor();
-    assert.equal(await p.locator('.mhs-fab-item button').count(), 10);
+    assert.equal(await p.locator('.mhs-fab-item button').count(), 14);
     await p.screenshot({ path: `/tmp/mhs-fab-${viewport.width}.png` });
     // Quran
     await p.locator('[data-action="quran"]').click(); const q = p.locator('#mhs-quran'); await q.waitFor();
@@ -53,20 +53,21 @@ const assert = require('node:assert/strict');
     await p.keyboard.press('Escape'); await p.waitForTimeout(300);
     // Wisdom
     await p.locator('#mhs-fab').click(); await p.locator('[data-action="wisdom"]').click(); const w = p.locator('#mhs-wisdom'); await w.waitFor();
-    await w.locator('.mhs-w-card').waitFor(); const first = await w.locator('.mhs-w-text').innerText();
-    await w.getByRole('button', { name: /Next/ }).click(); await p.waitForTimeout(400); assert.notEqual(await w.locator('.mhs-w-text').innerText(), first);
-    await w.locator('.mhs-mini-ib[aria-label="Add your own"]').click(); await w.locator('.mhs-w-form textarea').fill('Test my own saying'); await w.locator('.mhs-w-form button[type=submit]').click(); await p.waitForTimeout(300);
+    await w.locator('.mhs-rf-card').waitFor(); const first = await w.locator('.mhs-rf-text').innerText();
+    await w.getByRole('button', { name: /Next/ }).click(); await p.waitForTimeout(400); assert.notEqual(await w.locator('.mhs-rf-text').innerText(), first);
+    await w.locator('.mhs-mini-ib[aria-label="Add own"]').click(); await w.locator('.mhs-es-form textarea').fill('Test my own saying'); await w.locator('.mhs-es-form button[type=submit]').click(); await p.waitForTimeout(300);
     assert.match(await w.innerText(), /Test my own saying/);
     await p.screenshot({ path: `/tmp/mhs-wisdom-${viewport.width}.png` });
-    // jump from a verse to Quran
-    for (let k = 0; k < 20; k++) { await w.locator('.mhs-chip', { hasText: 'Quran' }).click(); if (await w.locator('.mhs-w-src.is-link').count()) break; }
-    await w.locator('.mhs-w-src.is-link').click(); await p.locator('#mhs-quran .mhs-q-sura').waitFor();
+    // jump from a verse to its exact ayah in the Quran reader
+    await w.locator('.mhs-mini-chips .mhs-chip', { hasText: 'Quran' }).click(); await w.locator('button.mhs-rf-src').waitFor();
+    await w.locator('button.mhs-rf-src').click(); await p.locator('#mhs-quran .mhs-q-sura').waitFor();
     await p.keyboard.press('Escape'); await p.waitForTimeout(200); await p.keyboard.press('Escape'); await p.waitForTimeout(300);
     // Qibla (no location yet)
-    await p.locator('#mhs-fab').click(); await p.locator('[data-action="prayer"]').click(); const qb = p.locator('#mhs-qibla'); await qb.waitFor();
+    await p.locator('#mhs-fab').click(); await p.locator('[data-action="prayer"]').click(); const qb = p.locator('#mhs-prayerhub'); await qb.waitFor();
     // Location may be guessed from the time zone (Dhaka) or still be unknown.
-    assert.match(await qb.innerText(), /Use my location|Prayer times today/);
-    if (await qb.locator('.mhs-compass').count()) assert.match(await qb.locator('.mhs-p-deg').innerText(), /27[7-9]°|280°/);
+    assert.match(await qb.innerText(), /Use my location|Obligatory/i);
+    await qb.locator('.mhs-ph-tab').nth(1).click();
+    if (await qb.locator('.mhs-qb').count()) assert.match(await qb.locator('.mhs-qb-info').innerText(), /27[7-9]°|280°/);
     await p.keyboard.press('Escape'); await p.waitForTimeout(300);
     // To Do section: overview + settings
     await p.locator('#mhs-fab').click(); await p.locator('[data-action="todo"]').click(); const td = p.getByRole('dialog', { name: /New Todo/ }); await td.waitFor(); await td.getByRole('button', { name: 'Close', exact: true }).click(); await td.waitFor({ state: 'detached' });

@@ -27,7 +27,7 @@ const BASE = process.env.BASE || 'http://localhost:8889';
 
   // Home: master overview + footer with developer link
   await p.locator('mhs-overview .mhs-ov').waitFor();
-  assert.equal(await p.locator('mhs-overview .mhs-ov-tile').count(), 8);
+  assert.equal(await p.locator('mhs-overview .mhs-ov-tile').count(), 12);
   const dev = p.locator('mhs-footer a.mhs-foot-dev');
   assert.equal(await dev.getAttribute('href'), 'https://github.com/shamimnoorofficial');
   assert.equal(await dev.getAttribute('target'), '_blank');
@@ -36,7 +36,7 @@ const BASE = process.env.BASE || 'http://localhost:8889';
 
   // Unified + menu has the new mini-apps
   await p.locator('#mhs-fab').click(); await p.locator('.mhs-fab-menu.is-open').waitFor();
-  assert.equal(await p.locator('.mhs-fab-item button').count(), 10);
+  assert.equal(await p.locator('.mhs-fab-item button').count(), 14);
   for (const k of ['notes', 'hisab', 'zikr', 'amol']) assert.equal(await p.locator(`[data-action="${k}"]`).count(), 1, k);
 
   // Notes: take a note, go back, it is saved

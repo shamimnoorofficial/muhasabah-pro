@@ -14,10 +14,13 @@
 <link rel="stylesheet" href="/widgets/widgetStyles.css">
 <script src="/pwa/bn.js" defer></script>
 <script src="/pwa/prayer.js" defer></script>
+<script src="/pwa/prayer-times.js" defer></script>
+<script src="/pwa/essential-amol.js" defer></script>
 <script src="/widgets/widgetStore.js" defer></script>
 <script src="/widgets/widgetRenderer.js" defer></script>
 <script src="/widgets/habitWidget.js" defer></script>
 <script src="/widgets/todoWidget.js" defer></script>
+<script src="/widgets/customWidget.js" defer></script>
 <script src="/widgets/widgetApp.js" defer></script>
 </head>
 <body>
@@ -28,6 +31,7 @@
     <a class="wg-open" href="/?source=widget" data-t="open">Open app</a>
   </header>
   <section class="wg-card wg-summary" id="wg-summary" aria-live="polite"></section>
+  <div id="wg-custom" hidden></div>
   <nav class="wg-tabs" role="tablist" aria-label="Widget view">
     <button type="button" class="wg-tab" role="tab" data-view="today" data-t="today">Today</button>
     <button type="button" class="wg-tab" role="tab" data-view="habits" data-t="habits">Habits</button>

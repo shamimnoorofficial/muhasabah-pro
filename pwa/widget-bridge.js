@@ -20,6 +20,11 @@
       else if (m.kind === "todo" && app.checkTodo) app.checkTodo(m.itemId);
       reply(m.id);
     } else if (m.type === "addTodo" && app.addTodo) { app.addTodo(m.title); reply(m.id); }
+    else if (m.type === "essential") { if (window.MHSEssential) window.MHSEssential.toggle(m.itemId); reply(m.id); }
+    else if (m.type === "zikr") {
+      try { var X = window.MHSX, z = X.get("zikr", null) || {}; z.log = z.log || {}; var k = X.dayKey(); z.log[k] = z.log[k] || {}; z.log[k][m.itemId] = (Number(z.log[k][m.itemId]) || 0) + (Number(m.n) || 1); z.sel = m.itemId; X.set("zikr", z); } catch (e) {}
+      reply(m.id);
+    }
   };
   function push() { try { bc.postMessage({ type: "state", data: snapshot() }); } catch (e) {} }
   function hook() { if (window.MHS && window.MHS.onSave) window.MHS.onSave(push); else setTimeout(hook, 300); }
