@@ -1,0 +1,1589 @@
+{
+  "version": 1,
+  "items": [
+    {
+      "id": "name-1",
+      "n": 1,
+      "ar": "الرَّحْمَنُ",
+      "tl": "Ar-Rahman",
+      "en": "The Most Gracious",
+      "bn": "পরম দয়ালু",
+      "meaning": {
+        "en": "The One whose mercy is vast and encompasses all of creation, believer and disbeliever alike, in this world.",
+        "bn": "যাঁর দয়া অসীম এবং দুনিয়ায় মুমিন-কাফির নির্বিশেষে সমগ্র সৃষ্টিকে পরিবেষ্টন করে আছে।"
+      },
+      "benefit": {
+        "en": "Remembering Ar-Rahman fills the heart with hope; a believer reflects His mercy by being gentle with all people.",
+        "bn": "আর-রাহমানকে স্মরণ করলে অন্তর আশায় ভরে ওঠে; মুমিন সকল মানুষের প্রতি কোমল হয়ে তাঁর দয়ার প্রতিফলন ঘটায়।"
+      }
+    },
+    {
+      "id": "name-2",
+      "n": 2,
+      "ar": "الرَّحِيمُ",
+      "tl": "Ar-Rahim",
+      "en": "The Most Merciful",
+      "bn": "পরম করুণাময়",
+      "meaning": {
+        "en": "The One who bestows special, continuous mercy upon the believers, especially in the Hereafter.",
+        "bn": "যিনি মুমিনদের প্রতি বিশেষ ও অবিরাম করুণা বর্ষণ করেন, বিশেষত আখিরাতে।"
+      },
+      "benefit": {
+        "en": "Knowing Allah is Ar-Rahim, a believer never despairs after sin and shows mercy to the weak.",
+        "bn": "আল্লাহ আর-রাহীম জেনে মুমিন গুনাহের পরও হতাশ হয় না এবং দুর্বলদের প্রতি দয়া প্রদর্শন করে।"
+      }
+    },
+    {
+      "id": "name-3",
+      "n": 3,
+      "ar": "الْمَلِكُ",
+      "tl": "Al-Malik",
+      "en": "The King",
+      "bn": "সর্বাধিপতি",
+      "meaning": {
+        "en": "The absolute Sovereign who owns and rules everything; all dominion belongs to Him alone.",
+        "bn": "পরম সার্বভৌম অধিপতি, যিনি সবকিছুর মালিক ও শাসক; সকল রাজত্ব একমাত্র তাঁরই।"
+      },
+      "benefit": {
+        "en": "A believer submits to the true King, feels no awe of worldly power, and treats what they own as a trust.",
+        "bn": "মুমিন প্রকৃত বাদশাহর কাছে আত্মসমর্পণ করে, দুনিয়ার ক্ষমতাকে ভয় পায় না এবং নিজের সম্পদকে আমানত মনে করে।"
+      }
+    },
+    {
+      "id": "name-4",
+      "n": 4,
+      "ar": "الْقُدُّوسُ",
+      "tl": "Al-Quddus",
+      "en": "The Most Holy",
+      "bn": "অতি পবিত্র",
+      "meaning": {
+        "en": "The One who is utterly pure and free from every defect, deficiency, and likeness to creation.",
+        "bn": "যিনি সকল ত্রুটি, অপূর্ণতা ও সৃষ্টির সাদৃশ্য থেকে সম্পূর্ণ পবিত্র ও মুক্ত।"
+      },
+      "benefit": {
+        "en": "Glorifying Al-Quddus inspires a believer to purify their own heart, speech, and intentions.",
+        "bn": "আল-কুদ্দূসের তাসবীহ পাঠ মুমিনকে নিজের অন্তর, কথা ও নিয়ত পবিত্র করতে অনুপ্রাণিত করে।"
+      }
+    },
+    {
+      "id": "name-5",
+      "n": 5,
+      "ar": "السَّلَامُ",
+      "tl": "As-Salam",
+      "en": "The Source of Peace",
+      "bn": "শান্তির উৎস",
+      "meaning": {
+        "en": "The One free from all imperfection, who grants peace and safety to His creation.",
+        "bn": "যিনি সকল অপূর্ণতা থেকে মুক্ত এবং তাঁর সৃষ্টিকে শান্তি ও নিরাপত্তা দান করেন।"
+      },
+      "benefit": {
+        "en": "A believer seeks inner peace from As-Salam and spreads salam, becoming a source of safety for others.",
+        "bn": "মুমিন আস-সালামের কাছে অন্তরের শান্তি চায় এবং সালামের প্রসার ঘটিয়ে অন্যদের জন্য নিরাপত্তার কারণ হয়।"
+      }
+    },
+    {
+      "id": "name-6",
+      "n": 6,
+      "ar": "الْمُؤْمِنُ",
+      "tl": "Al-Mu'min",
+      "en": "The Giver of Faith and Security",
+      "bn": "নিরাপত্তা দানকারী",
+      "meaning": {
+        "en": "The One who grants security, confirms the truth of His promises, and affirms His messengers.",
+        "bn": "যিনি নিরাপত্তা দান করেন, তাঁর প্রতিশ্রুতির সত্যতা প্রমাণ করেন এবং রাসূলদের সত্যায়ন করেন।"
+      },
+      "benefit": {
+        "en": "Trusting Al-Mu'min, a believer finds security in His promises and becomes trustworthy to others.",
+        "bn": "আল-মু'মিনের উপর ভরসা করে মুমিন তাঁর প্রতিশ্রুতিতে নিরাপত্তা খুঁজে পায় এবং নিজে অন্যদের কাছে আস্থাভাজন হয়।"
+      }
+    },
+    {
+      "id": "name-7",
+      "n": 7,
+      "ar": "الْمُهَيْمِنُ",
+      "tl": "Al-Muhaymin",
+      "en": "The Guardian and Overseer",
+      "bn": "রক্ষণাবেক্ষণকারী",
+      "meaning": {
+        "en": "The One who watches over and protects all creation, witnessing every deed and state.",
+        "bn": "যিনি সমগ্র সৃষ্টির তত্ত্বাবধান ও রক্ষণাবেক্ষণ করেন এবং প্রতিটি কাজ ও অবস্থার সাক্ষী।"
+      },
+      "benefit": {
+        "en": "Awareness that Al-Muhaymin sees everything nurtures sincerity in private and public alike.",
+        "bn": "আল-মুহাইমিন সবকিছু দেখছেন—এই সচেতনতা গোপনে ও প্রকাশ্যে ইখলাস গড়ে তোলে।"
+      }
+    },
+    {
+      "id": "name-8",
+      "n": 8,
+      "ar": "الْعَزِيزُ",
+      "tl": "Al-Aziz",
+      "en": "The Almighty",
+      "bn": "পরাক্রমশালী",
+      "meaning": {
+        "en": "The One who is mighty, honored, and invincible; none can overcome Him.",
+        "bn": "যিনি মহাপরাক্রমশালী, সম্মানিত ও অপরাজেয়; কেউ তাঁকে পরাভূত করতে পারে না।"
+      },
+      "benefit": {
+        "en": "A believer seeks honor only through obedience to Al-Aziz, never through humiliating others.",
+        "bn": "মুমিন কেবল আল-আযীযের আনুগত্যের মাধ্যমেই সম্মান খোঁজে, কখনো অন্যকে অপমান করে নয়।"
+      }
+    },
+    {
+      "id": "name-9",
+      "n": 9,
+      "ar": "الْجَبَّارُ",
+      "tl": "Al-Jabbar",
+      "en": "The Compeller, The Restorer",
+      "bn": "মহাপ্রতাপশালী",
+      "meaning": {
+        "en": "The One whose will prevails over all, and who mends the broken and restores what is lost.",
+        "bn": "যাঁর ইচ্ছা সবকিছুর উপর কার্যকর হয় এবং যিনি ভাঙা হৃদয় জোড়া লাগান ও হারানো জিনিস ফিরিয়ে দেন।"
+      },
+      "benefit": {
+        "en": "When broken by hardship, a believer turns to Al-Jabbar to mend their heart and affairs.",
+        "bn": "বিপদে ভেঙে পড়লে মুমিন আল-জাব্বারের কাছে অন্তর ও কাজকর্ম সুসংহত করার জন্য ফিরে যায়।"
+      }
+    },
+    {
+      "id": "name-10",
+      "n": 10,
+      "ar": "الْمُتَكَبِّرُ",
+      "tl": "Al-Mutakabbir",
+      "en": "The Supreme in Greatness",
+      "bn": "মহা গৌরবান্বিত",
+      "meaning": {
+        "en": "The One to whom all greatness and majesty truly belong, exalted above every evil and deficiency.",
+        "bn": "যাঁর জন্যই প্রকৃত মহত্ত্ব ও গৌরব, যিনি সকল মন্দ ও অপূর্ণতার ঊর্ধ্বে সমুন্নত।"
+      },
+      "benefit": {
+        "en": "Since greatness belongs to Allah alone, the believer embraces humility and abandons pride.",
+        "bn": "মহত্ত্ব একমাত্র আল্লাহর, তাই মুমিন বিনয় অবলম্বন করে এবং অহংকার পরিত্যাগ করে।"
+      }
+    },
+    {
+      "id": "name-11",
+      "n": 11,
+      "ar": "الْخَالِقُ",
+      "tl": "Al-Khaliq",
+      "en": "The Creator",
+      "bn": "সৃষ্টিকর্তা",
+      "meaning": {
+        "en": "The One who brings everything into existence from nothing and determines its measure.",
+        "bn": "যিনি শূন্য থেকে সবকিছু অস্তিত্বে আনেন এবং তার পরিমাণ নির্ধারণ করেন।"
+      },
+      "benefit": {
+        "en": "Reflecting on creation leads a believer to gratitude and to recognizing the Creator in every sign.",
+        "bn": "সৃষ্টি নিয়ে চিন্তা মুমিনকে কৃতজ্ঞতায় ও প্রতিটি নিদর্শনে স্রষ্টাকে চিনতে পরিচালিত করে।"
+      }
+    },
+    {
+      "id": "name-12",
+      "n": 12,
+      "ar": "الْبَارِئُ",
+      "tl": "Al-Bari'",
+      "en": "The Maker",
+      "bn": "উদ্ভাবক",
+      "meaning": {
+        "en": "The One who brings creation into being free from flaw, each thing distinct and in harmony.",
+        "bn": "যিনি ত্রুটিমুক্তভাবে সৃষ্টিকে অস্তিত্ব দেন, প্রতিটি বস্তু স্বতন্ত্র অথচ সামঞ্জস্যপূর্ণ।"
+      },
+      "benefit": {
+        "en": "A believer accepts their own form and circumstances with contentment, knowing Al-Bari' made them well.",
+        "bn": "মুমিন নিজের গঠন ও অবস্থাকে সন্তুষ্টচিত্তে গ্রহণ করে, কারণ আল-বারী তাকে সুন্দরভাবে সৃষ্টি করেছেন।"
+      }
+    },
+    {
+      "id": "name-13",
+      "n": 13,
+      "ar": "الْمُصَوِّرُ",
+      "tl": "Al-Musawwir",
+      "en": "The Fashioner of Forms",
+      "bn": "আকৃতিদানকারী",
+      "meaning": {
+        "en": "The One who gives every creature its unique shape, form, and features.",
+        "bn": "যিনি প্রতিটি সৃষ্টিকে তার স্বতন্ত্র আকৃতি, রূপ ও বৈশিষ্ট্য দান করেন।"
+      },
+      "benefit": {
+        "en": "Seeing the artistry of Al-Musawwir in faces and nature, a believer praises Him and avoids mocking anyone's appearance.",
+        "bn": "চেহারা ও প্রকৃতিতে আল-মুসাওবিরের শিল্প দেখে মুমিন তাঁর প্রশংসা করে এবং কারো চেহারা নিয়ে উপহাস করে না।"
+      }
+    },
+    {
+      "id": "name-14",
+      "n": 14,
+      "ar": "الْغَفَّارُ",
+      "tl": "Al-Ghaffar",
+      "en": "The Ever-Forgiving",
+      "bn": "অতিশয় ক্ষমাশীল",
+      "meaning": {
+        "en": "The One who forgives again and again, covering the sins of those who turn to Him.",
+        "bn": "যিনি বারবার ক্ষমা করেন এবং তাঁর দিকে প্রত্যাবর্তনকারীদের গুনাহ ঢেকে রাখেন।"
+      },
+      "benefit": {
+        "en": "A believer keeps returning in repentance however often they fall, and forgives others readily.",
+        "bn": "মুমিন যতবারই পদস্খলিত হোক, তওবায় ফিরে আসে এবং অন্যদের সহজে ক্ষমা করে।"
+      }
+    },
+    {
+      "id": "name-15",
+      "n": 15,
+      "ar": "الْقَهَّارُ",
+      "tl": "Al-Qahhar",
+      "en": "The Subduer",
+      "bn": "মহাপ্রতাপান্বিত বিজয়ী",
+      "meaning": {
+        "en": "The One who dominates all creation; everything is subdued under His power and will.",
+        "bn": "যিনি সমগ্র সৃষ্টির উপর প্রভুত্বশীল; সবকিছু তাঁর শক্তি ও ইচ্ছার অধীন।"
+      },
+      "benefit": {
+        "en": "A believer asks Al-Qahhar to subdue their ego and desires, and fears no oppressor.",
+        "bn": "মুমিন আল-কাহহারের কাছে নিজের নফস ও প্রবৃত্তি দমন করার দোয়া করে এবং কোনো জালিমকে ভয় পায় না।"
+      }
+    },
+    {
+      "id": "name-16",
+      "n": 16,
+      "ar": "الْوَهَّابُ",
+      "tl": "Al-Wahhab",
+      "en": "The Bestower",
+      "bn": "মহাদাতা",
+      "meaning": {
+        "en": "The One who gives generously and continually without expecting any return.",
+        "bn": "যিনি কোনো প্রতিদানের আশা ছাড়াই উদারভাবে ও অবিরাম দান করেন।"
+      },
+      "benefit": {
+        "en": "A believer asks Al-Wahhab freely for every need and gives to others without seeking repayment.",
+        "bn": "মুমিন প্রতিটি প্রয়োজনে নির্দ্বিধায় আল-ওয়াহহাবের কাছে চায় এবং প্রতিদানের আশা ছাড়া অন্যকে দান করে।"
+      }
+    },
+    {
+      "id": "name-17",
+      "n": 17,
+      "ar": "الرَّزَّاقُ",
+      "tl": "Ar-Razzaq",
+      "en": "The Provider",
+      "bn": "রিযিকদাতা",
+      "meaning": {
+        "en": "The One who creates and delivers sustenance to every living being, seen and unseen.",
+        "bn": "যিনি প্রতিটি প্রাণীর জন্য রিযিক সৃষ্টি করেন এবং দৃশ্য-অদৃশ্য উপায়ে তা পৌঁছে দেন।"
+      },
+      "benefit": {
+        "en": "Trusting Ar-Razzaq, a believer works honestly without anxiety or resorting to unlawful earnings.",
+        "bn": "আর-রাযযাকের উপর ভরসা করে মুমিন দুশ্চিন্তা ও হারাম উপার্জন ছাড়াই সততার সাথে কাজ করে।"
+      }
+    },
+    {
+      "id": "name-18",
+      "n": 18,
+      "ar": "الْفَتَّاحُ",
+      "tl": "Al-Fattah",
+      "en": "The Opener",
+      "bn": "উন্মোচনকারী",
+      "meaning": {
+        "en": "The One who opens the doors of mercy, provision, and victory, and judges between His servants.",
+        "bn": "যিনি রহমত, রিযিক ও বিজয়ের দরজা খুলে দেন এবং বান্দাদের মাঝে ফয়সালা করেন।"
+      },
+      "benefit": {
+        "en": "When every path seems closed, a believer turns to Al-Fattah with hope that He will open a way.",
+        "bn": "সব পথ বন্ধ মনে হলে মুমিন আশা নিয়ে আল-ফাত্তাহর দিকে ফেরে যে তিনি পথ খুলে দেবেন।"
+      }
+    },
+    {
+      "id": "name-19",
+      "n": 19,
+      "ar": "الْعَلِيمُ",
+      "tl": "Al-Alim",
+      "en": "The All-Knowing",
+      "bn": "সর্বজ্ঞ",
+      "meaning": {
+        "en": "The One whose knowledge encompasses everything, past, present, and future, hidden and apparent.",
+        "bn": "যাঁর জ্ঞান অতীত, বর্তমান ও ভবিষ্যৎ, গোপন ও প্রকাশ্য সবকিছুকে পরিবেষ্টন করে।"
+      },
+      "benefit": {
+        "en": "A believer rests in the knowledge that Allah knows their situation fully, and seeks knowledge humbly.",
+        "bn": "মুমিন এই জেনে প্রশান্ত থাকে যে আল্লাহ তার অবস্থা পুরোপুরি জানেন, এবং বিনয়ের সাথে জ্ঞান অর্জন করে।"
+      }
+    },
+    {
+      "id": "name-20",
+      "n": 20,
+      "ar": "الْقَابِضُ",
+      "tl": "Al-Qabid",
+      "en": "The Withholder",
+      "bn": "সংকোচনকারী",
+      "meaning": {
+        "en": "The One who withholds provision or constricts hearts according to His wisdom.",
+        "bn": "যিনি তাঁর হিকমত অনুযায়ী রিযিক সংকুচিত করেন বা অন্তরকে সংকীর্ণ করেন।"
+      },
+      "benefit": {
+        "en": "In times of scarcity, a believer sees the wisdom of Al-Qabid and remains patient and content.",
+        "bn": "অভাবের সময় মুমিন আল-কাবিদের হিকমত উপলব্ধি করে ধৈর্যশীল ও সন্তুষ্ট থাকে।"
+      }
+    },
+    {
+      "id": "name-21",
+      "n": 21,
+      "ar": "الْبَاسِطُ",
+      "tl": "Al-Basit",
+      "en": "The Extender",
+      "bn": "প্রসারণকারী",
+      "meaning": {
+        "en": "The One who expands provision and opens hearts with ease and joy by His grace.",
+        "bn": "যিনি তাঁর অনুগ্রহে রিযিক প্রশস্ত করেন এবং অন্তরকে স্বস্তি ও আনন্দে প্রসারিত করেন।"
+      },
+      "benefit": {
+        "en": "In times of abundance, a believer thanks Al-Basit and shares generously rather than hoarding.",
+        "bn": "প্রাচুর্যের সময় মুমিন আল-বাসিতের শুকরিয়া আদায় করে এবং জমিয়ে না রেখে উদারভাবে বণ্টন করে।"
+      }
+    },
+    {
+      "id": "name-22",
+      "n": 22,
+      "ar": "الْخَافِضُ",
+      "tl": "Al-Khafid",
+      "en": "The Abaser",
+      "bn": "অবনতকারী",
+      "meaning": {
+        "en": "The One who lowers the arrogant and the oppressors by His justice.",
+        "bn": "যিনি তাঁর ন্যায়বিচারে অহংকারী ও জালিমদের অবনমিত করেন।"
+      },
+      "benefit": {
+        "en": "A believer avoids arrogance, knowing Al-Khafid brings low those who exalt themselves wrongly.",
+        "bn": "মুমিন অহংকার এড়িয়ে চলে, কারণ আল-খাফিদ অন্যায়ভাবে নিজেকে বড় মনে করাদের নিচু করে দেন।"
+      }
+    },
+    {
+      "id": "name-23",
+      "n": 23,
+      "ar": "الرَّافِعُ",
+      "tl": "Ar-Rafi'",
+      "en": "The Exalter",
+      "bn": "উন্নতকারী",
+      "meaning": {
+        "en": "The One who raises the ranks of His believing servants and elevates whom He wills.",
+        "bn": "যিনি তাঁর মুমিন বান্দাদের মর্যাদা বৃদ্ধি করেন এবং যাকে ইচ্ছা উন্নত করেন।"
+      },
+      "benefit": {
+        "en": "A believer seeks elevation through faith, knowledge, and humility, for Ar-Rafi' raises the humble.",
+        "bn": "মুমিন ঈমান, জ্ঞান ও বিনয়ের মাধ্যমে উন্নতি খোঁজে, কারণ আর-রাফি' বিনয়ীদের উন্নত করেন।"
+      }
+    },
+    {
+      "id": "name-24",
+      "n": 24,
+      "ar": "الْمُعِزُّ",
+      "tl": "Al-Mu'izz",
+      "en": "The Giver of Honor",
+      "bn": "সম্মানদাতা",
+      "meaning": {
+        "en": "The One who grants honor and dignity to whomever He wills.",
+        "bn": "যিনি যাকে ইচ্ছা সম্মান ও মর্যাদা দান করেন।"
+      },
+      "benefit": {
+        "en": "A believer seeks honor from Al-Mu'izz through obedience, not through wealth or status.",
+        "bn": "মুমিন সম্পদ বা পদমর্যাদার মাধ্যমে নয়, বরং আনুগত্যের মাধ্যমে আল-মু'ইযের কাছে সম্মান চায়।"
+      }
+    },
+    {
+      "id": "name-25",
+      "n": 25,
+      "ar": "الْمُذِلُّ",
+      "tl": "Al-Mudhill",
+      "en": "The Giver of Dishonor",
+      "bn": "লাঞ্ছনাদাতা",
+      "meaning": {
+        "en": "The One who humbles whom He wills, especially those who persist in rebellion against Him.",
+        "bn": "যিনি যাকে ইচ্ছা অপদস্থ করেন, বিশেষত যারা তাঁর অবাধ্যতায় অটল থাকে।"
+      },
+      "benefit": {
+        "en": "A believer guards against sins that lead to humiliation and never looks down upon others.",
+        "bn": "মুমিন লাঞ্ছনার দিকে নিয়ে যায় এমন গুনাহ থেকে সতর্ক থাকে এবং কাউকে হেয় মনে করে না।"
+      }
+    },
+    {
+      "id": "name-26",
+      "n": 26,
+      "ar": "السَّمِيعُ",
+      "tl": "As-Sami'",
+      "en": "The All-Hearing",
+      "bn": "সর্বশ্রোতা",
+      "meaning": {
+        "en": "The One who hears every sound, whispered or loud, and every supplication of His servants.",
+        "bn": "যিনি প্রতিটি শব্দ, ফিসফিস হোক বা উচ্চ, এবং বান্দাদের প্রতিটি দোয়া শোনেন।"
+      },
+      "benefit": {
+        "en": "A believer calls upon As-Sami' with certainty of being heard, and guards their tongue from evil speech.",
+        "bn": "মুমিন শোনা হবে এই নিশ্চয়তায় আস-সামী'কে ডাকে এবং মন্দ কথা থেকে জিহ্বা সংযত রাখে।"
+      }
+    },
+    {
+      "id": "name-27",
+      "n": 27,
+      "ar": "الْبَصِيرُ",
+      "tl": "Al-Basir",
+      "en": "The All-Seeing",
+      "bn": "সর্বদ্রষ্টা",
+      "meaning": {
+        "en": "The One who sees all things, even the smallest and most hidden, with perfect sight.",
+        "bn": "যিনি ক্ষুদ্রতম ও গোপনতম সবকিছু পরিপূর্ণ দৃষ্টিতে দেখেন।"
+      },
+      "benefit": {
+        "en": "Knowing Al-Basir watches, a believer behaves in private as they would in public.",
+        "bn": "আল-বাসীর দেখছেন জেনে মুমিন নির্জনেও তেমন আচরণ করে যেমন প্রকাশ্যে করে।"
+      }
+    },
+    {
+      "id": "name-28",
+      "n": 28,
+      "ar": "الْحَكَمُ",
+      "tl": "Al-Hakam",
+      "en": "The Judge",
+      "bn": "বিচারক",
+      "meaning": {
+        "en": "The One who judges between His servants with truth; His decree is final and none can overturn it.",
+        "bn": "যিনি সত্যের সাথে বান্দাদের মাঝে বিচার করেন; তাঁর ফয়সালা চূড়ান্ত, কেউ তা রদ করতে পারে না।"
+      },
+      "benefit": {
+        "en": "A believer accepts Allah's rulings wholeheartedly and judges fairly in their own dealings.",
+        "bn": "মুমিন আল্লাহর বিধান সর্বান্তঃকরণে মেনে নেয় এবং নিজের কারবারে ন্যায়বিচার করে।"
+      }
+    },
+    {
+      "id": "name-29",
+      "n": 29,
+      "ar": "الْعَدْلُ",
+      "tl": "Al-Adl",
+      "en": "The Utterly Just",
+      "bn": "ন্যায়পরায়ণ",
+      "meaning": {
+        "en": "The One who is perfectly just in all His decrees and actions, never wronging anyone.",
+        "bn": "যিনি তাঁর সকল ফয়সালা ও কাজে পরিপূর্ণ ন্যায়পরায়ণ, কারো প্রতি জুলুম করেন না।"
+      },
+      "benefit": {
+        "en": "A believer trusts that no wrong goes unanswered, and upholds justice even against their own interest.",
+        "bn": "মুমিন বিশ্বাস করে কোনো অন্যায়ই বিচারহীন থাকবে না, এবং নিজের স্বার্থের বিরুদ্ধে গেলেও ন্যায় প্রতিষ্ঠা করে।"
+      }
+    },
+    {
+      "id": "name-30",
+      "n": 30,
+      "ar": "اللَّطِيفُ",
+      "tl": "Al-Latif",
+      "en": "The Most Subtle and Kind",
+      "bn": "সূক্ষ্মদর্শী ও স্নেহশীল",
+      "meaning": {
+        "en": "The One who knows the finest details and is gentle with His servants in ways they do not perceive.",
+        "bn": "যিনি সূক্ষ্মতম বিষয় জানেন এবং বান্দাদের অজান্তেই তাদের প্রতি কোমল আচরণ করেন।"
+      },
+      "benefit": {
+        "en": "A believer recognizes hidden kindness in hardship and deals gently with others.",
+        "bn": "মুমিন বিপদের মাঝেও গোপন অনুগ্রহ উপলব্ধি করে এবং অন্যদের সাথে কোমল আচরণ করে।"
+      }
+    },
+    {
+      "id": "name-31",
+      "n": 31,
+      "ar": "الْخَبِيرُ",
+      "tl": "Al-Khabir",
+      "en": "The All-Aware",
+      "bn": "সর্বজ্ঞাত",
+      "meaning": {
+        "en": "The One fully aware of the inner realities of all things, nothing escapes His awareness.",
+        "bn": "যিনি সবকিছুর অভ্যন্তরীণ বাস্তবতা সম্পর্কে পূর্ণ অবগত; কিছুই তাঁর জ্ঞানের বাইরে নয়।"
+      },
+      "benefit": {
+        "en": "A believer purifies their intentions, knowing Al-Khabir knows what lies within the heart.",
+        "bn": "মুমিন নিয়ত পবিত্র করে, কারণ আল-খাবীর অন্তরের গভীরে যা আছে তা জানেন।"
+      }
+    },
+    {
+      "id": "name-32",
+      "n": 32,
+      "ar": "الْحَلِيمُ",
+      "tl": "Al-Halim",
+      "en": "The Most Forbearing",
+      "bn": "সহনশীল",
+      "meaning": {
+        "en": "The One who does not hasten punishment despite disobedience, giving time to repent.",
+        "bn": "যিনি অবাধ্যতা সত্ত্বেও শাস্তিতে তাড়াহুড়ো করেন না, বরং তওবার সুযোগ দেন।"
+      },
+      "benefit": {
+        "en": "A believer controls anger and responds with patience, reflecting the forbearance of Al-Halim.",
+        "bn": "মুমিন রাগ সংবরণ করে ধৈর্যের সাথে সাড়া দেয়, আল-হালীমের সহনশীলতার প্রতিফলন ঘটায়।"
+      }
+    },
+    {
+      "id": "name-33",
+      "n": 33,
+      "ar": "الْعَظِيمُ",
+      "tl": "Al-Azim",
+      "en": "The Magnificent",
+      "bn": "মহিমান্বিত",
+      "meaning": {
+        "en": "The One of supreme greatness, beyond all comprehension and comparison.",
+        "bn": "যিনি সর্বোচ্চ মহত্ত্বের অধিকারী, সকল উপলব্ধি ও তুলনার ঊর্ধ্বে।"
+      },
+      "benefit": {
+        "en": "Saying 'Subhana Rabbiyal Azim' in ruku, a believer feels their smallness and Allah's greatness.",
+        "bn": "রুকুতে 'সুবহানা রাব্বিয়াল আযীম' বলার সময় মুমিন নিজের ক্ষুদ্রতা ও আল্লাহর মহত্ত্ব অনুভব করে।"
+      }
+    },
+    {
+      "id": "name-34",
+      "n": 34,
+      "ar": "الْغَفُورُ",
+      "tl": "Al-Ghafur",
+      "en": "The All-Forgiving",
+      "bn": "ক্ষমাশীল",
+      "meaning": {
+        "en": "The One whose forgiveness is vast, covering sins however great they may be.",
+        "bn": "যাঁর ক্ষমা অতি বিস্তৃত, গুনাহ যত বড়ই হোক তা ঢেকে দেয়।"
+      },
+      "benefit": {
+        "en": "A believer seeks forgiveness often and never considers any sin too great for Al-Ghafur to pardon.",
+        "bn": "মুমিন প্রায়ই ইস্তিগফার করে এবং কোনো গুনাহকে আল-গফূরের ক্ষমার চেয়ে বড় মনে করে না।"
+      }
+    },
+    {
+      "id": "name-35",
+      "n": 35,
+      "ar": "الشَّكُورُ",
+      "tl": "Ash-Shakur",
+      "en": "The Most Appreciative",
+      "bn": "গুণগ্রাহী",
+      "meaning": {
+        "en": "The One who rewards small deeds abundantly and appreciates every effort of His servants.",
+        "bn": "যিনি ছোট আমলের প্রচুর প্রতিদান দেন এবং বান্দাদের প্রতিটি প্রচেষ্টার মূল্যায়ন করেন।"
+      },
+      "benefit": {
+        "en": "A believer never belittles a good deed and shows appreciation to people for their kindness.",
+        "bn": "মুমিন কোনো নেক আমলকে তুচ্ছ মনে করে না এবং মানুষের উপকারের জন্য কৃতজ্ঞতা প্রকাশ করে।"
+      }
+    },
+    {
+      "id": "name-36",
+      "n": 36,
+      "ar": "الْعَلِيُّ",
+      "tl": "Al-Ali",
+      "en": "The Most High",
+      "bn": "সর্বোচ্চ",
+      "meaning": {
+        "en": "The One who is exalted above all creation in His essence, attributes, and dominion.",
+        "bn": "যিনি সত্তা, গুণাবলি ও কর্তৃত্বে সমগ্র সৃষ্টির ঊর্ধ্বে সমুন্নত।"
+      },
+      "benefit": {
+        "en": "A believer raises their hands and heart to Al-Ali in prayer, seeking what no one below can give.",
+        "bn": "মুমিন দোয়ায় হাত ও অন্তর আল-আলীর দিকে তুলে ধরে, যা নিচের কেউ দিতে পারে না তা চায়।"
+      }
+    },
+    {
+      "id": "name-37",
+      "n": 37,
+      "ar": "الْكَبِيرُ",
+      "tl": "Al-Kabir",
+      "en": "The Most Great",
+      "bn": "সুমহান",
+      "meaning": {
+        "en": "The One who is greater than everything; His greatness has no limit.",
+        "bn": "যিনি সবকিছুর চেয়ে বড়; তাঁর মহত্ত্বের কোনো সীমা নেই।"
+      },
+      "benefit": {
+        "en": "Saying 'Allahu Akbar' reminds a believer that every worry is small before Al-Kabir.",
+        "bn": "'আল্লাহু আকবার' বলা মুমিনকে স্মরণ করিয়ে দেয় যে আল-কাবীরের সামনে প্রতিটি দুশ্চিন্তাই ক্ষুদ্র।"
+      }
+    },
+    {
+      "id": "name-38",
+      "n": 38,
+      "ar": "الْحَفِيظُ",
+      "tl": "Al-Hafiz",
+      "en": "The Preserver",
+      "bn": "সংরক্ষণকারী",
+      "meaning": {
+        "en": "The One who protects and preserves all creation and keeps a record of every deed.",
+        "bn": "যিনি সমগ্র সৃষ্টিকে রক্ষা ও সংরক্ষণ করেন এবং প্রতিটি কাজের হিসাব রাখেন।"
+      },
+      "benefit": {
+        "en": "A believer entrusts their family and affairs to Al-Hafiz and guards the limits He has set.",
+        "bn": "মুমিন পরিবার ও কাজকর্ম আল-হাফীযের কাছে সোপর্দ করে এবং তাঁর নির্ধারিত সীমা রক্ষা করে।"
+      }
+    },
+    {
+      "id": "name-39",
+      "n": 39,
+      "ar": "الْمُقِيتُ",
+      "tl": "Al-Muqit",
+      "en": "The Sustainer",
+      "bn": "খাদ্যদাতা",
+      "meaning": {
+        "en": "The One who provides nourishment to every creature and has power over all things.",
+        "bn": "যিনি প্রতিটি প্রাণীকে খাদ্য যোগান এবং সবকিছুর উপর ক্ষমতাবান।"
+      },
+      "benefit": {
+        "en": "A believer thanks Al-Muqit for daily food and remembers to feed the hungry.",
+        "bn": "মুমিন দৈনন্দিন খাবারের জন্য আল-মুকীতের শুকরিয়া আদায় করে এবং ক্ষুধার্তকে খাওয়াতে ভোলে না।"
+      }
+    },
+    {
+      "id": "name-40",
+      "n": 40,
+      "ar": "الْحَسِيبُ",
+      "tl": "Al-Hasib",
+      "en": "The Reckoner",
+      "bn": "হিসাবগ্রহণকারী",
+      "meaning": {
+        "en": "The One who is sufficient for His servants and who will take account of all deeds.",
+        "bn": "যিনি বান্দাদের জন্য যথেষ্ট এবং যিনি সকল কাজের হিসাব নেবেন।"
+      },
+      "benefit": {
+        "en": "A believer says 'Hasbunallah' in trial and holds themselves to account before the final reckoning.",
+        "bn": "মুমিন বিপদে 'হাসবুনাল্লাহ' বলে এবং চূড়ান্ত হিসাবের আগে নিজের হিসাব নিজে নেয়।"
+      }
+    },
+    {
+      "id": "name-41",
+      "n": 41,
+      "ar": "الْجَلِيلُ",
+      "tl": "Al-Jalil",
+      "en": "The Majestic",
+      "bn": "মহিমাময়",
+      "meaning": {
+        "en": "The One possessing all attributes of majesty, glory, and grandeur.",
+        "bn": "যিনি মহিমা, গৌরব ও মহত্ত্বের সকল গুণের অধিকারী।"
+      },
+      "benefit": {
+        "en": "Contemplating Al-Jalil fills a believer with reverence, improving the quality of their worship.",
+        "bn": "আল-জালীল নিয়ে চিন্তা মুমিনের অন্তরে ভক্তি জাগায়, যা তার ইবাদতের মান উন্নত করে।"
+      }
+    },
+    {
+      "id": "name-42",
+      "n": 42,
+      "ar": "الْكَرِيمُ",
+      "tl": "Al-Karim",
+      "en": "The Most Generous",
+      "bn": "মহানুভব",
+      "meaning": {
+        "en": "The One who gives generously beyond what is asked and forgives without being asked.",
+        "bn": "যিনি চাওয়ার চেয়ে বেশি দান করেন এবং না চাইলেও ক্ষমা করেন।"
+      },
+      "benefit": {
+        "en": "A believer gives with an open hand and a cheerful face, imitating the generosity of Al-Karim.",
+        "bn": "মুমিন খোলা হাতে ও হাসিমুখে দান করে, আল-কারীমের মহানুভবতার অনুসরণ করে।"
+      }
+    },
+    {
+      "id": "name-43",
+      "n": 43,
+      "ar": "الرَّقِيبُ",
+      "tl": "Ar-Raqib",
+      "en": "The Watchful",
+      "bn": "তত্ত্বাবধায়ক",
+      "meaning": {
+        "en": "The One who constantly observes everything, nothing is absent from His watch for a moment.",
+        "bn": "যিনি সর্বদা সবকিছু পর্যবেক্ষণ করেন; এক মুহূর্তের জন্যও কিছু তাঁর দৃষ্টির বাইরে নয়।"
+      },
+      "benefit": {
+        "en": "The sense of Ar-Raqib's watch (muraqabah) keeps a believer from sin when no one else is looking.",
+        "bn": "আর-রাকীবের নজরদারির অনুভূতি (মুরাকাবা) মুমিনকে একাকী অবস্থায়ও গুনাহ থেকে বিরত রাখে।"
+      }
+    },
+    {
+      "id": "name-44",
+      "n": 44,
+      "ar": "الْمُجِيبُ",
+      "tl": "Al-Mujib",
+      "en": "The Responsive",
+      "bn": "দোয়া কবুলকারী",
+      "meaning": {
+        "en": "The One who answers the call of those who call upon Him and responds to those in need.",
+        "bn": "যিনি আহ্বানকারীর ডাকে সাড়া দেন এবং অভাবীদের প্রয়োজন পূরণ করেন।"
+      },
+      "benefit": {
+        "en": "A believer makes dua with certainty and patience, trusting Al-Mujib answers in the best way and time.",
+        "bn": "মুমিন দৃঢ় বিশ্বাস ও ধৈর্যের সাথে দোয়া করে, আল-মুজীব সর্বোত্তম উপায়ে ও সময়ে সাড়া দেন বলে ভরসা রাখে।"
+      }
+    },
+    {
+      "id": "name-45",
+      "n": 45,
+      "ar": "الْوَاسِعُ",
+      "tl": "Al-Wasi'",
+      "en": "The All-Encompassing",
+      "bn": "সর্বব্যাপী",
+      "meaning": {
+        "en": "The One whose mercy, knowledge, and provision are boundless and encompass all.",
+        "bn": "যাঁর রহমত, জ্ঞান ও রিযিক সীমাহীন এবং সবকিছুকে পরিবেষ্টন করে।"
+      },
+      "benefit": {
+        "en": "A believer asks Al-Wasi' for big things without hesitation, for His treasures never run out.",
+        "bn": "মুমিন নির্দ্বিধায় আল-ওয়াসি'র কাছে বড় কিছু চায়, কারণ তাঁর ভাণ্ডার কখনো ফুরায় না।"
+      }
+    },
+    {
+      "id": "name-46",
+      "n": 46,
+      "ar": "الْحَكِيمُ",
+      "tl": "Al-Hakim",
+      "en": "The All-Wise",
+      "bn": "প্রজ্ঞাময়",
+      "meaning": {
+        "en": "The One who places everything in its right place; all His decrees and laws are full of wisdom.",
+        "bn": "যিনি প্রতিটি জিনিসকে যথাস্থানে রাখেন; তাঁর সকল ফয়সালা ও বিধান প্রজ্ঞায় পরিপূর্ণ।"
+      },
+      "benefit": {
+        "en": "A believer accepts what they cannot understand in life, trusting the wisdom of Al-Hakim.",
+        "bn": "মুমিন জীবনে যা বোঝে না তা মেনে নেয়, আল-হাকীমের হিকমতের উপর ভরসা করে।"
+      }
+    },
+    {
+      "id": "name-47",
+      "n": 47,
+      "ar": "الْوَدُودُ",
+      "tl": "Al-Wadud",
+      "en": "The Most Loving",
+      "bn": "প্রেমময়",
+      "meaning": {
+        "en": "The One who loves His righteous servants and is beloved by them.",
+        "bn": "যিনি তাঁর নেককার বান্দাদের ভালোবাসেন এবং তাদের কাছে প্রিয়।"
+      },
+      "benefit": {
+        "en": "A believer seeks Allah's love through following the Prophet ﷺ and spreads love among people.",
+        "bn": "মুমিন নবী ﷺ-এর অনুসরণের মাধ্যমে আল্লাহর ভালোবাসা খোঁজে এবং মানুষের মাঝে ভালোবাসা ছড়ায়।"
+      }
+    },
+    {
+      "id": "name-48",
+      "n": 48,
+      "ar": "الْمَجِيدُ",
+      "tl": "Al-Majid",
+      "en": "The Most Glorious",
+      "bn": "গৌরবময়",
+      "meaning": {
+        "en": "The One of vast glory, whose attributes and deeds are perfect and noble.",
+        "bn": "যিনি বিশাল গৌরবের অধিকারী, যাঁর গুণাবলি ও কর্ম পরিপূর্ণ ও মহৎ।"
+      },
+      "benefit": {
+        "en": "A believer praises Al-Majid in the durood of salah and seeks to honor Him in every action.",
+        "bn": "মুমিন নামাজের দরূদে আল-মাজীদের প্রশংসা করে এবং প্রতিটি কাজে তাঁকে সম্মানিত করতে চায়।"
+      }
+    },
+    {
+      "id": "name-49",
+      "n": 49,
+      "ar": "الْبَاعِثُ",
+      "tl": "Al-Ba'ith",
+      "en": "The Resurrector",
+      "bn": "পুনরুত্থানকারী",
+      "meaning": {
+        "en": "The One who will raise the dead for judgment and who sent the messengers to guide mankind.",
+        "bn": "যিনি বিচারের জন্য মৃতদের পুনরুত্থিত করবেন এবং মানবজাতিকে পথ দেখাতে রাসূল পাঠিয়েছেন।"
+      },
+      "benefit": {
+        "en": "Remembering resurrection, a believer prepares for the Day they will stand before Al-Ba'ith.",
+        "bn": "পুনরুত্থান স্মরণ করে মুমিন সেই দিনের প্রস্তুতি নেয় যেদিন সে আল-বা'ইসের সামনে দাঁড়াবে।"
+      }
+    },
+    {
+      "id": "name-50",
+      "n": 50,
+      "ar": "الشَّهِيدُ",
+      "tl": "Ash-Shahid",
+      "en": "The Witness",
+      "bn": "সাক্ষী",
+      "meaning": {
+        "en": "The One who witnesses everything; nothing is hidden from Him, and He will testify on the Day of Judgment.",
+        "bn": "যিনি সবকিছুর সাক্ষী; কিছুই তাঁর কাছে গোপন নয়, এবং কিয়ামতের দিন তিনি সাক্ষ্য দেবেন।"
+      },
+      "benefit": {
+        "en": "A believer is honest in testimony and conduct, knowing Ash-Shahid witnesses all.",
+        "bn": "মুমিন সাক্ষ্য ও আচরণে সৎ থাকে, কারণ আশ-শাহীদ সবকিছুর সাক্ষী।"
+      }
+    },
+    {
+      "id": "name-51",
+      "n": 51,
+      "ar": "الْحَقُّ",
+      "tl": "Al-Haqq",
+      "en": "The Truth",
+      "bn": "চিরসত্য",
+      "meaning": {
+        "en": "The One whose existence is absolute truth; His words, promises, and religion are all true.",
+        "bn": "যাঁর অস্তিত্ব পরম সত্য; তাঁর বাণী, প্রতিশ্রুতি ও দ্বীন সবই সত্য।"
+      },
+      "benefit": {
+        "en": "A believer clings to truth in speech and belief, and never trades it for worldly gain.",
+        "bn": "মুমিন কথা ও বিশ্বাসে সত্যকে আঁকড়ে ধরে এবং দুনিয়ার লাভের জন্য তা বিক্রি করে না।"
+      }
+    },
+    {
+      "id": "name-52",
+      "n": 52,
+      "ar": "الْوَكِيلُ",
+      "tl": "Al-Wakil",
+      "en": "The Trustee",
+      "bn": "কর্মবিধায়ক",
+      "meaning": {
+        "en": "The One who takes care of the affairs of those who rely on Him and manages all creation.",
+        "bn": "যিনি তাঁর উপর ভরসাকারীদের কাজ সম্পাদন করেন এবং সমগ্র সৃষ্টি পরিচালনা করেন।"
+      },
+      "benefit": {
+        "en": "After doing their part, a believer says 'Hasbunallahu wa ni'mal Wakil' and leaves the outcome to Allah.",
+        "bn": "নিজের দায়িত্ব পালনের পর মুমিন 'হাসবুনাল্লাহু ওয়া নি'মাল ওয়াকীল' বলে ফলাফল আল্লাহর উপর ছেড়ে দেয়।"
+      }
+    },
+    {
+      "id": "name-53",
+      "n": 53,
+      "ar": "الْقَوِيُّ",
+      "tl": "Al-Qawiyy",
+      "en": "The All-Strong",
+      "bn": "মহাশক্তিধর",
+      "meaning": {
+        "en": "The One of perfect strength, who is never weakened or tired by anything.",
+        "bn": "যিনি পরিপূর্ণ শক্তির অধিকারী, কোনো কিছুতেই দুর্বল বা ক্লান্ত হন না।"
+      },
+      "benefit": {
+        "en": "In weakness, a believer draws strength from Al-Qawiyy and uses their own strength to help, not harm.",
+        "bn": "দুর্বলতায় মুমিন আল-কাবিয়্যুর কাছ থেকে শক্তি নেয় এবং নিজের শক্তি ক্ষতি নয়, সাহায্যের কাজে ব্যবহার করে।"
+      }
+    },
+    {
+      "id": "name-54",
+      "n": 54,
+      "ar": "الْمَتِينُ",
+      "tl": "Al-Matin",
+      "en": "The Firm",
+      "bn": "সুদৃঢ়",
+      "meaning": {
+        "en": "The One whose power is firm and unshakable, who needs no support from anyone.",
+        "bn": "যাঁর শক্তি সুদৃঢ় ও অটল, যাঁর কারো সাহায্যের প্রয়োজন নেই।"
+      },
+      "benefit": {
+        "en": "A believer stands firm on faith in trials, anchored in the unshakable strength of Al-Matin.",
+        "bn": "মুমিন পরীক্ষায় ঈমানের উপর অটল থাকে, আল-মাতীনের অটল শক্তিতে নোঙর করে।"
+      }
+    },
+    {
+      "id": "name-55",
+      "n": 55,
+      "ar": "الْوَلِيُّ",
+      "tl": "Al-Waliyy",
+      "en": "The Protecting Friend",
+      "bn": "অভিভাবক ও বন্ধু",
+      "meaning": {
+        "en": "The Guardian and Ally of the believers, who supports them and brings them from darkness to light.",
+        "bn": "মুমিনদের অভিভাবক ও সহায়, যিনি তাদের সাহায্য করেন এবং অন্ধকার থেকে আলোতে আনেন।"
+      },
+      "benefit": {
+        "en": "A believer never feels alone, for Al-Waliyy is the closest friend; they befriend the righteous in turn.",
+        "bn": "মুমিন কখনো একা বোধ করে না, কারণ আল-ওয়ালী সবচেয়ে ঘনিষ্ঠ বন্ধু; সে-ও নেককারদের বন্ধু হয়।"
+      }
+    },
+    {
+      "id": "name-56",
+      "n": 56,
+      "ar": "الْحَمِيدُ",
+      "tl": "Al-Hamid",
+      "en": "The Praiseworthy",
+      "bn": "প্রশংসিত",
+      "meaning": {
+        "en": "The One deserving of all praise in every state, for His perfect attributes and countless blessings.",
+        "bn": "যিনি তাঁর পরিপূর্ণ গুণাবলি ও অগণিত নিয়ামতের জন্য সর্বাবস্থায় সকল প্রশংসার যোগ্য।"
+      },
+      "benefit": {
+        "en": "A believer says 'Alhamdulillah' in ease and hardship alike, praising Al-Hamid in every state.",
+        "bn": "মুমিন সুখে-দুঃখে সমানভাবে 'আলহামদুলিল্লাহ' বলে, সর্বাবস্থায় আল-হামীদের প্রশংসা করে।"
+      }
+    },
+    {
+      "id": "name-57",
+      "n": 57,
+      "ar": "الْمُحْصِي",
+      "tl": "Al-Muhsi",
+      "en": "The All-Enumerating",
+      "bn": "হিসাবরক্ষক",
+      "meaning": {
+        "en": "The One who has counted and recorded everything, nothing is left out of His reckoning.",
+        "bn": "যিনি সবকিছু গণনা ও লিপিবদ্ধ করেছেন; কিছুই তাঁর হিসাবের বাইরে নয়।"
+      },
+      "benefit": {
+        "en": "A believer values every small deed and breath, knowing Al-Muhsi counts them all.",
+        "bn": "মুমিন প্রতিটি ছোট আমল ও নিঃশ্বাসকে মূল্য দেয়, কারণ আল-মুহসী সবই গণনা করেন।"
+      }
+    },
+    {
+      "id": "name-58",
+      "n": 58,
+      "ar": "الْمُبْدِئُ",
+      "tl": "Al-Mubdi'",
+      "en": "The Originator",
+      "bn": "সূচনাকারী",
+      "meaning": {
+        "en": "The One who originates creation without any precedent or model.",
+        "bn": "যিনি কোনো পূর্ব দৃষ্টান্ত বা নমুনা ছাড়াই সৃষ্টির সূচনা করেন।"
+      },
+      "benefit": {
+        "en": "A believer remembers that Allah began them from nothing, and so begins every task in His name.",
+        "bn": "মুমিন স্মরণ করে আল্লাহ তাকে শূন্য থেকে সৃষ্টি করেছেন, তাই প্রতিটি কাজ তাঁর নামে শুরু করে।"
+      }
+    },
+    {
+      "id": "name-59",
+      "n": 59,
+      "ar": "الْمُعِيدُ",
+      "tl": "Al-Mu'id",
+      "en": "The Restorer",
+      "bn": "পুনঃসৃষ্টিকারী",
+      "meaning": {
+        "en": "The One who brings creation back after death, as easily as He created it the first time.",
+        "bn": "যিনি মৃত্যুর পর সৃষ্টিকে পুনরায় ফিরিয়ে আনেন, যেমন প্রথমবার সহজে সৃষ্টি করেছিলেন।"
+      },
+      "benefit": {
+        "en": "Certainty in return to Allah motivates a believer to live each day as preparation for the Hereafter.",
+        "bn": "আল্লাহর কাছে ফিরে যাওয়ার দৃঢ় বিশ্বাস মুমিনকে প্রতিটি দিন আখিরাতের প্রস্তুতিরূপে যাপন করতে উদ্বুদ্ধ করে।"
+      }
+    },
+    {
+      "id": "name-60",
+      "n": 60,
+      "ar": "الْمُحْيِي",
+      "tl": "Al-Muhyi",
+      "en": "The Giver of Life",
+      "bn": "জীবনদাতা",
+      "meaning": {
+        "en": "The One who gives life to bodies, revives dead land, and enlivens hearts with faith.",
+        "bn": "যিনি দেহে প্রাণ দেন, মৃত ভূমিকে সজীব করেন এবং ঈমান দিয়ে অন্তরকে জীবিত করেন।"
+      },
+      "benefit": {
+        "en": "A believer asks Al-Muhyi to revive their heart with Quran and dhikr whenever it feels hard.",
+        "bn": "অন্তর কঠিন মনে হলে মুমিন আল-মুহয়ীর কাছে কুরআন ও যিকির দিয়ে তা জীবিত করার দোয়া করে।"
+      }
+    },
+    {
+      "id": "name-61",
+      "n": 61,
+      "ar": "الْمُمِيتُ",
+      "tl": "Al-Mumit",
+      "en": "The Bringer of Death",
+      "bn": "মৃত্যুদাতা",
+      "meaning": {
+        "en": "The One who decrees death for every living thing at its appointed time.",
+        "bn": "যিনি প্রতিটি জীবের জন্য নির্ধারিত সময়ে মৃত্যুর ফয়সালা করেন।"
+      },
+      "benefit": {
+        "en": "Remembering that Al-Mumit holds every life, a believer hastens to good and avoids delaying repentance.",
+        "bn": "আল-মুমীতের হাতে প্রতিটি জীবন—এ কথা স্মরণ করে মুমিন নেক কাজে ত্বরা করে এবং তওবা বিলম্বিত করে না।"
+      }
+    },
+    {
+      "id": "name-62",
+      "n": 62,
+      "ar": "الْحَيُّ",
+      "tl": "Al-Hayy",
+      "en": "The Ever-Living",
+      "bn": "চিরঞ্জীব",
+      "meaning": {
+        "en": "The One with perfect, eternal life that has no beginning and no end, who never dies.",
+        "bn": "যিনি পরিপূর্ণ ও চিরন্তন জীবনের অধিকারী, যাঁর শুরু নেই, শেষ নেই, যিনি কখনো মরেন না।"
+      },
+      "benefit": {
+        "en": "A believer puts trust in the Ever-Living who never dies, rather than in mortal beings.",
+        "bn": "মুমিন নশ্বর সৃষ্টির বদলে চিরঞ্জীবের উপর ভরসা করে, যিনি কখনো মরেন না।"
+      }
+    },
+    {
+      "id": "name-63",
+      "n": 63,
+      "ar": "الْقَيُّومُ",
+      "tl": "Al-Qayyum",
+      "en": "The Self-Subsisting Sustainer",
+      "bn": "স্বয়ংসম্পূর্ণ ধারক",
+      "meaning": {
+        "en": "The One who exists by Himself, needing none, while everything depends on Him for existence.",
+        "bn": "যিনি নিজেই নিজের অস্তিত্বে বিদ্যমান, কারো মুখাপেক্ষী নন, অথচ সবকিছু অস্তিত্বের জন্য তাঁর উপর নির্ভরশীল।"
+      },
+      "benefit": {
+        "en": "A believer calls 'Ya Hayyu Ya Qayyum' in distress, as the Prophet ﷺ did, seeking help from the Sustainer.",
+        "bn": "মুমিন বিপদে নবী ﷺ-এর মতো 'ইয়া হাইয়্যু ইয়া কাইয়্যূম' বলে ডাকে, ধারকের কাছে সাহায্য চায়।"
+      }
+    },
+    {
+      "id": "name-64",
+      "n": 64,
+      "ar": "الْوَاجِدُ",
+      "tl": "Al-Wajid",
+      "en": "The Perceiver, The Self-Sufficient Finder",
+      "bn": "প্রাপ্তিকারী ও অভাবমুক্ত",
+      "meaning": {
+        "en": "The One who finds whatever He wills and lacks nothing; nothing is beyond His reach.",
+        "bn": "যিনি যা ইচ্ছা তা পান এবং কোনো কিছুর অভাব নেই; কিছুই তাঁর নাগালের বাইরে নয়।"
+      },
+      "benefit": {
+        "en": "A believer who has lost something or someone turns to Al-Wajid, who is never at a loss.",
+        "bn": "কিছু বা কাউকে হারালে মুমিন আল-ওয়াজিদের দিকে ফেরে, যাঁর কখনো কোনো কিছুর অভাব নেই।"
+      }
+    },
+    {
+      "id": "name-65",
+      "n": 65,
+      "ar": "الْمَاجِدُ",
+      "tl": "Al-Maajid",
+      "en": "The Noble and Glorious",
+      "bn": "মহিমান্বিত ও সম্মানিত",
+      "meaning": {
+        "en": "The One of noble generosity and great honor, whose glory is combined with abundant giving.",
+        "bn": "যিনি মহৎ উদারতা ও বিশাল সম্মানের অধিকারী, যাঁর গৌরব প্রচুর দানের সাথে যুক্ত।"
+      },
+      "benefit": {
+        "en": "A believer honors Al-Maajid by combining dignity with generosity in their own character.",
+        "bn": "মুমিন নিজের চরিত্রে মর্যাদা ও উদারতার সমন্বয় ঘটিয়ে আল-মাজিদকে সম্মান করে।"
+      }
+    },
+    {
+      "id": "name-66",
+      "n": 66,
+      "ar": "الْوَاحِدُ",
+      "tl": "Al-Wahid",
+      "en": "The One",
+      "bn": "এক ও অদ্বিতীয়",
+      "meaning": {
+        "en": "The One who is single and unique in His essence and attributes, without any partner.",
+        "bn": "যিনি সত্তা ও গুণাবলিতে একক ও অনন্য, যাঁর কোনো শরীক নেই।"
+      },
+      "benefit": {
+        "en": "A believer directs all worship, hope, and fear to Al-Wahid alone, purifying their tawhid.",
+        "bn": "মুমিন সকল ইবাদত, আশা ও ভয় একমাত্র আল-ওয়াহিদের দিকে নিবদ্ধ করে, নিজের তাওহীদ বিশুদ্ধ করে।"
+      }
+    },
+    {
+      "id": "name-67",
+      "n": 67,
+      "ar": "الْأَحَدُ",
+      "tl": "Al-Ahad",
+      "en": "The Unique, The Indivisible",
+      "bn": "একক ও অবিভাজ্য",
+      "meaning": {
+        "en": "The One who is absolutely unique and indivisible, with none like Him in any way.",
+        "bn": "যিনি পরম একক ও অবিভাজ্য, কোনোভাবেই তাঁর মতো কেউ নেই।"
+      },
+      "benefit": {
+        "en": "Reciting Surah al-Ikhlas, a believer affirms Al-Ahad and frees the heart from every false attachment.",
+        "bn": "সূরা ইখলাস পাঠ করে মুমিন আল-আহাদকে স্বীকার করে এবং অন্তরকে সকল মিথ্যা আসক্তি থেকে মুক্ত করে।"
+      }
+    },
+    {
+      "id": "name-68",
+      "n": 68,
+      "ar": "الصَّمَدُ",
+      "tl": "As-Samad",
+      "en": "The Eternal Refuge",
+      "bn": "অমুখাপেক্ষী",
+      "meaning": {
+        "en": "The One on whom all creation depends for every need, while He needs nothing from anyone.",
+        "bn": "যাঁর উপর সমগ্র সৃষ্টি প্রতিটি প্রয়োজনে নির্ভরশীল, অথচ তিনি কারো মুখাপেক্ষী নন।"
+      },
+      "benefit": {
+        "en": "A believer brings every need, great or small, to As-Samad before turning to any creature.",
+        "bn": "মুমিন ছোট-বড় প্রতিটি প্রয়োজন কোনো সৃষ্টির কাছে যাওয়ার আগে আস-সামাদের কাছে পেশ করে।"
+      }
+    },
+    {
+      "id": "name-69",
+      "n": 69,
+      "ar": "الْقَادِرُ",
+      "tl": "Al-Qadir",
+      "en": "The All-Capable",
+      "bn": "সর্বশক্তিমান",
+      "meaning": {
+        "en": "The One who has power over all things and does whatever He wills without any difficulty.",
+        "bn": "যিনি সবকিছুর উপর ক্ষমতাবান এবং যা ইচ্ছা তা বিনা কষ্টে করেন।"
+      },
+      "benefit": {
+        "en": "A believer never says 'impossible' in dua, for Al-Qadir is able to do all things.",
+        "bn": "মুমিন দোয়ায় কখনো 'অসম্ভব' বলে না, কারণ আল-কাদির সবকিছু করতে সক্ষম।"
+      }
+    },
+    {
+      "id": "name-70",
+      "n": 70,
+      "ar": "الْمُقْتَدِرُ",
+      "tl": "Al-Muqtadir",
+      "en": "The All-Determiner, The Omnipotent",
+      "bn": "পরম ক্ষমতাধর",
+      "meaning": {
+        "en": "The One whose power is complete and dominant; nothing can resist His decree.",
+        "bn": "যাঁর ক্ষমতা পরিপূর্ণ ও প্রবল; কিছুই তাঁর ফয়সালাকে প্রতিরোধ করতে পারে না।"
+      },
+      "benefit": {
+        "en": "A believer fears Al-Muqtadir's power when tempted to wrong others, and relies on it when oppressed.",
+        "bn": "অন্যের প্রতি অন্যায়ের প্রলোভনে মুমিন আল-মুকতাদিরের ক্ষমতাকে ভয় করে, আর নির্যাতিত হলে তার উপর ভরসা রাখে।"
+      }
+    },
+    {
+      "id": "name-71",
+      "n": 71,
+      "ar": "الْمُقَدِّمُ",
+      "tl": "Al-Muqaddim",
+      "en": "The Expediter",
+      "bn": "অগ্রসরকারী",
+      "meaning": {
+        "en": "The One who brings forward whom and what He wills, by His wisdom.",
+        "bn": "যিনি তাঁর হিকমত অনুযায়ী যাকে ও যা ইচ্ছা অগ্রবর্তী করেন।"
+      },
+      "benefit": {
+        "en": "A believer does not envy those ahead of them, knowing Al-Muqaddim advances by His wisdom.",
+        "bn": "মুমিন অগ্রগামীদের হিংসা করে না, কারণ আল-মুকাদ্দিম তাঁর হিকমতে অগ্রসর করেন।"
+      }
+    },
+    {
+      "id": "name-72",
+      "n": 72,
+      "ar": "الْمُؤَخِّرُ",
+      "tl": "Al-Mu'akhkhir",
+      "en": "The Delayer",
+      "bn": "বিলম্বকারী",
+      "meaning": {
+        "en": "The One who delays whom and what He wills, holding back by His wisdom.",
+        "bn": "যিনি তাঁর হিকমত অনুযায়ী যাকে ও যা ইচ্ছা পিছিয়ে দেন।"
+      },
+      "benefit": {
+        "en": "When a prayer seems delayed, a believer trusts that Al-Mu'akhkhir's timing is better than their own.",
+        "bn": "দোয়া কবুলে দেরি মনে হলে মুমিন বিশ্বাস রাখে আল-মুআখখিরের সময় নির্ধারণ তার নিজের চেয়ে উত্তম।"
+      }
+    },
+    {
+      "id": "name-73",
+      "n": 73,
+      "ar": "الْأَوَّلُ",
+      "tl": "Al-Awwal",
+      "en": "The First",
+      "bn": "আদি",
+      "meaning": {
+        "en": "The One who existed before everything, with nothing before Him.",
+        "bn": "যিনি সবকিছুর আগে বিদ্যমান ছিলেন, যাঁর আগে কিছুই ছিল না।"
+      },
+      "benefit": {
+        "en": "A believer puts Allah first in every priority, for He was before all and deserves the first place.",
+        "bn": "মুমিন প্রতিটি অগ্রাধিকারে আল্লাহকে প্রথমে রাখে, কারণ তিনি সবকিছুর আগে ছিলেন এবং প্রথম স্থানের যোগ্য।"
+      }
+    },
+    {
+      "id": "name-74",
+      "n": 74,
+      "ar": "الْآخِرُ",
+      "tl": "Al-Akhir",
+      "en": "The Last",
+      "bn": "অন্ত",
+      "meaning": {
+        "en": "The One who remains after everything perishes, with nothing after Him.",
+        "bn": "যিনি সবকিছু ধ্বংস হওয়ার পরও থাকবেন, যাঁর পরে কিছুই নেই।"
+      },
+      "benefit": {
+        "en": "Knowing all else passes away, a believer invests in what lasts: deeds for Al-Akhir.",
+        "bn": "সবকিছু বিলীন হবে জেনে মুমিন যা টিকে থাকে তাতে বিনিয়োগ করে: আল-আখিরের জন্য আমল।"
+      }
+    },
+    {
+      "id": "name-75",
+      "n": 75,
+      "ar": "الظَّاهِرُ",
+      "tl": "Az-Zahir",
+      "en": "The Manifest",
+      "bn": "প্রকাশ্য",
+      "meaning": {
+        "en": "The One above all things, whose existence is evident through His countless signs.",
+        "bn": "যিনি সবকিছুর ঊর্ধ্বে, যাঁর অস্তিত্ব তাঁর অগণিত নিদর্শনের মাধ্যমে সুস্পষ্ট।"
+      },
+      "benefit": {
+        "en": "A believer sees signs of Az-Zahir everywhere in creation and strengthens faith through reflection.",
+        "bn": "মুমিন সৃষ্টির সর্বত্র আয-যাহিরের নিদর্শন দেখে এবং চিন্তার মাধ্যমে ঈমান মজবুত করে।"
+      }
+    },
+    {
+      "id": "name-76",
+      "n": 76,
+      "ar": "الْبَاطِنُ",
+      "tl": "Al-Batin",
+      "en": "The Hidden",
+      "bn": "গুপ্ত",
+      "meaning": {
+        "en": "The One whose essence is beyond perception, yet who is nearer to His servants than anything.",
+        "bn": "যাঁর সত্তা উপলব্ধির ঊর্ধ্বে, অথচ যিনি বান্দাদের সবকিছুর চেয়ে নিকটবর্তী।"
+      },
+      "benefit": {
+        "en": "A believer worships Allah without seeing Him, trusting that Al-Batin is intimately near.",
+        "bn": "মুমিন না দেখেই আল্লাহর ইবাদত করে, বিশ্বাস রাখে আল-বাতিন অতি নিকটে আছেন।"
+      }
+    },
+    {
+      "id": "name-77",
+      "n": 77,
+      "ar": "الْوَالِي",
+      "tl": "Al-Wali",
+      "en": "The Governor",
+      "bn": "শাসনকর্তা",
+      "meaning": {
+        "en": "The One who governs and manages all affairs of creation, owning and directing everything.",
+        "bn": "যিনি সৃষ্টির সকল বিষয় শাসন ও পরিচালনা করেন, সবকিছুর মালিক ও নিয়ন্ত্রক।"
+      },
+      "benefit": {
+        "en": "A believer entrusts the management of their life to Al-Wali while fulfilling their own responsibilities.",
+        "bn": "মুমিন নিজের দায়িত্ব পালন করে জীবনের পরিচালনা আল-ওয়ালীর উপর সোপর্দ করে।"
+      }
+    },
+    {
+      "id": "name-78",
+      "n": 78,
+      "ar": "الْمُتَعَالِي",
+      "tl": "Al-Muta'ali",
+      "en": "The Supremely Exalted",
+      "bn": "সর্বোন্নত",
+      "meaning": {
+        "en": "The One exalted far above all imperfection and above whatever creation attributes to Him.",
+        "bn": "যিনি সকল অপূর্ণতা এবং সৃষ্টি তাঁর প্রতি যা আরোপ করে তার অনেক ঊর্ধ্বে সমুন্নত।"
+      },
+      "benefit": {
+        "en": "A believer keeps their conception of Allah pure, never likening Al-Muta'ali to His creation.",
+        "bn": "মুমিন আল্লাহ সম্পর্কে ধারণা বিশুদ্ধ রাখে, আল-মুতাআলীকে কখনো সৃষ্টির সাথে তুলনা করে না।"
+      }
+    },
+    {
+      "id": "name-79",
+      "n": 79,
+      "ar": "الْبَرُّ",
+      "tl": "Al-Barr",
+      "en": "The Source of Goodness",
+      "bn": "পরম উপকারী",
+      "meaning": {
+        "en": "The One whose goodness and kindness to His creation are vast and constant.",
+        "bn": "যাঁর সৃষ্টির প্রতি কল্যাণ ও অনুগ্রহ বিশাল ও অবিরাম।"
+      },
+      "benefit": {
+        "en": "A believer practices birr (goodness) to parents and all people, reflecting the kindness of Al-Barr.",
+        "bn": "মুমিন পিতামাতা ও সকল মানুষের প্রতি বির্র (সদাচরণ) করে, আল-বার্রের অনুগ্রহের প্রতিফলন ঘটায়।"
+      }
+    },
+    {
+      "id": "name-80",
+      "n": 80,
+      "ar": "التَّوَّابُ",
+      "tl": "At-Tawwab",
+      "en": "The Acceptor of Repentance",
+      "bn": "তওবা কবুলকারী",
+      "meaning": {
+        "en": "The One who repeatedly turns to His servants, enabling their repentance and accepting it.",
+        "bn": "যিনি বারবার বান্দাদের দিকে ফিরে আসেন, তাদের তওবার তাওফীক দেন এবং তা কবুল করেন।"
+      },
+      "benefit": {
+        "en": "A believer hastens to repent after every slip, confident that At-Tawwab welcomes their return.",
+        "bn": "মুমিন প্রতিটি পদস্খলনের পর দ্রুত তওবা করে, নিশ্চিত থাকে আত-তাওয়াব তার প্রত্যাবর্তনকে স্বাগত জানান।"
+      }
+    },
+    {
+      "id": "name-81",
+      "n": 81,
+      "ar": "الْمُنْتَقِمُ",
+      "tl": "Al-Muntaqim",
+      "en": "The Avenger",
+      "bn": "প্রতিশোধ গ্রহণকারী",
+      "meaning": {
+        "en": "The One who punishes persistent wrongdoers and oppressors with justice after giving them respite.",
+        "bn": "যিনি অবকাশ দেওয়ার পর অবিরাম পাপী ও জালিমদের ন্যায়সঙ্গতভাবে শাস্তি দেন।"
+      },
+      "benefit": {
+        "en": "The oppressed find comfort that Al-Muntaqim will settle accounts, and the believer avoids injustice.",
+        "bn": "মজলুম সান্ত্বনা পায় যে আল-মুনতাকিম হিসাব চুকাবেন, আর মুমিন জুলুম থেকে দূরে থাকে।"
+      }
+    },
+    {
+      "id": "name-82",
+      "n": 82,
+      "ar": "الْعَفُوُّ",
+      "tl": "Al-Afuww",
+      "en": "The Pardoner",
+      "bn": "মার্জনাকারী",
+      "meaning": {
+        "en": "The One who erases sins completely, as if they never happened, out of His grace.",
+        "bn": "যিনি নিজ অনুগ্রহে গুনাহ সম্পূর্ণ মুছে দেন, যেন তা কখনো ঘটেইনি।"
+      },
+      "benefit": {
+        "en": "A believer prays 'Allahumma innaka Afuwwun tuhibbul afwa fa'fu anni', and pardons those who wrong them.",
+        "bn": "মুমিন 'আল্লাহুম্মা ইন্নাকা আফুউউন তুহিব্বুল আফওয়া ফা'ফু আন্নী' দোয়া করে এবং অন্যায়কারীদের মার্জনা করে।"
+      }
+    },
+    {
+      "id": "name-83",
+      "n": 83,
+      "ar": "الرَّءُوفُ",
+      "tl": "Ar-Ra'uf",
+      "en": "The Most Kind",
+      "bn": "স্নেহশীল",
+      "meaning": {
+        "en": "The One whose compassion is intense and tender, protecting His servants from harm.",
+        "bn": "যাঁর মমতা গভীর ও কোমল, যিনি বান্দাদের ক্ষতি থেকে রক্ষা করেন।"
+      },
+      "benefit": {
+        "en": "A believer deals tenderly with the weak, the young, and the elderly, reflecting Ar-Ra'uf's compassion.",
+        "bn": "মুমিন দুর্বল, শিশু ও বৃদ্ধদের সাথে কোমল আচরণ করে, আর-রাঊফের মমতার প্রতিফলন ঘটায়।"
+      }
+    },
+    {
+      "id": "name-84",
+      "n": 84,
+      "ar": "مَالِكُ الْمُلْكِ",
+      "tl": "Malik-ul-Mulk",
+      "en": "The Owner of All Sovereignty",
+      "bn": "সার্বভৌমত্বের মালিক",
+      "meaning": {
+        "en": "The One who owns all dominion, giving kingdom to whom He wills and taking it from whom He wills.",
+        "bn": "যিনি সকল রাজত্বের মালিক, যাকে ইচ্ছা রাজত্ব দেন এবং যার থেকে ইচ্ছা তা ছিনিয়ে নেন।"
+      },
+      "benefit": {
+        "en": "A believer is not deluded by power or position, knowing all authority belongs to Malik-ul-Mulk.",
+        "bn": "মুমিন ক্ষমতা বা পদে বিভ্রান্ত হয় না, কারণ সকল কর্তৃত্ব মালিকুল মুলকের।"
+      }
+    },
+    {
+      "id": "name-85",
+      "n": 85,
+      "ar": "ذُو الْجَلَالِ وَالْإِكْرَامِ",
+      "tl": "Dhul-Jalali wal-Ikram",
+      "en": "The Lord of Majesty and Generosity",
+      "bn": "মহিমা ও সম্মানের অধিকারী",
+      "meaning": {
+        "en": "The One who possesses majesty that inspires awe and generosity that honors His servants.",
+        "bn": "যিনি এমন মহিমার অধিকারী যা ভীতি জাগায় এবং এমন উদারতার যা বান্দাদের সম্মানিত করে।"
+      },
+      "benefit": {
+        "en": "The Prophet ﷺ taught to call persistently with 'Ya Dhal-Jalali wal-Ikram'; a believer combines awe and hope in dua.",
+        "bn": "নবী ﷺ 'ইয়া যাল-জালালি ওয়াল-ইকরাম' বলে বারবার ডাকতে শিখিয়েছেন; মুমিন দোয়ায় ভয় ও আশা একত্র করে।"
+      }
+    },
+    {
+      "id": "name-86",
+      "n": 86,
+      "ar": "الْمُقْسِطُ",
+      "tl": "Al-Muqsit",
+      "en": "The Equitable",
+      "bn": "ন্যায়বিচারক",
+      "meaning": {
+        "en": "The One who establishes justice, giving the wronged their due from the wrongdoer.",
+        "bn": "যিনি ন্যায় প্রতিষ্ঠা করেন, মজলুমকে জালিমের কাছ থেকে তার প্রাপ্য আদায় করে দেন।"
+      },
+      "benefit": {
+        "en": "A believer is fair in family, trade, and judgment, for Allah loves those who act equitably.",
+        "bn": "মুমিন পরিবার, ব্যবসা ও বিচারে ন্যায়পরায়ণ থাকে, কারণ আল্লাহ ন্যায়কারীদের ভালোবাসেন।"
+      }
+    },
+    {
+      "id": "name-87",
+      "n": 87,
+      "ar": "الْجَامِعُ",
+      "tl": "Al-Jami'",
+      "en": "The Gatherer",
+      "bn": "একত্রকারী",
+      "meaning": {
+        "en": "The One who will gather all people on the Day of Judgment and who unites what is scattered.",
+        "bn": "যিনি কিয়ামতের দিন সকল মানুষকে একত্র করবেন এবং যিনি বিক্ষিপ্তকে একত্রিত করেন।"
+      },
+      "benefit": {
+        "en": "A believer prepares for the great gathering and works to unite hearts rather than divide them.",
+        "bn": "মুমিন মহাসমাবেশের প্রস্তুতি নেয় এবং অন্তরকে বিভক্ত না করে একত্র করতে কাজ করে।"
+      }
+    },
+    {
+      "id": "name-88",
+      "n": 88,
+      "ar": "الْغَنِيُّ",
+      "tl": "Al-Ghaniyy",
+      "en": "The Self-Sufficient",
+      "bn": "অভাবমুক্ত",
+      "meaning": {
+        "en": "The One who is absolutely free of need, while all creation is in need of Him.",
+        "bn": "যিনি সম্পূর্ণ অভাবমুক্ত, অথচ সমগ্র সৃষ্টি তাঁর মুখাপেক্ষী।"
+      },
+      "benefit": {
+        "en": "A believer worships knowing Allah gains nothing from it; the benefit is entirely their own.",
+        "bn": "মুমিন জেনে ইবাদত করে যে আল্লাহর এতে কোনো লাভ নেই; উপকার সম্পূর্ণ তার নিজের।"
+      }
+    },
+    {
+      "id": "name-89",
+      "n": 89,
+      "ar": "الْمُغْنِي",
+      "tl": "Al-Mughni",
+      "en": "The Enricher",
+      "bn": "অভাবমোচনকারী",
+      "meaning": {
+        "en": "The One who enriches whom He wills, with wealth or with contentment of heart.",
+        "bn": "যিনি যাকে ইচ্ছা সম্পদ দিয়ে বা অন্তরের পরিতৃপ্তি দিয়ে অভাবমুক্ত করেন।"
+      },
+      "benefit": {
+        "en": "A believer asks Al-Mughni for richness of the soul, the truest wealth, and for lawful provision.",
+        "bn": "মুমিন আল-মুগনীর কাছে অন্তরের ঐশ্বর্য, যা প্রকৃত সম্পদ, এবং হালাল রিযিক চায়।"
+      }
+    },
+    {
+      "id": "name-90",
+      "n": 90,
+      "ar": "الْمَانِعُ",
+      "tl": "Al-Mani'",
+      "en": "The Preventer",
+      "bn": "প্রতিরোধকারী",
+      "meaning": {
+        "en": "The One who withholds what He wills and prevents harm from reaching His servants.",
+        "bn": "যিনি যা ইচ্ছা তা আটকে রাখেন এবং বান্দাদের কাছে ক্ষতি পৌঁছাতে বাধা দেন।"
+      },
+      "benefit": {
+        "en": "When denied something, a believer trusts that Al-Mani' withheld it out of protection and wisdom.",
+        "bn": "কিছু না পেলে মুমিন বিশ্বাস রাখে আল-মানি' সুরক্ষা ও হিকমতের কারণেই তা আটকে রেখেছেন।"
+      }
+    },
+    {
+      "id": "name-91",
+      "n": 91,
+      "ar": "الضَّارُّ",
+      "tl": "Ad-Darr",
+      "en": "The Creator of Harm",
+      "bn": "ক্ষতিসাধনকারী",
+      "meaning": {
+        "en": "The One by whose decree harm and hardship occur, always with wisdom and justice.",
+        "bn": "যাঁর ফয়সালায় ক্ষতি ও কষ্ট আসে, সর্বদা হিকমত ও ন্যায়ের সাথে।"
+      },
+      "benefit": {
+        "en": "A believer does not fear creatures, knowing no harm befalls except by Allah's permission.",
+        "bn": "মুমিন সৃষ্টিকে ভয় করে না, কারণ আল্লাহর অনুমতি ছাড়া কোনো ক্ষতি পৌঁছায় না।"
+      }
+    },
+    {
+      "id": "name-92",
+      "n": 92,
+      "ar": "النَّافِعُ",
+      "tl": "An-Nafi'",
+      "en": "The Giver of Benefit",
+      "bn": "কল্যাণদাতা",
+      "meaning": {
+        "en": "The One from whom all benefit comes; nothing benefits except by His will.",
+        "bn": "যাঁর কাছ থেকে সকল কল্যাণ আসে; তাঁর ইচ্ছা ছাড়া কিছুই উপকার করতে পারে না।"
+      },
+      "benefit": {
+        "en": "A believer seeks benefit from An-Nafi' alone and strives to be beneficial to others.",
+        "bn": "মুমিন একমাত্র আন-নাফি'র কাছে কল্যাণ চায় এবং অন্যদের জন্য উপকারী হতে চেষ্টা করে।"
+      }
+    },
+    {
+      "id": "name-93",
+      "n": 93,
+      "ar": "النُّورُ",
+      "tl": "An-Nur",
+      "en": "The Light",
+      "bn": "জ্যোতি",
+      "meaning": {
+        "en": "The Light of the heavens and the earth, who illuminates hearts with guidance.",
+        "bn": "আসমান ও জমিনের জ্যোতি, যিনি হিদায়াত দিয়ে অন্তরকে আলোকিত করেন।"
+      },
+      "benefit": {
+        "en": "A believer asks An-Nur for light in the heart, as the Prophet ﷺ did, and walks by the light of revelation.",
+        "bn": "মুমিন নবী ﷺ-এর মতো আন-নূরের কাছে অন্তরের নূর চায় এবং ওহীর আলোয় পথ চলে।"
+      }
+    },
+    {
+      "id": "name-94",
+      "n": 94,
+      "ar": "الْهَادِي",
+      "tl": "Al-Hadi",
+      "en": "The Guide",
+      "bn": "পথপ্রদর্শক",
+      "meaning": {
+        "en": "The One who guides His servants to truth and shows every creature the way to its benefit.",
+        "bn": "যিনি বান্দাদের সত্যের পথ দেখান এবং প্রতিটি সৃষ্টিকে তার কল্যাণের পথ দেখান।"
+      },
+      "benefit": {
+        "en": "A believer asks for guidance in every rak'ah with 'Ihdinas-siratal-mustaqim' and shares guidance kindly.",
+        "bn": "মুমিন প্রতি রাকাতে 'ইহদিনাস-সিরাতাল-মুস্তাকীম' বলে হিদায়াত চায় এবং সদয়ভাবে হিদায়াত ছড়ায়।"
+      }
+    },
+    {
+      "id": "name-95",
+      "n": 95,
+      "ar": "الْبَدِيعُ",
+      "tl": "Al-Badi'",
+      "en": "The Incomparable Originator",
+      "bn": "অভিনব স্রষ্টা",
+      "meaning": {
+        "en": "The Originator of the heavens and the earth, who creates in unprecedented, matchless ways.",
+        "bn": "আসমান ও জমিনের অভিনব স্রষ্টা, যিনি নজিরবিহীন ও অতুলনীয়ভাবে সৃষ্টি করেন।"
+      },
+      "benefit": {
+        "en": "Marveling at the originality of creation, a believer praises Al-Badi' and avoids innovation in religion.",
+        "bn": "সৃষ্টির অভিনবত্বে বিস্মিত হয়ে মুমিন আল-বাদী'র প্রশংসা করে এবং দ্বীনে বিদআত থেকে দূরে থাকে।"
+      }
+    },
+    {
+      "id": "name-96",
+      "n": 96,
+      "ar": "الْبَاقِي",
+      "tl": "Al-Baqi",
+      "en": "The Everlasting",
+      "bn": "চিরস্থায়ী",
+      "meaning": {
+        "en": "The One who remains forever; everything perishes except His Face.",
+        "bn": "যিনি চিরকাল থাকবেন; তাঁর সত্তা ছাড়া সবকিছুই ধ্বংসশীল।"
+      },
+      "benefit": {
+        "en": "A believer attaches their heart to the Everlasting, not to fleeting things, and so grieves less over loss.",
+        "bn": "মুমিন ক্ষণস্থায়ী জিনিসে নয়, চিরস্থায়ীর সাথে অন্তর যুক্ত করে, তাই হারানোর শোক কম হয়।"
+      }
+    },
+    {
+      "id": "name-97",
+      "n": 97,
+      "ar": "الْوَارِثُ",
+      "tl": "Al-Warith",
+      "en": "The Inheritor of All",
+      "bn": "সর্বস্বের উত্তরাধিকারী",
+      "meaning": {
+        "en": "The One to whom everything returns after all creation passes away; He is the final Heir.",
+        "bn": "সৃষ্টি বিলীন হওয়ার পর যাঁর কাছে সবকিছু ফিরে যায়; তিনিই চূড়ান্ত উত্তরাধিকারী।"
+      },
+      "benefit": {
+        "en": "Knowing all will return to Al-Warith, a believer spends wealth in good before leaving it behind.",
+        "bn": "সবকিছু আল-ওয়ারিসের কাছে ফিরে যাবে জেনে মুমিন রেখে যাওয়ার আগেই সম্পদ নেক কাজে ব্যয় করে।"
+      }
+    },
+    {
+      "id": "name-98",
+      "n": 98,
+      "ar": "الرَّشِيدُ",
+      "tl": "Ar-Rashid",
+      "en": "The Guide to the Right Path",
+      "bn": "সঠিক পথপ্রদর্শক",
+      "meaning": {
+        "en": "The One whose every decree is right and wise, and who directs His servants to what is correct.",
+        "bn": "যাঁর প্রতিটি ফয়সালা সঠিক ও প্রজ্ঞাপূর্ণ, এবং যিনি বান্দাদের সঠিক পথে পরিচালিত করেন।"
+      },
+      "benefit": {
+        "en": "A believer seeks sound judgment from Ar-Rashid through istikhara and consultation before decisions.",
+        "bn": "মুমিন সিদ্ধান্তের আগে ইস্তিখারা ও পরামর্শের মাধ্যমে আর-রাশীদের কাছে সঠিক দিকনির্দেশনা চায়।"
+      }
+    },
+    {
+      "id": "name-99",
+      "n": 99,
+      "ar": "الصَّبُورُ",
+      "tl": "As-Sabur",
+      "en": "The Most Patient",
+      "bn": "পরম ধৈর্যশীল",
+      "meaning": {
+        "en": "The One who does not hasten to punish the disobedient, but gives them time with perfect patience.",
+        "bn": "যিনি অবাধ্যদের শাস্তিতে তাড়াহুড়ো করেন না, বরং পরিপূর্ণ ধৈর্যের সাথে তাদের সময় দেন।"
+      },
+      "benefit": {
+        "en": "A believer learns patience from As-Sabur, bearing trials and people's faults without haste or anger.",
+        "bn": "মুমিন আস-সাবূরের কাছ থেকে ধৈর্য শেখে, তাড়াহুড়ো বা রাগ ছাড়াই পরীক্ষা ও মানুষের ত্রুটি সহ্য করে।"
+      }
+    }
+  ]
+}

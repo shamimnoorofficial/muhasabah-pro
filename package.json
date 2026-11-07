@@ -18,11 +18,11 @@
   },
   "type": "module",
   "name": "muhasabah-pro",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "private": true,
   "scripts": {
     "test": "node tests/penalties.cjs && node tests/qibla.cjs",
-    "test:ui": "npm run -s test:startup && npm run -s test:languages && npm run -s test:celebrate && npm run -s test:donate && npm run -s test:flow && npm run -s test:settings && npm run -s test:journal && npm run -s test:home && npm run -s test:suite",
+    "test:ui": "npm run -s test:startup && npm run -s test:languages && npm run -s test:celebrate && npm run -s test:donate && npm run -s test:flow && npm run -s test:settings && npm run -s test:journal && npm run -s test:home && npm run -s test:suite && npm run -s test:growth",
     "typecheck": "tsc --noEmit",
     "test:startup": "node tests/startup.cjs",
     "test:celebrate": "node tests/celebrate.cjs",
@@ -34,6 +34,8 @@
     "test:flow": "node tests/flow.cjs",
     "test:settings": "node tests/settings-flow.cjs",
     "test:home": "node tests/home-actions.cjs",
-    "test:suite": "node tests/suite.cjs"
+    "test:suite": "node tests/suite.cjs",
+    "test:growth": "node tests/growth.cjs",
+    "screenshots": "node tools/screenshots/capture.cjs"
   }
 }

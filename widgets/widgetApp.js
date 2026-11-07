@@ -3,7 +3,9 @@
   "use strict";
   var S = window.MHSWidgetStore, U = window.MHSWidgetUI;
   var q = new URLSearchParams(location.search), view = q.get("view") || "today";
-  if (["today", "habits", "todo"].indexOf(view) === -1) view = "today";
+  if (["today", "habits", "todo", "custom"].indexOf(view) === -1) view = "today";
+  /* Configurable widget built by the Widget Wizard in the app → delegated to customWidget.js */
+  if (view === "custom" && window.MHSCustomWidget) { window.MHSCustomWidget.boot(); return; }
   var $ = function (id) { return document.getElementById(id); };
 
   function summary(data) {

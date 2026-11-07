@@ -1,0 +1,655 @@
+{
+  "version": 1,
+  "groups": [
+    { "id": "salah", "en": "Salah & after salah", "bn": "নামাজ ও নামাজের পর", "icon": "🕌" },
+    { "id": "zikr", "en": "Zikr & dua", "bn": "জিকির ও দোয়া", "icon": "📿" },
+    { "id": "quran", "en": "Quran", "bn": "কুরআন", "icon": "📖" },
+    { "id": "fasting", "en": "Fasting", "bn": "রোজা", "icon": "🌙" },
+    { "id": "charity", "en": "Charity & kindness", "bn": "দান ও সদাচরণ", "icon": "💝" },
+    { "id": "character", "en": "Character & manners", "bn": "চরিত্র ও আদব", "icon": "🌿" },
+    { "id": "friday", "en": "Friday", "bn": "জুমার দিন", "icon": "🕋" },
+    { "id": "night", "en": "Night & sleep", "bn": "রাত ও ঘুম", "icon": "🌌" },
+    { "id": "purity", "en": "Purity & sunnah habits", "bn": "পবিত্রতা ও সুন্নত অভ্যাস", "icon": "💧" }
+  ],
+  "items": [
+    {
+      "id": "amol-ayatul-kursi-after-salah",
+      "g": "salah",
+      "title": { "en": "Ayatul Kursi after every fard salah", "bn": "প্রতি ফরজ নামাজের পর আয়াতুল কুরসি" },
+      "ar": "اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ ۚ لَا تَأْخُذُهُ سِنَةٌ وَلَا نَوْمٌ ۚ لَهُ مَا فِي السَّمَاوَاتِ وَمَا فِي الْأَرْضِ ۗ مَنْ ذَا الَّذِي يَشْفَعُ عِنْدَهُ إِلَّا بِإِذْنِهِ ۚ يَعْلَمُ مَا بَيْنَ أَيْدِيهِمْ وَمَا خَلْفَهُمْ ۖ وَلَا يُحِيطُونَ بِشَيْءٍ مِنْ عِلْمِهِ إِلَّا بِمَا شَاءَ ۚ وَسِعَ كُرْسِيُّهُ السَّمَاوَاتِ وَالْأَرْضَ ۖ وَلَا يَئُودُهُ حِفْظُهُمَا ۚ وَهُوَ الْعَلِيُّ الْعَظِيمُ",
+      "how": { "en": "Recite Ayatul Kursi (Surah al-Baqarah 2:255) once immediately after the salam of each of the five obligatory prayers.", "bn": "পাঁচ ওয়াক্ত ফরজ নামাজের সালাম ফেরানোর পর একবার আয়াতুল কুরসি (সূরা বাকারা ২:২৫৫) পাঠ করুন।" },
+      "fazilat": { "en": "The Prophet ﷺ said: \"Whoever recites Ayatul Kursi after every obligatory prayer, nothing prevents him from entering Paradise except death.\"", "bn": "রাসূলুল্লাহ ﷺ বলেছেন: \"যে ব্যক্তি প্রতি ফরজ নামাজের পর আয়াতুল কুরসি পাঠ করে, মৃত্যু ছাড়া আর কোনো কিছুই তাকে জান্নাতে প্রবেশ করা থেকে বাধা দিতে পারে না।\"" },
+      "src": "An-Nasa'i, As-Sunan al-Kubra 9928",
+      "q": { "s": 2, "a": 255 },
+      "when": "after-salah"
+    },
+    {
+      "id": "amol-tasbih-after-salah",
+      "g": "salah",
+      "title": { "en": "Tasbih 33/33/34 after every salah", "bn": "প্রতি নামাজের পর তাসবিহ ৩৩/৩৩/৩৪" },
+      "ar": "سُبْحَانَ اللَّهِ، الْحَمْدُ لِلَّهِ، اللَّهُ أَكْبَرُ",
+      "how": { "en": "After each obligatory prayer say SubhanAllah 33 times, Alhamdulillah 33 times, Allahu Akbar 33 times, and complete the hundred with: La ilaha illallahu wahdahu la sharika lahu, lahul-mulku wa lahul-hamdu wa huwa 'ala kulli shay'in qadir.", "bn": "প্রতি ফরজ নামাজের পর ৩৩ বার সুবহানাল্লাহ, ৩৩ বার আলহামদুলিল্লাহ, ৩৩ বার আল্লাহু আকবার বলুন এবং একশত পূর্ণ করতে বলুন: লা ইলাহা ইল্লাল্লাহু ওয়াহদাহু লা শারিকা লাহু, লাহুল মুলকু ওয়া লাহুল হামদু ওয়া হুয়া আলা কুল্লি শাইয়িন ক্বাদির।" },
+      "fazilat": { "en": "The Prophet ﷺ said: whoever does this after every prayer, \"his sins are forgiven even if they are like the foam of the sea.\"", "bn": "রাসূলুল্লাহ ﷺ বলেছেন: যে ব্যক্তি প্রতি নামাজের পর এটি করে, \"তার গুনাহসমূহ ক্ষমা করে দেওয়া হয়, যদিও তা সমুদ্রের ফেনার সমান হয়।\"" },
+      "src": "Sahih Muslim 597",
+      "z": "subhanallah",
+      "when": "after-salah",
+      "count": 33
+    },
+    {
+      "id": "amol-sunnah-rawatib-12",
+      "g": "salah",
+      "title": { "en": "12 rakat sunnah rawatib daily", "bn": "দৈনিক ১২ রাকাত সুন্নতে মুয়াক্কাদা" },
+      "how": { "en": "Pray 4 rakat before Zuhr and 2 after, 2 after Maghrib, 2 after Isha, and 2 before Fajr — 12 rakat every day besides the fard prayers.", "bn": "জোহরের আগে ৪ ও পরে ২ রাকাত, মাগরিবের পর ২, এশার পর ২ এবং ফজরের আগে ২ রাকাত — ফরজ ছাড়া প্রতিদিন মোট ১২ রাকাত সুন্নত পড়ুন।" },
+      "fazilat": { "en": "The Prophet ﷺ said: \"Whoever prays twelve rakat voluntarily in a day and night, a house will be built for him in Paradise.\"", "bn": "রাসূলুল্লাহ ﷺ বলেছেন: \"যে মুসলিম প্রতিদিন দিনে-রাতে ফরজ ছাড়া বারো রাকাত নফল নামাজ পড়ে, আল্লাহ তার জন্য জান্নাতে একটি ঘর নির্মাণ করেন।\"" },
+      "src": "Sahih Muslim 728; Jami' at-Tirmidhi 415",
+      "when": "daily",
+      "count": 12
+    },
+    {
+      "id": "amol-two-rakat-before-fajr",
+      "g": "salah",
+      "title": { "en": "Two rakat sunnah before Fajr", "bn": "ফজরের আগে দুই রাকাত সুন্নত" },
+      "how": { "en": "Pray two light rakat after the Fajr adhan and before the fard prayer. Never leave them, even when travelling.", "bn": "ফজরের আজানের পর ফরজের আগে সংক্ষিপ্ত দুই রাকাত সুন্নত পড়ুন। সফরেও এটি ছাড়বেন না।" },
+      "fazilat": { "en": "The Prophet ﷺ said: \"The two rakat of Fajr are better than the world and all that is in it.\"", "bn": "রাসূলুল্লাহ ﷺ বলেছেন: \"ফজরের দুই রাকাত (সুন্নত) দুনিয়া ও তার মধ্যে যা কিছু আছে তার চেয়ে উত্তম।\"" },
+      "src": "Sahih Muslim 725",
+      "when": "morning",
+      "count": 2
+    },
+    {
+      "id": "amol-tahajjud",
+      "g": "salah",
+      "title": { "en": "Tahajjud (night prayer)", "bn": "তাহাজ্জুদ (রাতের নামাজ)" },
+      "how": { "en": "Wake in the last part of the night and pray at least two rakat in units of two, then make dua. Even a few rakat done regularly is beloved to Allah.", "bn": "রাতের শেষ ভাগে উঠে দুই-দুই রাকাত করে অন্তত দুই রাকাত নামাজ পড়ুন, তারপর দোয়া করুন। নিয়মিত অল্প রাকাত পড়াও আল্লাহর কাছে প্রিয়।" },
+      "fazilat": { "en": "The Prophet ﷺ said: \"The best prayer after the obligatory prayers is the prayer in the depth of the night.\" Allah says: \"And in part of the night pray Tahajjud as an extra deed for you; it may be that your Lord will raise you to a praised station.\"", "bn": "রাসূলুল্লাহ ﷺ বলেছেন: \"ফরজ নামাজের পর সর্বোত্তম নামাজ হলো রাতের নামাজ।\" আল্লাহ বলেন: \"রাতের কিছু অংশে তাহাজ্জুদ পড়ুন, এটি আপনার জন্য অতিরিক্ত; আশা করা যায় আপনার রব আপনাকে প্রশংসিত স্থানে পৌঁছাবেন।\"" },
+      "src": "Sahih Muslim 1163; Quran 17:79",
+      "q": { "s": 17, "a": 79 },
+      "when": "night"
+    },
+    {
+      "id": "amol-duha",
+      "g": "salah",
+      "title": { "en": "Ishraq / Duha prayer", "bn": "ইশরাক / চাশতের নামাজ" },
+      "how": { "en": "Pray two or more rakat after the sun has fully risen (about 15–20 minutes after sunrise) until shortly before Zuhr.", "bn": "সূর্য পুরোপুরি ওঠার পর (সূর্যোদয়ের প্রায় ১৫–২০ মিনিট পর) থেকে জোহরের কিছু আগ পর্যন্ত দুই বা ততোধিক রাকাত নামাজ পড়ুন।" },
+      "fazilat": { "en": "The Prophet ﷺ said: \"Every morning a charity is due on each joint of your body… and two rakat of Duha suffice for all of that.\"", "bn": "রাসূলুল্লাহ ﷺ বলেছেন: \"প্রতিদিন সকালে তোমাদের প্রতিটি জোড়ার জন্য সদকা রয়েছে… আর চাশতের দুই রাকাত নামাজ এ সবকিছুর জন্য যথেষ্ট।\"" },
+      "src": "Sahih Muslim 720",
+      "when": "morning",
+      "count": 2
+    },
+    {
+      "id": "amol-witr",
+      "g": "salah",
+      "title": { "en": "Witr prayer", "bn": "বিতর নামাজ" },
+      "how": { "en": "Pray an odd number of rakat (1, 3 or more) after Isha, making it the last prayer of your night.", "bn": "এশার পর বিজোড় সংখ্যক (১, ৩ বা তার বেশি) রাকাত পড়ুন এবং এটিকে রাতের শেষ নামাজ হিসেবে রাখুন।" },
+      "fazilat": { "en": "The Prophet ﷺ said: \"Make Witr the last of your prayer at night.\" He also said: \"O people of the Quran, pray Witr, for Allah is Witr (One) and loves the Witr.\"", "bn": "রাসূলুল্লাহ ﷺ বলেছেন: \"তোমাদের রাতের শেষ নামাজ বিতর করো।\" তিনি আরও বলেছেন: \"হে কুরআনের অনুসারীরা, বিতর পড়ো; কেননা আল্লাহ বিতর (এক) এবং তিনি বিতরকে ভালোবাসেন।\"" },
+      "src": "Sahih al-Bukhari 998; Sunan Abi Dawud 1416",
+      "when": "night"
+    },
+    {
+      "id": "amol-answer-adhan",
+      "g": "salah",
+      "title": { "en": "Answering the adhan", "bn": "আজানের জবাব দেওয়া" },
+      "how": { "en": "Repeat each phrase after the muezzin (saying 'La hawla wa la quwwata illa billah' after the two Hayya 'ala phrases), then send salawat on the Prophet ﷺ and ask Allah to grant him al-Wasilah.", "bn": "মুয়াজ্জিনের প্রতিটি বাক্যের পর তা পুনরাবৃত্তি করুন (দুই 'হাইয়া আলা' বাক্যের পর বলুন 'লা হাওলা ওয়ালা কুওয়াতা ইল্লা বিল্লাহ'), তারপর নবী ﷺ-এর ওপর দরুদ পড়ুন এবং তাঁর জন্য আল্লাহর কাছে ওয়াসিলা প্রার্থনা করুন।" },
+      "fazilat": { "en": "The Prophet ﷺ said: \"When you hear the muezzin, say as he says, then send salah upon me… then ask Allah to grant me al-Wasilah… whoever asks al-Wasilah for me, my intercession becomes due for him.\"", "bn": "রাসূলুল্লাহ ﷺ বলেছেন: \"যখন তোমরা মুয়াজ্জিনকে শোনো, সে যা বলে তোমরাও তা বলো, তারপর আমার ওপর দরুদ পড়ো… তারপর আমার জন্য আল্লাহর কাছে ওয়াসিলা চাও… যে আমার জন্য ওয়াসিলা চাইবে তার জন্য আমার শাফায়াত অবধারিত হয়ে যাবে।\"" },
+      "src": "Sahih Muslim 384",
+      "when": "daily"
+    },
+    {
+      "id": "amol-dua-after-adhan",
+      "g": "salah",
+      "title": { "en": "Dua after the adhan", "bn": "আজানের পরের দোয়া" },
+      "ar": "اللَّهُمَّ رَبَّ هَٰذِهِ الدَّعْوَةِ التَّامَّةِ، وَالصَّلَاةِ الْقَائِمَةِ، آتِ مُحَمَّدًا الْوَسِيلَةَ وَالْفَضِيلَةَ، وَابْعَثْهُ مَقَامًا مَحْمُودًا الَّذِي وَعَدْتَهُ",
+      "how": { "en": "After the adhan finishes, recite this dua.", "bn": "আজান শেষ হওয়ার পর এই দোয়াটি পাঠ করুন।" },
+      "fazilat": { "en": "The Prophet ﷺ said: \"Whoever says this when he hears the call (adhan)… my intercession will be due for him on the Day of Resurrection.\"", "bn": "রাসূলুল্লাহ ﷺ বলেছেন: \"যে ব্যক্তি আজান শুনে এই দোয়া বলবে… কিয়ামতের দিন তার জন্য আমার শাফায়াত অবধারিত হবে।\"" },
+      "src": "Sahih al-Bukhari 614",
+      "when": "daily"
+    },
+    {
+      "id": "amol-dua-between-adhan-iqamah",
+      "g": "salah",
+      "title": { "en": "Dua between adhan and iqamah", "bn": "আজান ও ইকামতের মাঝে দোয়া" },
+      "how": { "en": "Use the time between the adhan and the iqamah to make personal dua for yourself, your family and the Ummah.", "bn": "আজান ও ইকামতের মধ্যবর্তী সময়ে নিজের, পরিবারের ও উম্মাহর জন্য দোয়া করুন।" },
+      "fazilat": { "en": "The Prophet ﷺ said: \"The dua made between the adhan and the iqamah is not rejected.\"", "bn": "রাসূলুল্লাহ ﷺ বলেছেন: \"আজান ও ইকামতের মাঝের দোয়া ফিরিয়ে দেওয়া হয় না।\"" },
+      "src": "Jami' at-Tirmidhi 212; Sunan Abi Dawud 521",
+      "when": "daily"
+    },
+    {
+      "id": "amol-walk-to-mosque",
+      "g": "salah",
+      "title": { "en": "Walking to the mosque after wudu", "bn": "অজু করে মসজিদে হেঁটে যাওয়া" },
+      "how": { "en": "Perform wudu at home and walk calmly to the mosque for the obligatory prayer.", "bn": "বাড়িতে অজু করে ফরজ নামাজের জন্য ধীরস্থিরভাবে মসজিদে হেঁটে যান।" },
+      "fazilat": { "en": "The Prophet ﷺ said: \"Whoever purifies himself in his house then walks to one of the houses of Allah to perform one of the obligations of Allah, one of his steps erases a sin and the other raises him a degree.\"", "bn": "রাসূলুল্লাহ ﷺ বলেছেন: \"যে ব্যক্তি নিজ ঘরে পবিত্রতা অর্জন করে আল্লাহর ফরজ আদায়ের জন্য আল্লাহর কোনো ঘরে হেঁটে যায়, তার এক পদক্ষেপে একটি গুনাহ মোচন হয় এবং অপর পদক্ষেপে একটি মর্যাদা বৃদ্ধি পায়।\"" },
+      "src": "Sahih Muslim 666",
+      "when": "daily"
+    },
+    {
+      "id": "amol-wait-for-next-salah",
+      "g": "salah",
+      "title": { "en": "Waiting for the next salah", "bn": "এক নামাজের পর পরবর্তী নামাজের অপেক্ষা" },
+      "how": { "en": "After praying, keep your heart attached to the next prayer — sit in the mosque when you can, or be eager and ready for the coming prayer.", "bn": "নামাজের পর অন্তরকে পরবর্তী নামাজের সাথে যুক্ত রাখুন — সম্ভব হলে মসজিদে বসে থাকুন, নতুবা আগ্রহ ও প্রস্তুতির সাথে পরের নামাজের অপেক্ষা করুন।" },
+      "fazilat": { "en": "The Prophet ﷺ said: \"Shall I not tell you of that by which Allah erases sins and raises degrees? Performing wudu thoroughly despite difficulty, taking many steps to the mosques, and waiting for prayer after prayer — that is ribat (guarding the frontier).\"", "bn": "রাসূলুল্লাহ ﷺ বলেছেন: \"আমি কি তোমাদের এমন কিছু বলব না, যার দ্বারা আল্লাহ গুনাহ মোচন করেন ও মর্যাদা বৃদ্ধি করেন? কষ্ট সত্ত্বেও পূর্ণরূপে অজু করা, মসজিদের দিকে বেশি পদক্ষেপ ফেলা এবং এক নামাজের পর আরেক নামাজের অপেক্ষা করা — এটাই রিবাত (সীমান্ত পাহারা)।\"" },
+      "src": "Sahih Muslim 251",
+      "when": "daily"
+    },
+    {
+      "id": "amol-isha-fajr-congregation",
+      "g": "salah",
+      "title": { "en": "Isha and Fajr in congregation", "bn": "জামাতে এশা ও ফজর" },
+      "how": { "en": "Make a special effort to pray Isha and Fajr in congregation at the mosque.", "bn": "এশা ও ফজরের নামাজ মসজিদে জামাতের সাথে আদায়ে বিশেষ চেষ্টা করুন।" },
+      "fazilat": { "en": "The Prophet ﷺ said: \"Whoever prays Isha in congregation, it is as if he stood half the night in prayer; and whoever prays Fajr in congregation, it is as if he prayed the whole night.\"", "bn": "রাসূলুল্লাহ ﷺ বলেছেন: \"যে ব্যক্তি জামাতে এশার নামাজ পড়ল, সে যেন অর্ধেক রাত ইবাদতে কাটাল; আর যে ফজরও জামাতে পড়ল, সে যেন সারা রাত ইবাদত করল।\"" },
+      "src": "Sahih Muslim 656",
+      "when": "daily"
+    },
+    {
+      "id": "amol-salah-in-congregation",
+      "g": "salah",
+      "title": { "en": "Praying in congregation", "bn": "জামাতে নামাজ আদায়" },
+      "how": { "en": "Pray the five daily prayers with the congregation whenever possible.", "bn": "যখনই সম্ভব পাঁচ ওয়াক্ত নামাজ জামাতের সাথে আদায় করুন।" },
+      "fazilat": { "en": "The Prophet ﷺ said: \"Prayer in congregation is superior to prayer offered alone by twenty-seven degrees.\"", "bn": "রাসূলুল্লাহ ﷺ বলেছেন: \"জামাতে নামাজ একাকী নামাজের চেয়ে সাতাশ গুণ বেশি মর্যাদাসম্পন্ন।\"" },
+      "src": "Sahih al-Bukhari 645",
+      "when": "daily"
+    },
+    {
+      "id": "amol-morning-adhkar",
+      "g": "zikr",
+      "title": { "en": "Morning adhkar", "bn": "সকালের জিকির (সকালের আমল)" },
+      "how": { "en": "Between Fajr and sunrise recite the authentic morning remembrances: Ayatul Kursi, the three Quls (3x), Sayyidul Istighfar, 'Bismillahil-ladhi la yadurru…' (3x), SubhanAllahi wa bihamdihi (100x), and salawat.", "bn": "ফজরের পর থেকে সূর্যোদয়ের মধ্যে প্রমাণিত সকালের জিকিরগুলো পড়ুন: আয়াতুল কুরসি, তিন কুল (৩ বার), সাইয়িদুল ইস্তিগফার, 'বিসমিল্লাহিল্লাযি লা ইয়াদুররু…' (৩ বার), সুবহানাল্লাহি ওয়া বিহামদিহি (১০০ বার) ও দরুদ।" },
+      "fazilat": { "en": "Allah says: \"O you who believe, remember Allah with much remembrance, and glorify Him morning and evening.\" And: \"…the men and women who remember Allah much — Allah has prepared for them forgiveness and a great reward.\"", "bn": "আল্লাহ বলেন: \"হে মুমিনগণ, তোমরা আল্লাহকে বেশি বেশি স্মরণ করো এবং সকাল-সন্ধ্যায় তাঁর পবিত্রতা ঘোষণা করো।\" আরও বলেন: \"…আল্লাহকে অধিক স্মরণকারী পুরুষ ও নারী — আল্লাহ তাদের জন্য প্রস্তুত রেখেছেন ক্ষমা ও মহা পুরস্কার।\"" },
+      "src": "Quran 33:41-42; Quran 33:35",
+      "q": { "s": 33, "a": 41 },
+      "when": "morning"
+    },
+    {
+      "id": "amol-evening-adhkar",
+      "g": "zikr",
+      "title": { "en": "Evening adhkar", "bn": "সন্ধ্যার জিকির (সন্ধ্যার আমল)" },
+      "how": { "en": "Between Asr and Maghrib (or after Maghrib) recite the evening remembrances: Ayatul Kursi, the three Quls (3x), Sayyidul Istighfar, 'Bismillahil-ladhi la yadurru…' (3x), SubhanAllahi wa bihamdihi (100x), and salawat.", "bn": "আসরের পর থেকে মাগরিবের মধ্যে (অথবা মাগরিবের পর) সন্ধ্যার জিকিরগুলো পড়ুন: আয়াতুল কুরসি, তিন কুল (৩ বার), সাইয়িদুল ইস্তিগফার, 'বিসমিল্লাহিল্লাযি লা ইয়াদুররু…' (৩ বার), সুবহানাল্লাহি ওয়া বিহামদিহি (১০০ বার) ও দরুদ।" },
+      "fazilat": { "en": "Allah says: \"…and glorify Him morning and evening.\" The Prophet ﷺ said: \"Whoever says 'SubhanAllahi wa bihamdihi' one hundred times morning and evening, no one will come on the Day of Resurrection with anything better than what he brought, except one who said the same or more.\"", "bn": "আল্লাহ বলেন: \"…এবং সকাল-সন্ধ্যায় তাঁর পবিত্রতা ঘোষণা করো।\" রাসূলুল্লাহ ﷺ বলেছেন: \"যে ব্যক্তি সকালে ও সন্ধ্যায় একশত বার 'সুবহানাল্লাহি ওয়া বিহামদিহি' বলে, কিয়ামতের দিন তার চেয়ে উত্তম আমল নিয়ে কেউ আসতে পারবে না, তবে যে তার সমান বা তার চেয়ে বেশি বলেছে সে ছাড়া।\"" },
+      "src": "Quran 33:42; Sahih Muslim 2692",
+      "q": { "s": 33, "a": 42 },
+      "when": "evening"
+    },
+    {
+      "id": "amol-three-quls-morning-evening",
+      "g": "zikr",
+      "title": { "en": "Three Quls, 3 times morning and evening", "bn": "তিন কুল — সকাল-সন্ধ্যায় ৩ বার" },
+      "ar": "قُلْ هُوَ اللَّهُ أَحَدٌ",
+      "how": { "en": "Recite Surah al-Ikhlas, Surah al-Falaq and Surah an-Nas three times each in the morning and three times each in the evening.", "bn": "সূরা ইখলাস, সূরা ফালাক ও সূরা নাস সকালে তিনবার করে এবং সন্ধ্যায় তিনবার করে পড়ুন।" },
+      "fazilat": { "en": "The Prophet ﷺ said: \"Say Qul huwallahu ahad and the two surahs of refuge three times in the morning and evening; they will suffice you against everything.\"", "bn": "রাসূলুল্লাহ ﷺ বলেছেন: \"সকালে ও সন্ধ্যায় তিনবার করে 'কুল হুয়াল্লাহু আহাদ' ও মুআওবিযাতাইন (ফালাক ও নাস) পড়ো; এগুলো তোমাকে সবকিছু থেকে রক্ষায় যথেষ্ট হবে।\"" },
+      "src": "Sunan Abi Dawud 5082; Jami' at-Tirmidhi 3575",
+      "q": { "s": 112, "a": 1 },
+      "when": "daily",
+      "count": 3
+    },
+    {
+      "id": "amol-sayyidul-istighfar",
+      "g": "zikr",
+      "title": { "en": "Sayyidul Istighfar", "bn": "সাইয়িদুল ইস্তিগফার" },
+      "ar": "اللَّهُمَّ أَنْتَ رَبِّي لَا إِلَٰهَ إِلَّا أَنْتَ، خَلَقْتَنِي وَأَنَا عَبْدُكَ، وَأَنَا عَلَىٰ عَهْدِكَ وَوَعْدِكَ مَا اسْتَطَعْتُ، أَعُوذُ بِكَ مِنْ شَرِّ مَا صَنَعْتُ، أَبُوءُ لَكَ بِنِعْمَتِكَ عَلَيَّ، وَأَبُوءُ بِذَنْبِي، فَاغْفِرْ لِي فَإِنَّهُ لَا يَغْفِرُ الذُّنُوبَ إِلَّا أَنْتَ",
+      "how": { "en": "Recite once in the morning and once in the evening, with firm conviction in its meaning.", "bn": "সকালে একবার ও সন্ধ্যায় একবার, এর অর্থে দৃঢ় বিশ্বাস রেখে পাঠ করুন।" },
+      "fazilat": { "en": "The Prophet ﷺ said: \"Whoever says it during the day with firm belief in it and dies that day before evening will be among the people of Paradise; and whoever says it at night with firm belief and dies before morning will be among the people of Paradise.\"", "bn": "রাসূলুল্লাহ ﷺ বলেছেন: \"যে ব্যক্তি দৃঢ় বিশ্বাসের সাথে দিনে এটি বলে এবং সন্ধ্যার আগে সেদিন মারা যায়, সে জান্নাতবাসীদের অন্তর্ভুক্ত হবে; আর যে দৃঢ় বিশ্বাসের সাথে রাতে এটি বলে এবং সকালের আগে মারা যায়, সে জান্নাতবাসীদের অন্তর্ভুক্ত হবে।\"" },
+      "src": "Sahih al-Bukhari 6306",
+      "z": "istighfar",
+      "when": "daily"
+    },
+    {
+      "id": "amol-bismillahil-ladhi-la-yadurru",
+      "g": "zikr",
+      "title": { "en": "Bismillahil-ladhi la yadurru… 3 times", "bn": "বিসমিল্লাহিল্লাযি লা ইয়াদুররু… ৩ বার" },
+      "ar": "بِسْمِ اللَّهِ الَّذِي لَا يَضُرُّ مَعَ اسْمِهِ شَيْءٌ فِي الْأَرْضِ وَلَا فِي السَّمَاءِ وَهُوَ السَّمِيعُ الْعَلِيمُ",
+      "how": { "en": "Say it three times in the morning and three times in the evening.", "bn": "সকালে তিনবার ও সন্ধ্যায় তিনবার বলুন।" },
+      "fazilat": { "en": "The Prophet ﷺ said: \"Whoever says it three times in the morning and three times in the evening, nothing will harm him.\"", "bn": "রাসূলুল্লাহ ﷺ বলেছেন: \"যে ব্যক্তি সকালে তিনবার ও সন্ধ্যায় তিনবার এটি বলে, কোনো কিছুই তার ক্ষতি করতে পারবে না।\"" },
+      "src": "Sunan Abi Dawud 5088; Jami' at-Tirmidhi 3388",
+      "when": "daily",
+      "count": 3
+    },
+    {
+      "id": "amol-istighfar-100",
+      "g": "zikr",
+      "title": { "en": "Istighfar 100 times a day", "bn": "দৈনিক ১০০ বার ইস্তিগফার" },
+      "ar": "أَسْتَغْفِرُ اللَّهَ وَأَتُوبُ إِلَيْهِ",
+      "how": { "en": "Seek Allah's forgiveness at least 100 times throughout the day, with presence of heart.", "bn": "সারাদিনে অন্তত ১০০ বার মনোযোগ সহকারে আল্লাহর কাছে ক্ষমা প্রার্থনা করুন।" },
+      "fazilat": { "en": "The Prophet ﷺ said: \"By Allah, I seek Allah's forgiveness and turn to Him in repentance more than seventy times a day.\" And: \"O people, repent to Allah, for I repent to Him a hundred times a day.\"", "bn": "রাসূলুল্লাহ ﷺ বলেছেন: \"আল্লাহর কসম, আমি দিনে সত্তর বারেরও বেশি আল্লাহর কাছে ক্ষমা চাই ও তাওবা করি।\" আরও বলেছেন: \"হে লোকসকল, আল্লাহর কাছে তাওবা করো; আমি দিনে একশত বার তাঁর কাছে তাওবা করি।\"" },
+      "src": "Sahih al-Bukhari 6307; Sahih Muslim 2702",
+      "z": "istighfar",
+      "when": "daily",
+      "count": 100
+    },
+    {
+      "id": "amol-hawqala",
+      "g": "zikr",
+      "title": { "en": "La hawla wa la quwwata illa billah", "bn": "লা হাওলা ওয়ালা কুওয়াতা ইল্লা বিল্লাহ" },
+      "ar": "لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ",
+      "how": { "en": "Say it frequently throughout the day, especially in difficulty or when relying on Allah for a task.", "bn": "সারাদিন বেশি বেশি বলুন, বিশেষ করে কষ্টের সময় কিংবা কোনো কাজে আল্লাহর ওপর ভরসা করার সময়।" },
+      "fazilat": { "en": "The Prophet ﷺ said: \"Shall I not tell you of a word that is one of the treasures of Paradise? La hawla wa la quwwata illa billah.\"", "bn": "রাসূলুল্লাহ ﷺ বলেছেন: \"আমি কি তোমাকে জান্নাতের ভাণ্ডারসমূহের একটি ভাণ্ডারের কথা বলব না? তা হলো: লা হাওলা ওয়ালা কুওয়াতা ইল্লা বিল্লাহ।\"" },
+      "src": "Sahih al-Bukhari 4205",
+      "z": "hawqala",
+      "when": "daily"
+    },
+    {
+      "id": "amol-subhanallahi-wa-bihamdihi-100",
+      "g": "zikr",
+      "title": { "en": "SubhanAllahi wa bihamdihi 100 times", "bn": "সুবহানাল্লাহি ওয়া বিহামদিহি ১০০ বার" },
+      "ar": "سُبْحَانَ اللَّهِ وَبِحَمْدِهِ",
+      "how": { "en": "Say it 100 times a day — it can be done at once or spread across the day.", "bn": "দিনে ১০০ বার বলুন — একবারে বা সারাদিনে ভাগ করে বলা যায়।" },
+      "fazilat": { "en": "The Prophet ﷺ said: \"Whoever says 'SubhanAllahi wa bihamdihi' one hundred times a day, his sins are wiped away even if they were like the foam of the sea.\"", "bn": "রাসূলুল্লাহ ﷺ বলেছেন: \"যে ব্যক্তি দিনে একশত বার 'সুবহানাল্লাহি ওয়া বিহামদিহি' বলে, তার গুনাহসমূহ মুছে ফেলা হয়, যদিও তা সমুদ্রের ফেনার সমান হয়।\"" },
+      "src": "Sahih al-Bukhari 6405",
+      "z": "subhanallah",
+      "when": "daily",
+      "count": 100
+    },
+    {
+      "id": "amol-two-light-words",
+      "g": "zikr",
+      "title": { "en": "SubhanAllahi wa bihamdihi, SubhanAllahil-Azim", "bn": "সুবহানাল্লাহি ওয়া বিহামদিহি, সুবহানাল্লাহিল আযিম" },
+      "ar": "سُبْحَانَ اللَّهِ وَبِحَمْدِهِ، سُبْحَانَ اللَّهِ الْعَظِيمِ",
+      "how": { "en": "Repeat these two phrases often during the day.", "bn": "দিনের মধ্যে এই দুটি বাক্য বারবার বলুন।" },
+      "fazilat": { "en": "The Prophet ﷺ said: \"Two words are light on the tongue, heavy on the Scale, and beloved to the Most Merciful: SubhanAllahi wa bihamdihi, SubhanAllahil-Azim.\"", "bn": "রাসূলুল্লাহ ﷺ বলেছেন: \"দুটি বাক্য জিহ্বায় হালকা, মিজানে ভারী এবং পরম করুণাময়ের কাছে প্রিয়: সুবহানাল্লাহি ওয়া বিহামদিহি, সুবহানাল্লাহিল আযিম।\"" },
+      "src": "Sahih al-Bukhari 6406",
+      "z": "subhanallah",
+      "when": "daily"
+    },
+    {
+      "id": "amol-tahlil-100",
+      "g": "zikr",
+      "title": { "en": "La ilaha illallahu wahdahu… 100 times", "bn": "লা ইলাহা ইল্লাল্লাহু ওয়াহদাহু… ১০০ বার" },
+      "ar": "لَا إِلَٰهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ، وَهُوَ عَلَىٰ كُلِّ شَيْءٍ قَدِيرٌ",
+      "how": { "en": "Say it 100 times in a day.", "bn": "দিনে ১০০ বার বলুন।" },
+      "fazilat": { "en": "The Prophet ﷺ said: whoever says it 100 times a day \"will have a reward equal to freeing ten slaves, a hundred good deeds will be recorded for him, a hundred sins will be erased, and it will be a protection for him from Shaytan that day until evening; and no one brings anything better except one who did more.\"", "bn": "রাসূলুল্লাহ ﷺ বলেছেন: যে ব্যক্তি দিনে একশত বার এটি বলে, \"সে দশজন দাস মুক্ত করার সমান সওয়াব পাবে, তার জন্য একশত নেকি লেখা হবে, একশত গুনাহ মুছে ফেলা হবে এবং সেদিন সন্ধ্যা পর্যন্ত তা শয়তান থেকে তার জন্য রক্ষাকবচ হবে; আর কেউ তার চেয়ে উত্তম আমল নিয়ে আসতে পারবে না, তবে যে তার চেয়ে বেশি করেছে সে ছাড়া।\"" },
+      "src": "Sahih al-Bukhari 3293",
+      "z": "tahlil",
+      "when": "daily",
+      "count": 100
+    },
+    {
+      "id": "amol-salawat-daily",
+      "g": "zikr",
+      "title": { "en": "Salawat on the Prophet ﷺ", "bn": "নবী ﷺ-এর ওপর দরুদ" },
+      "ar": "اللَّهُمَّ صَلِّ عَلَىٰ مُحَمَّدٍ وَعَلَىٰ آلِ مُحَمَّدٍ",
+      "how": { "en": "Send salawat upon the Prophet ﷺ frequently every day, especially when his name is mentioned.", "bn": "প্রতিদিন বেশি বেশি নবী ﷺ-এর ওপর দরুদ পড়ুন, বিশেষত তাঁর নাম উচ্চারিত হলে।" },
+      "fazilat": { "en": "The Prophet ﷺ said: \"Whoever sends one salah upon me, Allah will send ten upon him.\"", "bn": "রাসূলুল্লাহ ﷺ বলেছেন: \"যে ব্যক্তি আমার ওপর একবার দরুদ পাঠ করে, আল্লাহ তার ওপর দশবার রহমত বর্ষণ করেন।\"" },
+      "src": "Sahih Muslim 408",
+      "z": "salawat",
+      "when": "daily"
+    },
+    {
+      "id": "amol-alhamdulillah-after-eating",
+      "g": "zikr",
+      "title": { "en": "Praising Allah after eating and drinking", "bn": "খাওয়া ও পান করার পর আলহামদুলিল্লাহ" },
+      "ar": "الْحَمْدُ لِلَّهِ",
+      "how": { "en": "After every meal or drink, praise Allah by saying Alhamdulillah.", "bn": "প্রতিবার খাওয়া বা পান করার পর 'আলহামদুলিল্লাহ' বলে আল্লাহর প্রশংসা করুন।" },
+      "fazilat": { "en": "The Prophet ﷺ said: \"Allah is pleased with His servant who eats a meal and praises Him for it, or drinks a drink and praises Him for it.\"", "bn": "রাসূলুল্লাহ ﷺ বলেছেন: \"আল্লাহ সেই বান্দার প্রতি সন্তুষ্ট হন, যে খাবার খেয়ে তার জন্য আল্লাহর প্রশংসা করে কিংবা পানীয় পান করে তার জন্য আল্লাহর প্রশংসা করে।\"" },
+      "src": "Sahih Muslim 2734",
+      "z": "alhamdulillah",
+      "when": "daily"
+    },
+    {
+      "id": "amol-bismillah-leaving-home",
+      "g": "zikr",
+      "title": { "en": "Dua when leaving home", "bn": "ঘর থেকে বের হওয়ার দোয়া" },
+      "ar": "بِسْمِ اللَّهِ، تَوَكَّلْتُ عَلَى اللَّهِ، لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ",
+      "how": { "en": "Say this dua every time you step out of your home.", "bn": "প্রতিবার ঘর থেকে বের হওয়ার সময় এই দোয়াটি বলুন।" },
+      "fazilat": { "en": "The Prophet ﷺ said: whoever says this when leaving his house, \"it is said to him: You are guided, sufficed and protected; and Shaytan moves away from him.\"", "bn": "রাসূলুল্লাহ ﷺ বলেছেন: যে ব্যক্তি ঘর থেকে বের হওয়ার সময় এটি বলে, \"তাকে বলা হয়: তোমাকে হেদায়েত দেওয়া হলো, তোমার জন্য যথেষ্ট করা হলো এবং তোমাকে রক্ষা করা হলো; আর শয়তান তার থেকে দূরে সরে যায়।\"" },
+      "src": "Sunan Abi Dawud 5095; Jami' at-Tirmidhi 3426",
+      "when": "daily"
+    },
+    {
+      "id": "amol-dua-for-parents",
+      "g": "zikr",
+      "title": { "en": "Dua for parents", "bn": "পিতা-মাতার জন্য দোয়া" },
+      "ar": "رَبِّ ارْحَمْهُمَا كَمَا رَبَّيَانِي صَغِيرًا",
+      "how": { "en": "Make dua for your parents every day, especially after salah, using the dua Allah taught in the Quran.", "bn": "প্রতিদিন, বিশেষত নামাজের পর, কুরআনে শেখানো দোয়ার মাধ্যমে পিতা-মাতার জন্য দোয়া করুন।" },
+      "fazilat": { "en": "Allah commands: \"And lower to them the wing of humility out of mercy, and say: My Lord, have mercy upon them as they brought me up when I was small.\"", "bn": "আল্লাহ নির্দেশ দেন: \"তাদের প্রতি দয়াপরবশ হয়ে বিনয়ের ডানা নত করো এবং বলো: হে আমার রব, তাদের প্রতি রহম করুন, যেভাবে তারা আমাকে শৈশবে লালন-পালন করেছেন।\"" },
+      "src": "Quran 17:24",
+      "q": { "s": 17, "a": 24 },
+      "when": "daily"
+    },
+    {
+      "id": "amol-dua-for-brother-absent",
+      "g": "zikr",
+      "title": { "en": "Dua for a fellow Muslim in his absence", "bn": "অনুপস্থিত মুসলিম ভাইয়ের জন্য দোয়া" },
+      "how": { "en": "Pray for other Muslims — family, friends, the Ummah — when they are not present.", "bn": "অন্য মুসলিমদের — পরিবার, বন্ধু, উম্মাহর — জন্য তাদের অনুপস্থিতিতে দোয়া করুন।" },
+      "fazilat": { "en": "The Prophet ﷺ said: \"No Muslim servant supplicates for his brother in his absence except that the angel says: And for you the same.\"", "bn": "রাসূলুল্লাহ ﷺ বলেছেন: \"কোনো মুসলিম বান্দা তার ভাইয়ের অনুপস্থিতিতে তার জন্য দোয়া করলে ফেরেশতা বলেন: তোমার জন্যও অনুরূপ।\"" },
+      "src": "Sahih Muslim 2732",
+      "when": "daily"
+    },
+    {
+      "id": "amol-daily-quran",
+      "g": "quran",
+      "title": { "en": "Daily Quran recitation", "bn": "প্রতিদিন কুরআন তিলাওয়াত" },
+      "how": { "en": "Set a fixed daily portion — even a page or a few verses — and recite it with attention, ideally after Fajr.", "bn": "প্রতিদিনের জন্য নির্দিষ্ট একটি অংশ ঠিক করুন — এক পৃষ্ঠা বা কয়েক আয়াত হলেও — এবং মনোযোগ দিয়ে তিলাওয়াত করুন, সম্ভব হলে ফজরের পর।" },
+      "fazilat": { "en": "The Prophet ﷺ said: \"Whoever recites a letter from the Book of Allah will have a good deed, and a good deed is multiplied tenfold. I do not say Alif-Lam-Mim is one letter; rather Alif is a letter, Lam is a letter and Mim is a letter.\"", "bn": "রাসূলুল্লাহ ﷺ বলেছেন: \"যে ব্যক্তি আল্লাহর কিতাবের একটি হরফ পড়ে, তার জন্য একটি নেকি, আর প্রতিটি নেকি দশ গুণ। আমি বলি না যে আলিফ-লাম-মীম একটি হরফ; বরং আলিফ একটি হরফ, লাম একটি হরফ এবং মীম একটি হরফ।\"" },
+      "src": "Jami' at-Tirmidhi 2910",
+      "when": "daily"
+    },
+    {
+      "id": "amol-surah-mulk-night",
+      "g": "quran",
+      "title": { "en": "Surah al-Mulk every night", "bn": "প্রতি রাতে সূরা মুলক" },
+      "how": { "en": "Recite Surah al-Mulk (Surah 67, 30 verses) every night before sleeping.", "bn": "প্রতি রাতে ঘুমানোর আগে সূরা মুলক (সূরা ৬৭, ৩০ আয়াত) তিলাওয়াত করুন।" },
+      "fazilat": { "en": "The Prophet ﷺ said: \"There is a surah in the Quran of thirty verses which intercedes for its reciter until he is forgiven: Tabarakal-ladhi biyadihil-mulk.\"", "bn": "রাসূলুল্লাহ ﷺ বলেছেন: \"কুরআনে ত্রিশ আয়াতের একটি সূরা আছে, যা তার পাঠকারীর জন্য সুপারিশ করে, যতক্ষণ না তাকে ক্ষমা করা হয়: তাবারাকাল্লাযি বিয়াদিহিল মুলক।\"" },
+      "src": "Jami' at-Tirmidhi 2891; Sunan Abi Dawud 1400",
+      "q": { "s": 67, "a": 1 },
+      "when": "night"
+    },
+    {
+      "id": "amol-surah-ikhlas",
+      "g": "quran",
+      "title": { "en": "Surah al-Ikhlas", "bn": "সূরা ইখলাস" },
+      "ar": "قُلْ هُوَ اللَّهُ أَحَدٌ ۝ اللَّهُ الصَّمَدُ ۝ لَمْ يَلِدْ وَلَمْ يُولَدْ ۝ وَلَمْ يَكُنْ لَهُ كُفُوًا أَحَدٌ",
+      "how": { "en": "Recite Surah al-Ikhlas often — in your prayers and during the day.", "bn": "নামাজে ও দিনের বিভিন্ন সময়ে সূরা ইখলাস বেশি বেশি পড়ুন।" },
+      "fazilat": { "en": "The Prophet ﷺ said: \"By Him in Whose hand is my soul, it (Qul huwallahu ahad) is equal to one third of the Quran.\"", "bn": "রাসূলুল্লাহ ﷺ বলেছেন: \"যাঁর হাতে আমার প্রাণ, তাঁর কসম! এটি (কুল হুয়াল্লাহু আহাদ) কুরআনের এক-তৃতীয়াংশের সমান।\"" },
+      "src": "Sahih al-Bukhari 5013",
+      "q": { "s": 112, "a": 1 },
+      "when": "daily"
+    },
+    {
+      "id": "amol-last-two-ayat-baqarah",
+      "g": "quran",
+      "title": { "en": "Last two verses of Surah al-Baqarah at night", "bn": "রাতে সূরা বাকারার শেষ দুই আয়াত" },
+      "how": { "en": "Recite the last two verses of Surah al-Baqarah (2:285-286) every night.", "bn": "প্রতি রাতে সূরা বাকারার শেষ দুই আয়াত (২:২৮৫-২৮৬) পাঠ করুন।" },
+      "fazilat": { "en": "The Prophet ﷺ said: \"Whoever recites the two verses at the end of Surah al-Baqarah at night, they will suffice him.\"", "bn": "রাসূলুল্লাহ ﷺ বলেছেন: \"যে ব্যক্তি রাতে সূরা বাকারার শেষ দুই আয়াত পাঠ করে, তা তার জন্য যথেষ্ট হবে।\"" },
+      "src": "Sahih al-Bukhari 5009",
+      "q": { "s": 2, "a": 285 },
+      "when": "night"
+    },
+    {
+      "id": "amol-teach-quran",
+      "g": "quran",
+      "title": { "en": "Learning and teaching the Quran", "bn": "কুরআন শেখা ও শেখানো" },
+      "how": { "en": "Learn the Quran's recitation and meaning, and teach what you know — to your children, family or others.", "bn": "কুরআনের তিলাওয়াত ও অর্থ শিখুন এবং যা জানেন তা সন্তান, পরিবার বা অন্যদের শেখান।" },
+      "fazilat": { "en": "The Prophet ﷺ said: \"The best of you are those who learn the Quran and teach it.\"", "bn": "রাসূলুল্লাহ ﷺ বলেছেন: \"তোমাদের মধ্যে সর্বোত্তম সেই ব্যক্তি, যে কুরআন শেখে ও শেখায়।\"" },
+      "src": "Sahih al-Bukhari 5027",
+      "when": "daily"
+    },
+    {
+      "id": "amol-seek-knowledge",
+      "g": "quran",
+      "title": { "en": "Seeking Islamic knowledge", "bn": "দ্বীনি ইলম অন্বেষণ" },
+      "how": { "en": "Spend some time each day learning your religion — a lesson, a book, or a class at the mosque.", "bn": "প্রতিদিন কিছু সময় দ্বীন শেখায় ব্যয় করুন — একটি দারস, একটি বই বা মসজিদের কোনো ক্লাস।" },
+      "fazilat": { "en": "The Prophet ﷺ said: \"Whoever travels a path in search of knowledge, Allah makes easy for him a path to Paradise.\"", "bn": "রাসূলুল্লাহ ﷺ বলেছেন: \"যে ব্যক্তি ইলম অন্বেষণে কোনো পথে চলে, আল্লাহ তার জন্য জান্নাতের পথ সহজ করে দেন।\"" },
+      "src": "Sahih Muslim 2699",
+      "when": "daily"
+    },
+    {
+      "id": "amol-fast-monday-thursday",
+      "g": "fasting",
+      "title": { "en": "Fasting on Monday and Thursday", "bn": "সোমবার ও বৃহস্পতিবারের রোজা" },
+      "how": { "en": "Fast voluntarily on Mondays and Thursdays, making the intention the night before.", "bn": "সোমবার ও বৃহস্পতিবার নফল রোজা রাখুন; আগের রাতে নিয়ত করে নিন।" },
+      "fazilat": { "en": "The Prophet ﷺ said: \"Deeds are presented on Monday and Thursday, and I love that my deeds be presented while I am fasting.\"", "bn": "রাসূলুল্লাহ ﷺ বলেছেন: \"সোমবার ও বৃহস্পতিবার আমলসমূহ (আল্লাহর দরবারে) পেশ করা হয়, আর আমি চাই আমার আমল রোজা অবস্থায় পেশ করা হোক।\"" },
+      "src": "Jami' at-Tirmidhi 747",
+      "when": "weekly"
+    },
+    {
+      "id": "amol-ayyam-al-beed",
+      "g": "fasting",
+      "title": { "en": "Fasting Ayyam al-Beed (13, 14, 15)", "bn": "আইয়ামে বীযের রোজা (১৩, ১৪, ১৫ তারিখ)" },
+      "how": { "en": "Fast on the 13th, 14th and 15th of every lunar (Hijri) month.", "bn": "প্রতি হিজরি মাসের ১৩, ১৪ ও ১৫ তারিখে রোজা রাখুন।" },
+      "fazilat": { "en": "The Prophet ﷺ said: \"Fast three days of every month, for each good deed is rewarded tenfold, and that is like fasting the whole year.\" He also said: \"If you fast three days of a month, then fast the 13th, 14th and 15th.\"", "bn": "রাসূলুল্লাহ ﷺ বলেছেন: \"প্রতি মাসে তিন দিন রোজা রাখো, কেননা প্রতিটি নেক আমলের দশ গুণ সওয়াব; এটি সারা বছর রোজা রাখার সমান।\" তিনি আরও বলেছেন: \"মাসে তিন দিন রোজা রাখলে ১৩, ১৪ ও ১৫ তারিখে রাখো।\"" },
+      "src": "Sahih al-Bukhari 1979; Sunan an-Nasa'i 2422",
+      "when": "monthly",
+      "count": 3
+    },
+    {
+      "id": "amol-six-days-shawwal",
+      "g": "fasting",
+      "title": { "en": "Six days of Shawwal", "bn": "শাওয়ালের ছয় রোজা" },
+      "how": { "en": "After Eid al-Fitr, fast any six days of the month of Shawwal, consecutively or separately.", "bn": "ঈদুল ফিতরের পর শাওয়াল মাসের যেকোনো ছয় দিন, একটানা বা আলাদাভাবে, রোজা রাখুন।" },
+      "fazilat": { "en": "The Prophet ﷺ said: \"Whoever fasts Ramadan and then follows it with six days of Shawwal, it is as if he fasted the whole year.\"", "bn": "রাসূলুল্লাহ ﷺ বলেছেন: \"যে ব্যক্তি রমজানের রোজা রাখে এবং তারপর শাওয়ালের ছয়টি রোজা রাখে, সে যেন সারা বছর রোজা রাখল।\"" },
+      "src": "Sahih Muslim 1164",
+      "count": 6
+    },
+    {
+      "id": "amol-fast-arafah",
+      "g": "fasting",
+      "title": { "en": "Fasting the Day of Arafah", "bn": "আরাফার দিনের রোজা" },
+      "how": { "en": "Fast on the 9th of Dhul-Hijjah (for those not performing Hajj).", "bn": "জিলহজ মাসের ৯ তারিখে রোজা রাখুন (যারা হজে নেই তাদের জন্য)।" },
+      "fazilat": { "en": "The Prophet ﷺ was asked about fasting on the Day of Arafah and said: \"It expiates the sins of the previous year and the coming year.\"", "bn": "আরাফার দিনের রোজা সম্পর্কে জিজ্ঞেস করা হলে রাসূলুল্লাহ ﷺ বলেন: \"এটি পূর্ববর্তী বছর ও পরবর্তী বছরের গুনাহের কাফফারা হয়।\"" },
+      "src": "Sahih Muslim 1162"
+    },
+    {
+      "id": "amol-fast-ashura",
+      "g": "fasting",
+      "title": { "en": "Fasting the Day of Ashura", "bn": "আশুরার রোজা" },
+      "how": { "en": "Fast on the 10th of Muharram, and also the 9th (or the 11th) along with it to differ from the practice of the Jews.", "bn": "মহররমের ১০ তারিখে রোজা রাখুন এবং এর সাথে ৯ (অথবা ১১) তারিখেও রাখুন, যাতে ইহুদিদের থেকে ভিন্নতা হয়।" },
+      "fazilat": { "en": "The Prophet ﷺ was asked about fasting on the Day of Ashura and said: \"It expiates the sins of the previous year.\"", "bn": "আশুরার রোজা সম্পর্কে জিজ্ঞেস করা হলে রাসূলুল্লাহ ﷺ বলেন: \"এটি পূর্ববর্তী বছরের গুনাহের কাফফারা হয়।\"" },
+      "src": "Sahih Muslim 1162; Sahih Muslim 1134"
+    },
+    {
+      "id": "amol-sadaqah",
+      "g": "charity",
+      "title": { "en": "Daily sadaqah", "bn": "প্রতিদিন সদকা" },
+      "how": { "en": "Give something in charity every day, even a small amount, secretly where possible.", "bn": "প্রতিদিন কিছু না কিছু দান করুন, অল্প হলেও; সম্ভব হলে গোপনে।" },
+      "fazilat": { "en": "The Prophet ﷺ said: \"Charity extinguishes sin as water extinguishes fire.\" Allah says the one who spends in His way is like a grain that grows seven ears, each with a hundred grains — and Allah multiplies for whom He wills.", "bn": "রাসূলুল্লাহ ﷺ বলেছেন: \"সদকা গুনাহকে এমনভাবে নিভিয়ে দেয়, যেমন পানি আগুন নিভিয়ে দেয়।\" আল্লাহ বলেন, তাঁর পথে ব্যয়কারীর উদাহরণ এমন একটি শস্যদানার মতো, যা থেকে সাতটি শীষ জন্মায়, প্রতিটি শীষে একশত দানা — আর আল্লাহ যাকে ইচ্ছা বহুগুণ বাড়িয়ে দেন।" },
+      "src": "Jami' at-Tirmidhi 614; Quran 2:261",
+      "q": { "s": 2, "a": 261 },
+      "when": "daily"
+    },
+    {
+      "id": "amol-smile",
+      "g": "charity",
+      "title": { "en": "Smiling at others", "bn": "হাসিমুখে সাক্ষাৎ" },
+      "how": { "en": "Meet your fellow Muslims with a cheerful, smiling face.", "bn": "মুসলিম ভাই-বোনদের সাথে প্রফুল্ল ও হাসিমুখে সাক্ষাৎ করুন।" },
+      "fazilat": { "en": "The Prophet ﷺ said: \"Your smiling in the face of your brother is a charity for you.\"", "bn": "রাসূলুল্লাহ ﷺ বলেছেন: \"তোমার ভাইয়ের সামনে তোমার মুচকি হাসি তোমার জন্য সদকা।\"" },
+      "src": "Jami' at-Tirmidhi 1956",
+      "when": "daily"
+    },
+    {
+      "id": "amol-remove-harm-from-road",
+      "g": "charity",
+      "title": { "en": "Removing harmful things from the road", "bn": "রাস্তা থেকে কষ্টদায়ক বস্তু সরানো" },
+      "how": { "en": "When you see a stone, thorn, glass or rubbish in people's path, remove it.", "bn": "মানুষের চলার পথে পাথর, কাঁটা, কাচ বা আবর্জনা দেখলে তা সরিয়ে ফেলুন।" },
+      "fazilat": { "en": "The Prophet ﷺ said: \"…and removing a harmful thing from the road is a charity.\" He also told of a man who was forgiven and entered Paradise because he removed a thorny branch from the road.", "bn": "রাসূলুল্লাহ ﷺ বলেছেন: \"…আর রাস্তা থেকে কষ্টদায়ক বস্তু সরানো সদকা।\" তিনি এমন এক ব্যক্তির কথাও বলেছেন, যে রাস্তা থেকে একটি কাঁটাযুক্ত ডাল সরানোর কারণে ক্ষমাপ্রাপ্ত হয়ে জান্নাতে প্রবেশ করে।" },
+      "src": "Sahih al-Bukhari 2989; Sahih Muslim 1914",
+      "when": "daily"
+    },
+    {
+      "id": "amol-visit-sick",
+      "g": "charity",
+      "title": { "en": "Visiting the sick", "bn": "রোগীর সেবা ও দেখতে যাওয়া" },
+      "how": { "en": "Visit sick relatives, neighbours and friends, make dua for them and comfort them.", "bn": "অসুস্থ আত্মীয়, প্রতিবেশী ও বন্ধুদের দেখতে যান, তাদের জন্য দোয়া করুন ও সান্ত্বনা দিন।" },
+      "fazilat": { "en": "The Prophet ﷺ said: \"Whoever visits a sick person remains in the harvest (fruit-gathering) of Paradise until he returns.\"", "bn": "রাসূলুল্লাহ ﷺ বলেছেন: \"যে ব্যক্তি কোনো রোগীকে দেখতে যায়, সে ফিরে না আসা পর্যন্ত জান্নাতের ফল আহরণে (বাগানে) থাকে।\"" },
+      "src": "Sahih Muslim 2568"
+    },
+    {
+      "id": "amol-kinship",
+      "g": "charity",
+      "title": { "en": "Maintaining ties of kinship", "bn": "আত্মীয়তার সম্পর্ক রক্ষা" },
+      "how": { "en": "Keep in touch with relatives — visit, call, help and forgive them, even if they cut you off.", "bn": "আত্মীয়দের সাথে যোগাযোগ রাখুন — দেখা করুন, খোঁজ নিন, সাহায্য করুন ও ক্ষমা করুন; তারা সম্পর্ক ছিন্ন করলেও।" },
+      "fazilat": { "en": "The Prophet ﷺ said: \"Whoever would like his provision to be increased and his life to be extended should maintain the ties of kinship.\"", "bn": "রাসূলুল্লাহ ﷺ বলেছেন: \"যে ব্যক্তি চায় তার রিজিক প্রশস্ত হোক ও তার আয়ু বৃদ্ধি পাক, সে যেন আত্মীয়তার সম্পর্ক বজায় রাখে।\"" },
+      "src": "Sahih al-Bukhari 5986"
+    },
+    {
+      "id": "amol-feed-and-spread-salam",
+      "g": "charity",
+      "title": { "en": "Feeding others and spreading salam", "bn": "খাবার খাওয়ানো ও সালামের প্রসার" },
+      "how": { "en": "Greet Muslims with salam — known and unknown — and feed the poor, guests and neighbours.", "bn": "পরিচিত-অপরিচিত সব মুসলিমকে সালাম দিন এবং গরিব, মেহমান ও প্রতিবেশীদের খাবার খাওয়ান।" },
+      "fazilat": { "en": "The Prophet ﷺ said: \"O people, spread salam, feed others, maintain kinship, and pray at night while people sleep — you will enter Paradise in peace.\"", "bn": "রাসূলুল্লাহ ﷺ বলেছেন: \"হে লোকসকল, সালামের প্রসার ঘটাও, খাবার খাওয়াও, আত্মীয়তার সম্পর্ক রক্ষা করো এবং মানুষ যখন ঘুমিয়ে থাকে তখন নামাজ পড়ো — তাহলে শান্তিতে জান্নাতে প্রবেশ করবে।\"" },
+      "src": "Jami' at-Tirmidhi 1855",
+      "when": "daily"
+    },
+    {
+      "id": "amol-neighbour-and-guest",
+      "g": "charity",
+      "title": { "en": "Kindness to neighbours and guests", "bn": "প্রতিবেশী ও মেহমানের প্রতি সদাচরণ" },
+      "how": { "en": "Do not harm your neighbour, share with him, and honour your guests generously.", "bn": "প্রতিবেশীকে কষ্ট দেবেন না, তার সাথে ভাগ করে নিন এবং মেহমানকে উদারভাবে সম্মান করুন।" },
+      "fazilat": { "en": "The Prophet ﷺ said: \"Whoever believes in Allah and the Last Day should not harm his neighbour; whoever believes in Allah and the Last Day should honour his guest; and whoever believes in Allah and the Last Day should speak good or remain silent.\"", "bn": "রাসূলুল্লাহ ﷺ বলেছেন: \"যে আল্লাহ ও শেষ দিবসে বিশ্বাস রাখে, সে যেন প্রতিবেশীকে কষ্ট না দেয়; যে আল্লাহ ও শেষ দিবসে বিশ্বাস রাখে, সে যেন মেহমানকে সম্মান করে; আর যে আল্লাহ ও শেষ দিবসে বিশ্বাস রাখে, সে যেন ভালো কথা বলে অথবা চুপ থাকে।\"" },
+      "src": "Sahih al-Bukhari 6018",
+      "when": "daily"
+    },
+    {
+      "id": "amol-guard-tongue",
+      "g": "character",
+      "title": { "en": "Guarding the tongue", "bn": "জিহ্বার হেফাজত" },
+      "how": { "en": "Avoid lying, backbiting, slander, mockery and foul speech; speak good or remain silent.", "bn": "মিথ্যা, গিবত, অপবাদ, উপহাস ও অশ্লীল কথা থেকে বিরত থাকুন; ভালো কথা বলুন অথবা চুপ থাকুন।" },
+      "fazilat": { "en": "The Prophet ﷺ said: \"Whoever guarantees me what is between his jaws (tongue) and what is between his legs (private parts), I guarantee him Paradise.\"", "bn": "রাসূলুল্লাহ ﷺ বলেছেন: \"যে ব্যক্তি আমাকে তার দুই চোয়ালের মাঝের বস্তু (জিহ্বা) ও দুই পায়ের মাঝের বস্তু (লজ্জাস্থান)-এর হেফাজতের নিশ্চয়তা দেবে, আমি তাকে জান্নাতের নিশ্চয়তা দেব।\"" },
+      "src": "Sahih al-Bukhari 6474",
+      "when": "daily"
+    },
+    {
+      "id": "amol-lower-gaze",
+      "g": "character",
+      "title": { "en": "Lowering the gaze", "bn": "দৃষ্টি অবনত রাখা" },
+      "how": { "en": "Avert your eyes from what Allah has forbidden — in person and on screens — and guard your chastity.", "bn": "আল্লাহ যা হারাম করেছেন তা থেকে — সরাসরি ও পর্দায় — দৃষ্টি ফিরিয়ে নিন এবং লজ্জাস্থানের হেফাজত করুন।" },
+      "fazilat": { "en": "Allah says: \"Tell the believing men to lower their gaze and guard their private parts; that is purer for them. Indeed, Allah is Aware of what they do.\"", "bn": "আল্লাহ বলেন: \"মুমিন পুরুষদের বলুন, তারা যেন তাদের দৃষ্টি অবনত রাখে ও লজ্জাস্থানের হেফাজত করে; এটি তাদের জন্য অধিক পবিত্র। নিশ্চয় তারা যা করে আল্লাহ সে সম্পর্কে অবহিত।\"" },
+      "src": "Quran 24:30",
+      "q": { "s": 24, "a": 30 },
+      "when": "daily"
+    },
+    {
+      "id": "amol-control-anger",
+      "g": "character",
+      "title": { "en": "Patience and controlling anger", "bn": "ধৈর্য ও রাগ নিয়ন্ত্রণ" },
+      "how": { "en": "When angry, stay silent, seek refuge in Allah from Shaytan, change your position or make wudu, and respond with patience.", "bn": "রাগ হলে চুপ থাকুন, শয়তান থেকে আল্লাহর আশ্রয় চান, অবস্থান বদলান বা অজু করুন এবং ধৈর্যের সাথে প্রতিক্রিয়া দেখান।" },
+      "fazilat": { "en": "The Prophet ﷺ said: \"The strong man is not the one who overcomes others in wrestling; the strong man is the one who controls himself when angry.\" A man asked for advice and he ﷺ repeated: \"Do not become angry.\"", "bn": "রাসূলুল্লাহ ﷺ বলেছেন: \"শক্তিশালী সে নয়, যে কুস্তিতে অন্যকে পরাজিত করে; বরং শক্তিশালী সে, যে রাগের সময় নিজেকে নিয়ন্ত্রণ করে।\" এক ব্যক্তি উপদেশ চাইলে তিনি ﷺ বারবার বলেন: \"রাগ করো না।\"" },
+      "src": "Sahih al-Bukhari 6114; Sahih al-Bukhari 6116",
+      "when": "daily"
+    },
+    {
+      "id": "amol-forgive-others",
+      "g": "character",
+      "title": { "en": "Forgiving others", "bn": "অন্যকে ক্ষমা করা" },
+      "how": { "en": "Pardon those who wrong you and overlook their faults, hoping for Allah's forgiveness in return.", "bn": "যারা আপনার প্রতি অন্যায় করে তাদের ক্ষমা করুন ও তাদের ত্রুটি উপেক্ষা করুন, বিনিময়ে আল্লাহর ক্ষমার আশায়।" },
+      "fazilat": { "en": "Allah says: \"…let them pardon and overlook. Would you not love for Allah to forgive you? And Allah is Forgiving, Merciful.\" The Prophet ﷺ said: \"Allah does not increase a servant who forgives except in honour.\"", "bn": "আল্লাহ বলেন: \"…তারা যেন ক্ষমা করে ও উপেক্ষা করে। তোমরা কি চাও না যে আল্লাহ তোমাদের ক্ষমা করুন? আর আল্লাহ ক্ষমাশীল, পরম দয়ালু।\" রাসূলুল্লাহ ﷺ বলেছেন: \"ক্ষমার দ্বারা আল্লাহ বান্দার সম্মানই বৃদ্ধি করেন।\"" },
+      "src": "Quran 24:22; Sahih Muslim 2588",
+      "q": { "s": 24, "a": 22 },
+      "when": "daily"
+    },
+    {
+      "id": "amol-honesty",
+      "g": "character",
+      "title": { "en": "Honesty and truthfulness", "bn": "সততা ও সত্যবাদিতা" },
+      "how": { "en": "Always speak the truth, keep your promises and be honest in dealings, even when it is hard.", "bn": "সর্বদা সত্য বলুন, প্রতিশ্রুতি রক্ষা করুন এবং লেনদেনে সৎ থাকুন, কঠিন হলেও।" },
+      "fazilat": { "en": "The Prophet ﷺ said: \"Truthfulness leads to righteousness, and righteousness leads to Paradise. A man keeps telling the truth until he is recorded with Allah as a siddiq (truthful one).\"", "bn": "রাসূলুল্লাহ ﷺ বলেছেন: \"সত্যবাদিতা নেকির পথ দেখায়, আর নেকি জান্নাতের পথ দেখায়। মানুষ সত্য বলতে থাকে, অবশেষে আল্লাহর কাছে তাকে সিদ্দিক (পরম সত্যবাদী) হিসেবে লেখা হয়।\"" },
+      "src": "Sahih al-Bukhari 6094",
+      "when": "daily"
+    },
+    {
+      "id": "amol-mercy-to-creation",
+      "g": "character",
+      "title": { "en": "Mercy towards people and animals", "bn": "মানুষ ও প্রাণীর প্রতি দয়া" },
+      "how": { "en": "Be gentle and merciful to children, the elderly, the weak, and animals.", "bn": "শিশু, বৃদ্ধ, দুর্বল ও প্রাণীদের প্রতি কোমল ও দয়ালু হোন।" },
+      "fazilat": { "en": "The Prophet ﷺ said: \"The merciful are shown mercy by the Most Merciful. Be merciful to those on earth, and the One in the heavens will be merciful to you.\"", "bn": "রাসূলুল্লাহ ﷺ বলেছেন: \"দয়াশীলদের প্রতি পরম দয়ালু (আল্লাহ) দয়া করেন। তোমরা জমিনবাসীর প্রতি দয়া করো, আসমানে যিনি আছেন তিনি তোমাদের প্রতি দয়া করবেন।\"" },
+      "src": "Jami' at-Tirmidhi 1924",
+      "when": "daily"
+    },
+    {
+      "id": "amol-friday-ghusl-early",
+      "g": "friday",
+      "title": { "en": "Jumu'ah ghusl and going early", "bn": "জুমার গোসল ও আগেভাগে মসজিদে যাওয়া" },
+      "how": { "en": "On Friday perform ghusl, wear clean clothes, apply perfume, and go to the mosque early for Jumu'ah.", "bn": "জুমার দিন গোসল করুন, পরিষ্কার পোশাক পরুন, সুগন্ধি ব্যবহার করুন এবং জুমার জন্য আগেভাগে মসজিদে যান।" },
+      "fazilat": { "en": "The Prophet ﷺ said: \"Whoever performs ghusl on Friday like the ghusl of janabah and then goes (to the mosque) in the first hour, it is as if he sacrificed a camel; in the second hour, a cow; in the third, a horned ram; in the fourth, a chicken; in the fifth, an egg. When the imam comes out, the angels come to listen to the sermon.\"", "bn": "রাসূলুল্লাহ ﷺ বলেছেন: \"যে ব্যক্তি জুমার দিন জানাবাতের গোসলের মতো গোসল করে প্রথম সময়ে (মসজিদে) যায়, সে যেন একটি উট কুরবানি করল; দ্বিতীয় সময়ে গেলে একটি গরু; তৃতীয় সময়ে শিংওয়ালা একটি ভেড়া; চতুর্থ সময়ে একটি মুরগি; পঞ্চম সময়ে একটি ডিম। ইমাম বের হলে ফেরেশতারা খুতবা শুনতে উপস্থিত হন।\"" },
+      "src": "Sahih al-Bukhari 881",
+      "when": "friday"
+    },
+    {
+      "id": "amol-surah-kahf-friday",
+      "g": "friday",
+      "title": { "en": "Surah al-Kahf on Friday", "bn": "জুমার দিনে সূরা কাহফ" },
+      "how": { "en": "Recite Surah al-Kahf (Surah 18) on Friday — any time from Maghrib on Thursday until Maghrib on Friday.", "bn": "জুমার দিন সূরা কাহফ (সূরা ১৮) তিলাওয়াত করুন — বৃহস্পতিবার মাগরিব থেকে শুক্রবার মাগরিব পর্যন্ত যেকোনো সময়।" },
+      "fazilat": { "en": "The Prophet ﷺ said: \"Whoever recites Surah al-Kahf on Friday, a light will shine for him between the two Fridays.\" He also said: \"Whoever memorises ten verses from the beginning of Surah al-Kahf will be protected from the Dajjal.\"", "bn": "রাসূলুল্লাহ ﷺ বলেছেন: \"যে ব্যক্তি জুমার দিন সূরা কাহফ পাঠ করে, তার জন্য দুই জুমার মধ্যবর্তী সময় নূর আলোকিত হয়।\" তিনি আরও বলেছেন: \"যে ব্যক্তি সূরা কাহফের প্রথম দশ আয়াত মুখস্থ করে, সে দাজ্জাল থেকে রক্ষা পাবে।\"" },
+      "src": "Al-Hakim, Al-Mustadrak 2/368 (graded sahih by al-Albani); Sahih Muslim 809",
+      "q": { "s": 18, "a": 1 },
+      "when": "friday"
+    },
+    {
+      "id": "amol-durood-friday",
+      "g": "friday",
+      "title": { "en": "Abundant durood on Friday", "bn": "জুমার দিনে বেশি বেশি দরুদ" },
+      "ar": "اللَّهُمَّ صَلِّ عَلَىٰ مُحَمَّدٍ وَعَلَىٰ آلِ مُحَمَّدٍ",
+      "how": { "en": "Send salawat upon the Prophet ﷺ in abundance throughout Friday and its night.", "bn": "জুমার দিন ও রাতে নবী ﷺ-এর ওপর বেশি বেশি দরুদ পাঠ করুন।" },
+      "fazilat": { "en": "The Prophet ﷺ said: \"Among the best of your days is Friday… so send much salah upon me on it, for your salah is presented to me.\"", "bn": "রাসূলুল্লাহ ﷺ বলেছেন: \"তোমাদের দিনগুলোর মধ্যে সর্বোত্তম হলো জুমার দিন… তাই এই দিনে আমার ওপর বেশি বেশি দরুদ পাঠ করো, কেননা তোমাদের দরুদ আমার কাছে পেশ করা হয়।\"" },
+      "src": "Sunan Abi Dawud 1047",
+      "z": "salawat",
+      "when": "friday"
+    },
+    {
+      "id": "amol-wudu-before-sleep",
+      "g": "night",
+      "title": { "en": "Wudu before sleep", "bn": "ঘুমানোর আগে অজু" },
+      "how": { "en": "Perform wudu as you would for prayer before going to bed.", "bn": "ঘুমাতে যাওয়ার আগে নামাজের অজুর মতো অজু করে নিন।" },
+      "fazilat": { "en": "The Prophet ﷺ said: \"When you go to your bed, perform wudu as you do for prayer, then lie on your right side and say (the dua)… If you die that night, you die upon the fitrah (natural state of Islam).\"", "bn": "রাসূলুল্লাহ ﷺ বলেছেন: \"যখন তুমি বিছানায় যাও, নামাজের অজুর মতো অজু করো, তারপর ডান কাতে শুয়ে (দোয়াটি) বলো… সে রাতে মারা গেলে তুমি ফিতরাতের (ইসলামের স্বভাবধর্মের) ওপর মারা যাবে।\"" },
+      "src": "Sahih al-Bukhari 247",
+      "when": "night"
+    },
+    {
+      "id": "amol-sleep-right-side-dua",
+      "g": "night",
+      "title": { "en": "Sleeping on the right side with the dua of surrender", "bn": "ডান কাতে শুয়ে আত্মসমর্পণের দোয়া" },
+      "ar": "اللَّهُمَّ أَسْلَمْتُ وَجْهِي إِلَيْكَ، وَفَوَّضْتُ أَمْرِي إِلَيْكَ، وَأَلْجَأْتُ ظَهْرِي إِلَيْكَ، رَغْبَةً وَرَهْبَةً إِلَيْكَ، لَا مَلْجَأَ وَلَا مَنْجَا مِنْكَ إِلَّا إِلَيْكَ، اللَّهُمَّ آمَنْتُ بِكِتَابِكَ الَّذِي أَنْزَلْتَ، وَبِنَبِيِّكَ الَّذِي أَرْسَلْتَ",
+      "how": { "en": "Lie on your right side and recite this dua, making it the last thing you say before sleeping.", "bn": "ডান কাতে শুয়ে এই দোয়াটি পড়ুন এবং ঘুমানোর আগে এটিকেই শেষ কথা করুন।" },
+      "fazilat": { "en": "The Prophet ﷺ said: \"…make them the last words you say. If you die that night, you die upon the fitrah.\"", "bn": "রাসূলুল্লাহ ﷺ বলেছেন: \"…এটিকে তোমার শেষ কথা বানাও। সে রাতে মারা গেলে তুমি ফিতরাতের ওপর মারা যাবে।\"" },
+      "src": "Sahih al-Bukhari 6311",
+      "when": "night"
+    },
+    {
+      "id": "amol-ayatul-kursi-before-sleep",
+      "g": "night",
+      "title": { "en": "Ayatul Kursi before sleep", "bn": "ঘুমানোর আগে আয়াতুল কুরসি" },
+      "how": { "en": "Recite Ayatul Kursi (2:255) once when you lie down to sleep.", "bn": "শোয়ার সময় একবার আয়াতুল কুরসি (২:২৫৫) পাঠ করুন।" },
+      "fazilat": { "en": "The Prophet ﷺ confirmed: \"When you go to your bed, recite Ayatul Kursi; a guardian from Allah will remain with you and no shaytan will approach you until morning.\"", "bn": "রাসূলুল্লাহ ﷺ (শয়তানের কথার) সত্যতা স্বীকার করে বলেন: \"যখন বিছানায় যাবে, আয়াতুল কুরসি পড়বে; তাহলে আল্লাহর পক্ষ থেকে একজন রক্ষক তোমার সাথে থাকবে এবং সকাল পর্যন্ত কোনো শয়তান তোমার কাছে আসতে পারবে না।\"" },
+      "src": "Sahih al-Bukhari 2311",
+      "q": { "s": 2, "a": 255 },
+      "when": "night"
+    },
+    {
+      "id": "amol-tasbih-before-sleep",
+      "g": "night",
+      "title": { "en": "Tasbih of Fatimah before sleep (33/33/34)", "bn": "ঘুমানোর আগে তাসবিহে ফাতিমি (৩৩/৩৩/৩৪)" },
+      "ar": "سُبْحَانَ اللَّهِ، الْحَمْدُ لِلَّهِ، اللَّهُ أَكْبَرُ",
+      "how": { "en": "When you lie down to sleep, say SubhanAllah 33 times, Alhamdulillah 33 times and Allahu Akbar 34 times.", "bn": "শোয়ার সময় ৩৩ বার সুবহানাল্লাহ, ৩৩ বার আলহামদুলিল্লাহ ও ৩৪ বার আল্লাহু আকবার বলুন।" },
+      "fazilat": { "en": "When Fatimah asked for a servant, the Prophet ﷺ taught her and Ali this and said: \"It is better for you than a servant.\"", "bn": "ফাতিমা (রা.) একজন খাদেম চাইলে রাসূলুল্লাহ ﷺ তাঁকে ও আলী (রা.)-কে এটি শিখিয়ে বলেন: \"এটি তোমাদের জন্য একজন খাদেমের চেয়ে উত্তম।\"" },
+      "src": "Sahih al-Bukhari 5362; Sahih Muslim 2727",
+      "z": "subhanallah",
+      "when": "night",
+      "count": 33
+    },
+    {
+      "id": "amol-bismika-allahumma-sleep",
+      "g": "night",
+      "title": { "en": "Dua when going to sleep and on waking", "bn": "ঘুমানোর ও জাগার দোয়া" },
+      "ar": "بِاسْمِكَ اللَّهُمَّ أَمُوتُ وَأَحْيَا",
+      "how": { "en": "Say 'Bismika Allahumma amutu wa ahya' when going to sleep, and on waking say: 'Alhamdulillahil-ladhi ahyana ba'da ma amatana wa ilayhin-nushur'.", "bn": "ঘুমানোর সময় বলুন 'বিসমিকা আল্লাহুম্মা আমুতু ওয়া আহইয়া', আর জেগে উঠে বলুন: 'আলহামদুলিল্লাহিল্লাযি আহইয়ানা বা'দা মা আমাতানা ওয়া ইলাইহিন নুশুর'।" },
+      "fazilat": { "en": "Hudhayfah reported: \"When the Prophet ﷺ went to his bed he would say: 'In Your name, O Allah, I die and I live,' and when he woke up he would say: 'All praise is for Allah who gave us life after He caused us to die, and to Him is the resurrection.'\"", "bn": "হুযাইফা (রা.) বলেন: \"নবী ﷺ বিছানায় গেলে বলতেন: 'হে আল্লাহ, আপনার নামে আমি মরি ও বাঁচি', আর জাগ্রত হলে বলতেন: 'সকল প্রশংসা আল্লাহর, যিনি আমাদের মৃত্যু দেওয়ার পর জীবিত করলেন, আর তাঁর কাছেই পুনরুত্থান।'\"" },
+      "src": "Sahih al-Bukhari 6324",
+      "when": "night"
+    },
+    {
+      "id": "amol-miswak",
+      "g": "purity",
+      "title": { "en": "Using the miswak", "bn": "মিসওয়াক ব্যবহার" },
+      "how": { "en": "Use the miswak (tooth-stick) regularly, especially before wudu, before prayer, on waking and before reciting Quran.", "bn": "নিয়মিত মিসওয়াক করুন, বিশেষত অজুর আগে, নামাজের আগে, ঘুম থেকে উঠে ও কুরআন তিলাওয়াতের আগে।" },
+      "fazilat": { "en": "The Prophet ﷺ said: \"Were it not that I would burden my Ummah, I would have ordered them to use the siwak with every prayer.\" He also said: \"The siwak purifies the mouth and pleases the Lord.\"", "bn": "রাসূলুল্লাহ ﷺ বলেছেন: \"আমার উম্মতের জন্য কষ্টকর হবে — এই আশঙ্কা না থাকলে আমি তাদের প্রতি নামাজের সময় মিসওয়াক করার আদেশ দিতাম।\" তিনি আরও বলেছেন: \"মিসওয়াক মুখের পবিত্রতা ও রবের সন্তুষ্টির কারণ।\"" },
+      "src": "Sahih al-Bukhari 887; Sunan an-Nasa'i 5",
+      "when": "daily"
+    },
+    {
+      "id": "amol-perfect-wudu",
+      "g": "purity",
+      "title": { "en": "Performing wudu well", "bn": "উত্তমরূপে অজু করা" },
+      "how": { "en": "Perform wudu carefully and completely, washing each limb properly, and stay in a state of wudu as much as you can.", "bn": "প্রতিটি অঙ্গ ভালোভাবে ধুয়ে যত্নসহকারে পূর্ণাঙ্গ অজু করুন এবং যথাসম্ভব অজু অবস্থায় থাকুন।" },
+      "fazilat": { "en": "The Prophet ﷺ said: \"When a Muslim servant performs wudu and washes his face, every sin he looked at with his eyes leaves with the water… until he comes out cleansed of sins.\"", "bn": "রাসূলুল্লাহ ﷺ বলেছেন: \"মুসলিম বান্দা যখন অজু করে মুখ ধোয়, তখন চোখ দিয়ে করা প্রতিটি গুনাহ পানির সাথে ঝরে যায়… শেষে সে গুনাহ থেকে পবিত্র হয়ে বের হয়।\"" },
+      "src": "Sahih Muslim 244",
+      "when": "daily"
+    },
+    {
+      "id": "amol-shahada-after-wudu",
+      "g": "purity",
+      "title": { "en": "Shahadah after wudu", "bn": "অজুর পর কালিমা শাহাদাত" },
+      "ar": "أَشْهَدُ أَنْ لَا إِلَٰهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ",
+      "how": { "en": "After completing wudu, recite the shahadah.", "bn": "অজু শেষ করার পর কালিমা শাহাদাত পাঠ করুন।" },
+      "fazilat": { "en": "The Prophet ﷺ said: \"Whoever performs wudu well and then says (this shahadah), the eight gates of Paradise are opened for him; he may enter by whichever he wishes.\"", "bn": "রাসূলুল্লাহ ﷺ বলেছেন: \"যে ব্যক্তি উত্তমরূপে অজু করে তারপর (এই শাহাদাত) বলে, তার জন্য জান্নাতের আটটি দরজা খুলে দেওয়া হয়; সে যেটি দিয়ে ইচ্ছা প্রবেশ করতে পারবে।\"" },
+      "src": "Sahih Muslim 234",
+      "when": "daily"
+    },
+    {
+      "id": "amol-bismillah-eating-right-hand",
+      "g": "purity",
+      "title": { "en": "Bismillah before eating and eating with the right hand", "bn": "খাওয়ার আগে বিসমিল্লাহ ও ডান হাতে খাওয়া" },
+      "ar": "بِسْمِ اللَّهِ",
+      "how": { "en": "Say Bismillah before eating, eat with your right hand, and eat from what is nearest to you. If you forget at the start, say: Bismillahi awwalahu wa akhirahu.", "bn": "খাওয়ার আগে বিসমিল্লাহ বলুন, ডান হাতে খান এবং নিজের সামনের দিক থেকে খান। শুরুতে ভুলে গেলে বলুন: বিসমিল্লাহি আওয়ালাহু ওয়া আখিরাহু।" },
+      "fazilat": { "en": "The Prophet ﷺ taught: \"O boy, mention the name of Allah, eat with your right hand, and eat from what is near you.\" Umar ibn Abi Salamah said: \"That has remained my way of eating ever since.\"", "bn": "রাসূলুল্লাহ ﷺ শিক্ষা দেন: \"হে বালক, আল্লাহর নাম নাও, ডান হাতে খাও এবং তোমার সামনের দিক থেকে খাও।\" উমর ইবনে আবি সালামা (রা.) বলেন: \"এরপর থেকে এটাই আমার খাওয়ার নিয়ম।\"" },
+      "src": "Sahih al-Bukhari 5376; Jami' at-Tirmidhi 1858",
+      "when": "daily"
+    }
+  ]
+}
