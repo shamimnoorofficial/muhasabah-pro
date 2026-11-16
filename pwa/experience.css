@@ -159,9 +159,6 @@ dialog#mhs-quran[data-rasm=tajweed] .mhs-q-bismillah,.mhs-rasm-opt[data-rasm=taj
 .tj-ham_wasl,.tj-slnt,.tj-laam_shamsiyah{color:#9aa4ad}
 .tj-madda_normal{color:#6db3f2}.tj-madda_permissible{color:#4f8fe0}.tj-madda_obligatory{color:#c45ad6}.tj-madda_necessary{color:#e0457b}
 .tj-ghunnah{color:#f5a623}.tj-ikhafa,.tj-ikhafa_shafawi{color:#d97ef2}.tj-idgham_ghunnah,.tj-idgham_shafawi{color:#2fbf71}.tj-idgham_wo_ghunnah,.tj-idgham_mutajanisayn,.tj-idgham_mutaqaribayn{color:#7ccf4f}.tj-iqlab{color:#26c6da}.tj-qalaqah{color:#ef5350}
-.mhs-tj-legend{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:.35rem .9rem;padding:.7rem .85rem;border-radius:14px;border:1px solid hsl(var(--border));font-size:12px}
-.mhs-tj-legend b{flex-basis:100%;font-size:13px}.mhs-tj-legend span{display:inline-flex;align-items:center;gap:.35rem}
-.tj-dot{width:.7rem;height:.7rem;border-radius:50%;background:currentColor;display:inline-block}
 
 /* ===== Seerah e-reader ===== */
 dialog.mhs-sr{--sr-bg:transparent;--sr-fg:hsl(var(--foreground));--sr-leading:1.9}
