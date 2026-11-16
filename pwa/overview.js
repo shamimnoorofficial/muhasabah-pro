@@ -100,6 +100,8 @@
     };
   }
 
+  window.MHSOverview = { compute: compute };
+
   function insight(s) {
     var arr = [["nafs", s.nafs], ["qalb", s.qalb], ["ruh", s.ruh]].sort(function (a, b) { return a[1] - b[1]; });
     if (s.index < 0.05) return t("i_start");

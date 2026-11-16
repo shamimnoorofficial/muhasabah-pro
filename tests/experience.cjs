@@ -14,6 +14,25 @@ const assert = require('node:assert/strict');
   await page.goto((process.env.BASE || 'http://localhost:8889') + '/');
   await page.locator('.mhs-rf-card').waitFor();
   assert.equal(await page.locator('mhs-feed-home .mhs-rf-card').count(), 1);
+  assert.deepEqual(await page.locator('mhs-feed-home').evaluate(h => Array.from(h.children, n => n.tagName === 'MHS-PRAYER-STRIP' ? 'prayer' : n.className)), ['prayer', 'mhs-home-feed', 'panel mhs-home-summary', 'panel mhs-home-apps']);
+  assert.equal(await page.locator('.mhs-home-stats b').count(), 3);
+  const appKeys = await page.locator('.mhs-home-app').evaluateAll(nodes => nodes.map(n => n.dataset.app));
+  assert.deepEqual(appKeys.slice().sort(), await page.evaluate(() => MHSActions.items().map(i => i.key).sort()));
+  assert(appKeys.includes('seerah'));
+  await page.locator('.mhs-home-summary-link').click();
+  await page.locator('mhs-overview').waitFor();
+  assert.equal(await page.locator('mhs-feed-home').count(), 0);
+  await page.evaluate(() => MHSApp.nav('home'));
+  await page.locator('mhs-feed-home .mhs-rf-card').waitFor();
+  await page.locator('.mhs-home-app[data-app="quran"]').click();
+  await page.locator('#mhs-quran').waitFor();
+  await page.evaluate(() => document.querySelector('#mhs-quran').close());
+  await page.waitForTimeout(500);
+  for (const width of [320, 768, 1280]) {
+    await page.setViewportSize({ width, height: 844 });
+    assert(await page.locator('mhs-feed-home').evaluate(h => h.scrollWidth <= h.clientWidth + 1));
+  }
+  await page.setViewportSize({ width: 390, height: 844 });
   await page.getByRole('button', { name: 'Feed settings', exact: true }).click();
   assert.equal(await page.locator('.mhs-feed-sources input').count(), 5);
   assert.equal(await page.locator('.mhs-feed-sources input').last().isChecked(), false);

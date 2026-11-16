@@ -58,7 +58,45 @@
   var queued=false;
   new MutationObserver(function(){if(queued)return;queued=true;requestAnimationFrame(function(){queued=false;document.querySelectorAll('dialog.mhs-mini[open]').forEach(function(d){decorate(d);var p=X.get('reader:'+d.id,null);if(p)applyReader(d,p);});});}).observe(document.body,{childList:true,subtree:true});
 
-  customElements.define('mhs-feed-home',class extends HTMLElement{connectedCallback(){var host=this;X.whenReady('MHSReminder',function(){window.MHSReminder.mount(host);});}disconnectedCallback(){window.MHSReminder.unmount(this);}});
+  customElements.define('mhs-feed-home',class extends HTMLElement {
+    static get observedAttributes(){return ['lang'];}
+    connectedCallback(){
+      this.classList.add('mhs-home-stack');
+      this.prayer=X.el('mhs-prayer-strip',{lang:X.lang()});
+      this.feed=X.el('section',{class:'mhs-home-feed'});
+      this.summary=X.el('section',{class:'panel mhs-home-summary'});
+      this.apps=X.el('section',{class:'panel mhs-home-apps'});
+      this.replaceChildren(this.prayer,this.feed,this.summary,this.apps);
+      var host=this;
+      X.whenReady('MHSReminder',function(){if(host.isConnected)window.MHSReminder.mount(host.feed);});
+      this.refresh=function(){if(host.isConnected)host.renderHome();};
+      ['mhs:suite','mhs:extras','mhs:essential','visibilitychange'].forEach(function(e){document.addEventListener(e,host.refresh);});
+      // The application save API has no unsubscribe; register one shared listener below.
+      this.renderHome();
+    }
+    disconnectedCallback(){
+      if(window.MHSReminder)window.MHSReminder.unmount(this.feed);
+      var host=this;['mhs:suite','mhs:extras','mhs:essential','visibilitychange'].forEach(function(e){document.removeEventListener(e,host.refresh);});
+    }
+    attributeChangedCallback(){if(this.isConnected&&this.feed){this.prayer.setAttribute('lang',X.lang());this.renderHome();}}
+    renderHome(){
+      var title=tr('Dashboard summary','ড্যাশবোর্ড সারাংশ','ملخص لوحة المعلومات');
+      var stats=window.MHSOverview&&window.MHSOverview.compute(7);
+      var link=X.el('button',{type:'button',class:'mhs-home-summary-link',on:{click:function(){window.MHSApp.nav('dashboard');}}});
+      link.append(X.el('span',{class:'mhs-home-section-title',text:title}),X.el('span',{class:'mhs-home-more',text:tr('More info →','বিস্তারিত দেখুন →','المزيد ←')}));
+      if(stats){var values=X.el('span',{class:'mhs-home-stats'});
+        [[Math.round(stats.index*100)+'%',tr('Muhasabah Index','মুহাসাবা সূচক','مؤشر المحاسبة')],[stats.habitsToday.d+'/'+stats.habitsToday.n,tr('Habits today','আজকের অভ্যাস','عادات اليوم')],[stats.todoOpen,tr('Open tasks','বাকি কাজ','المهام المتبقية')]].forEach(function(v){values.appendChild(X.el('span',{},[X.el('b',{class:'num',text:String(v[0])}),X.el('small',{text:v[1]})]));});link.appendChild(values);
+      }
+      this.summary.replaceChildren(link);
+      var grid=X.el('div',{class:'mhs-home-app-grid'});
+      var order=['quran','hadith','seerah','wisdom','wisdom-app','knowledge','bookmarks','prayer','zikr','amol','essential','todo','journal','notes','hisab','calc','gate'];
+      if(window.MHSActions&&window.MHSActions.items)window.MHSActions.items().sort(function(a,b){var i=order.indexOf(a.key),j=order.indexOf(b.key);return (i<0?99:i)-(j<0?99:j);}).forEach(function(item){
+        grid.appendChild(X.el('button',{type:'button',class:'mhs-home-app','data-app':item.key,on:{click:item.run}},[X.el('span',{class:'mhs-home-app-icon','aria-hidden':'true'},[X.icon(item.icon||'grid')]),X.el('span',{text:item.label})]));
+      });
+      this.apps.replaceChildren(X.el('h2',{class:'mhs-home-section-title',text:tr('All apps','সব অ্যাপ','كل التطبيقات')}),grid);
+    }
+  });
+  X.whenReady('MHS',function(M){if(M.onSave)M.onSave(function(){document.querySelectorAll('mhs-feed-home').forEach(function(h){h.renderHome();});});});
 })();
 (function(){
 'use strict';var X=window.MHSX;
