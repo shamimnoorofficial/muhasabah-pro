@@ -24,7 +24,7 @@
     "test": "node tests/penalties.cjs && node tests/qibla.cjs && node tests/lemonsqueezy.mjs && node tests/push.mjs",
     "check": "npm run typecheck && npm test && npm run test:ui",
     "test:push": "node tests/push.mjs",
-    "test:ui": "npm run -s test:startup && npm run -s test:languages && npm run -s test:celebrate && npm run -s test:donate && npm run -s test:flow && npm run -s test:settings && npm run -s test:journal && npm run -s test:home && npm run -s test:suite && npm run -s test:growth && npm run -s test:prayer",
+    "test:ui": "npm run -s test:startup && npm run -s test:languages && npm run -s test:celebrate && npm run -s test:donate && npm run -s test:flow && npm run -s test:settings && npm run -s test:journal && npm run -s test:home && npm run -s test:suite && npm run -s test:growth && npm run -s test:prayer && npm run -s test:checklists && npm run -s test:seerah && npm run -s test:widget",
     "typecheck": "tsc --noEmit",
     "test:startup": "node tests/startup.cjs",
     "test:celebrate": "node tests/celebrate.cjs",
@@ -41,6 +41,8 @@
     "test:prayer": "node tests/prayer-accuracy.cjs",
     "screenshots": "node tools/screenshots/capture.cjs",
     "test:experience": "node tests/experience.cjs",
-    "test:seerah": "node tests/seerah.mjs && node tests/seerah.cjs"
+    "test:seerah": "node tests/seerah.mjs && node tests/seerah.cjs",
+    "test:checklists": "node tests/checklists.cjs",
+    "test:widget": "node tests/widget-responsive.cjs"
   }
 }

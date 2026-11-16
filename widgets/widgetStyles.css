@@ -94,3 +94,21 @@ body{min-height:100dvh;background:radial-gradient(90% 50% at 100% 0%,rgba(0,230,
 html[data-wtheme=light]{--bg:#f3f7f4;--card:rgba(255,255,255,.85);--line:rgba(0,0,0,.08);--fg:#10231a;--mut:#4a6355;--pri:#0c8a4a;--pri2:#007f8f}
 html[data-wtheme=light] body{background:radial-gradient(90% 50% at 100% 0%,rgba(0,200,100,.12),transparent 60%),var(--bg)}
 html[data-wtheme=light] .wg-pt.is-live{background:rgba(12,138,74,.1)}
+
+/* Responsive widget: works from tiny home-screen tiles (≈ 160px) up to tablets and desktop boards. */
+.wg-date{display:grid;gap:.15rem;text-align:center}.wg-date b{font-size:1.05rem}.wg-date small{color:var(--mut);font-size:12px}
+.wg-cl-head{display:flex;justify-content:space-between;gap:.5rem;align-items:baseline;margin:.35rem 0 .2rem}.wg-cl-head b{font-size:14px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.wg-cl-head small{color:var(--mut);font-variant-numeric:tabular-nums;flex-shrink:0}
+.wg *{overflow-wrap:anywhere}.wg-txt,.wg-pt .nm{min-width:0}
+@media (max-width:380px){.wg-pt{grid-template-columns:auto minmax(0,1fr) auto;gap:.15rem .5rem}.wg-pt .cd{grid-column:2/-1;min-width:0;text-align:start}}
+@media (max-width:300px){
+  html,body{font-size:13px}
+  .wg{padding:.45rem .45rem calc(.6rem + env(safe-area-inset-bottom,0px));gap:.45rem}
+  .wg-card{padding:.6rem;border-radius:1rem}
+  .wg-top h1{font-size:.92rem}.wg-open{min-height:34px;padding:0 .6rem;font-size:12px}
+  .wg-zk{grid-template-columns:1fr!important}.wg-zk-sel{display:none}
+  .wg-pt .cd{display:none}.wg-streak{gap:.5rem}
+  .wg-summary{grid-template-columns:1fr}.wg-ring{grid-row:auto;margin:auto}
+}
+@media (max-height:260px){.wg-top,.wg-tabs,.wg-foot,.wg-tip{display:none}.wg{padding-top:.4rem}}
+@media (min-width:640px){.wg{max-width:56rem}#wg-custom:not([hidden]){display:grid;grid-template-columns:repeat(auto-fill,minmax(17rem,1fr));gap:.75rem;align-items:start}#wg-custom>.wg-foot{grid-column:1/-1}}
+@media (orientation:landscape) and (max-height:500px){.wg{max-width:none}#wg-custom:not([hidden]){display:grid;grid-template-columns:repeat(auto-fill,minmax(15rem,1fr));gap:.6rem}}

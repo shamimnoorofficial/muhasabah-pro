@@ -183,5 +183,18 @@
     });
   }
 
-  window.MHSWidgetStore = { load: load, save: save, habitsToday: habitsToday, balance: balance, streak: streak, checkHabit: checkHabit, checkTodo: checkTodo, addTodo: addTodo, toggleEssential: toggleEssential, zikrTap: zikrTap, ask: ask, onChange: function (fn) { listeners.push(fn); }, hm: hm };
+  /* Tick / untick one checklist item (Keep-style lists from the To-Do tab). */
+  function checkList(listId, itemId) {
+    return ask({ type: "checklist", listId: listId, itemId: itemId }).then(function (r) {
+      if (r) return { ok: true, via: "app", data: r.data };
+      return load().then(function (data) {
+        data.x = data.x || {}; var lists = Array.isArray(data.x.checklists) ? data.x.checklists : [], hit = false;
+        lists.forEach(function (l) { if (l.id !== listId) return; (l.items || []).forEach(function (i) { if (i.id === itemId) { i.done = !i.done; i.doneAt = i.done ? Date.now() : null; hit = true; } }); l.updatedAt = Date.now(); });
+        if (!hit) return { ok: false, reason: "missing" };
+        data.x.checklists = lists;
+        return save(data).then(function () { return { ok: true, via: "widget", data: data }; });
+      });
+    });
+  }
+  window.MHSWidgetStore = { checkList: checkList, load: load, save: save, habitsToday: habitsToday, balance: balance, streak: streak, checkHabit: checkHabit, checkTodo: checkTodo, addTodo: addTodo, toggleEssential: toggleEssential, zikrTap: zikrTap, ask: ask, onChange: function (fn) { listeners.push(fn); }, hm: hm };
 })();
