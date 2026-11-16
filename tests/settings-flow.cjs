@@ -18,6 +18,7 @@ const { chromium } = require('playwright');
    // Existing data: the first-run welcome screen and guide stay closed.
    await page.goto('http://localhost:8889'); await page.locator('#mhs-startup').waitFor({state:'detached'});
    assert.equal(await page.locator('.mhs-welcome, .mhs-ftue-intro, .mhs-coach').count(),0);
+   await page.evaluate(() => MHSApp.nav('dashboard'));
    await page.getByRole('button',{name:'∿ LINE',exact:true}).click();
    assert.equal(await page.locator('.mhs-flow circle').count(),1);
    await page.locator('.mhs-flow [role=button]').focus(); await page.keyboard.press('Enter');
