@@ -21,7 +21,7 @@ assert.equal(dailyMessage('unknown'), dailyMessage('en'));
 const subscriber = createECDH('prime256v1');
 subscriber.generateKeys();
 const vapid = webpush.generateVAPIDKeys();
-webpush.setVapidDetails('https://muhasabah-pro.app', vapid.publicKey, vapid.privateKey);
+webpush.setVapidDetails('https://muhasabah-pro.netlify.app', vapid.publicKey, vapid.privateKey);
 const details = webpush.generateRequestDetails({
   endpoint: 'https://push.example.com/reminder',
   keys: {

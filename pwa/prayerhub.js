@@ -23,6 +23,34 @@
       mapBtn: "عرض المساجد على الخريطة", mapHint: "يتم تحميل خرائط Google (يلزم الإنترنت).", openMaps: "افتح في خرائط Google", directions: "الاتجاهات", loc: "الموقع", place: "المكان", lat: "خط العرض", lng: "خط الطول", apply: "تطبيق", city: "اختر مدينة", method: "طريقة الحساب", asr: "العصر (المذهب)", hanafi: "حنفي", standard: "شافعي / مالكي / حنبلي", hiLat: "قاعدة خطوط العرض العليا", auto: "تلقائي", middle: "منتصف الليل", seventh: "سُبع الليل", angle: "بالزاوية", clock: "الساعة", h12: "١٢ ساعة", h24: "٢٤ ساعة",
       adjust: "تعديلات يدوية (دقائق)", alerts: "تنبيه عند دخول الوقت", alertLead: "قبل بـ (دقيقة)", alertsNeed: "اسمح بالإشعارات لتلقي التنبيهات.", enableNotif: "السماح بالإشعارات", offlineNote: "تُحسب المواقيت على هذا الجهاز من موقعك المحفوظ — دون إنترنت.", lastKnown: "يُستخدم آخر موقع معروف", src: { gps: "موقع الجهاز", city: "مدينة", tz: "من المنطقة الزمنية", manual: "يدوي" }, saved: "تم الحفظ", approx: "تقريبي" }
   });
+  /* Times are exact instants but shown on this device's clock. When the chosen place is in a very
+   * different time zone (a city picked far away, or travelling), say so instead of silently showing
+   * e.g. Fajr at "10:56 PM". The solar offset (longitude / 15) is a close stand-in for the zone. */
+  function clockNote(base) {
+    if (!base || base.lat == null || base.lng == null) return null;
+    var dev = -new Date().getTimezoneOffset() / 60, solar = base.lng / 15;
+    if (Math.abs(dev - solar) < 2.5) return null;
+    var sign = dev >= 0 ? "+" : "−", hrs = Math.floor(Math.abs(dev)), mins = Math.round((Math.abs(dev) - hrs) * 60);
+    var off = "UTC" + sign + hrs + (mins ? ":" + String(mins).padStart(2, "0") : "");
+    var msg = { en: "Times are shown on this device's clock (" + off + "), which differs from " + (base.place || "this place") + ". Use my location, or set the device time zone, to see local times.",
+      bn: "সময়গুলো এই ডিভাইসের ঘড়ি (" + off + ") অনুযায়ী দেখানো হচ্ছে, যা " + (base.place || "এই স্থান") + "-এর সময় অঞ্চল থেকে ভিন্ন। স্থানীয় সময় দেখতে আমার লোকেশন ব্যবহার করুন বা ডিভাইসের সময় অঞ্চল ঠিক করুন।",
+      ar: "تُعرض الأوقات بساعة هذا الجهاز (" + off + ") وهي تختلف عن توقيت " + (base.place || "هذا المكان") + ". استخدم موقعي أو اضبط المنطقة الزمنية للجهاز لرؤية الأوقات المحلية." };
+    return X.el("p", { class: "mhs-mini-note mhs-ph-tznote", role: "note", text: "⚠️ " + (msg[X.lang()] || msg.en) });
+  }
+  /* Methods come from the calculator; "auto" picks the authority used where the location is. */
+  function autoLabel(kind) {
+    var P = window.MHSPrayer, r = P && P.resolve ? P.resolve() : null, auto = { en: "Automatic", bn: "স্বয়ংক্রিয়", ar: "تلقائي" }[X.lang()] || "Automatic";
+    if (!r) return auto;
+    if (kind === "asr") return auto + " · " + t(r.asr === "hanafi" ? "hanafi" : "standard");
+    var m = P.methods && P.methods[r.method];
+    return auto + " · " + (m ? m.name : r.method);
+  }
+  function methodOptions() {
+    var H = (window.MHSPrayer && window.MHSPrayer.methods) || {};
+    var keys = Object.keys(H).filter(function (k) { return k !== "auto"; });
+    if (!keys.length) keys = Object.keys(METHODS);
+    return [["auto", autoLabel("method")]].concat(keys.map(function (k) { return [k, (H[k] && H[k].name) || METHODS[k]]; }));
+  }
   var METHODS = { karachi: "Karachi (Univ. of Islamic Sciences)", mwl: "Muslim World League", isna: "ISNA (North America)", egypt: "Egyptian Authority", makkah: "Umm al-Qura (Makkah)" };
   var CITIES = [["Dhaka", 23.8103, 90.4125], ["Chattogram", 22.3569, 91.7832], ["Sylhet", 24.8949, 91.8687], ["Rajshahi", 24.3745, 88.6042], ["Khulna", 22.8456, 89.5403], ["Barishal", 22.701, 90.3535], ["Rangpur", 25.7439, 89.2752], ["Mymensingh", 24.7471, 90.4203], ["Cumilla", 23.4607, 91.1809], ["Cox's Bazar", 21.4272, 92.0058], ["Kolkata", 22.5726, 88.3639], ["Delhi", 28.6139, 77.209], ["Mumbai", 19.076, 72.8777], ["Karachi", 24.8607, 67.0011], ["Lahore", 31.5204, 74.3587], ["Makkah", 21.3891, 39.8579], ["Madinah", 24.5247, 39.5692], ["Riyadh", 24.7136, 46.6753], ["Jeddah", 21.4858, 39.1925], ["Dubai", 25.2048, 55.2708], ["Doha", 25.2854, 51.531], ["Kuwait City", 29.3759, 47.9774], ["Muscat", 23.588, 58.3829], ["Kuala Lumpur", 3.139, 101.6869], ["Singapore", 1.3521, 103.8198], ["Jakarta", -6.2088, 106.8456], ["Istanbul", 41.0082, 28.9784], ["Cairo", 30.0444, 31.2357], ["London", 51.5074, -0.1278], ["Birmingham", 52.4862, -1.8904], ["Paris", 48.8566, 2.3522], ["Berlin", 52.52, 13.405], ["Rome", 41.9028, 12.4964], ["New York", 40.7128, -74.006], ["Toronto", 43.6532, -79.3832], ["Chicago", 41.8781, -87.6298], ["Sydney", -33.8688, 151.2093], ["Tokyo", 35.6762, 139.6503]];
 
@@ -80,7 +108,11 @@
     var M = T(), base = M.base();
     var hero = X.el("div", { class: "mhs-ph-hero" });
     var list = X.el("div", { class: "mhs-ph-list" });
-    b.append(hero, X.el("p", { class: "mhs-mini-note mhs-ph-locline" }, ["📍 " + (base.place || "") + " · " + (t("src")[base.src] || t("src").manual) + (navigator.onLine ? "" : " · " + t("lastKnown"))]), list);
+    b.append(hero, X.el("p", { class: "mhs-mini-note mhs-ph-locline" }, ["📍 " + (base.place || "") + " · " + (t("src")[base.src] || t("src").manual) + (navigator.onLine ? "" : " · " + t("lastKnown"))]));
+    var tzNote = clockNote(base); if (tzNote) b.append(tzNote);
+    var rz = window.MHSPrayer && window.MHSPrayer.resolve && window.MHSPrayer.resolve(), mm = rz && window.MHSPrayer.methods && window.MHSPrayer.methods[rz.method];
+    if (mm) b.append(X.el("p", { class: "mhs-mini-note mhs-ph-method" }, ["🧮 " + mm.name + " · " + t("asr") + ": " + t(rz.asr === "hanafi" ? "hanafi" : "standard")]));
+    b.append(list);
     var groups = [["fard", "kFard", "🕌"], ["special", "kSpecial", "🌙"], ["forbidden", "kForbidden", "⛔"], ["nafl", "kNafl", "✨"]];
     var rows = {};
     groups.forEach(function (g) {
@@ -203,8 +235,8 @@
     ]));
     // method & madhab & hi-lat & clock
     b.appendChild(sec("🧮 " + t("method"), [
-      row(t("method"), select(Object.keys(METHODS).map(function (k) { return [k, METHODS[k]]; }), base.method || "karachi", function (v) { M.setBase({ method: v }); })),
-      row(t("asr"), select([["hanafi", t("hanafi")], ["standard", t("standard")]], base.asr || "hanafi", function (v) { M.setBase({ asr: v }); })),
+      row(t("method"), select(methodOptions(), base.method || "auto", function (v) { M.setBase({ method: v, mv: 2 }); })),
+      row(t("asr"), select([["auto", autoLabel("asr")], ["hanafi", t("hanafi")], ["standard", t("standard")]], base.asr || "auto", function (v) { M.setBase({ asr: v, mv: 2 }); })),
       row(t("hiLat"), select([["auto", t("auto")], ["middle", t("middle")], ["seventh", t("seventh")], ["angle", t("angle")]], c.hiLat, function (v) { M.setCfg({ hiLat: v }); })),
       row(t("clock"), select([["12", t("h12")], ["24", t("h24")]], c.clock, function (v) { M.setCfg({ clock: v }); }))
     ]));

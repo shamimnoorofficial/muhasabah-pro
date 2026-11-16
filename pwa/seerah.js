@@ -13,12 +13,16 @@
     if(source)return source;if(pending)return pending;
     pending=(async function(){
       var saved=await window.MHS.get('seerah:'+VERSION+':source');
-      if(saved&&saved.version===VERSION&&Array.isArray(saved.pages)){source=saved;return source;}
+      if(saved&&saved.version===VERSION&&Array.isArray(saved.pages)){source=tidy(saved);return source;}
       var r=await fetch('/api/seerah');if(!r.ok)throw Error('source');var d=await r.json();
       if(d.version!==VERSION||!Array.isArray(d.pages)||!d.pages.length||d.pages.some(function(p){return typeof p!=='string';}))throw Error('source');
-      await window.MHS.set('seerah:'+VERSION+':source',d);source=d;return d;
+      await window.MHS.set('seerah:'+VERSION+':source',d);source=tidy(d);return source;
     })().finally(function(){pending=null;});return pending;
   }
+  /* The archived OCR text lost its diacritics: "Allâh" became "All?", "Hâ-Mîm" became "H?M?".
+   * Repair these for display only; the verified source copy is kept unchanged. */
+  function repair(t){return String(t).replace(/\bAll\?/g,'Allah').replace(/\bQur'\?n?/g,"Qur'an").replace(/\bH\?M\?/g,'Ha-Mim').replace(/\bT\?H\b/g,'Ta-Ha').replace(/[ \t]+([,.;:!])/g,'$1').replace(/[ \t]{2,}/g,' ');}
+  function tidy(d){return Object.assign({},d,{pages:d.pages.map(repair)});}
   async function passage(p,lang){
     var custom=imported();if(custom)return {text:custom.pages[p],lang:custom.lang||'en',machineTranslated:false};
     var d=await load();if(lang==='en')return {text:d.pages[p],lang:'en',machineTranslated:false};
@@ -70,5 +74,5 @@
     if(language()!=='en'&&!imported())host.appendChild(button(t('Download selected translation','নির্বাচিত অনুবাদ ডাউনলোড','تنزيل الترجمة المختارة'),function(){run(true);}));
   }
   window.MHSSeerah={open:open,load:load,passage:passage,settings:settings,downloadPanel:downloadPanel,localize:function(id){return passage(Number(id.slice(2)),language());},posts:function(){var d=edition();if(!d)return [];return d.pages.map(function(p,i){return {id:'s:'+i,kind:'seerah',text:p,src:title()+' · '+(i+1),go:function(){open({page:i});}};});}};
-  X.action({k:'seerah',c:'linear-gradient(140deg,#986e39,#5e4931)',icon:'M4 19V4h16v15|M8 7h8|M8 11h8|M4 19h16v3H4Z',label:title,sub:function(){return t('Biography · read, translate & save','জীবনী · পড়ুন, অনুবাদ ও সংরক্ষণ','السيرة · قراءة وترجمة وحفظ');},run:function(){open();}});
+  X.action({k:'seerah',c:'linear-gradient(140deg,#986e39,#5e4931)',icon:'M19 17V5a2 2 0 0 0-2-2H4|M8 21h12a2 2 0 0 0 2-2v-1a1 1 0 0 0-1-1H11a1 1 0 0 0-1 1v1a2 2 0 1 1-4 0V5a2 2 0 1 0-4 0v2a1 1 0 0 0 1 1h3|M10 8h6|M10 12h6',label:title,sub:function(){return t('Biography · read, translate & save','জীবনী · পড়ুন, অনুবাদ ও সংরক্ষণ','السيرة · قراءة وترجمة وحفظ');},run:function(){open();}});
 })();

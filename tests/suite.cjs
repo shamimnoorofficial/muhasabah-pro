@@ -36,7 +36,7 @@ const BASE = process.env.BASE || 'http://localhost:8889';
 
   // Unified + menu has the new mini-apps
   await p.locator('#mhs-fab').click(); await p.locator('.mhs-fab-menu.is-open').waitFor();
-  assert.equal(await p.locator('.mhs-fab-item button').count(), 14);
+  assert.equal(await p.locator('.mhs-fab-item button').count(), 15);
   for (const k of ['notes', 'hisab', 'zikr', 'amol']) assert.equal(await p.locator(`[data-action="${k}"]`).count(), 1, k);
 
   // Notes: take a note, go back, it is saved
@@ -81,22 +81,14 @@ const BASE = process.env.BASE || 'http://localhost:8889';
   const x = await p.evaluate(() => window.MHS.current().x);
   assert.equal(x.notes.length, 1); assert.equal(x.hisab.entries.length, 4); assert.ok(x.zikr.log);
 
-  // Free tier: Export opens the upgrade prompt instead of downloading
+  // Backup is free: Export downloads a backup that includes the mini-app data, no upgrade prompt.
   await p.evaluate(() => window.MHSApp.nav('settings')); await p.waitForTimeout(400);
-  await p.locator('button[data-mhs-lock]').scrollIntoViewIfNeeded(); await p.locator('button[data-mhs-lock]').click();
-  await p.locator('dialog.mhs-gate[open]').waitFor();
-  assert.match(await p.locator('dialog.mhs-gate').innerText(), /Export & Import/);
-  await p.keyboard.press('Escape'); await p.waitForTimeout(300);
-  await p.locator('label[data-mhs-lock]').click(); await p.locator('dialog.mhs-gate[open]').waitFor(); await p.keyboard.press('Escape');
-  assert.equal(await p.locator('mhs-plans .mhs-plan').count(), 3);
-
-  // Pro: Export downloads a backup that includes the mini-app data
-  await p.evaluate(() => { localStorage.setItem('mhs:pro', '1'); document.dispatchEvent(new Event('mhs:pro-change')); });
-  assert.equal(await p.evaluate(() => window.MHSGate.has('backup')), true);
-  const [dl] = await Promise.all([p.waitForEvent('download'), p.locator('button[data-mhs-lock]').click()]);
+  assert.equal(await p.evaluate(() => window.MHSGate.has('backup')), true, 'backup is free');
+  await p.locator('button[data-mhs-lock]').first().scrollIntoViewIfNeeded();
+  const [dl] = await Promise.all([p.waitForEvent('download'), p.locator('button[data-mhs-lock]').first().click()]);
+  assert.equal(await p.locator('dialog.mhs-gate[open]').count(), 0, 'no upgrade prompt');
   const json = JSON.parse(require('node:fs').readFileSync(await dl.path(), 'utf8'));
   assert.equal(json.x.notes.length, 1); assert.equal(json.x.hisab.books.length, 2);
-  await p.evaluate(() => localStorage.removeItem('mhs:pro'));
 
   // Widget with the app open: check-in is applied through the app (live)
   const w = await ctx.newPage(); w.on('pageerror', e => errs.push('widget: ' + e.message));

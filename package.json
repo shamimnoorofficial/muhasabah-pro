@@ -18,13 +18,13 @@
   },
   "type": "module",
   "name": "muhasabah-pro",
-  "version": "1.5.0",
+  "version": "2.0.0",
   "private": true,
   "scripts": {
     "test": "node tests/penalties.cjs && node tests/qibla.cjs && node tests/lemonsqueezy.mjs && node tests/push.mjs",
     "check": "npm run typecheck && npm test && npm run test:ui",
     "test:push": "node tests/push.mjs",
-    "test:ui": "npm run -s test:startup && npm run -s test:languages && npm run -s test:celebrate && npm run -s test:donate && npm run -s test:flow && npm run -s test:settings && npm run -s test:journal && npm run -s test:home && npm run -s test:suite && npm run -s test:growth",
+    "test:ui": "npm run -s test:startup && npm run -s test:languages && npm run -s test:celebrate && npm run -s test:donate && npm run -s test:flow && npm run -s test:settings && npm run -s test:journal && npm run -s test:home && npm run -s test:suite && npm run -s test:growth && npm run -s test:prayer",
     "typecheck": "tsc --noEmit",
     "test:startup": "node tests/startup.cjs",
     "test:celebrate": "node tests/celebrate.cjs",
@@ -38,6 +38,7 @@
     "test:home": "node tests/home-actions.cjs",
     "test:suite": "node tests/suite.cjs",
     "test:growth": "node tests/growth.cjs",
+    "test:prayer": "node tests/prayer-accuracy.cjs",
     "screenshots": "node tools/screenshots/capture.cjs",
     "test:experience": "node tests/experience.cjs",
     "test:seerah": "node tests/seerah.mjs && node tests/seerah.cjs"

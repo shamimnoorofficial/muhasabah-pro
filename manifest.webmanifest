@@ -218,7 +218,7 @@
       "sizes": "1080x1920",
       "type": "image/webp",
       "form_factor": "narrow",
-      "label": "The Holy Quran, searchable offline — All 114 surahs, bookmarks and diacritics-free search"
+      "label": "The Holy Quran, searchable offline — Uthmani or Indo-Pak mushaf script, 114 surahs offline"
     },
     {
       "src": "/assets/screenshots/16-hadith.webp",
@@ -254,6 +254,13 @@
       "type": "image/webp",
       "form_factor": "narrow",
       "label": "A tasbih that feels real — Vibration, targets, rounds and history"
+    },
+    {
+      "src": "/assets/screenshots/22-seerah.webp",
+      "sizes": "1080x1920",
+      "type": "image/webp",
+      "form_factor": "narrow",
+      "label": "Read the Seerah. Keep it with you. — Attributed source, reading languages and offline passages"
     },
     {
       "src": "/assets/screenshots/21-pro.webp",
@@ -309,7 +316,7 @@
       "sizes": "1920x1080",
       "type": "image/webp",
       "form_factor": "wide",
-      "label": "The Holy Quran, searchable offline — All 114 surahs, bookmarks and diacritics-free search"
+      "label": "The Holy Quran, searchable offline — Uthmani or Indo-Pak mushaf script, 114 surahs offline"
     },
     {
       "src": "/assets/screenshots/w-19-duas-names.webp",
@@ -459,6 +466,13 @@
       "label": "সত্যিকারের অনুভূতির তাসবিহ — কম্পন, লক্ষ্য, রাউন্ড ও ইতিহাস"
     },
     {
+      "src": "/assets/screenshots/22-seerah.bn.webp",
+      "sizes": "1080x1920",
+      "type": "image/webp",
+      "form_factor": "narrow",
+      "label": "নবীজির জীবনচরিত, আপনার সঙ্গে — মূল উৎস, পড়ার ভাষা ও অফলাইন পাঠাংশ"
+    },
+    {
       "src": "/assets/screenshots/21-pro.bn.webp",
       "sizes": "1080x1920",
       "type": "image/webp",
@@ -520,20 +534,6 @@
       "type": "image/webp",
       "form_factor": "wide",
       "label": "মাসনুন দোয়া ও আল্লাহর ৯৯ নাম — হিসনুল মুসলিম ধাঁচে — অর্থ, সূত্র ও বুকমার্কসহ"
-    },
-    {
-      "src": "/assets/screenshots/22-seerah.webp",
-      "sizes": "1080x1920",
-      "type": "image/webp",
-      "form_factor": "narrow",
-      "label": "Seerah reader with source attribution and offline downloads"
-    },
-    {
-      "src": "/assets/screenshots/22-seerah.bn.webp",
-      "sizes": "1080x1920",
-      "type": "image/webp",
-      "form_factor": "narrow",
-      "label": "মূল উৎস ও অফলাইন ডাউনলোডসহ সীরাহ রিডার"
     }
   ],
   "shortcuts": [
@@ -676,7 +676,7 @@
     },
     {
       "platform": "webapp",
-      "url": "https://muhasabah-pro.app/manifest.webmanifest"
+      "url": "https://muhasabah-pro.netlify.app/manifest.webmanifest"
     }
   ],
   "prefer_related_applications": false,

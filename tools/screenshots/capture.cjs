@@ -31,7 +31,7 @@ const EMOJI_CSS = `@import url('https://fonts.googleapis.com/css2?family=Noto+Co
 body,button,input,select,textarea,dialog,dialog *:not(.num):not([lang=ar]):not(.ar){font-family:Inter,"Noto Sans Bengali",system-ui,sans-serif,"Noto Color Emoji"!important}
 [style*="font-display"],h1,h2,.mhs-ps-headline{font-family:Sora,"Noto Sans Bengali",system-ui,sans-serif,"Noto Color Emoji"!important}
 .num,[class*="font-mono"],.mhs-ps-s,.mhs-ps-e,.mhs-ps-cd,.mhs-ph-row .tm,.mhs-ph-row .cd,.wg-pt .tm,.wg-pt .cd,.wg-pt-cd{font-family:"JetBrains Mono","Noto Sans Bengali",ui-monospace,monospace,"Noto Color Emoji"!important}
-.mhs-kh-ar,.mhs-rf-ar,.mhs-am-ar,.mhs-q-sura .ar,.mhs-q-ayah .ar,.mhs-w-ar,.mhs-kh-name .ar,.mhs-zk-ar,.wg-zk-ar,.wg-rem .ar{font-family:Amiri,"Noto Naskh Arabic",serif!important}
+.mhs-kh-ar,.mhs-rf-ar,.mhs-am-ar,.mhs-q-sura .ar,.mhs-w-ar,.mhs-kh-name .ar,.mhs-zk-ar,.wg-zk-ar,.wg-rem .ar{font-family:Amiri,"Noto Naskh Arabic",serif!important}
 .mhs-dn-pill,#mhs-install-bar,#mhs-backup-bar,.mhs-toast,.mhs-pt-toast,dialog.mhs-eng{display:none!important}
 *{caret-color:transparent!important}`;
 
@@ -104,7 +104,7 @@ const SHOTS = [
   ['12-journal', 'A journal for<br>every day', 'Autosave with clear “Saved ✓” confirmation and streaks', 'প্রতিদিনের<br>দিনলিপি', 'অটোসেভ, স্পষ্ট “সংরক্ষিত ✓” নিশ্চয়তা ও ধারা', async p => { await p.evaluate(() => window.MHSJournal.open()); await p.waitForTimeout(900); }],
   ['13-notes', 'Notes like Keep,<br>made for you', 'Text, checklists, photos, audio, video — and a calculator', 'Keep-এর মতো নোট,<br>আপনার জন্য', 'লেখা, চেকলিস্ট, ছবি, অডিও, ভিডিও — এবং ক্যালকুলেটর', async p => { await p.evaluate(() => window.MHSNotes.open()); await p.waitForTimeout(700); }],
   ['14-ledger', 'হিসাব খাতা —<br>your pocket ledger', 'Customer dues, daily cash & payroll with running balances', 'হিসাব খাতা —<br>পকেটের লেজার', 'বাকির খাতা, দৈনিক ক্যাশ ও বেতন — চলতি ব্যালেন্সসহ', async p => { await p.evaluate(() => window.MHSHisab.open({ bookId: 'b2' })); await p.waitForTimeout(700); }],
-  ['15-quran', 'The Holy Quran,<br>searchable offline', 'All 114 surahs, bookmarks and diacritics-free search', 'পবিত্র কুরআন —<br>অফলাইনে খুঁজুন', '১১৪ সূরা, বুকমার্ক ও হরকতবিহীন খোঁজ', async p => { await p.evaluate(() => window.MHSQuran.open({ surah: 2, ayah: 255 })); await p.waitForTimeout(2500); }],
+  ['15-quran', 'The Holy Quran,<br>searchable offline', 'Uthmani or Indo-Pak mushaf script, 114 surahs offline', 'পবিত্র কুরআন —<br>অফলাইনে খুঁজুন', '১১৪ সূরা, বুকমার্ক ও হরকতবিহীন খোঁজ', async p => { await p.evaluate(() => window.MHSQuran.open({ surah: 2, ayah: 255 })); await p.waitForTimeout(2500); }],
   ['16-hadith', 'Authentic hadith<br>at your fingertips', 'Bukhari, Muslim and more — with bookmarks and share', 'হাতের মুঠোয়<br>সহিহ হাদিস', 'বুখারী, মুসলিম ও আরও — বুকমার্ক ও শেয়ারসহ', async p => { await p.evaluate(() => window.MHSHadith.open()); await p.waitForTimeout(900); }],
   ['17-wisdom', 'Wisdom of the<br>Prophet ﷺ & scholars', 'Categories, authors, search, bookmarks and your own entries', 'নবী ﷺ ও আলেমদের<br>হিকমাহ', 'বিষয়, বক্তা, খোঁজ, বুকমার্ক ও নিজের লেখা', async p => { await p.evaluate(() => window.MHSWisdomApp.open()); await p.waitForTimeout(1200); }],
   ['18-reminder', 'A reminder for<br>every moment', 'Quran · Hadith · Wisdom — tap to the source, share with one tap', 'প্রতিটি মুহূর্তের<br>স্মরণ', 'কুরআন · হাদিস · হিকমাহ — উৎসে যান, এক ট্যাপে শেয়ার', async p => { await p.evaluate(() => window.MHSReminder.open()); await p.waitForTimeout(1200); }],

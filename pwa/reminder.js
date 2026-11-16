@@ -104,7 +104,7 @@
       if(a.kind==="seerah"&&!a._localizing&&window.MHSSeerah){a._localizing=true;window.MHSSeerah.localize(a.id).then(function(p){if(!sh||!cur||cur.id!==a.id)return;cur=Object.assign({},a,{text:p.text,src:a.src+(p.machineTranslated?" · "+(X.lang()==="bn"?"স্বয়ংক্রিয় অনুবাদ":"Machine translation"):"")});render();}).catch(function(){});}
 
       var card = X.el("div", { class: "mhs-rf-card", role: "region", "aria-live": "polite" }, [
-        X.el("div", { class: "mhs-rf-type", text: ({seerah:"Seerah",journal:X.lang()==="bn"?"ডায়েরি":"Diary"})[a.kind] || t(a.kind) }),
+        X.el("div", { class: "mhs-rf-type", text: ({seerah:X.lang()==="bn"?"সীরাত":X.lang()==="ar"?"السيرة":"Seerah",journal:X.lang()==="bn"?"ডায়েরি":X.lang()==="ar"?"اليوميات":"Diary"})[a.kind] || t(a.kind) }),
         a.ar ? X.el("div", { class: "mhs-rf-ar" + (String(a.ar).length>450?" is-collapsed":""), lang: "ar", dir: "rtl", text: a.ar }) : null,
         X.el("div", { class: "mhs-rf-text" + (String(a.text).length>650?" is-collapsed":""), text: a.text }),
         a.ctx ? X.el("p", { class: "mhs-rf-ctx", text: t("context") + ": " + a.ctx }) : null,
@@ -170,9 +170,9 @@
 
     }
     if(configuring) {
-      var sourceBox=X.el("fieldset",{class:"mhs-feed-sources"},[X.el("legend",{text:X.lang()==="bn"?"পোস্টের উৎস":"Post sources"})]);
+      var sourceBox=X.el("fieldset",{class:"mhs-feed-sources"},[X.el("legend",{text:X.lang()==="bn"?"পোস্টের উৎস":X.lang()==="ar"?"مصادر المنشورات":"Post sources"})]);
       var sources=X.get("feedSources",{verse:true,hadith:true,quote:true,seerah:true,journal:false});
-      ["verse","hadith","quote","seerah","journal"].forEach(function(k){var cb=X.el("input",{type:"checkbox",checked:!!sources[k],on:{change:function(){sources[k]=cb.checked;X.set("feedSources",sources);cur=null;historyItems=[];historyAt=-1;render();}}});sourceBox.appendChild(X.el("label",{},[cb,({verse:t("verse"),hadith:t("hadith"),quote:t("quote"),seerah:"Seerah",journal:X.lang()==="bn"?"ব্যক্তিগত ডায়েরি":"Private diary"})[k]]));});
+      ["verse","hadith","quote","seerah","journal"].forEach(function(k){var cb=X.el("input",{type:"checkbox",checked:!!sources[k],on:{change:function(){sources[k]=cb.checked;X.set("feedSources",sources);cur=null;historyItems=[];historyAt=-1;render();}}});sourceBox.appendChild(X.el("label",{},[cb,({verse:t("verse"),hadith:t("hadith"),quote:t("quote"),seerah:X.lang()==="bn"?"সীরাত":X.lang()==="ar"?"السيرة":"Seerah",journal:X.lang()==="bn"?"ব্যক্তিগত ডায়েরি":X.lang()==="ar"?"يوميات خاصة":"Private diary"})[k]]));});
       b.appendChild(sourceBox); b.appendChild(notifCard());
     }
   }

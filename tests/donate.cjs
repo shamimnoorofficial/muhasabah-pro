@@ -11,7 +11,9 @@ const STUB = `window.Stripe=function(pk){return{elements:function(){return{creat
   await p.addInitScript(() => { if (!localStorage.getItem('muhasabah:data:v1')) localStorage.setItem('muhasabah:data:v1', JSON.stringify({ lang: 'en', onboarded: true, habits: [], ledger: [] })); });
   await p.goto(base + '/?tab=dashboard'); await p.locator('#mhs-startup').waitFor({ state: 'detached' });
   const c = p.getByRole('button', { name: 'Continue', exact: true }); await c.waitFor({ timeout: 4000 }).catch(() => {}); if (await c.count()) await c.click();
-  const pill = p.locator('#mhs-donate-pill'); await pill.waitFor();
+  // The floating pill was retired in favour of the header Donate button, which opens the same sheet.
+  assert.equal(await p.locator('#mhs-donate-pill').isVisible(), false, 'floating donate pill stays hidden');
+  const pill = p.locator('.mhs-pro-btn:visible').first(); await pill.waitFor();
   assert.equal((await pill.innerText()).trim(), "Donate");
   await p.waitForTimeout(900); await p.screenshot({ path: '/tmp/dn-pill.png' });
   await pill.click(); await p.getByRole('dialog', { name: 'Support Muhasabah' }).waitFor();
@@ -29,7 +31,7 @@ const STUB = `window.Stripe=function(pk){return{elements:function(){return{creat
   await p.route('https://js.stripe.com/v3/', r => r.fulfill({ contentType: 'application/javascript', body: STUB }));
   await p.reload(); await p.locator('#mhs-startup').waitFor({ state: 'detached' });
   { const c2 = p.getByRole('button', { name: 'Continue', exact: true }); await c2.waitFor({ timeout: 3000 }).catch(() => {}); if (await c2.count()) await c2.click(); }
-  await p.locator('#mhs-donate-pill').click();
+  await p.locator('.mhs-pro-btn:visible').first().click();
   await p.locator('[data-stub=cardNumber]').waitFor();
   await p.getByRole('button', { name: '$25' }).click();
   assert.match(await p.locator('.mhs-dn-go').innerText(), /Donate \$25/);
@@ -46,7 +48,7 @@ const STUB = `window.Stripe=function(pk){return{elements:function(){return{creat
 
   // Bengali
   await p.evaluate(() => { document.documentElement.lang = 'bn'; }); await p.waitForTimeout(100);
-  assert.match(await p.locator('#mhs-donate-pill').innerText(), /দান করুন/);
+  assert.match(await p.locator('#mhs-donate-pill').getAttribute('aria-label'), /দান করুন/);
   assert.deepEqual(errs, []);
   console.log('donate ok'); await b.close();
 })().catch(e => { console.error(e); process.exit(1); });
