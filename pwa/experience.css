@@ -23,3 +23,39 @@ mhs-feed-home.mhs-home-stack{display:flex;flex-direction:column;gap:1.5rem;min-w
 .mhs-home-app:focus-visible,.mhs-home-summary-link:focus-visible{outline:2px solid hsl(var(--primary));outline-offset:-3px}
 .mhs-home-app:active{transform:scale(.97)}
 @media(max-width:400px){.mhs-home-app-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.mhs-home-summary-link{padding:1rem;gap:1rem}.mhs-home-stats b{font-size:1.3rem}.mhs-home-apps{padding:1rem}}
+
+/* Compact action rail, anchored to the add button. */
+:root{--mhs-fab-bottom:calc(1rem + env(safe-area-inset-bottom,0px))}
+.mhs-dn-pill{display:none!important}
+.mhs-fab-menu{display:flex!important;flex-direction:column;align-items:stretch!important;grid-template-columns:none!important;width:58px!important;max-height:calc(100dvh - var(--mhs-fab-bottom) - var(--mhs-fab-lift) - 100px);padding:4px!important;gap:.35rem!important;overflow-y:auto;overscroll-behavior:contain;border-radius:1.3rem}
+.mhs-fab-menu:not(.is-open){visibility:hidden}
+.mhs-fab-item button{width:48px;height:48px;min-height:48px!important;padding:4px!important;border-radius:50%;justify-content:center}
+.mhs-fab-item .lbl{display:none}
+.mhs-fab-item small{display:none}.mhs-fab-item .ic{width:36px;height:36px}
+@media(max-width:639px){:root{--mhs-fab-bottom:calc(5rem + env(safe-area-inset-bottom,0px))}nav.side-rail{bottom:0!important;padding-bottom:env(safe-area-inset-bottom,0px)!important;border-radius:1.2rem 1.2rem 0 0!important}main.rail-pad{padding-bottom:calc(10rem + env(safe-area-inset-bottom,0px))!important}}
+/* A quiet, tactile story reader. No automatic advance while reading. */
+.mhs-rf-card{position:relative;display:flex;flex-direction:column;gap:1.1rem;height:clamp(420px,74dvh,660px);min-height:0!important;box-sizing:border-box;overflow:hidden;border:1px solid hsl(var(--primary)/.22)!important;background:radial-gradient(ellipse at 100% 0,hsl(var(--primary)/.13),transparent 65%),hsl(var(--card))!important;box-shadow:0 18px 55px hsl(var(--foreground)/.04);padding-top:2rem!important}
+.mhs-story-progress{display:flex;gap:5px;margin-bottom:.3rem;direction:ltr}.mhs-story-progress span{height:3px;flex:1;border-radius:9px;background:hsl(var(--foreground)/.12)}.mhs-story-progress .is-seen{background:hsl(var(--primary)/.8)}
+.mhs-rf-type{font-size:.7rem!important;letter-spacing:.14em;text-transform:uppercase;color:hsl(var(--primary))!important;font-weight:700}
+.mhs-rf-text{font-size:clamp(1.1rem,3.5vw,1.45rem);line-height:1.85;letter-spacing:0!important}.mhs-rf-src{margin-top:auto;text-align:start;line-height:1.6}.mhs-story-hint{font-size:.7rem;color:hsl(var(--muted-foreground));text-align:center;padding-top:.5rem}
+.mhs-rf-actions{display:flex;align-items:center;justify-content:space-between;margin-top:.7rem!important}.mhs-rf-actions button{border-radius:999px!important;padding:.65rem 1rem!important;font-size:.8rem!important;min-width:44px}
+.mhs-story-enter{animation:mhs-story-in .28s ease-out both}@keyframes mhs-story-in{from{opacity:.3;transform:translateX(14px)}to{opacity:1;transform:none}}
+/* Journal: calm writing surface, clear metadata and calendar markers. */
+.mhs-j-day-extra{padding:1rem;border:1px solid hsl(var(--border));border-radius:1rem;background:hsl(var(--primary)/.035);margin-block:1rem;gap:.65rem}
+.mhs-j-day-extra input,.mhs-j-day-extra select{min-height:44px;min-width:0;font:inherit;font-size:16px}.mhs-j-day-extra input:not([type=date]){flex:1 1 180px}.mhs-j-day-extra button{min-height:44px}
+.mhs-j-paper{line-height:1.95!important;padding:clamp(1rem,4vw,2rem)!important;border-radius:1rem!important;resize:vertical;min-height:36dvh!important;box-shadow:inset 0 0 0 1px hsl(var(--border))}
+.mhs-j-mood-dot{display:block;font-size:10px;line-height:1;color:hsl(var(--primary))}.has-special-day{box-shadow:inset 0 0 0 1px hsl(var(--primary)/.65)}
+.mhs-journal footer{gap:.8rem;flex-wrap:wrap}.mhs-journal footer button{min-height:44px}.mhs-free-features{padding:1.25rem}.mhs-free-features p{margin-top:.5rem;line-height:1.7;color:hsl(var(--muted-foreground))}
+#mhs-collection-picker input:focus-visible,#mhs-collection-picker select:focus-visible,.mhs-j-day-extra :focus-visible,.mhs-rf-card:focus-visible{outline:2px solid hsl(var(--primary));outline-offset:3px}
+@media(prefers-reduced-motion:reduce){.mhs-story-enter{animation:none}}
+
+.mhs-story-content{flex:1;min-height:0;overflow-y:auto;overscroll-behavior-y:contain;scrollbar-width:thin;display:flex;flex-direction:column;gap:1rem;padding-inline:2px;overflow-wrap:anywhere}
+.mhs-story-content .mhs-rf-src{flex-shrink:0}.mhs-story-progress{flex-shrink:0}.mhs-story-hint{flex-shrink:0;padding:0}
+.mhs-story-actions{flex-shrink:0;flex-wrap:nowrap!important;gap:4px!important;border-top:1px solid hsl(var(--border));padding-top:.8rem;margin-top:0!important}
+.mhs-story-actions button{display:grid;place-items:center;width:44px;height:44px;min-width:44px;padding:10px!important;border:1px solid hsl(var(--border));background:hsl(var(--background)/.45);color:hsl(var(--foreground));cursor:pointer}
+.mhs-story-actions button svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}.mhs-story-actions button:disabled{opacity:.3;cursor:default}.mhs-story-actions .is-reacted{color:#db8196}.mhs-story-actions .is-reacted svg{fill:currentColor}.mhs-story-actions .is-bookmarked{color:hsl(var(--primary))}.mhs-story-actions button:focus-visible,.mhs-story-content:focus-visible{outline:2px solid hsl(var(--primary));outline-offset:-2px}
+[dir=rtl] .mhs-story-prev svg,[dir=rtl] .mhs-story-next svg{transform:rotate(180deg)}
+.mhs-fab-menu{scrollbar-width:none}.mhs-fab-menu::-webkit-scrollbar{display:none}.mhs-fab-item .ic{width:40px;height:40px}.mhs-pt-grid{grid-template-columns:1fr!important}mhs-sync{display:none}
+@media(max-width:360px){.mhs-rf-card{padding:1rem!important;gap:.75rem}.mhs-story-actions button{width:40px;padding:8px!important}}
+
+.mhs-story-content.is-swiping{user-select:none;-webkit-user-select:none;cursor:grabbing}.mhs-story-content{touch-action:pan-y}

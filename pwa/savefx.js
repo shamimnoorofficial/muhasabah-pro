@@ -23,7 +23,7 @@
     if (!reduced()) {
       var el = document.createElement("div"); el.className = "mhs-savefx"; el.setAttribute("aria-hidden", "true");
       el.innerHTML = '<svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
-      (document.querySelector("dialog[open]") || document.body).appendChild(el); setTimeout(function () { el.remove(); }, 950);
+      (opts.host || Array.from(document.querySelectorAll("dialog[open]")).pop() || document.body).appendChild(el); setTimeout(function () { el.remove(); }, 950);
     }
     if (opts.toast !== false) toast(opts.message || t("savedAt", { t: time() }));
     if (opts.haptic !== false) try { navigator.vibrate && navigator.vibrate(14); } catch (e) {}

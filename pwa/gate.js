@@ -73,11 +73,7 @@
     return life && cloud ? "both" : life ? "lifetime" : cloud ? "cloud" : m.pro ? "lifetime" : "free";
   }
   function has(feature) {
-    var need = FEATURES[feature] || "lifetime", tr = tier();
-    if (tr === "both") return true;
-    if (need === "cloud") return tr === "cloud";
-    // Any paid plan unlocks the lifetime set — a Cloud subscriber should never be blocked from exporting.
-    return tr === "lifetime" || tr === "cloud";
+    return true; // All app features are free; account authentication is handled separately.
   }
   function plans() {
     var s = state();
@@ -94,29 +90,9 @@
 
   var dlg = null;
   function prompt(feature) {
-    if (dlg) { try { dlg.close(); } catch (e) {} dlg.remove(); }
-    var need = FEATURES[feature] || "lifetime", p = plans();
-    var list = need === "cloud" ? ["f_server", "f_multi", "f_recover"] : ["f_export", "f_drive", "f_media", "f_csv", "f_analytics"];
-    dlg = X.el("dialog", { class: "mhs-gate", "aria-labelledby": "mhs-gate-h", dir: document.documentElement.dir || "ltr" }, [
-      X.el("div", { class: "mhs-gate-card" }, [
-        X.el("div", { class: "mhs-gate-crest", "aria-hidden": "true" }, [X.icon("lock")]),
-        X.el("div", { class: "mhs-gate-eyebrow", text: t("locked") }),
-        X.el("h2", { id: "mhs-gate-h", text: t(feature) }),
-        X.el("p", { text: t(feature + "B") }),
-        X.el("ul", { class: "mhs-gate-list" }, list.map(function (k) { return X.el("li", null, [X.el("span", { class: "ck", "aria-hidden": "true" }, [X.icon("check")]), t(k)]); })),
-        X.el("div", { class: "mhs-gate-price" }, need === "cloud"
-          ? [X.el("b", { text: price(p.monthly) }), X.el("span", { text: t("perMonth") + " · " + t("cloud") })]
-          : [X.el("b", { text: price(p.lifetime) }), X.el("span", { text: t("once") + " · " + t("life") })]),
-        X.el("button", { type: "button", class: "mhs-gate-go", on: { click: function () { dlg.close(); checkout(); } } }, [t("getPro")]),
-        X.el("button", { type: "button", class: "mhs-gate-later", text: t("notNow"), on: { click: function () { dlg.close(); } } })
-      ])
-    ]);
-    dlg.addEventListener("click", function (e) { if (e.target === dlg) dlg.close(); });
-    dlg.addEventListener("close", function () { var d = dlg; setTimeout(function () { d && d.remove(); }, 200); dlg = null; });
-    document.body.appendChild(dlg);
-    try { dlg.showModal(); } catch (e) { dlg.setAttribute("open", ""); }
-    X.haptic(10);
+    X.toast(X.lang() === "bn" ? "সব ফিচার বিনামূল্যে ব্যবহার করুন" : X.lang() === "ar" ? "جميع الميزات مجانية" : "All features are free");
   }
+
   function require(feature, fn) {
     if (has(feature)) { if (fn) fn(); return true; }
     prompt(feature);
@@ -134,27 +110,12 @@
 
   /* <mhs-plans> — clear Free vs Pro Lifetime vs Cloud Monthly comparison in Settings → Backup. */
   function renderPlans(host) {
-    var p = plans(), tr = tier();
-    function col(key, priceText, sub, feats, cls, cta) {
-      var isCur = key === "free" ? tr === "free" : key === "life" ? tr === "lifetime" || tr === "both" : tr === "cloud" || tr === "both";
-      return X.el("div", { class: "mhs-plan " + cls + (isCur ? " is-current" : "") }, [
-        cls === "is-life" ? X.el("span", { class: "mhs-plan-flag", text: t("popular") }) : null,
-        X.el("div", { class: "mhs-plan-name", text: t(key) }),
-        X.el("div", { class: "mhs-plan-price" }, [X.el("b", { text: priceText }), X.el("span", { text: sub })]),
-        X.el("ul", null, feats.map(function (f) { return X.el("li", null, [X.el("span", { class: "ck", "aria-hidden": "true" }, [X.icon("check")]), t(f)]); })),
-        isCur ? X.el("div", { class: "mhs-plan-cur", text: "✓ " + t("current") }) : cta
-      ]);
-    }
-    var go = function (label) { return X.el("button", { type: "button", class: "mhs-plan-go", text: label, on: { click: function () { checkout(); } } }); };
-    host.replaceChildren(X.el("section", { class: "panel mhs-plans", "aria-labelledby": "mhs-plans-h", dir: X.lang() === "ar" ? "rtl" : "ltr" }, [
-      X.el("div", { class: "mhs-plans-head" }, [X.el("h3", { id: "mhs-plans-h", text: t("compareTitle") }), X.el("p", { text: t("compareSub") })]),
-      X.el("div", { class: "mhs-plans-grid" }, [
-        col("free", t("freePrice"), t("freeSub"), ["f_local", "f_restore", "f_offline"], "is-free", null),
-        col("life", price(p.lifetime), t("once") + " · " + t("lifeSub"), ["f_export", "f_drive", "f_media", "f_csv", "f_analytics"], "is-life", go(t("getPro"))),
-        col("cloud", price(p.monthly) + t("perMonth"), t("cloudSub"), ["f_server", "f_multi", "f_recover"], "is-cloud", go(t("getPro")))
-      ])
+    host.replaceChildren(X.el("section", {class:"panel mhs-free-features"}, [
+      X.el("h3", {text:X.lang()==="bn"?"সবার জন্য বিনামূল্যে":X.lang()==="ar"?"مجاني للجميع":"Free for everyone"}),
+      X.el("p", {text:X.lang()==="bn"?"ব্যাকআপ, ইমপোর্ট, এক্সপোর্ট ও সব ফিচার ব্যবহার করুন — সাবস্ক্রিপশন ছাড়াই।":X.lang()==="ar"?"النسخ الاحتياطي والاستيراد والتصدير وجميع الميزات دون اشتراك.":"Back up, import, export and use every feature without a subscription."})
     ]));
   }
+
   if (window.customElements && !customElements.get("mhs-plans")) {
     customElements.define("mhs-plans", class extends HTMLElement {
       connectedCallback() {

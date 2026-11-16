@@ -89,19 +89,5 @@
   };
   customElements.define("mhs-prayer-strip", Strip);
 
-  /* Mount at the very top of Home. The dashboard is React-rendered; we insert a foreign node
-   * as its first child and re-insert whenever the dashboard is re-created. */
-  function mount() {
-    var main = document.querySelector("main"); if (!main) return;
-    var home = main.querySelector(".space-y-8"); if (!home) return;
-    if (!home.querySelector('[data-tour="home-check"]') && !home.querySelector("mhs-overview")) return; // not the Home tab
-    if (home.firstElementChild && home.firstElementChild.tagName === "MHS-PRAYER-STRIP") return;
-    var old = document.querySelector("mhs-prayer-strip"); if (old) old.remove();
-    var el = document.createElement("mhs-prayer-strip"); el.setAttribute("lang", document.documentElement.lang || "en");
-    home.insertBefore(el, home.firstChild);
-  }
-  var pending = false;
-  new MutationObserver(function () { if (pending) return; pending = true; requestAnimationFrame(function () { pending = false; mount(); }); })
-    .observe(document.getElementById("root") || document.body, { childList: true, subtree: true });
-  mount();
+  // Prayer times remain available in the dedicated Prayer app.
 })();

@@ -6,9 +6,9 @@
   if (window.MHSBookmarks) return;
   var X = window.MHSX;
   var t = X.tr({
-    en: { title: "Bookmarks", sub: "Everything you saved, in one place", menu: "Bookmarks", menuSub: "Saved ayahs, hadith, duas, names & wisdom", all: "All", quran: "Quran", hadith: "Hadith", reminder: "Reminder", dua: "Duas", amol: "Amol", name: "99 Names", wisdom: "Wisdom", none: "Nothing saved yet. Tap the bookmark or ♡ on any ayah, hadith, dua or saying.", search: "Search your bookmarks…", open: "Open", remove: "Remove", ayah: "Ayah {s}:{a}", n: "{n} saved" },
-    bn: { title: "বুকমার্ক", sub: "আপনার সংরক্ষিত সবকিছু এক জায়গায়", menu: "বুকমার্ক", menuSub: "সংরক্ষিত আয়াত, হাদিস, দোয়া, নাম ও হিকমাহ", all: "সব", quran: "কুরআন", hadith: "হাদিস", reminder: "স্মরণ", dua: "দোয়া", amol: "আমল", name: "৯৯ নাম", wisdom: "হিকমাহ", none: "এখনো কিছু সংরক্ষিত নেই। যেকোনো আয়াত, হাদিস, দোয়া বা বাণীতে বুকমার্ক বা ♡ চাপুন।", search: "বুকমার্কে খুঁজুন…", open: "খুলুন", remove: "মুছুন", ayah: "আয়াত {s}:{a}", n: "{n}টি সংরক্ষিত" },
-    ar: { title: "المحفوظات", sub: "كل ما حفظته في مكان واحد", menu: "المحفوظات", menuSub: "آيات وأحاديث وأدعية وأسماء وحِكم", all: "الكل", quran: "القرآن", hadith: "الحديث", reminder: "تذكرة", dua: "الأدعية", amol: "الأعمال", name: "الأسماء", wisdom: "الحكمة", none: "لا محفوظات بعد.", search: "ابحث…", open: "افتح", remove: "إزالة", ayah: "آية {s}:{a}", n: "{n} محفوظ" }
+    en: { title: "Bookmarks", sub: "Everything you saved, in one place", menu: "Bookmarks", menuSub: "Saved ayahs, hadith, duas, names & wisdom", all: "All", quran: "Quran", hadith: "Hadith", reminder: "Reminder", dua: "Duas", amol: "Amol", name: "99 Names", wisdom: "Wisdom", seerah:"Seerah", journal:"Diary", none: "Nothing saved yet. Tap the bookmark or ♡ on any ayah, hadith, dua or saying.", search: "Search your bookmarks…", open: "Open", remove: "Remove", ayah: "Ayah {s}:{a}", n: "{n} saved" },
+    bn: { title: "বুকমার্ক", sub: "আপনার সংরক্ষিত সবকিছু এক জায়গায়", menu: "বুকমার্ক", menuSub: "সংরক্ষিত আয়াত, হাদিস, দোয়া, নাম ও হিকমাহ", all: "সব", quran: "কুরআন", hadith: "হাদিস", reminder: "স্মরণ", dua: "দোয়া", amol: "আমল", name: "৯৯ নাম", wisdom: "হিকমাহ", seerah:"সীরাহ", journal:"ডায়েরি", none: "এখনো কিছু সংরক্ষিত নেই। যেকোনো আয়াত, হাদিস, দোয়া বা বাণীতে বুকমার্ক বা ♡ চাপুন।", search: "বুকমার্কে খুঁজুন…", open: "খুলুন", remove: "মুছুন", ayah: "আয়াত {s}:{a}", n: "{n}টি সংরক্ষিত" },
+    ar: { title: "المحفوظات", sub: "كل ما حفظته في مكان واحد", menu: "المحفوظات", menuSub: "آيات وأحاديث وأدعية وأسماء وحِكم", all: "الكل", quran: "القرآن", hadith: "الحديث", reminder: "تذكرة", dua: "الأدعية", amol: "الأعمال", name: "الأسماء", wisdom: "الحكمة", seerah:"السيرة", journal:"اليوميات", none: "لا محفوظات بعد.", search: "ابحث…", open: "افتح", remove: "إزالة", ayah: "آية {s}:{a}", n: "{n} محفوظ" }
   });
   function ls(k, d) { try { return JSON.parse(localStorage.getItem(k) || "null") || d; } catch (e) { return d; } }
   function lsSet(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
@@ -48,7 +48,7 @@
     kinds.forEach(function (k) { var n = k === "all" ? rows.length : rows.filter(function (r) { return r.kind === k; }).length; if (k !== "all" && !n) return; chips.appendChild(X.el("button", { type: "button", role: "tab", class: "mhs-chip" + (kind === k ? " is-on" : ""), text: t(k) + " · " + X.num(n), on: { click: function () { kind = k; render(); } } })); });
     b.appendChild(chips);
     var names=window.MHSX.get("collections",{names:[]}).names,selected="";
-    var cs=X.el("select",{"aria-label":"Collection"},[X.el("option",{value:"",text:X.lang()==="bn"?"সব কালেকশন":"All collections"})].concat(names.map(function(n){return X.el("option",{value:n,text:n});})));
+    var cs=X.el("select",{"aria-label":X.lang()==="bn"?"কালেকশন":X.lang()==="ar"?"المجموعة":"Collection"},[X.el("option",{value:"",text:X.lang()==="bn"?"সব কালেকশন":X.lang()==="ar"?"كل المجموعات":"All collections"})].concat(names.map(function(n){return X.el("option",{value:n,text:n});})));
     cs.onchange=function(){selected=cs.value;draw();};b.appendChild(cs);
     var box = window.MHSSearch.box({ ns: "bookmarks", placeholder: t("search"), value: q, onQuery: function (v) { q = v; draw(); } });
     b.appendChild(box.el);
@@ -72,7 +72,7 @@
       if (!vis.length) { list.appendChild(X.el("p", { class: "mhs-kh-empty", text: t("none") })); return; }
       vis.forEach(function (r) {
         var row = X.el("div", { class: "mhs-mini-row", role: "button", tabindex: "0", on: { click: function (e) { if (e.target.closest && e.target.closest(".rm")) return; sh.close(); setTimeout(r.go, 120); }, keydown: function (e) { if (e.key === "Enter") { sh.close(); setTimeout(r.go, 120); } } } }, [
-          X.el("span", { class: "mhs-mini-num", text: { quran: "📖", hadith: "📚", reminder: "💡", dua: "🤲", amol: "⭐", name: "✨", wisdom: "🕯️" }[r.kind] }),
+          X.el("span", { class: "mhs-mini-num", text: { quran: "📖", hadith: "📚", reminder: "💡", dua: "🤲", amol: "⭐", name: "✨", wisdom: "🕯️", seerah:"📖", journal:"✍" }[r.kind] }),
           X.el("div", { class: "txt" }, [X.el("b", { html: qq ? SR.highlight(r.title, qq) : X.esc(r.title) }), X.el("small", { text: (r.sub || "") + " · " + t(r.kind) })]),
           X.el("button", { type: "button", class: "mhs-mini-ib rm", "aria-label": t("remove"), title: t("remove"), on: { click: function (e) { e.stopPropagation(); r.remove(); render(); } } }, [sh.icon("M18 6 6 18|M6 6l12 12")])
         ]);

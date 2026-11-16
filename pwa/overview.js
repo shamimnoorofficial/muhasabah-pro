@@ -21,7 +21,7 @@
       i_strong: "Strongest: {s}.", i_start: "Start small: tick one habit, say SubhanAllah ×33, read one ayah.", streak: "🔥 {n}-day streak", tap: "Open" },
     bn: { eyebrow: "৩৬০° মুহাসাবা", title: "জীবনের হিসাব", sub: "সব মডিউল, এক নজরে সৎ চিত্র", index: "মুহাসাবা সূচক",
       nafs: "নফস", nafsS: "আত্মনিয়ন্ত্রণ", qalb: "কলব", qalbS: "হৃদয় ও জিকির", ruh: "রূহ", ruhS: "আত্মা ও ইবাদত",
-      habits: "অভ্যাস", todo: "করণীয়", notes: "নোট", hisab: "হিসাব", zikr: "জিকির", quran: "কুরআন", amol: "আমল", journal: "দিনলিপি", prayer: "নামাজ", essential: "প্রয়োজনীয় আমল", knowledge: "দোয়া ও হিকমাহ", bookmarks: "বুকমার্ক",
+      habits: "অভ্যাস", todo: "করণীয়", notes: "নোট", hisab: "লেজার", zikr: "জিকির", quran: "কুরআন", amol: "আমল", journal: "দিনলিপি", prayer: "নামাজ", essential: "প্রয়োজনীয় আমল", knowledge: "দোয়া ও হিকমাহ", bookmarks: "বুকমার্ক",
       prayerV: "{d}/৫ সময়মতো", essentialV: "আজ {d}/{n}", knowledgeV: "এ সপ্তাহে {n} পড়া", bookmarksV: "{n}টি সংরক্ষিত", share: "অগ্রগতি শেয়ার", shareTitle: "🔥 মুহাসাবা-প্রোতে {n} দিনের ধারা", shareBody: "মুহাসাবা সূচক {i}% · নফস {nafs}% · কলব {qalb}% · রূহ {ruh}% · আজ {d}/{n} অভ্যাস। আলহামদুলিল্লাহ।",
       done: "আজ {d}/{n}", open: "{n}টি বাকি", notesV: "{n}টি নোট", recv: "আপনার পাওনা", net: "এ মাসের নিট", zikrV: "আজ {n}", quranV: "এ সপ্তাহে {n} আয়াত", amolV: "আজ {d}/{n}", journalV: "এ সপ্তাহে {n} দিন",
       heat: "৭ দিনের হিসাব", heat30: "৩০ দিনের হিসাব", d7: "৭ দিন", d30: "৩০ দিন", locked: "প্রো",
