@@ -46,10 +46,148 @@
   function deleteCollection(n){var c=collections();c.names=c.names.filter(function(x){return x!==n;});if(!c.names.length)c.names=['Saved'];Object.keys(c.items).forEach(function(k){if(c.items[k].collection===n)c.items[k].collection=c.names[0];});X.set('collections',c);}
   window.MHSCollections={choose:choose,names:function(){return collections().names.slice();},label:cname,rename:renameCollection,removeCollection:deleteCollection,has:function(id){return !!collections().items[id];},collect:function(){var c=collections();return Object.keys(c.items).map(function(id){var i=c.items[id];return Object.assign({},i,{go:function(){if(i.kind==='journal')window.MHSJournal.open(i.day);else if(i.kind==='seerah')window.MHSSeerah.open({page:i.page,edition:i.edition||'english-issam-diab-v1'});else if(i.kind==='quran')window.MHSQuran.open({surah:i.s,ayah:i.a});else if(i.kind==='hadith')window.MHSHadith.open({book:i.b,number:i.n});else if(i.kind==='wisdom')window.MHSWisdomApp.open({id:i.sourceId});else if(['dua','amol','name'].indexOf(i.kind)>=0)window.MHSKnowledge.open({tab:{dua:'duas',amol:'amol',name:'names'}[i.kind],id:i.sourceId});else window.MHSReminder.open({id:id.slice(1)});},remove:function(){var c=collections();delete c.items[id];X.set('collections',c);}});});}};
 
+  /* ---------- Shared top navigation for every mini-app ----------
+   * The same icon bar as the Seerah reader: Contents · Search · Bookmarks · Settings · Download,
+   * always in that order, followed by any app-specific action (calculator, add your own…).
+   * Each app only shows the items that make sense for it. */
+  var NAV_ICON={toc:'M8 6h13|M8 12h13|M8 18h13|M3 6h.01|M3 12h.01|M3 18h.01',search:'M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14Z|M21 21l-4.3-4.3',marks:'M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2Z',settings:gear,offline:down};
+  var NAV_ORDER=['toc','search','marks','settings','offline'];
+  function navLabel(k,id){
+    if(k==='toc')return tr('Contents','সূচিপত্র','الفهرس');
+    if(k==='search')return id==='mhs-quran'?tr('Search the Quran','কুরআনে খুঁজুন','ابحث في القرآن'):id==='mhs-hadith'?tr('Search hadith','হাদিস খুঁজুন','ابحث في الحديث'):tr('Search','খুঁজুন','بحث');
+    if(k==='marks')return tr('Bookmarks','বুকমার্ক','المحفوظات');
+    if(k==='settings')return tr('Settings','সেটিংস','الإعدادات');
+    return tr('Download for offline','অফলাইনের জন্য ডাউনলোড','تنزيل دون اتصال');
+  }
+  function Lx(o){if(!o)return '';if(typeof o==='string')return o;return o[X.lang()]||o.en||o.bn||'';}
+  function bodyOf(d){return d.querySelector('.mhs-mini-body');}
+  /* Focus the app's own search field (after an optional re-render). */
+  function focusSearch(d,before){
+    if(before)before();
+    var n=0;(function find(){var b=bodyOf(d),i=b&&b.querySelector('input[type=search],input[role=searchbox],.mhs-search input');
+      if(i){i.scrollIntoView({block:'center',behavior:'smooth'});try{i.focus({preventScroll:true});}catch(e){i.focus();}if(i.select)i.select();return;}
+      if(++n<20)setTimeout(find,80);else X.toast(tr('Search is not available here','এখানে খোঁজার সুবিধা নেই','البحث غير متاح هنا'));})();
+  }
+  /* A contents sheet: titled groups of rows; picking a row closes the sheet and runs it. */
+  function contents(title,groups){
+    var sh=X.sheet({id:'mhs-nav-contents',title:tr('Contents','সূচিপত্র','الفهرس'),sub:title});
+    sh.body.classList.add('mhs-nav-toc');
+    groups.forEach(function(g){
+      if(!g.rows.length)return;
+      if(g.title)sh.body.appendChild(X.el('h3',{class:'mhs-nav-toc-h',text:g.title}));
+      var list=X.el('div',{class:'mhs-nav-toc-list'});
+      g.rows.forEach(function(r){list.appendChild(X.el('button',{type:'button',class:'mhs-nav-toc-row'+(r.on?' is-on':''),'aria-current':r.on?'true':null,on:{click:function(){sh.close();setTimeout(r.run,60);}}},[r.icon?X.el('span',{class:'ic','aria-hidden':'true',text:r.icon}):null,X.el('b',{text:r.label}),r.count!=null?X.el('small',{text:X.num(r.count)}):null]));});
+      sh.body.appendChild(list);
+    });
+    return sh;
+  }
+  /* Contents for apps without their own index: one row per tab of the app. */
+  function tabContents(d){
+    var tabs=[].slice.call(d.querySelectorAll('.mhs-mini-body [role=tab]')),title=(d.querySelector('.mhs-mini-head .ttl')||{}).textContent||'';
+    contents(title,[{rows:tabs.map(function(tb,i){return {label:tb.textContent.trim(),on:tb.getAttribute('aria-selected')==='true'||tb.classList.contains('is-on'),run:function(){var now=d.querySelectorAll('.mhs-mini-body [role=tab]')[i]||tb;now.click();now.scrollIntoView({block:'nearest',inline:'center'});var b=bodyOf(d);if(b)b.scrollTop=0;}};})}]);
+  }
+  function knowledgeContents(){
+    var K=window.MHSKnowledge;if(!K)return;
+    Promise.all(['duas','amol'].map(function(n){return K.load(n).catch(function(){return null;});})).then(function(r){
+      var duas=r[0]||{},amol=r[1]||{};
+      function rows(j,tab,key){return (j[key]||[]).map(function(c){return {icon:c.icon||'•',label:Lx(c),count:(j.items||[]).filter(function(x){return (x.cat||x.g)===c.id;}).length,run:function(){K.open({tab:tab,cat:c.id});}};});}
+      contents(K.t('title'),[
+        {title:'🤲 '+K.t('duas'),rows:[{icon:'📚',label:K.t('all'),count:(duas.items||[]).length,run:function(){K.open({tab:'duas',cat:''});}}].concat(rows(duas,'duas','categories'))},
+        {title:'⭐ '+K.t('amol'),rows:[{icon:'📚',label:K.t('all'),count:(amol.items||[]).length,run:function(){K.open({tab:'amol',cat:''});}}].concat(rows(amol,'amol','groups'))},
+        {title:'✨ '+K.t('names'),rows:[{icon:'✨',label:K.t('names'),count:99,run:function(){K.open({tab:'names'});}}]},
+        {title:'♥ '+K.t('saved'),rows:[{icon:'♥',label:K.t('saved'),run:function(){K.open({tab:'saved'});}}]}
+      ]);
+    });
+  }
+  function wisdomContents(){
+    var W=window.MHSWisdomApp;if(!W)return;
+    W.load().then(function(j){
+      var items=(j.items||[]).concat(W.custom?W.custom():[]),count=function(f){return items.filter(f).length;};
+      var authors=(j.authors||[]).map(function(a){return {label:Lx(a),count:count(function(x){return x.author===a.id;}),run:function(){W.open({author:a.id});}};}).filter(function(r){return r.count>0;}).sort(function(a,b){return b.count-a.count;});
+      contents(W.t('title'),[
+        {rows:[{icon:'📚',label:W.t('all'),count:items.length,run:function(){W.open({all:true});}},{icon:'♥',label:W.t('saved'),run:function(){W.open({saved:true});}}]},
+        {title:W.t('cats'),rows:(j.categories||[]).map(function(c){return {icon:c.icon||'•',label:Lx(c),count:count(function(x){return x.cat===c.id;}),run:function(){W.open({cat:c.id});}};})},
+        {title:W.t('authors'),rows:authors}
+      ]);
+    }).catch(function(){X.toast(tr('Not downloaded yet. Connect to the internet once.','এখনো ডাউনলোড হয়নি। একবার ইন্টারনেট সংযোগ দিন।','لم يُنزَّل بعد. اتصل بالإنترنت مرة.'));});
+  }
+  function reminderContents(){
+    var R=window.MHSReminder;if(!R)return;var cur=R.current?R.current():'all';
+    contents(R.t('title'),[{rows:[['all','🌿',R.t('all')],['verse','📖',R.t('verse')],['hadith','📚',R.t('hadith')],['quote','💡',R.t('quote')],['dua','🤲',R.t('dua')],['favs','♥',R.t('favs')],['mine','✍️',R.t('mine')]].map(function(o){return {icon:o[1],label:o[2],on:cur===o[0],run:function(){R.filter(o[0]);}};})}]);
+  }
+  /* Search across everything the Reminder feed can show; a result opens in the Reminder. */
+  function reminderSearch(){
+    var R=window.MHSReminder;if(!R)return;
+    var sh=X.sheet({id:'mhs-nav-search',title:tr('Search reminders','স্মরণে খুঁজুন','ابحث في التذكير')});
+    sh.body.classList.add('mhs-nav-toc');
+    var input=X.el('input',{type:'search',class:'mhs-nav-search-in',placeholder:tr('Verse, hadith, dua, wisdom…','আয়াত, হাদিস, দোয়া, হিকমাহ…','آية، حديث، دعاء، حكمة…'),'aria-label':tr('Search','খুঁজুন','بحث'),enterkeyhint:'search'});
+    var out=X.el('div',{class:'mhs-nav-toc-list',role:'list'}),status=X.el('p',{class:'mhs-nav-search-status',role:'status'});
+    sh.body.append(input,status,out);
+    var pool=[];(R.load?R.load():Promise.resolve()).then(function(){pool=R.pool().filter(function(x){return x.kind!=='journal';});run();});
+    function norm(v){return String(v||'').toLocaleLowerCase().normalize('NFKD').replace(/[ً-ٰٟۖ-ۭ]/g,'');}
+    function run(){
+      var q=norm(input.value.trim());out.replaceChildren();
+      if(q.length<2){status.textContent=tr('Type at least two letters.','অন্তত দুটি অক্ষর লিখুন।','اكتب حرفين على الأقل.');return;}
+      var hits=pool.filter(function(x){return norm(x.text+' '+(x.src||'')+' '+(x.ar||'')+' '+(x.tags||[]).join(' ')).indexOf(q)>=0;}).slice(0,60);
+      status.textContent=hits.length?tr(hits.length+' results',X.num(hits.length)+'টি ফলাফল',X.num(hits.length)+' نتيجة'):tr('Nothing found.','কিছু পাওয়া যায়নি।','لا نتائج.');
+      hits.forEach(function(h){out.appendChild(X.el('button',{type:'button',class:'mhs-nav-toc-row is-result',role:'listitem',on:{click:function(){sh.close();setTimeout(function(){R.open({id:h.id});},60);}}},[X.el('b',{text:String(h.text).slice(0,140)}),X.el('small',{text:h.src||''})]));});
+    }
+    var tm;input.addEventListener('input',function(){clearTimeout(tm);tm=setTimeout(run,160);});
+    setTimeout(function(){input.focus();},80);
+  }
+  function openMarks(){if(window.MHSBookmarks)window.MHSBookmarks.open();}
+  function readerSettings(d){return function(){settings(d);};}
+  function offlineFor(d){return function(){download(d);};}
+  /* Per-app wiring. `own(button)` names an existing toolbar button the app already renders. */
+  var NAV={
+    'mhs-quran':{toc:function(){window.MHSQuran.show('list');},search:function(){window.MHSQuranSearch&&window.MHSQuranSearch.open();},marks:function(){window.MHSQuran.show('marks');},settings:'reader',offline:true},
+    'mhs-hadith':{toc:function(){window.MHSHadith.show('books');},search:function(){window.MHSHadithSearch&&window.MHSHadithSearch.open();},marks:function(){window.MHSHadith.show('marks');},settings:'reader',offline:true},
+    'mhs-knowledge':{toc:knowledgeContents,search:function(d){focusSearch(d,function(){if(d.querySelector('.mhs-kh-tab.is-on')&&!d.querySelector('.mhs-mini-body input[type=search]'))window.MHSKnowledge.open({tab:'duas'});});},marks:function(){window.MHSKnowledge.open({tab:'saved'});},settings:'reader',offline:true},
+    'mhs-wisdomapp':{toc:wisdomContents,search:function(d){focusSearch(d);},marks:function(){window.MHSWisdomApp.open({saved:true});},settings:'reader',offline:true,keep:function(b){return window.MHSWisdomApp&&b.getAttribute('aria-label')===window.MHSWisdomApp.t('add');}},
+    'mhs-wisdom':{toc:reminderContents,search:reminderSearch,marks:openMarks,settings:'own',offline:true,keep:function(b){return window.MHSReminder&&b.getAttribute('aria-label')===window.MHSReminder.t('add');}},
+    'mhs-zikr':{toc:'tabs'},
+    'mhs-amol':{toc:'tabs',marks:openMarks},
+    'mhs-notes':{toc:'tabs',search:function(d){focusSearch(d);},keepAll:true},
+    'mhs-hisab':{toc:'tabs',keepAll:true},
+    'mhs-bookmarks':{toc:'tabs',search:function(d){focusSearch(d);},keepAll:true},
+    'mhs-prayerhub':{toc:'tabs',settings:'own',keepAll:true},
+    'mhs-essential':{toc:'tabs',search:'auto',marks:openMarks,keepAll:true}
+  };
+  function isSettingsButton(b){var l=b.getAttribute('aria-label')||b.getAttribute('title')||'';return b.classList.contains('mhs-settings-trigger')||/settings|সেটিংস|إعدادات/i.test(l);}
+  function navButton(k,d,run){var l=navLabel(k,d.id),b=X.el('button',{type:'button',class:'mhs-mini-ib mhs-nav-ib','aria-label':l,title:l,on:{click:function(){run(d);}}},[X.icon(NAV_ICON[k])]);b.dataset.navItem=k;if(k==='settings')b.dataset.readerSettings='1';if(k==='offline')b.dataset.offline='1';return b;}
+  function navDecorate(d,spec){
+    var tools=d.querySelector('.mhs-mini-tools');if(!tools)return;
+    if(!tools.dataset.nav)tools.dataset.nav='1';
+    var body=bodyOf(d),have={},extras=[];
+    [].slice.call(tools.children).forEach(function(c){
+      var k=c.dataset.navItem;
+      if(k&&k!=='extra'&&k!=='hide'){if(have[k])c.remove();else have[k]=c;return;}
+      if(k==='extra'){extras.push(c);return;}if(k==='hide')return;
+      // Classify a button the app rendered itself.
+      if(spec.settings==='own'&&!have.settings&&c.tagName==='BUTTON'&&isSettingsButton(c)){c.dataset.navItem='settings';have.settings=c;return;}
+      if((spec.keepAll&&c.tagName==='BUTTON')||(spec.keep&&spec.keep(c))){c.dataset.navItem='extra';extras.push(c);return;}
+      c.dataset.navItem='hide';
+    });
+    NAV_ORDER.forEach(function(k){
+      var want=spec[k];if(!want||have[k])return;
+      var run=null;
+      if(k==='toc')run=want==='tabs'?(body&&body.querySelectorAll('[role=tab]').length>1?tabContents:null):want;
+      else if(k==='search')run=want==='auto'?(body&&body.querySelector('input[type=search]')?function(x){focusSearch(x);}:null):want;
+      else if(k==='settings')run=want==='reader'?function(x){settings(x);}:null;
+      else if(k==='offline')run=function(x){download(x);};
+      else run=want;
+      if(run)have[k]=navButton(k,d,run);
+    });
+    var order=NAV_ORDER.map(function(k){return have[k];}).filter(Boolean).concat(extras);
+    var visible=[].slice.call(tools.children).filter(function(c){return c.dataset.navItem!=='hide';});
+    if(visible.length===order.length&&visible.every(function(c,i){return c===order[i];}))return;
+    order.forEach(function(c){tools.appendChild(c);});
+  }
   // Give all reader mini-apps a single compact settings popover.
   function decorate(dialog) {
     var tools=dialog.querySelector('.mhs-mini-tools');if(!tools)return;
     var id=dialog.id;
+    if(NAV[id])return navDecorate(dialog,NAV[id]);
     if(id==='mhs-collection-picker'||id==='mhs-reader-settings'||id==='mhs-offline-download')return;
     if(['mhs-quran','mhs-hadith','mhs-knowledge','mhs-wisdom-app','mhs-seerah'].indexOf(id)>=0&&!tools.querySelector('[data-reader-settings]')){
       var b=button(tr('Settings','সেটিংস','الإعدادات'),function(){settings(dialog);},gear);b.className='mhs-mini-ib';b.dataset.readerSettings='1';tools.appendChild(b);
@@ -165,7 +303,7 @@
     size.oninput=apply;font.onchange=apply;mushaf.onchange=apply;
     sh.body.append(X.el('label',{class:'mhs-setting-row','for':'mhs-reader-size'},[X.el('span',{text:tr('Text size','অক্ষরের আকার','حجم النص')}),value,size]));
     if(dialog.id==='mhs-quran')sh.body.append(rasmPicker(dialog));
-    if(['mhs-quran','mhs-hadith','mhs-knowledge'].indexOf(dialog.id)>=0)sh.body.append(X.el('label',{class:'mhs-setting-row','for':'mhs-reader-font'},[tr('Arabic typeface','আরবি টাইপফেস','نوع الخط العربي'),font]));
+    if(['mhs-quran','mhs-hadith','mhs-knowledge','mhs-wisdomapp'].indexOf(dialog.id)>=0)sh.body.append(X.el('label',{class:'mhs-setting-row','for':'mhs-reader-font'},[tr('Arabic typeface','আরবি টাইপফেস','نوع الخط العربي'),font]));
     if(dialog.id==='mhs-quran')sh.body.append(X.el('label',{class:'mhs-setting-row','for':'mhs-reader-mushaf'},[tr('Continuous Mushaf layout','একটানা মুসহাফ বিন্যাস','عرض المصحف المتصل'),mushaf]));
     if(dialog.id==='mhs-seerah'&&window.MHSSeerah)window.MHSSeerah.settings(sh.body);
     // Keep search, navigation and app actions in their original toolbar.

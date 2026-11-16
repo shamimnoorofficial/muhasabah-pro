@@ -67,7 +67,7 @@
     dlg.addEventListener("input", function (e) { if (e.target && e.target.tagName === "TEXTAREA") { markDirty("journal", true); p.set("dirty"); } }, true);
     dlg.addEventListener("close", function () { markDirty("journal", false); });
   }
-  new MutationObserver(function () { var d = document.getElementById("mhs-journal") || document.querySelector("dialog.mhs-journal, dialog[aria-label*='Journal' i], dialog[aria-label*='দিনলিপি']"); if (d && d.open) hookJournal(d); })
+  new MutationObserver(function () { var d = document.getElementById("mhs-journal") || document.querySelector("dialog.mhs-journal, dialog[aria-label*='Journal' i], dialog[aria-label*='ডায়েরি']"); if (d && d.open) hookJournal(d); })
     .observe(document.body, { childList: true, subtree: true });
 
   /* ---- Notes · Ledger · Zikr · Essential · Habits/To-Do (via data layer events) ---- */

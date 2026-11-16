@@ -48,7 +48,7 @@ const assert = require('node:assert/strict');
   }
   await page.setViewportSize({ width: 390, height: 844 });
   await page.getByRole('button', { name: 'Feed settings', exact: true }).click();
-  assert.equal(await page.locator('.mhs-feed-sources input').count(), 5);
+  assert.equal(await page.locator('.mhs-feed-sources input').count(), 6);
   assert.equal(await page.locator('.mhs-feed-sources input').last().isChecked(), false);
   await page.locator('.mhs-feed-sources input').first().uncheck();
   assert.equal(await page.evaluate(() => MHSX.get('feedSources').verse), false);
@@ -72,6 +72,7 @@ const assert = require('node:assert/strict');
   await page.locator('#mhs-collection-picker input').fill('Reflections');
   await page.locator('#mhs-collection-picker').getByRole('button', { name: 'Save', exact: true }).click();
   assert.equal(await page.evaluate(() => MHSBookmarks.collect().find(r => r.id === 'j:2026-11-16').collection), 'Reflections');
+  await page.locator('#mhs-collection-picker').waitFor({ state: 'detached' }); await page.waitForTimeout(300);
   await page.evaluate(() => MHSQuickTodo());
   await page.locator('#mhs-quick-todo input').fill('Read after Fajr');
   await page.locator('#mhs-quick-todo button[type=submit]').click();
