@@ -9,9 +9,9 @@
   var S = window.MHSWidgetStore, U = window.MHSWidgetUI, C = window.MHSEssentialCore;
   var $ = function (id) { return document.getElementById(id); };
   var STR = {
-    en: { prayers: "Prayer times", essential: "Essential amol", streak: "Streak", todo: "To-Do", zikr: "Zikr", reminder: "Daily reminder", left: "left", in: "in", next: "Next", now: "Now", ended: "Ended", days: "days", today: "today", setLoc: "Open the app and allow location to see prayer times.", configure: "Configure", noCfg: "No widget configured yet. Open the app → Widget Wizard.", another: "Another", forbidden: "No salah now", tap: "Tap to count" },
-    bn: { prayers: "নামাজের সময়", essential: "প্রয়োজনীয় আমল", streak: "ধারা", todo: "করণীয়", zikr: "জিকির", reminder: "দৈনিক স্মরণ", left: "বাকি", in: "পরে", next: "পরবর্তী", now: "এখন", ended: "শেষ", days: "দিন", today: "আজ", setLoc: "নামাজের সময় দেখতে অ্যাপ খুলে লোকেশন অনুমতি দিন।", configure: "সাজান", noCfg: "এখনো কোনো উইজেট সাজানো হয়নি। অ্যাপ → উইজেট উইজার্ড খুলুন।", another: "আরেকটি", forbidden: "এখন নামাজ নিষিদ্ধ", tap: "গুনতে চাপুন" },
-    ar: { prayers: "مواقيت الصلاة", essential: "الأعمال الأساسية", streak: "السلسلة", todo: "المهام", zikr: "الذكر", reminder: "تذكير يومي", left: "متبقية", in: "بعد", next: "التالية", now: "الآن", ended: "انتهى", days: "أيام", today: "اليوم", setLoc: "افتح التطبيق واسمح بالموقع لعرض المواقيت.", configure: "تخصيص", noCfg: "لم يتم إعداد أداة بعد.", another: "آخر", forbidden: "وقت نهي", tap: "اضغط للعد" }
+    en: { prayers: "Prayer times", essential: "Essential amol", streak: "Streak", todo: "To-Do", zikr: "Zikr", reminder: "Daily reminder", left: "left", in: "in", next: "Next", now: "Now", ended: "Ended", days: "days", today: "today", setLoc: "Open the app and allow location to see prayer times.", configure: "Configure", noCfg: "No widget configured yet. Open the app → Widget.", checklist: "Checklists", allDone: "All done", another: "Another", forbidden: "No salah now", tap: "Tap to count" },
+    bn: { prayers: "নামাজের সময়", essential: "প্রয়োজনীয় আমল", streak: "ধারা", todo: "করণীয়", zikr: "জিকির", reminder: "দৈনিক স্মরণ", left: "বাকি", in: "পরে", next: "পরবর্তী", now: "এখন", ended: "শেষ", days: "দিন", today: "আজ", setLoc: "নামাজের সময় দেখতে অ্যাপ খুলে লোকেশন অনুমতি দিন।", configure: "সাজান", noCfg: "এখনো কোনো উইজেট সাজানো হয়নি। অ্যাপ → উইজেট খুলুন।", checklist: "চেকলিস্ট", allDone: "সব সম্পন্ন", another: "আরেকটি", forbidden: "এখন নামাজ নিষিদ্ধ", tap: "গুনতে চাপুন" },
+    ar: { prayers: "مواقيت الصلاة", essential: "الأعمال الأساسية", streak: "السلسلة", todo: "المهام", zikr: "الذكر", reminder: "تذكير يومي", left: "متبقية", in: "بعد", next: "التالية", now: "الآن", ended: "انتهى", days: "أيام", today: "اليوم", setLoc: "افتح التطبيق واسمح بالموقع لعرض المواقيت.", configure: "تخصيص", noCfg: "لم يتم إعداد أداة بعد.", checklist: "قوائم التحقق", allDone: "اكتمل الكل", another: "آخر", forbidden: "وقت نهي", tap: "اضغط للعد" }
   };
   var lang = "en";
   function t(k) { return (STR[lang] || STR.en)[k] || STR.en[k] || k; }
@@ -43,7 +43,8 @@
     root.replaceChildren();
     var items = cfg.items.slice();
     var prayerItems = items.filter(function (i) { return PRAYER_IDS.indexOf(i) >= 0; });
-    var order = (cfg.order && cfg.order.length ? cfg.order : ["prayers", "essential", "streak", "todo", "zikr", "reminder"]);
+    var order = (cfg.order && cfg.order.length ? cfg.order : ["hijri", "prayers", "essential", "streak", "todo", "checklist", "zikr", "reminder"]).slice();
+    ["hijri", "checklist"].forEach(function (k) { if (order.indexOf(k) < 0) order.splice(k === "hijri" ? 0 : order.length, 0, k); });
     order.forEach(function (sec) {
       if (sec === "prayers" && prayerItems.length) root.appendChild(prayerCard(prayerItems));
       else if (sec === "essential" && items.indexOf("essential") >= 0) root.appendChild(essentialCard());
@@ -51,6 +52,8 @@
       else if (sec === "todo" && items.indexOf("todo") >= 0) root.appendChild(todoCard());
       else if (sec === "zikr" && items.indexOf("zikr") >= 0) root.appendChild(zikrCard());
       else if (sec === "reminder" && items.indexOf("reminder") >= 0) root.appendChild(reminderCard());
+      else if (sec === "checklist" && items.indexOf("checklist") >= 0) root.appendChild(checklistCard());
+      else if (sec === "hijri" && items.indexOf("hijri") >= 0) root.appendChild(hijriCard());
     });
     if (!root.children.length) root.appendChild(U.el("section", { class: "wg-card wg-empty", text: t("noCfg") }));
     root.appendChild(U.el("p", { class: "wg-foot" }, [U.el("a", { class: "wg-open", href: "/?open=widgets&source=widget", text: "⚙︎ " + t("configure") })]));
@@ -113,6 +116,30 @@
     return card;
   }
 
+  /* Today's date in Hijri and Gregorian, in the widget language. */
+  function hijriCard() {
+    var d = new Date(), loc = lang === "bn" ? "bn-BD" : lang === "ar" ? "ar-SA" : "en-GB", h = "", g = "";
+    try { h = new Intl.DateTimeFormat(loc + "-u-ca-islamic-umalqura", { day: "numeric", month: "long", year: "numeric" }).format(d); } catch (e) {}
+    try { g = d.toLocaleDateString(loc, { weekday: "long", day: "numeric", month: "long" }); } catch (e) { g = d.toDateString(); }
+    return U.el("section", { class: "wg-card wg-date" }, [U.el("b", { text: h || g }), h ? U.el("small", { text: g }) : null]);
+  }
+  /* Keep-style checklists: open items first, tap to tick; ticked items drop to the bottom. */
+  function checklistCard() {
+    var card = U.el("section", { class: "wg-card wg-cl" }, [U.el("h2", { text: t("checklist") })]);
+    var lists = (data && data.x && Array.isArray(data.x.checklists)) ? data.x.checklists : [];
+    if (!lists.length) { card.appendChild(U.el("p", { class: "wg-empty", text: "—" })); return card; }
+    lists.slice(0, cfg.size === "compact" ? 1 : 3).forEach(function (l) {
+      var items = (l.items || []).slice(), open = items.filter(function (i) { return !i.done; }).sort(function (a, b) { return a.at - b.at; }), done = items.filter(function (i) { return i.done; });
+      var ul = U.el("ul", { class: "wg-list" });
+      open.slice(0, cfg.size === "compact" ? 4 : 8).forEach(function (i) {
+        var li = U.el("li", { class: "wg-row" });
+        var cb = U.check(false, i.text, function () { cb.disabled = true; S.checkList(l.id, i.id).then(function (r) { if (r.ok && r.data) data = r.data; draw(); U.haptic(14); }); });
+        li.append(cb, U.el("div", { class: "wg-txt" }, [U.el("b", { text: i.text })])); ul.appendChild(li);
+      });
+      card.append(U.el("div", { class: "wg-cl-head" }, [U.el("b", { text: l.title }), U.el("small", { text: U.num(done.length) + " / " + U.num(items.length) })]), open.length ? ul : U.el("p", { class: "wg-empty", text: "✓ " + t("allDone") }));
+    });
+    return card;
+  }
   function streakCard() {
     var card = U.el("section", { class: "wg-card" }, [U.el("h2", { text: t("streak") })]);
     var items = S.habitsToday(data || {}), done = items.filter(function (x) { return x.done; }).length;

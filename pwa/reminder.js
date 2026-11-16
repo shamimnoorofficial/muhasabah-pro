@@ -33,7 +33,7 @@
     loading = Promise.all([
       fetch("/data/reminders.json").then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; }),
       window.MHSWisdomApp ? window.MHSWisdomApp.load().catch(function () { return null; }) : Promise.resolve(null),
-      new Promise(function(resolve){X.whenReady("MHSSeerah",function(S){S.load().then(resolve).catch(function(){resolve(null);});});})
+      new Promise(function(resolve){X.whenReady("MHSSeerah",function(S){S.warm(feedLang()).then(resolve).catch(function(){resolve(null);});});})
     ]).then(function (r) { extra = r[0]; wis = r[1]; return true; });
     return loading;
   }
@@ -54,23 +54,30 @@
       else if (it.kind === "verse") it.goLabel = t("openQ"); else if (it.kind === "hadith") it.goLabel = t("openH");
       push(it);
     });
-    if(window.MHSSeerah) window.MHSSeerah.posts().forEach(push);
+    if(window.MHSSeerah) window.MHSSeerah.feedItems(feedLang()).forEach(push);
     var journal = window.MHS && window.MHS.current() && window.MHS.current().journal || {};
     Object.keys(journal).forEach(function(day) { if(journal[day].text) push({id:"j:"+day,kind:"journal",text:journal[day].text,src:day,go:function(){window.MHSJournal.open(day);}}); });
     return out;
   }
   /* unseen-first rotation (persisted) */
   function seen() { var s = X.get("rfseen", null) || { ids: [] }; s.ids = Array.isArray(s.ids) ? s.ids : []; return s; }
+  /* Each post type gets a share of the feed; Seerah and diary appear less often than verses,
+   * hadith and wisdom, whatever the size of each library. Unseen posts come first. */
+  var WEIGHT = { verse: 3, hadith: 3, quote: 3, journal: 1, seerah: 1 };
   function pick(filter) {
     var sources = X.get("feedSources", {verse:true,hadith:true,quote:true,seerah:true,journal:false});
     var all = pool().filter(function (r) { return sources[r.kind] !== false; }).filter(function (r) { return filter === "all" || (filter === "favs" ? favs().indexOf(r.id) >= 0 : filter === "mine" ? r.mine : r.kind === filter); });
     if (!all.length) return null;
     var s = seen(), unseen = all.filter(function (r) { return s.ids.indexOf(r.id) < 0; });
     if (!unseen.length) { s.ids = s.ids.filter(function (id) { return !all.some(function (r) { return r.id === id; }); }); unseen = all; }
-    var it = unseen[Math.floor(Math.random() * unseen.length)];
+    var kinds = {}; unseen.forEach(function (r) { (kinds[r.kind] = kinds[r.kind] || []).push(r); });
+    var names = Object.keys(kinds), total = names.reduce(function (n, k) { return n + (WEIGHT[k] || 2); }, 0), roll = Math.random() * total, kind = names[0];
+    for (var i = 0; i < names.length; i++) { roll -= WEIGHT[names[i]] || 2; if (roll <= 0) { kind = names[i]; break; } }
+    var list = kinds[kind], it = list[Math.floor(Math.random() * list.length)];
     s.ids.push(it.id); if (s.ids.length > 2000) s.ids = s.ids.slice(-2000); X.set("rfseen", s);
-    return it;
+    return Object.assign({}, it, { _lang: feedLang() });
   }
+  function feedLang() { return window.MHSLocale || document.documentElement.lang || "en"; }
 
   /* ---- UI ---- */
   var sh = null, filter = "all", cur = null, adding = false, historyItems = [], historyAt = -1, configuring = false, gestureActive = false, deferredRender = false;
@@ -97,16 +104,18 @@
     });
     if(configuring) b.appendChild(chips);
     if (adding) b.appendChild(form());
+    // Never show a post prepared for another language: re-resolve it, or pick a new one.
+    if (cur && cur._lang && cur._lang !== feedLang()) { var again = pool().filter(function (r) { return r.id === cur.id; })[0]; historyItems = []; historyAt = -1; cur = again ? Object.assign({}, again, { _lang: feedLang() }) : null; }
     if (!cur) cur = pick(filter);
     if (!cur) b.appendChild(X.el("p", { class: "mhs-kh-empty", text: t("none") }));
     else {
       var a = cur, isFav = favs().indexOf(a.id) >= 0;
-      if(a.kind==="seerah"&&!a._localizing&&window.MHSSeerah){a._localizing=true;window.MHSSeerah.localize(a.id).then(function(p){if(!sh||!cur||cur.id!==a.id)return;cur=Object.assign({},a,{text:p.text,src:a.src+(p.machineTranslated?" · "+(X.lang()==="bn"?"স্বয়ংক্রিয় অনুবাদ":"Machine translation"):"")});render();}).catch(function(){});}
 
       var card = X.el("div", { class: "mhs-rf-card", role: "region", "aria-live": "polite" }, [
         X.el("div", { class: "mhs-rf-type", text: ({seerah:X.lang()==="bn"?"সীরাত":X.lang()==="ar"?"السيرة":"Seerah",journal:X.lang()==="bn"?"ডায়েরি":X.lang()==="ar"?"اليوميات":"Diary"})[a.kind] || t(a.kind) }),
         a.ar ? X.el("div", { class: "mhs-rf-ar" + (String(a.ar).length>450?" is-collapsed":""), lang: "ar", dir: "rtl", text: a.ar }) : null,
-        X.el("div", { class: "mhs-rf-text" + (String(a.text).length>650?" is-collapsed":""), text: a.text }),
+        a.kind === "seerah" && a.chapter ? X.el("div", { class: "mhs-rf-chapter", text: a.chapter }) : null,
+        X.el("div", { class: "mhs-rf-text" + (String(a.text).length>650?" is-collapsed":""), lang: a.lang || null, dir: a.lang && window.MHSI18n && window.MHSI18n.isRtl && window.MHSI18n.isRtl(a.lang) ? "rtl" : a.lang ? "ltr" : null, translate: a.kind === "seerah" ? "no" : null, text: a.text }),
         a.ctx ? X.el("p", { class: "mhs-rf-ctx", text: t("context") + ": " + a.ctx }) : null,
         a.go ? X.el("button", { type: "button", class: "mhs-rf-src", "aria-label": a.goLabel || a.src, on: { click: function () { sh.close(); setTimeout(a.go, 120); } } }, ["— " + a.src + " ↗"]) : X.el("div", { class: "mhs-rf-src", style: { border: "0", cursor: "default" }, text: "— " + a.src }),
         a.tags && a.tags.length ? X.el("div", { class: "mhs-rf-tags" }, a.tags.slice(0, 4).map(function (g) { return X.el("span", { text: "#" + g }); })) : null,
@@ -256,6 +265,14 @@
     host.append(X.el("header",{class:"mhs-feed-heading"},[X.el("div",{},[X.el("small",{text:"MUHASABAH"}),X.el("h1",{text:X.lang()==="bn"?"আজকের অনুপ্রেরণা":X.lang()==="ar"?"إلهام اليوم":"A moment to reflect"})]),tools]),body);
     sh={embedded:true,host:host,dialog:{open:true},body:body,tools:tools,icon:X.icon,close:function(){window.MHSApp.nav("dashboard");}};render();loadExtra().then(function(){if(sh&&sh.host===host){if(!cur)cur=pick(filter);render();}});
   }, unmount:function(host){if(sh&&sh.host===host){gestureActive=false;deferredRender=false;sh=null;}}, open: open, pool: pool, pick: pick, schedule: schedule, cfg: ncfg, t: t };
+  /* Language changes: rebuild the feed so the heading, labels and posts all use the new language. */
+  var lastLang = feedLang();
+  new MutationObserver(function () {
+    var l = feedLang(); if (l === lastLang) return; lastLang = l;
+    cur = null; historyItems = []; historyAt = -1;
+    if (window.MHSSeerah) window.MHSSeerah.warm(l).then(function () { if (sh && !cur) { cur = pick(filter); render(); } });
+    if (sh && sh.embedded && sh.host && sh.host.isConnected) window.MHSReminder.mount(sh.host); else if (sh) render();
+  }).observe(document.documentElement, { attributes: true, attributeFilter: ["lang"] });
   /* Route the unified menu "Get Reminder" item and legacy callers to the new feed. */
   X.whenReady("MHSWisdom", function (W) { W.open = function (o) { open(o); }; });
 })();

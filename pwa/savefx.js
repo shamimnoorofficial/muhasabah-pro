@@ -19,8 +19,8 @@
   /* Big animated checkmark in the centre + toast. Throttled so rapid saves don't spam. */
   function flash(opts) {
     opts = opts || {};
-    var now = Date.now(); if (now - lastFlash < 1200) return; lastFlash = now;
-    if (!reduced()) {
+    var now = Date.now(); if (!opts.force && now - lastFlash < 1200) return; lastFlash = now;
+    if (!reduced() || opts.force) {
       var el = document.createElement("div"); el.className = "mhs-savefx"; el.setAttribute("aria-hidden", "true");
       el.innerHTML = '<svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
       (opts.host || Array.from(document.querySelectorAll("dialog[open]")).pop() || document.body).appendChild(el); setTimeout(function () { el.remove(); }, 950);
@@ -79,5 +79,22 @@
   document.addEventListener("mhs:suite", function (e) { var k = e.detail && e.detail.key; if (!k || e.detail.remote) return; if (k === "notes" || k === "hisab" || k === "zikr") softSaved(k); });
   document.addEventListener("mhs:essential", function () { softSaved("essential"); });
   document.addEventListener("mhs:points", function () { softSaved("habit"); });
-  window.MHSSaveFX = { flash: flash, pill: pill, markDirty: markDirty, t: t, time: time };
+  /* A save button that answers: spinner while saving, then an animated ✓ "Saved" state, or a
+   * shake on failure. The label comes back after a moment so the button stays reusable. */
+  function button(btn, state) {
+    if (!btn) return;
+    if (!btn.dataset.sfxLabel) btn.dataset.sfxLabel = btn.textContent;
+    clearTimeout(btn.__sfxT);
+    btn.classList.remove("is-saving", "is-saved", "is-failed");
+    if (state === "saving") { btn.classList.add("is-saving"); btn.setAttribute("aria-busy", "true"); return; }
+    btn.removeAttribute("aria-busy");
+    if (state === "saved") {
+      btn.classList.add("is-saved");
+      btn.innerHTML = '<svg class="mhs-sfx-tick" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span></span>';
+      btn.lastChild.textContent = t("saved");
+      try { navigator.vibrate && navigator.vibrate([10, 40, 18]); } catch (e) {}
+    } else btn.classList.add("is-failed");
+    btn.__sfxT = setTimeout(function () { btn.classList.remove("is-saved", "is-failed"); btn.textContent = btn.dataset.sfxLabel; }, 1900);
+  }
+  window.MHSSaveFX = { flash: flash, pill: pill, markDirty: markDirty, button: button, t: t, time: time };
 })();

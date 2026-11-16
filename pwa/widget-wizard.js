@@ -1,4 +1,4 @@
-/* MHSWidgetWizard — step-by-step builder for the configurable home-screen widget.
+/* MHSWidgetWizard (shown as "Widget") — step-by-step builder for the configurable home-screen widget.
  * 1) pick items (prayers / special times, Essential Amol, streak, To-Do, Zikr, daily reminder)
  * 2) fields (start, end, countdown, highlight), size, theme, language, section order
  * 3) live preview + add to the home screen (install prompt / shortcut / copy link)
@@ -9,23 +9,23 @@
   if (window.MHSWidgetWizard) return;
   var X = window.MHSX;
   var t = X.tr({
-    en: { title: "Widget Wizard", sub: "Build your home-screen widget", menu: "Widget Wizard", menuSub: "Prayer times, amol & more on your home screen", s1: "What should the widget show?", s2: "How should it look?", s3: "Preview & add to home screen", next: "Next", back: "Back", finish: "Save widget", saved: "Widget saved",
-      gPrayers: "Prayer times", gSpecial: "Sehri · Iftar · special times", gOther: "Other", essential: "Essential Amol checklist", streak: "Habit streak & progress", todo: "To-Do list", zikr: "Zikr counter", reminder: "Daily reminder (Quran · Hadith · Wisdom)",
+    en: { title: "Widget", sub: "Your home-screen widget", menu: "Widget", menuSub: "Prayer times, amol & more on your home screen", s1: "What should the widget show?", s2: "How should it look?", s3: "Preview & add to home screen", next: "Next", back: "Back", finish: "Save widget", saved: "Widget saved",
+      gPrayers: "Prayer times", gSpecial: "Sehri · Iftar · special times", gOther: "Other", essential: "Essential Amol checklist", streak: "Habit streak & progress", todo: "To-Do list", zikr: "Zikr counter", reminder: "Daily reminder (Quran · Hadith · Wisdom)", checklist: "Checklists (tick from the home screen)", hijri: "Hijri & Gregorian date",
       fields: "Fields for each time", fStart: "Start time", fEnd: "End time", fCountdown: "Live countdown", fHighlight: "Current / next highlight", size: "Size", compact: "Compact", regular: "Regular", theme: "Theme", dark: "Dark", light: "Light", auto: "Device", language: "Language", appLang: "Same as app", order: "Section order", up: "Move up", down: "Move down",
       preview: "Live preview", add: "Add to home screen", open: "Open widget", copy: "Copy link", copied: "Link copied", howTitle: "How to add it", howAndroid: "Open the widget link in Chrome → ⋮ menu → \"Add to Home screen\". Inside the Play Store app: long-press the Muhasabah icon → Widgets/Shortcuts.", howIos: "Open the widget link in Safari → Share → \"Add to Home Screen\".", howDesk: "Install the app, then pin the widget page from the browser's menu (or use the Windows Widgets board).", none: "Pick at least one item." },
-    bn: { title: "উইজেট উইজার্ড", sub: "হোম স্ক্রিনের উইজেট সাজান", menu: "উইজেট উইজার্ড", menuSub: "নামাজের সময়, আমল ও আরও — হোম স্ক্রিনে", s1: "উইজেটে কী কী দেখাবে?", s2: "দেখতে কেমন হবে?", s3: "প্রিভিউ ও হোম স্ক্রিনে যোগ", next: "পরবর্তী", back: "পেছনে", finish: "উইজেট সংরক্ষণ", saved: "উইজেট সংরক্ষিত",
-      gPrayers: "নামাজের সময়", gSpecial: "সেহরি · ইফতার · বিশেষ সময়", gOther: "অন্যান্য", essential: "প্রয়োজনীয় আমল চেকলিস্ট", streak: "অভ্যাসের ধারা ও অগ্রগতি", todo: "করণীয় তালিকা", zikr: "জিকির কাউন্টার", reminder: "দৈনিক স্মরণ (কুরআন · হাদিস · হিকমাহ)",
+    bn: { title: "উইজেট", sub: "হোম স্ক্রিনের উইজেট", menu: "উইজেট", menuSub: "নামাজের সময়, আমল ও আরও — হোম স্ক্রিনে", s1: "উইজেটে কী কী দেখাবে?", s2: "দেখতে কেমন হবে?", s3: "প্রিভিউ ও হোম স্ক্রিনে যোগ", next: "পরবর্তী", back: "পেছনে", finish: "উইজেট সংরক্ষণ", saved: "উইজেট সংরক্ষিত",
+      gPrayers: "নামাজের সময়", gSpecial: "সেহরি · ইফতার · বিশেষ সময়", gOther: "অন্যান্য", essential: "প্রয়োজনীয় আমল চেকলিস্ট", streak: "অভ্যাসের ধারা ও অগ্রগতি", todo: "করণীয় তালিকা", zikr: "জিকির কাউন্টার", reminder: "দৈনিক স্মরণ (কুরআন · হাদিস · হিকমাহ)", checklist: "চেকলিস্ট (হোম স্ক্রিন থেকে টিক দিন)", hijri: "হিজরি ও ইংরেজি তারিখ",
       fields: "প্রতিটি সময়ের জন্য", fStart: "শুরুর সময়", fEnd: "শেষ সময়", fCountdown: "লাইভ কাউন্টডাউন", fHighlight: "বর্তমান / পরবর্তী হাইলাইট", size: "আকার", compact: "ছোট", regular: "সাধারণ", theme: "থিম", dark: "ডার্ক", light: "লাইট", auto: "ডিভাইস", language: "ভাষা", appLang: "অ্যাপের মতো", order: "অংশের ক্রম", up: "উপরে", down: "নিচে",
       preview: "লাইভ প্রিভিউ", add: "হোম স্ক্রিনে যোগ করুন", open: "উইজেট খুলুন", copy: "লিংক কপি", copied: "লিংক কপি হয়েছে", howTitle: "কীভাবে যোগ করবেন", howAndroid: "উইজেট লিংকটি Chrome-এ খুলুন → ⋮ মেনু → \"Add to Home screen\"। প্লে স্টোর অ্যাপে: মুহাসাবা আইকন চেপে ধরুন → Widgets/Shortcuts।", howIos: "Safari-তে লিংক খুলুন → Share → \"Add to Home Screen\"।", howDesk: "অ্যাপ ইনস্টল করুন, তারপর ব্রাউজারের মেনু থেকে উইজেট পেজ পিন করুন।", none: "অন্তত একটি আইটেম বেছে নিন।" },
-    ar: { title: "معالج الأداة", sub: "أنشئ أداة الشاشة الرئيسية", menu: "معالج الأداة", menuSub: "المواقيت والأعمال على الشاشة الرئيسية", s1: "ماذا تعرض الأداة؟", s2: "كيف تبدو؟", s3: "معاينة وإضافة", next: "التالي", back: "رجوع", finish: "حفظ الأداة", saved: "تم حفظ الأداة",
-      gPrayers: "مواقيت الصلاة", gSpecial: "السحور · الإفطار · أوقات خاصة", gOther: "أخرى", essential: "قائمة الأعمال الأساسية", streak: "سلسلة العادات", todo: "المهام", zikr: "عداد الذكر", reminder: "تذكير يومي",
+    ar: { title: "الأداة", sub: "أداة الشاشة الرئيسية", menu: "الأداة", menuSub: "المواقيت والأعمال على الشاشة الرئيسية", s1: "ماذا تعرض الأداة؟", s2: "كيف تبدو؟", s3: "معاينة وإضافة", next: "التالي", back: "رجوع", finish: "حفظ الأداة", saved: "تم حفظ الأداة",
+      gPrayers: "مواقيت الصلاة", gSpecial: "السحور · الإفطار · أوقات خاصة", gOther: "أخرى", essential: "قائمة الأعمال الأساسية", streak: "سلسلة العادات", todo: "المهام", zikr: "عداد الذكر", reminder: "تذكير يومي", checklist: "قوائم التحقق", hijri: "التاريخ الهجري والميلادي",
       fields: "الحقول", fStart: "البداية", fEnd: "النهاية", fCountdown: "عدّ تنازلي", fHighlight: "إبراز الحالي/التالي", size: "الحجم", compact: "مضغوط", regular: "عادي", theme: "المظهر", dark: "داكن", light: "فاتح", auto: "الجهاز", language: "اللغة", appLang: "مثل التطبيق", order: "ترتيب الأقسام", up: "أعلى", down: "أسفل",
       preview: "معاينة", add: "أضف إلى الشاشة الرئيسية", open: "افتح الأداة", copy: "نسخ الرابط", copied: "تم نسخ الرابط", howTitle: "كيفية الإضافة", howAndroid: "افتح الرابط في Chrome → القائمة → \"إضافة إلى الشاشة الرئيسية\".", howIos: "افتح الرابط في Safari → مشاركة → \"إضافة إلى الشاشة الرئيسية\".", howDesk: "ثبّت التطبيق ثم ثبّت صفحة الأداة من قائمة المتصفح.", none: "اختر عنصراً واحداً على الأقل." }
   });
   var SPECIAL = ["sehri", "iftar", "fSunrise", "fZawal", "fSunset", "tahajjud", "ishraq", "chasht", "awwabin", "witr"];
-  var SECTIONS = ["prayers", "essential", "streak", "todo", "zikr", "reminder"];
+  var SECTIONS = ["hijri", "prayers", "essential", "streak", "todo", "checklist", "zikr", "reminder"];
   var DEF = { items: ["fajr", "dhuhr", "asr", "maghrib", "isha", "essential", "streak"], fields: { start: true, end: true, countdown: true, highlight: true }, size: "regular", theme: "dark", lang: "", order: SECTIONS.slice() };
-  function cfg() { var c = X.get("widgetcfg", null); return Object.assign({}, DEF, c || {}, { fields: Object.assign({}, DEF.fields, (c && c.fields) || {}) }); }
+  function cfg() { var c = X.get("widgetcfg", null), r = Object.assign({}, DEF, c || {}, { fields: Object.assign({}, DEF.fields, (c && c.fields) || {}) }); r.order = (r.order || []).filter(function (x) { return SECTIONS.indexOf(x) >= 0; }); SECTIONS.forEach(function (x) { if (r.order.indexOf(x) < 0) r.order.splice(x === "hijri" ? 0 : r.order.length, 0, x); }); return r; }
   function save(c) { X.set("widgetcfg", c); try { localStorage.setItem("mhs:widgetcfg", JSON.stringify(c)); } catch (e) {} }
   function url() { return location.origin + "/widgets/?view=custom&source=widget"; }
 
@@ -64,7 +64,7 @@
     }
     group(t("gPrayers"), ["fajr", "dhuhr", "asr", "maghrib", "isha"]);
     group(t("gSpecial"), SPECIAL);
-    b.appendChild(X.el("div", { class: "mhs-ww-group" }, [X.el("div", { class: "mhs-mini-sec", text: t("gOther") }), X.el("div", { class: "mhs-ww-opts" }, [opt("essential", "📿 " + t("essential")), opt("streak", "🔥 " + t("streak")), opt("todo", "✅ " + t("todo")), opt("zikr", "📿 " + t("zikr")), opt("reminder", "💡 " + t("reminder"))])]));
+    b.appendChild(X.el("div", { class: "mhs-ww-group" }, [X.el("div", { class: "mhs-mini-sec", text: t("gOther") }), X.el("div", { class: "mhs-ww-opts" }, [opt("essential", "📿 " + t("essential")), opt("streak", "🔥 " + t("streak")), opt("todo", "✅ " + t("todo")), opt("zikr", "📿 " + t("zikr")), opt("reminder", "💡 " + t("reminder")), opt("checklist", "☑ " + t("checklist")), opt("hijri", "🌙 " + t("hijri"))])]));
   }
   function seg(title, key, options) {
     var wrap = X.el("div", { class: "mhs-ww-seg" });

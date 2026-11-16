@@ -141,7 +141,7 @@
       "sizes": "1080x1920",
       "type": "image/webp",
       "form_factor": "narrow",
-      "label": "Your deen on the home screen — Widget Wizard: pick prayers, amol, streaks — add in one tap"
+      "label": "Your deen on the home screen — Widget: pick prayers, amol, streaks — add in one tap"
     },
     {
       "src": "/assets/screenshots/05-qibla.webp",
@@ -590,7 +590,7 @@
       ]
     },
     {
-      "name": "Hisab khata",
+      "name": "Account Book",
       "short_name": "Ledger",
       "description": "Record dues, income and expenses",
       "url": "/?open=hisab&source=shortcut",

@@ -10,7 +10,7 @@
 
   var t = X.tr({
     en: {
-      title: "Hisab Khata", sub: "Dues, cash book & payroll", menuSub: "Dues, income-expense, payroll",
+      title: "Account Book", sub: "Dues, cash book & payroll", menuSub: "Dues, income-expense, payroll",
       receivable: "To receive", payable: "Salary due", monthNet: "This month", books: "Your books", newBook: "New book",
       noBooks: "No books yet. Start with a template below.", tplDues: "Customer dues", tplCash: "Daily cash", tplPayroll: "Payroll", tplCustom: "Custom",
       typeDues: "Dues book", typeCash: "Cash book", typePayroll: "Payroll", typeCustom: "Ledger",

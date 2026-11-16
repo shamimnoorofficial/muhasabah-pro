@@ -21,6 +21,10 @@
       reply(m.id);
     } else if (m.type === "addTodo" && app.addTodo) { app.addTodo(m.title); reply(m.id); }
     else if (m.type === "essential") { if (window.MHSEssential) window.MHSEssential.toggle(m.itemId); reply(m.id); }
+    else if (m.type === "checklist") {
+      try { var lists = window.MHSX.get("checklists", []), it = null; lists.forEach(function (l) { if (l.id === m.listId) (l.items || []).forEach(function (i) { if (i.id === m.itemId) it = i; }); }); if (it && window.MHSChecklists) window.MHSChecklists.check(m.listId, m.itemId, !it.done); } catch (e) {}
+      reply(m.id);
+    }
     else if (m.type === "zikr") {
       try { var X = window.MHSX, z = X.get("zikr", null) || {}; z.log = z.log || {}; var k = X.dayKey(); z.log[k] = z.log[k] || {}; z.log[k][m.itemId] = (Number(z.log[k][m.itemId]) || 0) + (Number(m.n) || 1); z.sel = m.itemId; X.set("zikr", z); } catch (e) {}
       reply(m.id);

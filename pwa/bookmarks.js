@@ -32,7 +32,7 @@
   }
   function count() { return collect().length; }
 
-  var sh = null, kind = "all", q = "";
+  var sh = null, kind = "all", q = "", selected = "";
   function open() {
     if (!window.MHSSheet) return;
     if (sh && sh.dialog.open) { render(); return; }
@@ -47,9 +47,22 @@
     var kinds = ["all", "quran", "hadith", "reminder", "dua", "amol", "name", "wisdom", "seerah", "journal"];
     kinds.forEach(function (k) { var n = k === "all" ? rows.length : rows.filter(function (r) { return r.kind === k; }).length; if (k !== "all" && !n) return; chips.appendChild(X.el("button", { type: "button", role: "tab", class: "mhs-chip" + (kind === k ? " is-on" : ""), text: t(k) + " · " + X.num(n), on: { click: function () { kind = k; render(); } } })); });
     b.appendChild(chips);
-    var names=window.MHSX.get("collections",{names:[]}).names,selected="";
-    var cs=X.el("select",{"aria-label":X.lang()==="bn"?"কালেকশন":X.lang()==="ar"?"المجموعة":"Collection"},[X.el("option",{value:"",text:X.lang()==="bn"?"সব কালেকশন":X.lang()==="ar"?"كل المجموعات":"All collections"})].concat(names.map(function(n){return X.el("option",{value:n,text:n});})));
-    cs.onchange=function(){selected=cs.value;draw();};b.appendChild(cs);
+    var C = window.MHSCollections, names = C ? C.names() : [];
+    if (selected && names.indexOf(selected) < 0) selected = "";
+    var L2 = function (en, bn, ar) { return X.lang() === "bn" ? bn : X.lang() === "ar" ? ar : en; };
+    var colRow = X.el("div", { class: "mhs-mini-chips mhs-bm-cols", role: "tablist", "aria-label": L2("Collections", "কালেকশন", "المجموعات") });
+    [""].concat(names).forEach(function (n) {
+      var c = n ? rows.filter(function (r) { return r.collection === n; }).length : rows.length;
+      colRow.appendChild(X.el("button", { type: "button", role: "tab", class: "mhs-chip" + (selected === n ? " is-on" : ""), "aria-selected": String(selected === n), text: (n ? "📁 " + C.label(n) : L2("All collections", "সব কালেকশন", "كل المجموعات")) + " · " + X.num(c), on: { click: function () { selected = n; render(); } } }));
+    });
+    b.appendChild(colRow);
+    if (selected && C) {
+      var manage = X.el("div", { class: "mhs-bm-manage" }, [
+        X.el("button", { type: "button", class: "mhs-btn", text: "✎ " + L2("Rename", "নাম বদলান", "إعادة التسمية"), on: { click: function () { var to = prompt(L2("New name for this collection", "কালেকশনের নতুন নাম", "اسم جديد للمجموعة"), C.label(selected)); if (to && C.rename(selected, to)) { selected = to.trim(); render(); } } } }),
+        X.el("button", { type: "button", class: "mhs-btn", text: "🗑 " + L2("Delete collection", "কালেকশন মুছুন", "حذف المجموعة"), on: { click: function () { if (confirm(L2("Delete this collection? Its items move to the first collection.", "এই কালেকশন মুছবেন? এর আইটেমগুলো প্রথম কালেকশনে যাবে।", "حذف هذه المجموعة؟ تنتقل عناصرها إلى المجموعة الأولى."))) { C.removeCollection(selected); selected = ""; render(); } } } })
+      ]);
+      b.appendChild(manage);
+    }
     var box = window.MHSSearch.box({ ns: "bookmarks", placeholder: t("search"), value: q, onQuery: function (v) { q = v; draw(); } });
     b.appendChild(box.el);
     var list = X.el("div", { class: "mhs-mini-list" }); b.appendChild(list);
@@ -73,7 +86,7 @@
       vis.forEach(function (r) {
         var row = X.el("div", { class: "mhs-mini-row", role: "button", tabindex: "0", on: { click: function (e) { if (e.target.closest && e.target.closest(".rm")) return; sh.close(); setTimeout(r.go, 120); }, keydown: function (e) { if (e.key === "Enter") { sh.close(); setTimeout(r.go, 120); } } } }, [
           X.el("span", { class: "mhs-mini-num", text: { quran: "📖", hadith: "📚", reminder: "💡", dua: "🤲", amol: "⭐", name: "✨", wisdom: "🕯️", seerah:"📖", journal:"✍" }[r.kind] }),
-          X.el("div", { class: "txt" }, [X.el("b", { html: qq ? SR.highlight(r.title, qq) : X.esc(r.title) }), X.el("small", { text: (r.sub || "") + " · " + t(r.kind) })]),
+          X.el("div", { class: "txt" }, [X.el("b", { html: qq ? SR.highlight(r.title, qq) : X.esc(r.title) }), X.el("small", { text: (r.sub || "") + " · " + t(r.kind) + (r.collection && window.MHSCollections ? " · 📁 " + window.MHSCollections.label(r.collection) : "") })]),
           X.el("button", { type: "button", class: "mhs-mini-ib rm", "aria-label": t("remove"), title: t("remove"), on: { click: function (e) { e.stopPropagation(); r.remove(); render(); } } }, [sh.icon("M18 6 6 18|M6 6l12 12")])
         ]);
         list.appendChild(row);
