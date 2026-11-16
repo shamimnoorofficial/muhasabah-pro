@@ -1,7 +1,7 @@
 {
   "packageId": "com.shamimnoor.muhasabahpro",
   "host": "muhasabah-pro.netlify.app",
-  "name": "Muhasabah — Habit Tracker",
+  "name": "Muhasabah Pro",
   "launcherName": "Muhasabah",
   "display": "standalone",
   "orientation": "portrait",
@@ -21,31 +21,31 @@
     "path": "./android.keystore",
     "alias": "muhasabah"
   },
-  "appVersionName": "2.0.0",
-  "appVersionCode": 2,
+  "appVersionName": "2.1.0",
+  "appVersionCode": 3,
   "shortcuts": [
     {
-      "name": "Quick check-in",
-      "shortName": "Check-in",
-      "url": "/widgets/?view=habits&source=shortcut",
+      "name": "Prayer hub",
+      "shortName": "Prayer",
+      "url": "/?open=prayer&source=shortcut",
       "chosenIconUrl": "https://muhasabah-pro.netlify.app/icons/shortcut.png"
     },
     {
-      "name": "Quick to-do",
-      "shortName": "To-Do",
-      "url": "/widgets/?view=todo&add=1&source=shortcut",
+      "name": "Quran",
+      "shortName": "Quran",
+      "url": "/?open=quran&source=shortcut",
+      "chosenIconUrl": "https://muhasabah-pro.netlify.app/icons/shortcut.png"
+    },
+    {
+      "name": "Reminder feed",
+      "shortName": "Reminder",
+      "url": "/?open=reminder&source=shortcut",
       "chosenIconUrl": "https://muhasabah-pro.netlify.app/icons/shortcut.png"
     },
     {
       "name": "Zikr counter",
       "shortName": "Zikr",
       "url": "/?open=zikr&source=shortcut",
-      "chosenIconUrl": "https://muhasabah-pro.netlify.app/icons/shortcut.png"
-    },
-    {
-      "name": "New note",
-      "shortName": "Note",
-      "url": "/?open=notes&source=shortcut",
       "chosenIconUrl": "https://muhasabah-pro.netlify.app/icons/shortcut.png"
     }
   ],
@@ -59,5 +59,27 @@
   "enableSiteSettingsShortcut": true,
   "isChromeOSOnly": false,
   "isMetaQuest": false,
-  "minSdkVersion": 24
+  "minSdkVersion": 24,
+  "fullScopeUrl": "https://muhasabah-pro.netlify.app/",
+  "shareTarget": {
+    "action": "/share-target",
+    "method": "POST",
+    "enctype": "multipart/form-data",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url",
+      "files": [
+        {
+          "name": "backup",
+          "accept": [
+            "application/json",
+            ".json",
+            "text/plain",
+            ".txt"
+          ]
+        }
+      ]
+    }
+  }
 }

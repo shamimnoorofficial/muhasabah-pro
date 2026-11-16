@@ -2,7 +2,7 @@
   "id": "/",
   "name": "Muhasabah Pro",
   "short_name": "Muhasabah",
-  "description": "Muhasabah Pro is an Islamic life super-app: prayer times with live countdowns (Sehri, Iftar, Tahajjud, Ishraq, forbidden times), Qibla compass, nearby mosques, essential daily amol, Quran, Hadith, Wisdom, Masnun duas and the 99 Names of Allah, habits, to-dos, Keep-style notes, a ledger (hisab khata), zikr counter, journal and home-screen widgets — with a 360° Nafs · Qalb · Ruh analytics dashboard. Free, works offline, data stays on your device. No ads.",
+  "description": "Muhasabah Pro is an Islamic life super-app: a personal Reminder feed (Quran, Hadith, Hikmah, Duas and Seerah — you choose the mix), prayer times with live countdowns (Sehri, Iftar, Tahajjud, Ishraq, forbidden times), Qibla compass, nearby mosques, essential daily amol, the Quran with full-text search, Hadith, the Seerah, Masnun duas and the 99 Names of Allah, habits, to-dos, Keep-style notes, a ledger (hisab khata), zikr counter, a private diary, bookmarks across every app and home-screen widgets — with a 360° Nafs · Qalb · Ruh analytics dashboard. Free, works offline, data stays on your device. No ads.",
   "lang": "en",
   "dir": "ltr",
   "start_url": "/?source=pwa",
@@ -120,150 +120,178 @@
       "sizes": "1080x1920",
       "type": "image/webp",
       "form_factor": "narrow",
-      "label": "One post. A moment to reflect. — Quran, Hadith and wisdom in your personal swipe feed"
+      "label": "Your Islamic life, in one app — Prayer times, your day at a glance and every mini-app on one home screen"
     },
     {
-      "src": "/assets/screenshots/02-prayer-times.webp",
+      "src": "/assets/screenshots/02-feed.webp",
+      "sizes": "1080x1920",
+      "type": "image/webp",
+      "form_factor": "narrow",
+      "label": "One post. A moment to reflect. — Quran, Hadith, Hikmah, Duas & Seerah in your personal swipe feed"
+    },
+    {
+      "src": "/assets/screenshots/03-feed-sources.webp",
+      "sizes": "1080x1920",
+      "type": "image/webp",
+      "form_factor": "narrow",
+      "label": "Your feed, your mix — Pick the apps your feed draws from — random mix or more / less per app"
+    },
+    {
+      "src": "/assets/screenshots/04-prayer-times.webp",
       "sizes": "1080x1920",
       "type": "image/webp",
       "form_factor": "narrow",
       "label": "Never miss a prayer — Start, end and live countdown for all five prayers"
     },
     {
-      "src": "/assets/screenshots/03-special-times.webp",
+      "src": "/assets/screenshots/05-special-times.webp",
       "sizes": "1080x1920",
       "type": "image/webp",
       "form_factor": "narrow",
       "label": "Sehri, Iftar, Tahajjud & more — Ishraq, Chasht, Awwabin and forbidden times — all with countdowns"
     },
     {
-      "src": "/assets/screenshots/04-widget.webp",
-      "sizes": "1080x1920",
-      "type": "image/webp",
-      "form_factor": "narrow",
-      "label": "Your deen on the home screen — Widget: pick prayers, amol, streaks — add in one tap"
-    },
-    {
-      "src": "/assets/screenshots/05-qibla.webp",
+      "src": "/assets/screenshots/06-qibla.webp",
       "sizes": "1080x1920",
       "type": "image/webp",
       "form_factor": "narrow",
       "label": "Find the Qibla anywhere — Sensor-based compass with calibration and distance to Makkah"
     },
     {
-      "src": "/assets/screenshots/06-mosques.webp",
+      "src": "/assets/screenshots/07-mosques.webp",
       "sizes": "1080x1920",
       "type": "image/webp",
       "form_factor": "narrow",
       "label": "Mosques near you — Google Maps integration — directions in one tap"
     },
     {
-      "src": "/assets/screenshots/07-essential-amol.webp",
+      "src": "/assets/screenshots/08-widget.webp",
+      "sizes": "1080x1920",
+      "type": "image/webp",
+      "form_factor": "narrow",
+      "label": "Your deen on the home screen — Widget: pick prayers, amol, checklists — add in one tap"
+    },
+    {
+      "src": "/assets/screenshots/09-essential-amol.webp",
       "sizes": "1080x1920",
       "type": "image/webp",
       "form_factor": "narrow",
       "label": "The amol that matter most — One-tap check-ins with virtue and source, synced to analytics"
     },
     {
-      "src": "/assets/screenshots/08-todo.webp",
+      "src": "/assets/screenshots/10-quran.webp",
       "sizes": "1080x1920",
       "type": "image/webp",
       "form_factor": "narrow",
-      "label": "A To-Do list that respects your time — Deadlines, points and quick add"
+      "label": "The Holy Quran, beautifully offline — Uthmani or Indo-Pak mushaf, 114 surahs, one tidy navigation bar"
     },
     {
-      "src": "/assets/screenshots/09-habits.webp",
+      "src": "/assets/screenshots/11-quran-search.webp",
       "sizes": "1080x1920",
       "type": "image/webp",
       "form_factor": "narrow",
-      "label": "Build Islamic habits that last — Fard, Sunnah, Nafl & personal goals with streaks"
+      "label": "Search every ayah instantly — Full-text search in Arabic, English and Bengali — even without harakat"
     },
     {
-      "src": "/assets/screenshots/10-analytics.webp",
+      "src": "/assets/screenshots/12-hadith.webp",
       "sizes": "1080x1920",
       "type": "image/webp",
       "form_factor": "narrow",
-      "label": "See your whole life at a glance — Rings, trends and scorecards across every module"
+      "label": "Authentic hadith at your fingertips — Bukhari, Muslim and more — with search, bookmarks and share"
     },
     {
-      "src": "/assets/screenshots/11-muhasabah.webp",
+      "src": "/assets/screenshots/13-duas-ilm.webp",
       "sizes": "1080x1920",
       "type": "image/webp",
       "form_factor": "narrow",
-      "label": "Nafs · Qalb · Ruh — An honest spiritual audit — self, heart and soul scores"
+      "label": "Duas & Ilm, neatly organised — Every dua category, daily amol and the 99 Names in one contents page"
     },
     {
-      "src": "/assets/screenshots/12-journal.webp",
+      "src": "/assets/screenshots/14-names.webp",
       "sizes": "1080x1920",
       "type": "image/webp",
       "form_factor": "narrow",
-      "label": "A journal for every day — Autosave with clear “Saved ✓” confirmation and streaks"
+      "label": "The 99 Names of Allah — Arabic, meaning and benefit — with masnun duas, source and bookmarks"
     },
     {
-      "src": "/assets/screenshots/13-notes.webp",
+      "src": "/assets/screenshots/15-seerah.webp",
       "sizes": "1080x1920",
       "type": "image/webp",
       "form_factor": "narrow",
-      "label": "Notes like Keep, made for you — Text, checklists, photos, audio, video — and a calculator"
+      "label": "Read the Seerah. Keep it with you. — Attributed source, reading languages and offline chapters"
     },
     {
-      "src": "/assets/screenshots/14-ledger.webp",
+      "src": "/assets/screenshots/16-hikmah.webp",
       "sizes": "1080x1920",
       "type": "image/webp",
       "form_factor": "narrow",
-      "label": "হিসাব খাতা — your pocket ledger — Customer dues, daily cash & payroll with running balances"
+      "label": "Wisdom of the Prophet ﷺ & scholars — Topics, authors, search, bookmarks and your own entries"
     },
     {
-      "src": "/assets/screenshots/15-quran.webp",
-      "sizes": "1080x1920",
-      "type": "image/webp",
-      "form_factor": "narrow",
-      "label": "The Holy Quran, searchable offline — Uthmani or Indo-Pak mushaf script, 114 surahs offline"
-    },
-    {
-      "src": "/assets/screenshots/16-hadith.webp",
-      "sizes": "1080x1920",
-      "type": "image/webp",
-      "form_factor": "narrow",
-      "label": "Authentic hadith at your fingertips — Bukhari, Muslim and more — with bookmarks and share"
-    },
-    {
-      "src": "/assets/screenshots/17-wisdom.webp",
-      "sizes": "1080x1920",
-      "type": "image/webp",
-      "form_factor": "narrow",
-      "label": "Wisdom of the Prophet ﷺ & scholars — Categories, authors, search, bookmarks and your own entries"
-    },
-    {
-      "src": "/assets/screenshots/18-reminder.webp",
-      "sizes": "1080x1920",
-      "type": "image/webp",
-      "form_factor": "narrow",
-      "label": "A reminder for every moment — Quran · Hadith · Wisdom — tap to the source, share with one tap"
-    },
-    {
-      "src": "/assets/screenshots/19-duas-names.webp",
-      "sizes": "1080x1920",
-      "type": "image/webp",
-      "form_factor": "narrow",
-      "label": "Masnun duas & 99 Names of Allah — Hisnul Muslim style, with meaning, source and bookmarks"
-    },
-    {
-      "src": "/assets/screenshots/20-zikr.webp",
+      "src": "/assets/screenshots/17-zikr.webp",
       "sizes": "1080x1920",
       "type": "image/webp",
       "form_factor": "narrow",
       "label": "A tasbih that feels real — Vibration, targets, rounds and history"
     },
     {
-      "src": "/assets/screenshots/22-seerah.webp",
+      "src": "/assets/screenshots/18-todo.webp",
       "sizes": "1080x1920",
       "type": "image/webp",
       "form_factor": "narrow",
-      "label": "Read the Seerah. Keep it with you. — Attributed source, reading languages and offline passages"
+      "label": "A To-Do list that respects your time — Deadlines, points and quick add"
     },
     {
-      "src": "/assets/screenshots/21-pro.webp",
+      "src": "/assets/screenshots/19-habits.webp",
+      "sizes": "1080x1920",
+      "type": "image/webp",
+      "form_factor": "narrow",
+      "label": "Build Islamic habits that last — Fard, Sunnah, Nafl & personal goals with streaks"
+    },
+    {
+      "src": "/assets/screenshots/20-analytics.webp",
+      "sizes": "1080x1920",
+      "type": "image/webp",
+      "form_factor": "narrow",
+      "label": "See your whole life at a glance — Rings, trends and scorecards across every module"
+    },
+    {
+      "src": "/assets/screenshots/21-muhasabah.webp",
+      "sizes": "1080x1920",
+      "type": "image/webp",
+      "form_factor": "narrow",
+      "label": "Nafs · Qalb · Ruh — An honest spiritual audit — self, heart and soul scores"
+    },
+    {
+      "src": "/assets/screenshots/22-diary.webp",
+      "sizes": "1080x1920",
+      "type": "image/webp",
+      "form_factor": "narrow",
+      "label": "A private diary for every day — Autosave with clear “Saved ✓” confirmation and streaks"
+    },
+    {
+      "src": "/assets/screenshots/23-notes.webp",
+      "sizes": "1080x1920",
+      "type": "image/webp",
+      "form_factor": "narrow",
+      "label": "Notes like Keep, made for you — Text, checklists, photos, audio, video — and a calculator"
+    },
+    {
+      "src": "/assets/screenshots/24-ledger.webp",
+      "sizes": "1080x1920",
+      "type": "image/webp",
+      "form_factor": "narrow",
+      "label": "Account Book — your pocket ledger — Customer dues, daily cash & payroll with running balances"
+    },
+    {
+      "src": "/assets/screenshots/25-bookmarks.webp",
+      "sizes": "1080x1920",
+      "type": "image/webp",
+      "form_factor": "narrow",
+      "label": "Everything you saved, in one place — Ayahs, hadith, duas, names and wisdom — gathered across every app"
+    },
+    {
+      "src": "/assets/screenshots/26-your-data.webp",
       "sizes": "1080x1920",
       "type": "image/webp",
       "form_factor": "narrow",
@@ -274,269 +302,118 @@
       "sizes": "1920x1080",
       "type": "image/webp",
       "form_factor": "wide",
-      "label": "One post. A moment to reflect. — Quran, Hadith and wisdom in your personal swipe feed"
+      "label": "Your Islamic life, in one app — Prayer times, your day at a glance and every mini-app on one home screen"
     },
     {
-      "src": "/assets/screenshots/w-02-prayer-times.webp",
+      "src": "/assets/screenshots/w-04-prayer-times.webp",
       "sizes": "1920x1080",
       "type": "image/webp",
       "form_factor": "wide",
       "label": "Never miss a prayer — Start, end and live countdown for all five prayers"
     },
     {
-      "src": "/assets/screenshots/w-07-essential-amol.webp",
+      "src": "/assets/screenshots/w-09-essential-amol.webp",
       "sizes": "1920x1080",
       "type": "image/webp",
       "form_factor": "wide",
       "label": "The amol that matter most — One-tap check-ins with virtue and source, synced to analytics"
     },
     {
-      "src": "/assets/screenshots/w-10-analytics.webp",
+      "src": "/assets/screenshots/w-10-quran.webp",
+      "sizes": "1920x1080",
+      "type": "image/webp",
+      "form_factor": "wide",
+      "label": "The Holy Quran, beautifully offline — Uthmani or Indo-Pak mushaf, 114 surahs, one tidy navigation bar"
+    },
+    {
+      "src": "/assets/screenshots/w-13-duas-ilm.webp",
+      "sizes": "1920x1080",
+      "type": "image/webp",
+      "form_factor": "wide",
+      "label": "Duas & Ilm, neatly organised — Every dua category, daily amol and the 99 Names in one contents page"
+    },
+    {
+      "src": "/assets/screenshots/w-15-seerah.webp",
+      "sizes": "1920x1080",
+      "type": "image/webp",
+      "form_factor": "wide",
+      "label": "Read the Seerah. Keep it with you. — Attributed source, reading languages and offline chapters"
+    },
+    {
+      "src": "/assets/screenshots/w-20-analytics.webp",
       "sizes": "1920x1080",
       "type": "image/webp",
       "form_factor": "wide",
       "label": "See your whole life at a glance — Rings, trends and scorecards across every module"
     },
     {
-      "src": "/assets/screenshots/w-13-notes.webp",
+      "src": "/assets/screenshots/w-23-notes.webp",
       "sizes": "1920x1080",
       "type": "image/webp",
       "form_factor": "wide",
       "label": "Notes like Keep, made for you — Text, checklists, photos, audio, video — and a calculator"
     },
     {
-      "src": "/assets/screenshots/w-14-ledger.webp",
+      "src": "/assets/screenshots/w-24-ledger.webp",
       "sizes": "1920x1080",
       "type": "image/webp",
       "form_factor": "wide",
-      "label": "হিসাব খাতা — your pocket ledger — Customer dues, daily cash & payroll with running balances"
-    },
-    {
-      "src": "/assets/screenshots/w-15-quran.webp",
-      "sizes": "1920x1080",
-      "type": "image/webp",
-      "form_factor": "wide",
-      "label": "The Holy Quran, searchable offline — Uthmani or Indo-Pak mushaf script, 114 surahs offline"
-    },
-    {
-      "src": "/assets/screenshots/w-19-duas-names.webp",
-      "sizes": "1920x1080",
-      "type": "image/webp",
-      "form_factor": "wide",
-      "label": "Masnun duas & 99 Names of Allah — Hisnul Muslim style, with meaning, source and bookmarks"
-    },
-    {
-      "src": "/assets/screenshots/01-home.bn.webp",
-      "sizes": "1080x1920",
-      "type": "image/webp",
-      "form_factor": "narrow",
-      "label": "একটি পোস্ট, একটু আত্মচিন্তা — কুরআন, হাদিস ও প্রজ্ঞা — আপনার ব্যক্তিগত ফিডে"
-    },
-    {
-      "src": "/assets/screenshots/02-prayer-times.bn.webp",
-      "sizes": "1080x1920",
-      "type": "image/webp",
-      "form_factor": "narrow",
-      "label": "আর কোনো নামাজ মিস নয় — পাঁচ ওয়াক্তের শুরু, শেষ ও লাইভ কাউন্টডাউন"
-    },
-    {
-      "src": "/assets/screenshots/03-special-times.bn.webp",
-      "sizes": "1080x1920",
-      "type": "image/webp",
-      "form_factor": "narrow",
-      "label": "সেহরি, ইফতার, তাহাজ্জুদ ও আরও — ইশরাক, চাশত, আউয়াবিন ও নিষিদ্ধ সময় — কাউন্টডাউনসহ"
-    },
-    {
-      "src": "/assets/screenshots/04-widget.bn.webp",
-      "sizes": "1080x1920",
-      "type": "image/webp",
-      "form_factor": "narrow",
-      "label": "হোম স্ক্রিনেই আপনার দ্বীন — উইজেট উইজার্ড: নামাজ, আমল, ধারা — এক ট্যাপে যোগ"
-    },
-    {
-      "src": "/assets/screenshots/05-qibla.bn.webp",
-      "sizes": "1080x1920",
-      "type": "image/webp",
-      "form_factor": "narrow",
-      "label": "যেকোনো জায়গায় কিবলা খুঁজুন — সেন্সরভিত্তিক কম্পাস, ক্যালিব্রেশন ও মক্কার দূরত্ব"
-    },
-    {
-      "src": "/assets/screenshots/06-mosques.bn.webp",
-      "sizes": "1080x1920",
-      "type": "image/webp",
-      "form_factor": "narrow",
-      "label": "আপনার কাছের মসজিদ — Google Maps সংযুক্ত — এক ট্যাপে দিকনির্দেশ"
-    },
-    {
-      "src": "/assets/screenshots/07-essential-amol.bn.webp",
-      "sizes": "1080x1920",
-      "type": "image/webp",
-      "form_factor": "narrow",
-      "label": "সবচেয়ে প্রয়োজনীয় আমল — ফজিলত ও সূত্রসহ এক-ট্যাপ চেক-ইন, অ্যানালিটিক্সে সিঙ্ক"
-    },
-    {
-      "src": "/assets/screenshots/08-todo.bn.webp",
-      "sizes": "1080x1920",
-      "type": "image/webp",
-      "form_factor": "narrow",
-      "label": "সময়কে সম্মান করে এমন করণীয় তালিকা — সময়সীমা, পয়েন্ট ও দ্রুত যোগ"
-    },
-    {
-      "src": "/assets/screenshots/09-habits.bn.webp",
-      "sizes": "1080x1920",
-      "type": "image/webp",
-      "form_factor": "narrow",
-      "label": "টিকে থাকার মতো ইসলামি অভ্যাস — ফরজ, সুন্নত, নফল ও ব্যক্তিগত লক্ষ্য, ধারাসহ"
-    },
-    {
-      "src": "/assets/screenshots/10-analytics.bn.webp",
-      "sizes": "1080x1920",
-      "type": "image/webp",
-      "form_factor": "narrow",
-      "label": "পুরো জীবন এক নজরে — প্রতিটি মডিউলের রিং, ট্রেন্ড ও স্কোরকার্ড"
-    },
-    {
-      "src": "/assets/screenshots/11-muhasabah.bn.webp",
-      "sizes": "1080x1920",
-      "type": "image/webp",
-      "form_factor": "narrow",
-      "label": "নফস · কলব · রূহ — সততার আত্মহিসাব — নিজ, হৃদয় ও আত্মার স্কোর"
-    },
-    {
-      "src": "/assets/screenshots/12-journal.bn.webp",
-      "sizes": "1080x1920",
-      "type": "image/webp",
-      "form_factor": "narrow",
-      "label": "প্রতিদিনের ডায়েরি — অটোসেভ, স্পষ্ট “সংরক্ষিত ✓” নিশ্চয়তা ও ধারা"
-    },
-    {
-      "src": "/assets/screenshots/13-notes.bn.webp",
-      "sizes": "1080x1920",
-      "type": "image/webp",
-      "form_factor": "narrow",
-      "label": "Keep-এর মতো নোট, আপনার জন্য — লেখা, চেকলিস্ট, ছবি, অডিও, ভিডিও — এবং ক্যালকুলেটর"
-    },
-    {
-      "src": "/assets/screenshots/14-ledger.bn.webp",
-      "sizes": "1080x1920",
-      "type": "image/webp",
-      "form_factor": "narrow",
-      "label": "হিসাব খাতা — পকেটের লেজার — বাকির খাতা, দৈনিক ক্যাশ ও বেতন — চলতি ব্যালেন্সসহ"
-    },
-    {
-      "src": "/assets/screenshots/15-quran.bn.webp",
-      "sizes": "1080x1920",
-      "type": "image/webp",
-      "form_factor": "narrow",
-      "label": "পবিত্র কুরআন — অফলাইনে খুঁজুন — ১১৪ সূরা, বুকমার্ক ও হরকতবিহীন খোঁজ"
-    },
-    {
-      "src": "/assets/screenshots/16-hadith.bn.webp",
-      "sizes": "1080x1920",
-      "type": "image/webp",
-      "form_factor": "narrow",
-      "label": "হাতের মুঠোয় সহিহ হাদিস — বুখারী, মুসলিম ও আরও — বুকমার্ক ও শেয়ারসহ"
-    },
-    {
-      "src": "/assets/screenshots/17-wisdom.bn.webp",
-      "sizes": "1080x1920",
-      "type": "image/webp",
-      "form_factor": "narrow",
-      "label": "নবী ﷺ ও আলেমদের হিকমাহ — বিষয়, বক্তা, খোঁজ, বুকমার্ক ও নিজের লেখা"
-    },
-    {
-      "src": "/assets/screenshots/18-reminder.bn.webp",
-      "sizes": "1080x1920",
-      "type": "image/webp",
-      "form_factor": "narrow",
-      "label": "প্রতিটি মুহূর্তের স্মরণ — কুরআন · হাদিস · হিকমাহ — উৎসে যান, এক ট্যাপে শেয়ার"
-    },
-    {
-      "src": "/assets/screenshots/19-duas-names.bn.webp",
-      "sizes": "1080x1920",
-      "type": "image/webp",
-      "form_factor": "narrow",
-      "label": "মাসনুন দোয়া ও আল্লাহর ৯৯ নাম — হিসনুল মুসলিম ধাঁচে — অর্থ, সূত্র ও বুকমার্কসহ"
-    },
-    {
-      "src": "/assets/screenshots/20-zikr.bn.webp",
-      "sizes": "1080x1920",
-      "type": "image/webp",
-      "form_factor": "narrow",
-      "label": "সত্যিকারের অনুভূতির তাসবিহ — কম্পন, লক্ষ্য, রাউন্ড ও ইতিহাস"
-    },
-    {
-      "src": "/assets/screenshots/22-seerah.bn.webp",
-      "sizes": "1080x1920",
-      "type": "image/webp",
-      "form_factor": "narrow",
-      "label": "নবীজির জীবনচরিত, আপনার সঙ্গে — মূল উৎস, পড়ার ভাষা ও অফলাইন পাঠাংশ"
-    },
-    {
-      "src": "/assets/screenshots/21-pro.bn.webp",
-      "sizes": "1080x1920",
-      "type": "image/webp",
-      "form_factor": "narrow",
-      "label": "আপনার ডেটা, আপনার নিয়ন্ত্রণে — বিনামূল্যে এক্সপোর্ট, ইমপোর্ট ও অনুমতিভিত্তিক ব্যাকআপ"
-    },
-    {
-      "src": "/assets/screenshots/w-01-home.bn.webp",
-      "sizes": "1920x1080",
-      "type": "image/webp",
-      "form_factor": "wide",
-      "label": "একটি পোস্ট, একটু আত্মচিন্তা — কুরআন, হাদিস ও প্রজ্ঞা — আপনার ব্যক্তিগত ফিডে"
-    },
-    {
-      "src": "/assets/screenshots/w-02-prayer-times.bn.webp",
-      "sizes": "1920x1080",
-      "type": "image/webp",
-      "form_factor": "wide",
-      "label": "আর কোনো নামাজ মিস নয় — পাঁচ ওয়াক্তের শুরু, শেষ ও লাইভ কাউন্টডাউন"
-    },
-    {
-      "src": "/assets/screenshots/w-07-essential-amol.bn.webp",
-      "sizes": "1920x1080",
-      "type": "image/webp",
-      "form_factor": "wide",
-      "label": "সবচেয়ে প্রয়োজনীয় আমল — ফজিলত ও সূত্রসহ এক-ট্যাপ চেক-ইন, অ্যানালিটিক্সে সিঙ্ক"
-    },
-    {
-      "src": "/assets/screenshots/w-10-analytics.bn.webp",
-      "sizes": "1920x1080",
-      "type": "image/webp",
-      "form_factor": "wide",
-      "label": "পুরো জীবন এক নজরে — প্রতিটি মডিউলের রিং, ট্রেন্ড ও স্কোরকার্ড"
-    },
-    {
-      "src": "/assets/screenshots/w-13-notes.bn.webp",
-      "sizes": "1920x1080",
-      "type": "image/webp",
-      "form_factor": "wide",
-      "label": "Keep-এর মতো নোট, আপনার জন্য — লেখা, চেকলিস্ট, ছবি, অডিও, ভিডিও — এবং ক্যালকুলেটর"
-    },
-    {
-      "src": "/assets/screenshots/w-14-ledger.bn.webp",
-      "sizes": "1920x1080",
-      "type": "image/webp",
-      "form_factor": "wide",
-      "label": "হিসাব খাতা — পকেটের লেজার — বাকির খাতা, দৈনিক ক্যাশ ও বেতন — চলতি ব্যালেন্সসহ"
-    },
-    {
-      "src": "/assets/screenshots/w-15-quran.bn.webp",
-      "sizes": "1920x1080",
-      "type": "image/webp",
-      "form_factor": "wide",
-      "label": "পবিত্র কুরআন — অফলাইনে খুঁজুন — ১১৪ সূরা, বুকমার্ক ও হরকতবিহীন খোঁজ"
-    },
-    {
-      "src": "/assets/screenshots/w-19-duas-names.bn.webp",
-      "sizes": "1920x1080",
-      "type": "image/webp",
-      "form_factor": "wide",
-      "label": "মাসনুন দোয়া ও আল্লাহর ৯৯ নাম — হিসনুল মুসলিম ধাঁচে — অর্থ, সূত্র ও বুকমার্কসহ"
+      "label": "Account Book — your pocket ledger — Customer dues, daily cash & payroll with running balances"
     }
   ],
   "shortcuts": [
+    {
+      "name": "Prayer hub",
+      "short_name": "Prayer",
+      "description": "Prayer times with countdown, Qibla, mosques and essential amol",
+      "url": "/?open=prayer&source=shortcut",
+      "icons": [
+        {
+          "src": "/icons/shortcut.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Quran",
+      "short_name": "Quran",
+      "description": "Read the Holy Quran — Uthmani or Indo-Pak mushaf, offline",
+      "url": "/?open=quran&source=shortcut",
+      "icons": [
+        {
+          "src": "/icons/shortcut.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Reminder feed",
+      "short_name": "Reminder",
+      "description": "A verse, hadith, dua or wisdom to reflect on",
+      "url": "/?open=reminder&source=shortcut",
+      "icons": [
+        {
+          "src": "/icons/shortcut.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Zikr counter",
+      "short_name": "Zikr",
+      "description": "Open the digital tasbih",
+      "url": "/?open=zikr&source=shortcut",
+      "icons": [
+        {
+          "src": "/icons/shortcut.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    },
     {
       "name": "Quick check-in",
       "short_name": "Check-in",
@@ -564,19 +441,6 @@
       ]
     },
     {
-      "name": "Zikr counter",
-      "short_name": "Zikr",
-      "description": "Open the digital tasbih",
-      "url": "/?open=zikr&source=shortcut",
-      "icons": [
-        {
-          "src": "/icons/shortcut.png",
-          "sizes": "96x96",
-          "type": "image/png"
-        }
-      ]
-    },
-    {
       "name": "New note",
       "short_name": "Note",
       "description": "Write a note, checklist or voice memo",
@@ -590,22 +454,9 @@
       ]
     },
     {
-      "name": "Account Book",
-      "short_name": "Ledger",
-      "description": "Record dues, income and expenses",
-      "url": "/?open=hisab&source=shortcut",
-      "icons": [
-        {
-          "src": "/icons/shortcut.png",
-          "sizes": "96x96",
-          "type": "image/png"
-        }
-      ]
-    },
-    {
-      "name": "Write in journal",
-      "short_name": "Journal",
-      "description": "Open today’s journal entry",
+      "name": "Write in diary",
+      "short_name": "Diary",
+      "description": "Open today’s private diary entry",
       "url": "/?source=note",
       "icons": [
         {
@@ -616,36 +467,10 @@
       ]
     },
     {
-      "name": "Home",
-      "short_name": "Home",
-      "description": "Your 360° Muhasabah overview",
-      "url": "/?tab=dashboard&source=shortcut",
-      "icons": [
-        {
-          "src": "/icons/shortcut.png",
-          "sizes": "96x96",
-          "type": "image/png"
-        }
-      ]
-    },
-    {
-      "name": "Prayer hub",
-      "short_name": "Prayer",
-      "description": "Prayer times with countdown, Qibla, mosques and essential amol",
-      "url": "/?open=prayer&source=shortcut",
-      "icons": [
-        {
-          "src": "/icons/shortcut.png",
-          "sizes": "96x96",
-          "type": "image/png"
-        }
-      ]
-    },
-    {
-      "name": "My widget",
-      "short_name": "Widget",
-      "description": "Your configurable home-screen widget",
-      "url": "/widgets/?view=custom&source=shortcut",
+      "name": "Account Book",
+      "short_name": "Ledger",
+      "description": "Record dues, income and expenses",
+      "url": "/?open=hisab&source=shortcut",
       "icons": [
         {
           "src": "/icons/shortcut.png",
@@ -759,7 +584,7 @@
       "type": "application/json",
       "screenshots": [
         {
-          "src": "/assets/screenshots/04-widget.webp",
+          "src": "/assets/screenshots/08-widget.webp",
           "sizes": "1080x1920",
           "label": "Configurable home-screen widget with prayer countdowns and amol check-ins"
         }
