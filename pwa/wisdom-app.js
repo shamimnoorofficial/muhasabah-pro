@@ -36,6 +36,9 @@
     if (opts.id) target = String(opts.id);
     if (opts.cat) filter = { cat: opts.cat, author: "", mine: false, saved: false };
     if (opts.q) { q = String(opts.q); filter = { cat: "", author: "", mine: false, saved: false }; }
+    if (opts.author) filter = { cat: "", author: String(opts.author), mine: false, saved: false };
+    if (opts.saved) filter = { cat: "", author: "", mine: false, saved: true };
+    if (opts.all) { q = ""; filter = { cat: "", author: "", mine: false, saved: false }; }
     if (sh && sh.dialog.open) { render(); return; }
     sh = X.sheet({ id: "mhs-wisdomapp", title: t("title"), sub: t("sub"), onClose: function () { sh = null; } });
     sh.body.classList.add("mhs-kh");
@@ -65,6 +68,7 @@
       chips.append(chip(t("all"), !filter.cat && !filter.mine && !filter.saved, function () { filter = { cat: "", author: filter.author, mine: false, saved: false }; render(); }),
         chip("♥ " + t("saved"), filter.saved, function () { filter = { cat: "", author: "", mine: false, saved: !filter.saved }; render(); }),
         chip("✍️ " + t("mine"), filter.mine, function () { filter = { cat: "", author: "", mine: !filter.mine, saved: false }; render(); }),
+        chip("＋ " + t("add"), adding, function () { adding = !adding; render(); if (adding) setTimeout(function () { var f = sh && sh.body.querySelector("form textarea, form input"); if (f) { f.scrollIntoView({ block: "center" }); f.focus(); } }, 60); }),
         chip("🎲 " + t("random"), false, function () { var all = allItems(j); target = all[Math.floor(Math.random() * all.length)].id; filter = { cat: "", author: "", mine: false, saved: false }; q = ""; render(); }));
       (j.categories || []).forEach(function (c) { chips.appendChild(chip(L(c), filter.cat === c.id, function () { filter = { cat: filter.cat === c.id ? "" : c.id, author: "", mine: false, saved: false }; render(); })); });
       var seenA = {}; allItems(j).forEach(function (it) { seenA[it.author] = (seenA[it.author] || 0) + 1; });

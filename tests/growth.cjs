@@ -38,7 +38,7 @@ const BASE = process.env.BASE || 'http://localhost:8889';
   assert.equal(await p.evaluate(() => window.MHSEssential.stats().today), 1, 'check-in stored');
   await hub.locator('.mhs-es-card').first().getByRole('button', { name: /Add to my habits/ }).click(); await p.waitForTimeout(300);
   assert.equal(await p.evaluate(() => window.MHSApp.data().habits.length), 1, 'added to habits');
-  await hub.locator('.mhs-mini-tools button').first().click(); await hub.locator('.mhs-ph-adj').waitFor(); // settings
+  await hub.locator('.mhs-mini-tools [data-nav-item=settings]').click(); await hub.locator('.mhs-ph-adj').waitFor(); // settings
   assert.ok(await hub.locator('select').count() >= 4, 'method/asr/hi-lat/clock settings');
   await p.keyboard.press('Escape'); await p.waitForTimeout(300);
   // Overview shows the essential check-in
@@ -87,7 +87,7 @@ const BASE = process.env.BASE || 'http://localhost:8889';
   // Phase 7 — Wisdom mini-app with authors, categories, custom entries
   await p.evaluate(() => window.MHSWisdomApp.open()); const wa = p.locator('#mhs-wisdomapp'); await wa.waitFor(); await wa.locator('.mhs-kh-item').first().waitFor({ timeout: 10000 });
   assert.ok(await wa.locator('.mhs-w-authors .mhs-chip').count() >= 5, 'authors');
-  await wa.locator('.mhs-mini-tools button').last().click(); await wa.locator('textarea').fill('Test my own wisdom'); await wa.locator('form button[type=submit]').click(); await p.waitForTimeout(300);
+  await wa.getByRole('button', { name: '＋ Add your own', exact: true }).click(); await wa.locator('textarea').fill('Test my own wisdom'); await wa.locator('form button[type=submit]').click(); await p.waitForTimeout(300);
   assert.match(await wa.innerText(), /Test my own wisdom/); assert.match(await wa.innerText(), /Your entry/);
   await p.keyboard.press('Escape'); await p.waitForTimeout(300);
 

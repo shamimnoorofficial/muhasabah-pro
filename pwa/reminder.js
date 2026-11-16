@@ -10,13 +10,13 @@
   var t = X.tr({
     en: { title: "Reminder", sub: "Verses, hadith and wise words", all: "All", verse: "Quran", hadith: "Hadith", quote: "Wisdom", favs: "Saved", mine: "Mine", next: "Next", share: "Share", fav: "Save", unfav: "Saved", add: "Add own", openQ: "Open in Quran", openH: "Open in Hadith", openW: "Open in Wisdom", none: "Nothing in this filter yet.", context: "Context",
       nTitle: "Daily reminder notifications", nSub: "A random verse, hadith or saying at the times you choose — even when the app is closed.", nEnable: "Daily reminders", nTimes: "Times", nAdd: "+ Add time", nSources: "Sources", nPerDay: "{n} per day", nDenied: "Notifications are blocked. Allow them in your browser or phone settings.", nUnsupported: "This browser doesn't support notifications.", nTest: "Send test", nSent: "Test sent", nIos: "On iPhone/iPad, add the app to the Home Screen first.", nNote: "Reminders are scheduled on this device; they arrive while the app is open or in the background and via push when the daily push reminder is on.",
-      addTitle: "Add a quote or saying", text: "Text", textPh: "Write the quote, verse or saying…", by: "Source / author", byPh: "e.g. Imam Ahmad, Surah Al-Kahf 18:10", kind: "Type", save: "Save", cancel: "Cancel", saved: "Saved to your reminders", delete: "Delete", deleted: "Removed" },
+      addTitle: "Add a quote or saying", text: "Text", textPh: "Write the quote, verse or saying…", by: "Source / author", byPh: "e.g. Imam Ahmad, Surah Al-Kahf 18:10", kind: "Type", save: "Save", cancel: "Cancel", saved: "Saved to your reminders", delete: "Delete", deleted: "Removed", dua: "Duas & Ilm", openK: "Open in Duas & Ilm", k_dua: "Dua", k_amol: "Amol", k_name: "Names of Allah", appQuran: "Quran", appHadith: "Hadith", appWisdom: "Hikmah", appDua: "Duas & Ilm", appSeerah: "Seerah", appJournal: "Private diary", mixTitle: "Feed sources", mixSub: "Choose which apps the feed draws from, and how often each one appears.", mixMode: "How to mix", mixRandom: "Random mix", mixRandomSub: "Every app equally", mixCustom: "Custom", mixCustomSub: "Set more or less per app", mixAmount: "Amount", lv_less: "Less", lv_normal: "Normal", lv_more: "More" },
     bn: { title: "স্মরণ", sub: "আয়াত, হাদিস ও জ্ঞানের কথা", all: "সব", verse: "কুরআন", hadith: "হাদিস", quote: "হিকমাহ", favs: "সংরক্ষিত", mine: "আমার", next: "পরবর্তী", share: "শেয়ার", fav: "সংরক্ষণ", unfav: "সংরক্ষিত", add: "নিজের যোগ", openQ: "কুরআনে খুলুন", openH: "হাদিসে খুলুন", openW: "হিকমাহে খুলুন", none: "এই ফিল্টারে এখনো কিছু নেই।", context: "প্রসঙ্গ",
       nTitle: "দৈনিক স্মরণ নোটিফিকেশন", nSub: "আপনার বেছে নেওয়া সময়ে একটি আয়াত, হাদিস বা বাণী — অ্যাপ বন্ধ থাকলেও।", nEnable: "দৈনিক স্মরণ", nTimes: "সময়", nAdd: "+ সময় যোগ", nSources: "উৎস", nPerDay: "দিনে {n}টি", nDenied: "নোটিফিকেশন বন্ধ আছে। ব্রাউজার বা ফোনের সেটিংসে অনুমতি দিন।", nUnsupported: "এই ব্রাউজারে নোটিফিকেশন সমর্থিত নয়।", nTest: "পরীক্ষা পাঠান", nSent: "পরীক্ষা পাঠানো হয়েছে", nIos: "আইফোন/আইপ্যাডে প্রথমে হোম স্ক্রিনে অ্যাপ যোগ করুন।", nNote: "স্মরণগুলো এই ডিভাইসে নির্ধারিত হয়; অ্যাপ খোলা বা ব্যাকগ্রাউন্ডে থাকলে এবং দৈনিক পুশ চালু থাকলে পুশের মাধ্যমে আসে।",
-      addTitle: "একটি উক্তি বা বাণী যোগ করুন", text: "লেখা", textPh: "উক্তি, আয়াত বা বাণী লিখুন…", by: "সূত্র / বক্তা", byPh: "যেমন: ইমাম আহমাদ, সূরা কাহফ ১৮:১০", kind: "ধরন", save: "সংরক্ষণ", cancel: "বাতিল", saved: "আপনার স্মরণে যোগ হয়েছে", delete: "মুছুন", deleted: "মুছে ফেলা হয়েছে" },
+      addTitle: "একটি উক্তি বা বাণী যোগ করুন", text: "লেখা", textPh: "উক্তি, আয়াত বা বাণী লিখুন…", by: "সূত্র / বক্তা", byPh: "যেমন: ইমাম আহমাদ, সূরা কাহফ ১৮:১০", kind: "ধরন", save: "সংরক্ষণ", cancel: "বাতিল", saved: "আপনার স্মরণে যোগ হয়েছে", delete: "মুছুন", deleted: "মুছে ফেলা হয়েছে", dua: "দোয়া ও ইলম", openK: "দোয়া ও ইলমে খুলুন", k_dua: "দোয়া", k_amol: "আমল", k_name: "আল্লাহর নাম", appQuran: "কুরআন", appHadith: "হাদিস", appWisdom: "হিকমাহ", appDua: "দোয়া ও ইলম", appSeerah: "সীরাত", appJournal: "ব্যক্তিগত ডায়েরি", mixTitle: "ফিডের উৎস", mixSub: "কোন কোন অ্যাপ থেকে ফিডে পোস্ট আসবে এবং কোনটি কত বেশি আসবে তা ঠিক করুন।", mixMode: "মেশানোর ধরন", mixRandom: "র‍্যান্ডম মিশ্রণ", mixRandomSub: "সব অ্যাপ থেকে সমানভাবে", mixCustom: "নিজের মতো", mixCustomSub: "প্রতিটি অ্যাপে কম বা বেশি ঠিক করুন", mixAmount: "পরিমাণ", lv_less: "কম", lv_normal: "স্বাভাবিক", lv_more: "বেশি" },
     ar: { title: "تذكرة", sub: "آيات وأحاديث وحِكم", all: "الكل", verse: "القرآن", hadith: "الحديث", quote: "الحكمة", favs: "المحفوظات", mine: "لي", next: "التالي", share: "مشاركة", fav: "حفظ", unfav: "محفوظ", add: "أضف", openQ: "افتح في القرآن", openH: "افتح في الحديث", openW: "افتح في الحكمة", none: "لا شيء هنا بعد.", context: "السياق",
       nTitle: "إشعارات التذكير اليومي", nSub: "آية أو حديث أو حكمة في الأوقات التي تختارها.", nEnable: "تذكير يومي", nTimes: "الأوقات", nAdd: "+ وقت", nSources: "المصادر", nPerDay: "{n} يومياً", nDenied: "الإشعارات محظورة.", nUnsupported: "المتصفح لا يدعم الإشعارات.", nTest: "إشعار تجريبي", nSent: "تم الإرسال", nIos: "أضف التطبيق إلى الشاشة الرئيسية أولاً.", nNote: "تُجدول التذكيرات على هذا الجهاز.",
-      addTitle: "أضف حكمة", text: "النص", textPh: "اكتب…", by: "المصدر", byPh: "مثال: الإمام أحمد", kind: "النوع", save: "حفظ", cancel: "إلغاء", saved: "تم الحفظ", delete: "حذف", deleted: "تم الحذف" }
+      addTitle: "أضف حكمة", text: "النص", textPh: "اكتب…", by: "المصدر", byPh: "مثال: الإمام أحمد", kind: "النوع", save: "حفظ", cancel: "إلغاء", saved: "تم الحفظ", delete: "حذف", deleted: "تم الحذف", dua: "الأدعية والعلم", openK: "افتح في الأدعية والعلم", k_dua: "دعاء", k_amol: "عمل", k_name: "أسماء الله", appQuran: "القرآن", appHadith: "الحديث", appWisdom: "الحكمة", appDua: "الأدعية والعلم", appSeerah: "السيرة", appJournal: "يوميات خاصة", mixTitle: "مصادر الموجز", mixSub: "اختر التطبيقات التي يأتي منها الموجز وكم يظهر كل منها.", mixMode: "طريقة المزج", mixRandom: "مزيج عشوائي", mixRandomSub: "كل التطبيقات بالتساوي", mixCustom: "مخصص", mixCustomSub: "حدد الأكثر والأقل لكل تطبيق", mixAmount: "الكمية", lv_less: "أقل", lv_normal: "عادي", lv_more: "أكثر" }
   });
   function ls(k, d) { try { return JSON.parse(localStorage.getItem(k) || "null") || d; } catch (e) { return d; } }
   function lsSet(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
@@ -27,15 +27,25 @@
   var BOOKS = { bukhari: "Sahih al-Bukhari", muslim: "Sahih Muslim", abudawud: "Sunan Abi Dawud", tirmidhi: "Jami' at-Tirmidhi", nasai: "Sunan an-Nasa'i", ibnmajah: "Sunan Ibn Majah", malik: "Muwatta Malik", ahmad: "Musnad Ahmad" };
 
   /* ---- pool: legacy built-ins + /data/reminders.json + /data/wisdom.json + user items ---- */
-  var extra = null, wis = null, loading = null;
+  var extra = null, wis = null, kdata = null, loading = null;
   function loadExtra() {
     if (loading) return loading;
     loading = Promise.all([
       fetch("/data/reminders.json").then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; }),
       window.MHSWisdomApp ? window.MHSWisdomApp.load().catch(function () { return null; }) : Promise.resolve(null),
-      new Promise(function(resolve){X.whenReady("MHSSeerah",function(S){S.warm(feedLang()).then(resolve).catch(function(){resolve(null);});});})
+      new Promise(function(resolve){X.whenReady("MHSSeerah",function(S){S.warm(feedLang()).then(resolve).catch(function(){resolve(null);});});}),
+      loadKnowledge()
     ]).then(function (r) { extra = r[0]; wis = r[1]; return true; });
     return loading;
+  }
+  /* Duas & Ilm posts (masnun duas, daily amol, the 99 Names). Loaded alongside the rest but never
+   * allowed to hold the feed back: a slow or missing file just means no Duas & Ilm posts yet. */
+  var kloading = null;
+  function loadKnowledge() {
+    if (!window.MHSKnowledge) return Promise.resolve(null);
+    if (!kloading) kloading = Promise.all(["duas", "amol", "names"].map(function (n) { return window.MHSKnowledge.load(n).catch(function () { return null; }); }))
+      .then(function (r) { kdata = { duas: r[0], amol: r[1], names: r[2] }; if (!r[0] && !r[1] && !r[2]) kloading = null; return kdata; });
+    return Promise.race([kloading, new Promise(function (res) { setTimeout(res, 400); })]);
   }
   function pool() {
     var out = [], ids = {};
@@ -54,6 +64,13 @@
       else if (it.kind === "verse") it.goLabel = t("openQ"); else if (it.kind === "hadith") it.goLabel = t("openH");
       push(it);
     });
+    if (kdata) {
+      var K = window.MHSKnowledge, kl = function (k) { return K && K.t ? K.t(k) : k; };
+      var kopen = function (tab, id) { return function () { window.MHSKnowledge && window.MHSKnowledge.open({ tab: tab, id: id }); }; };
+      ((kdata.duas || {}).items || []).forEach(function (d) { var tx = L(d); if (!tx) return; push({ id: "k:" + d.id, kind: "dua", sub: "dua", ar: d.ar || "", text: tx, src: L(d.title) + (d.src ? " · " + d.src : ""), go: kopen("duas", d.id), goLabel: t("openK") }); });
+      ((kdata.amol || {}).items || []).forEach(function (m) { var tx = L(m.fazilat) || L(m.how); if (!tx) return; push({ id: "k:" + m.id, kind: "dua", sub: "amol", ar: "", text: L(m.title) + " — " + tx, src: m.src || L(m.title), go: kopen("amol", m.id), goLabel: t("openK") }); });
+      ((kdata.names || {}).items || []).forEach(function (n) { var mn = L(n.meaning); push({ id: "k:" + n.id, kind: "dua", sub: "name", ar: n.ar || "", text: (n.tl ? n.tl + " — " : "") + L(n) + (mn ? ". " + mn : ""), src: kl("names") + (n.n ? " · " + X.num(Number(n.n)) : ""), go: kopen("names", n.id), goLabel: t("openK") }); });
+    }
     if(window.MHSSeerah) window.MHSSeerah.feedItems(feedLang()).forEach(push);
     var journal = window.MHS && window.MHS.current() && window.MHS.current().journal || {};
     Object.keys(journal).forEach(function(day) { if(journal[day].text) push({id:"j:"+day,kind:"journal",text:journal[day].text,src:day,go:function(){window.MHSJournal.open(day);}}); });
@@ -63,9 +80,17 @@
   function seen() { var s = X.get("rfseen", null) || { ids: [] }; s.ids = Array.isArray(s.ids) ? s.ids : []; return s; }
   /* Each post type gets a share of the feed; Seerah and diary appear less often than verses,
    * hadith and wisdom, whatever the size of each library. Unseen posts come first. */
-  var WEIGHT = { verse: 3, hadith: 3, quote: 3, journal: 1, seerah: 1 };
+  /* Feed mix (Reminder settings): every app can be switched on or off. "random" gives every
+   * enabled app the same share; "custom" uses the amount chosen per app (less / normal / more). */
+  var SOURCES = ["verse", "hadith", "quote", "dua", "seerah", "journal"];
+  var SRC_DEF = { verse: true, hadith: true, quote: true, dua: true, seerah: true, journal: false };
+  var LEVEL_W = { less: 1, normal: 3, more: 6 };
+  var MIX_DEF = { mode: "custom", level: { verse: "normal", hadith: "normal", quote: "normal", dua: "normal", seerah: "less", journal: "less" } };
+  function feedSources() { return Object.assign({}, SRC_DEF, X.get("feedSources", null) || {}); }
+  function feedMix() { var m = X.get("feedMix", null) || {}; return { mode: m.mode === "random" ? "random" : "custom", level: Object.assign({}, MIX_DEF.level, m.level || {}) }; }
+  function weight(kind, mix) { if (mix.mode === "random") return 1; return LEVEL_W[mix.level[kind]] || 3; }
   function pick(filter) {
-    var sources = X.get("feedSources", {verse:true,hadith:true,quote:true,seerah:true,journal:false});
+    var sources = feedSources(), mix = feedMix(), WEIGHT = {}; SOURCES.forEach(function (k) { WEIGHT[k] = weight(k, mix); });
     var all = pool().filter(function (r) { return sources[r.kind] !== false; }).filter(function (r) { return filter === "all" || (filter === "favs" ? favs().indexOf(r.id) >= 0 : filter === "mine" ? r.mine : r.kind === filter); });
     if (!all.length) return null;
     var s = seen(), unseen = all.filter(function (r) { return s.ids.indexOf(r.id) < 0; });
@@ -99,7 +124,7 @@
     sh.tools.appendChild(X.el("button", {type:"button",class:"mhs-mini-ib", "aria-expanded":String(configuring), "aria-label":X.lang()==="bn"?"ফিড সেটিংস":X.lang()==="ar"?"إعدادات الموجز":"Feed settings",on:{click:function(){configuring=!configuring;render();}}}, [sh.icon("M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8Z|M12 2v3|M12 19v3|M2 12h3|M19 12h3|M5 5l2 2|M17 17l2 2|M5 19l2-2|M17 7l2-2")]));
     if(configuring) sh.tools.appendChild(X.el("button", { type: "button", class: "mhs-mini-ib" + (adding ? " is-on" : ""), "aria-label": t("add"), title: t("add"), on: { click: function () { adding = !adding; render(); } } }, [sh.icon("M12 5v14|M5 12h14")]));
     var chips = X.el("div", { class: "mhs-mini-chips", role: "tablist" });
-    [["all", t("all")], ["verse", "📖 " + t("verse")], ["hadith", "📚 " + t("hadith")], ["quote", "💡 " + t("quote")], ["favs", "♥ " + t("favs")], ["mine", "✍️ " + t("mine")]].forEach(function (o) {
+    [["all", t("all")], ["verse", "📖 " + t("verse")], ["hadith", "📚 " + t("hadith")], ["quote", "💡 " + t("quote")], ["dua", "🤲 " + t("dua")], ["favs", "♥ " + t("favs")], ["mine", "✍️ " + t("mine")]].forEach(function (o) {
       chips.appendChild(X.el("button", { type: "button", role: "tab", class: "mhs-chip" + (filter === o[0] ? " is-on" : ""), "aria-selected": String(filter === o[0]), text: o[1], on: { click: function () { filter = o[0]; cur = pick(filter); render(); } } }));
     });
     if(configuring) b.appendChild(chips);
@@ -112,7 +137,7 @@
       var a = cur, isFav = favs().indexOf(a.id) >= 0;
 
       var card = X.el("div", { class: "mhs-rf-card", role: "region", "aria-live": "polite" }, [
-        X.el("div", { class: "mhs-rf-type", text: ({seerah:X.lang()==="bn"?"সীরাত":X.lang()==="ar"?"السيرة":"Seerah",journal:X.lang()==="bn"?"ডায়েরি":X.lang()==="ar"?"اليوميات":"Diary"})[a.kind] || t(a.kind) }),
+        X.el("div", { class: "mhs-rf-type", text: ({seerah:X.lang()==="bn"?"সীরাত":X.lang()==="ar"?"السيرة":"Seerah",journal:X.lang()==="bn"?"ডায়েরি":X.lang()==="ar"?"اليوميات":"Diary"})[a.kind] || (a.kind === "dua" && a.sub ? t("k_" + a.sub) : t(a.kind)) }),
         a.ar ? X.el("div", { class: "mhs-rf-ar" + (String(a.ar).length>450?" is-collapsed":""), lang: "ar", dir: "rtl", text: a.ar }) : null,
         a.kind === "seerah" && a.chapter ? X.el("div", { class: "mhs-rf-chapter", text: a.chapter }) : null,
         X.el("div", { class: "mhs-rf-text" + (String(a.text).length>650?" is-collapsed":""), lang: a.lang || null, dir: a.lang && window.MHSI18n && window.MHSI18n.isRtl && window.MHSI18n.isRtl(a.lang) ? "rtl" : a.lang ? "ltr" : null, translate: a.kind === "seerah" ? "no" : null, text: a.text }),
@@ -179,11 +204,32 @@
 
     }
     if(configuring) {
-      var sourceBox=X.el("fieldset",{class:"mhs-feed-sources"},[X.el("legend",{text:X.lang()==="bn"?"পোস্টের উৎস":X.lang()==="ar"?"مصادر المنشورات":"Post sources"})]);
-      var sources=X.get("feedSources",{verse:true,hadith:true,quote:true,seerah:true,journal:false});
-      ["verse","hadith","quote","seerah","journal"].forEach(function(k){var cb=X.el("input",{type:"checkbox",checked:!!sources[k],on:{change:function(){sources[k]=cb.checked;X.set("feedSources",sources);cur=null;historyItems=[];historyAt=-1;render();}}});sourceBox.appendChild(X.el("label",{},[cb,({verse:t("verse"),hadith:t("hadith"),quote:t("quote"),seerah:X.lang()==="bn"?"সীরাত":X.lang()==="ar"?"السيرة":"Seerah",journal:X.lang()==="bn"?"ব্যক্তিগত ডায়েরি":X.lang()==="ar"?"يوميات خاصة":"Private diary"})[k]]));});
-      b.appendChild(sourceBox); b.appendChild(notifCard());
+      b.appendChild(mixPanel()); b.appendChild(notifCard());
     }
+  }
+  function srcName(k) { return ({ verse: t("appQuran"), hadith: t("appHadith"), quote: t("appWisdom"), dua: t("appDua"), seerah: t("appSeerah"), journal: t("appJournal") })[k] || k; }
+  function mixPanel() {
+    var sources = feedSources(), mix = feedMix();
+    function reset() { cur = null; historyItems = []; historyAt = -1; }
+    var box = X.el("fieldset", { class: "mhs-feed-sources" }, [X.el("legend", { text: t("mixTitle") }), X.el("p", { class: "mhs-feed-mix-hint", text: t("mixSub") })]);
+    var modes = X.el("div", { class: "mhs-feed-mode", role: "radiogroup", "aria-label": t("mixMode") });
+    [["random", t("mixRandom"), t("mixRandomSub")], ["custom", t("mixCustom"), t("mixCustomSub")]].forEach(function (o) {
+      var on = mix.mode === o[0];
+      modes.appendChild(X.el("button", { type: "button", role: "radio", "aria-checked": String(on), class: on ? "is-on" : "", "data-mode": o[0], on: { click: function () { var m = feedMix(); m.mode = o[0]; X.set("feedMix", m); reset(); render(); } } }, [X.el("b", { text: o[1] }), X.el("small", { text: o[2] })]));
+    });
+    box.appendChild(modes);
+    var rows = X.el("div", { class: "mhs-feed-src-rows" });
+    SOURCES.forEach(function (k) {
+      var cb = X.el("input", { type: "checkbox", checked: !!sources[k], on: { change: function () { var s = feedSources(); s[k] = cb.checked; if (!SOURCES.some(function (x) { return s[x]; })) { s[k] = true; cb.checked = true; } X.set("feedSources", s); reset(); render(); } } });
+      var lv = X.el("div", { class: "mhs-feed-level", role: "radiogroup", "aria-label": t("mixAmount") + ": " + srcName(k) });
+      ["less", "normal", "more"].forEach(function (l) {
+        var on = mix.level[k] === l;
+        lv.appendChild(X.el("button", { type: "button", role: "radio", "aria-checked": String(on), class: on ? "is-on" : "", "data-level": l, disabled: mix.mode === "random" || !sources[k] ? true : null, text: t("lv_" + l), on: { click: function () { var m = feedMix(); m.level[k] = l; X.set("feedMix", m); reset(); render(); } } }));
+      });
+      rows.appendChild(X.el("div", { class: "mhs-feed-src" + (sources[k] ? "" : " is-off"), "data-src": k }, [X.el("label", {}, [cb, X.el("span", { text: srcName(k) })]), lv]));
+    });
+    box.appendChild(rows);
+    return box;
   }
   function form() {
     var ta = X.el("textarea", { rows: "3", maxlength: "600", placeholder: t("textPh"), "aria-label": t("text"), style: { width: "100%", minHeight: "5rem", borderRadius: ".9rem", border: "1px solid hsl(var(--border))", background: "hsl(var(--background) / .6)", color: "inherit", padding: ".6rem .8rem", font: "inherit", fontSize: "15px" } });
@@ -264,7 +310,12 @@
     host.replaceChildren();var tools=X.el("div",{class:"mhs-mini-tools"}),body=X.el("div",{class:"mhs-mini-body mhs-kh"});
     host.append(X.el("header",{class:"mhs-feed-heading"},[X.el("div",{},[X.el("small",{text:"MUHASABAH"}),X.el("h1",{text:X.lang()==="bn"?"আজকের অনুপ্রেরণা":X.lang()==="ar"?"إلهام اليوم":"A moment to reflect"})]),tools]),body);
     sh={embedded:true,host:host,dialog:{open:true},body:body,tools:tools,icon:X.icon,close:function(){window.MHSApp.nav("dashboard");}};render();loadExtra().then(function(){if(sh&&sh.host===host){if(!cur)cur=pick(filter);render();}});
-  }, unmount:function(host){if(sh&&sh.host===host){gestureActive=false;deferredRender=false;sh=null;}}, open: open, pool: pool, pick: pick, schedule: schedule, cfg: ncfg, t: t };
+  }, unmount:function(host){if(sh&&sh.host===host){gestureActive=false;deferredRender=false;sh=null;}}, open: open, pool: pool, pick: pick, schedule: schedule, cfg: ncfg, t: t,
+    /* Jump the open Reminder to one source (all · verse · hadith · quote · dua · favs · mine). */
+    filter: function (f) { if (!sh || sh.embedded) return; filter = f || "all"; historyItems = []; historyAt = -1; cur = pick(filter); render(); },
+    current: function () { return filter; },
+    settings: function () { if (!sh || sh.embedded) return; configuring = !configuring; render(); if (configuring) setTimeout(function () { var n = sh && sh.body.querySelector(".mhs-feed-sources"); if (n) n.scrollIntoView({ block: "start", behavior: "smooth" }); }, 60); },
+    load: loadExtra };
   /* Language changes: rebuild the feed so the heading, labels and posts all use the new language. */
   var lastLang = feedLang();
   new MutationObserver(function () {
