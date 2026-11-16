@@ -23,7 +23,7 @@
     if (!reduced()) {
       var el = document.createElement("div"); el.className = "mhs-savefx"; el.setAttribute("aria-hidden", "true");
       el.innerHTML = '<svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
-      document.body.appendChild(el); setTimeout(function () { el.remove(); }, 950);
+      (document.querySelector("dialog[open]") || document.body).appendChild(el); setTimeout(function () { el.remove(); }, 950);
     }
     if (opts.toast !== false) toast(opts.message || t("savedAt", { t: time() }));
     if (opts.haptic !== false) try { navigator.vibrate && navigator.vibrate(14); } catch (e) {}
@@ -65,7 +65,6 @@
       was = st;
     }).observe(status, { attributes: true, attributeFilter: ["data-state"], childList: true, characterData: true, subtree: true });
     dlg.addEventListener("input", function (e) { if (e.target && e.target.tagName === "TEXTAREA") { markDirty("journal", true); p.set("dirty"); } }, true);
-    dlg.querySelectorAll("footer button").forEach(function (b) { b.addEventListener("click", function () { setTimeout(function () { flash({ message: t("savedAt", { t: time() }) }); markDirty("journal", false); p.set("saved"); }, 250); }); });
     dlg.addEventListener("close", function () { markDirty("journal", false); });
   }
   new MutationObserver(function () { var d = document.getElementById("mhs-journal") || document.querySelector("dialog.mhs-journal, dialog[aria-label*='Journal' i], dialog[aria-label*='দিনলিপি']"); if (d && d.open) hookJournal(d); })
@@ -80,13 +79,5 @@
   document.addEventListener("mhs:suite", function (e) { var k = e.detail && e.detail.key; if (!k || e.detail.remote) return; if (k === "notes" || k === "hisab" || k === "zikr") softSaved(k); });
   document.addEventListener("mhs:essential", function () { softSaved("essential"); });
   document.addEventListener("mhs:points", function () { softSaved("habit"); });
-  document.addEventListener("mhs:new-todo", function () { softSaved("todo"); });
-  /* Explicit "Save" buttons inside Notes / Ledger / Zikr sheets get the big checkmark. */
-  document.addEventListener("click", function (e) {
-    var b = e.target && e.target.closest && e.target.closest("dialog.mhs-mini button[type=submit], dialog.mhs-mini .mhs-btn.primary");
-    if (!b) return; var txt = (b.textContent || "").trim();
-    if (/^(Save|সংরক্ষণ|حفظ|Add|যোগ|أضف|Done|হয়েছে|تم)/.test(txt)) setTimeout(function () { flash({ toast: false }); }, 60);
-  }, true);
-
   window.MHSSaveFX = { flash: flash, pill: pill, markDirty: markDirty, t: t, time: time };
 })();

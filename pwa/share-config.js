@@ -6,11 +6,11 @@
   if (window.MHSShareConfig) return;
   window.MHSShareConfig = {
     brand: "Muhasabah-Pro",
-    url: "https://muhasabah-pro.app",
+    url: "https://muhasabah-pro.netlify.app/",
     playUrl: "https://play.google.com/store/apps/details?id=com.shamimnoor.muhasabahpro",
     utm: { source: "app_share", param: "utm_medium" },
     /* Allowed utm_medium values. Anything else falls back to "app". */
-    mediums: ["quran", "hadith", "wisdom", "dua", "amol", "names", "reminder", "zikr", "streak", "journal", "invite", "prayer", "widget", "app"],
+    mediums: ["quran", "hadith", "wisdom", "dua", "amol", "names", "reminder", "zikr", "streak", "journal", "seerah", "invite", "prayer", "widget", "app"],
     /* Signature line shown under every share, per language. */
     signature: { en: "— Muhasabah-Pro", bn: "— মুহাসাবা-প্রো", ar: "— محاسبة برو" },
     /* Invite / promo copy used by the 3-day engagement prompt and "Invite a friend". */
@@ -20,6 +20,6 @@
       ar: "أستخدم محاسبة برو لمواقيت الصلاة والقرآن والحديث والأعمال اليومية وتتبع العادات — مجاني ويعمل دون إنترنت. جرّبه:"
     },
     /* Watermark text on generated image cards. */
-    watermark: "muhasabah-pro.app"
+    watermark: "muhasabah-pro.netlify.app"
   };
 })();

@@ -47,7 +47,7 @@
   /* bookmarks: MHSX "kbm" = { dua:[], amol:[], name:[], wisdom:[] } */
   function marks() { var m = X.get("kbm", null) || {}; ["dua", "amol", "name", "wisdom"].forEach(function (k) { m[k] = Array.isArray(m[k]) ? m[k] : []; }); return m; }
   function isMarked(kind, id) { return marks()[kind].indexOf(id) >= 0; }
-  function toggleMark(kind, id) { var m = marks(), i = m[kind].indexOf(id); if (i >= 0) m[kind].splice(i, 1); else m[kind].push(id); X.set("kbm", m); X.haptic(10); return i < 0; }
+  function toggleMark(kind, id) { var m = marks(), i = m[kind].indexOf(id); if (i >= 0) m[kind].splice(i, 1); else m[kind].push(id); X.set("kbm", m); if(i<0&&window.MHSCollections) window.MHSCollections.choose({id:({dua:"d",amol:"a",name:"n",wisdom:"w"}[kind]||"w")+id,kind:kind,sourceId:id,title:id}); X.haptic(10); return i < 0; }
   /* reading log: MHSX "kread" = { "YYYY-MM-DD": { dua:n, amol:n, name:n } } + last: MHSX "klast" */
   var seen = {};
   function logRead(kind, id) {

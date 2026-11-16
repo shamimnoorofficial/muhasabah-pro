@@ -2,12 +2,12 @@
   {
     "file": "01-home",
     "en": {
-      "headline": "Master your day, mind & soul",
-      "sub": "Prayer strip, live countdown and a 360° Muhasabah overview"
+      "headline": "One post. A moment to reflect.",
+      "sub": "Quran, Hadith and wisdom in your personal swipe feed"
     },
     "bn": {
-      "headline": "দিন, মন ও আত্মা — সব এক জায়গায়",
-      "sub": "নামাজের স্ট্রিপ, লাইভ কাউন্টডাউন ও ৩৬০° মুহাসাবা"
+      "headline": "একটি পোস্ট, একটু আত্মচিন্তা",
+      "sub": "কুরআন, হাদিস ও প্রজ্ঞা — আপনার ব্যক্তিগত ফিডে"
     }
   },
   {
@@ -220,14 +220,25 @@
     }
   },
   {
-    "file": "21-pro",
+    "file": "22-seerah",
     "en": {
-      "headline": "Free forever. Pro when you’re ready",
-      "sub": "Google Drive sync, cloud backup and the golden crest"
+      "headline": "Read the Seerah. Keep it with you.",
+      "sub": "Attributed source, reading languages and offline passages"
     },
     "bn": {
-      "headline": "চিরকাল ফ্রি। প্রস্তুত হলে প্রো",
-      "sub": "Google Drive সিঙ্ক, ক্লাউড ব্যাকআপ ও গোল্ডেন ক্রেস্ট"
+      "headline": "নবীজির জীবনচরিত, আপনার সঙ্গে",
+      "sub": "মূল উৎস, পড়ার ভাষা ও অফলাইন পাঠাংশ"
+    }
+  },
+  {
+    "file": "21-pro",
+    "en": {
+      "headline": "Your data. Free to take anywhere.",
+      "sub": "Free export, import and permission-based backups"
+    },
+    "bn": {
+      "headline": "আপনার ডেটা, আপনার নিয়ন্ত্রণে",
+      "sub": "বিনামূল্যে এক্সপোর্ট, ইমপোর্ট ও অনুমতিভিত্তিক ব্যাকআপ"
     }
   }
 ]

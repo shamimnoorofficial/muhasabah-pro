@@ -12,7 +12,7 @@ const STUB = `window.Stripe=function(pk){return{elements:function(){return{creat
   await p.goto(base + '/?tab=dashboard'); await p.locator('#mhs-startup').waitFor({ state: 'detached' });
   const c = p.getByRole('button', { name: 'Continue', exact: true }); await c.waitFor({ timeout: 4000 }).catch(() => {}); if (await c.count()) await c.click();
   const pill = p.locator('#mhs-donate-pill'); await pill.waitFor();
-  assert.match(await pill.innerText(), /Donate for\s+Muhasabah/);
+  assert.equal((await pill.innerText()).trim(), "Donate");
   await p.waitForTimeout(900); await p.screenshot({ path: '/tmp/dn-pill.png' });
   await pill.click(); await p.getByRole('dialog', { name: 'Support Muhasabah' }).waitFor();
   assert.ok(await p.locator('.mhs-dn-go').isDisabled(), 'preview button disabled');

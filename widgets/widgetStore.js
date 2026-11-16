@@ -76,7 +76,7 @@
   var DAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   function sameDay(ts, d) { return new Date(ts).toDateString() === (d || new Date()).toDateString(); }
   function deadline(h, d) {
-    d = d || new Date();
+    d = h && h.date ? new Date(h.date + "T12:00:00") : d || new Date();
     var p = null;
     try { p = window.MHSPrayer && window.MHSPrayer.dl ? window.MHSPrayer.dl(h, d) : null; } catch (e) {}
     var grace = Math.max(0, Number(h && h.grace) || 0) * 6e4;
@@ -140,6 +140,7 @@
       });
     });
   }
+  function localDay() { var d=new Date(); return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0"); }
   function addTodo(title) {
     title = String(title || "").trim();
     if (title.length < 2) return Promise.resolve({ ok: false, reason: "short" });
@@ -147,7 +148,7 @@
       if (r) return { ok: true, via: "app", data: r.data };
       return load().then(function (data) {
         var p = data.todoPrefs || {};
-        var td = { id: "t" + Date.now() + Math.random(), title: title, points: Math.max(0, Number(p.points) || 0), penalty: Math.max(0, Number(p.penalty) || 0), deadline: p.deadline || "23:59:00", icon: "📌", status: "active", doneAt: null, createdAt: Date.now() };
+        var td = { id: "t" + Date.now() + Math.random(), title: title, date: localDay(), points: Math.max(0, Number(p.points) || 0), penalty: Math.max(0, Number(p.penalty) || 0), deadline: p.deadline || "23:59:00", icon: "📌", status: "active", doneAt: null, createdAt: Date.now() };
         data.todos = [td].concat(data.todos || []);
         return save(data).then(function () { return { ok: true, via: "widget", data: data }; });
       });
