@@ -14,7 +14,7 @@ const assert = require('node:assert/strict');
   await page.goto((process.env.BASE || 'http://localhost:8889') + '/');
   await page.locator('.mhs-rf-card').waitFor();
   assert.equal(await page.locator('mhs-feed-home .mhs-rf-card').count(), 1);
-  assert.deepEqual(await page.locator('mhs-feed-home').evaluate(h => Array.from(h.children, n => n.tagName === 'MHS-PRAYER-STRIP' ? 'prayer' : n.className)), ['prayer', 'mhs-home-feed', 'panel mhs-home-summary', 'panel mhs-home-apps']);
+  assert.deepEqual(await page.locator('mhs-feed-home').evaluate(h => Array.from(h.children, n => n.tagName === 'MHS-PRAYER-STRIP' ? 'prayer' : n.className)), ['prayer', 'panel mhs-home-summary', 'panel mhs-home-apps', 'mhs-home-feed']);
   assert.equal(await page.locator('mhs-prayer-strip').count(), 1);
   assert.equal(await page.locator('.mhs-story-progress span').count(), 5);
   assert.equal(await page.locator('.mhs-rf-card .mhs-story-actions button').count(), 5);
