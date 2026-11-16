@@ -26,6 +26,30 @@ const baseURL = process.env.TEST_BASE_URL || 'http://localhost:8889';
       assert.equal(errors.length, 0, errors.join('\n'));
       await context.close();
     }
+    // A returning user's home screen must actually be visible, not just present in the page.
+    // (A clashing @keyframes name once left the whole app faded out at opacity 0.)
+    for (const lang of ['en', 'bn']) {
+      const home = await browser.newContext({ serviceWorkers: 'block', viewport: { width: 390, height: 844 } });
+      const homePage = await home.newPage();
+      await homePage.addInitScript(lang => {
+        localStorage.setItem('mhs:ftue:v1', JSON.stringify({ intro: 1, tour: 1, tips: {} }));
+        localStorage.setItem('muhasabah:data:v1', JSON.stringify({ lang, onboarded: true, habits: [], todos: [], ledger: [] }));
+      }, lang);
+      await homePage.goto(baseURL);
+      await homePage.locator('#mhs-startup').waitFor({ state: 'detached' });
+      await homePage.locator('main').first().waitFor();
+      await homePage.waitForTimeout(1500);
+      const hidden = await homePage.evaluate(() => {
+        const out = [];
+        for (let el = document.querySelector('main'); el && el !== document.documentElement; el = el.parentElement) {
+          const cs = getComputedStyle(el);
+          if (Number(cs.opacity) < 0.99 || cs.visibility === 'hidden' || cs.display === 'none') out.push(el.tagName + '.' + el.className + ' opacity=' + cs.opacity);
+        }
+        return out;
+      });
+      assert.deepEqual(hidden, [], 'home screen is hidden: ' + hidden.join(', '));
+      await home.close();
+    }
     const context = await browser.newContext({ serviceWorkers: 'block' });
     const page = await context.newPage();
     await page.addInitScript(() => {
