@@ -27,7 +27,7 @@
     else if (m[0] === "amol") { open = "amol"; params.id = m[1]; }
     else if (m[0]) open = m[0];
   }
-  var RICH = { quran: ["s", "a"], hadith: ["book", "n"], wisdom: ["id", "q", "cat"], hikmah: ["id", "q", "cat"], reminder: ["id"], duas: ["id", "cat"], amol: ["id", "cat"], names: ["n", "id"], prayer: ["tab"], essential: [], bookmarks: [], widgets: [] };
+  var RICH = { seerah: ["page"], quran: ["s", "a"], hadith: ["book", "n"], wisdom: ["id", "q", "cat"], hikmah: ["id", "q", "cat"], reminder: ["id"], duas: ["id", "cat"], amol: ["id", "cat"], names: ["n", "id"], prayer: ["tab"], essential: [], bookmarks: [], widgets: [] };
   function has(keys) { return keys.some(function (k) { return params[k] != null; }); }
   var claim = open && RICH[open] && (RICH[open].length === 0 ? ["essential", "bookmarks", "names", "reminder"].indexOf(open) >= 0 : has(RICH[open]));
   if (claim) {
@@ -38,6 +38,7 @@
   function go(kind, p) {
     p = p || {};
     switch (kind) {
+      case "seerah": return when("MHSSeerah", function(S){S.open({page:Number(p.page)||0});});
       case "quran": return when("MHSQuran", function (Q) { Q.open({ surah: Number(p.s) || 1, ayah: Number(p.a) || 1 }); });
       case "hadith": return when("MHSHadith", function (H) { H.open({ book: p.book || "bukhari", number: Number(p.n) || 1 }); });
       case "wisdom": case "hikmah": return when("MHSWisdomApp", function (W) { W.open({ id: p.id, q: p.q, cat: p.cat }); });

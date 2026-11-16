@@ -1,28 +1,13 @@
-/* Account data sync for Monthly Pro members.
- *
- * GET    /api/user-data  → { updatedAt, size, device, data } for the signed-in user, or null
- * PUT    /api/user-data  { data, updatedAt, device } → stores the whole on-device dataset
- * DELETE /api/user-data  → removes the server copy
- *
- * Requires a Netlify Identity session (same cookie as /api/pro) and an active Monthly Pro
- * subscription: the monthly plan is what pays for server-side storage. Lifetime members keep
- * their data on their own Google Drive (pwa/protools.js). Payloads are capped at 4 MB. */
+// Free account backup; authentication and ownership checks apply to every request.
 import type { Config } from '@netlify/functions';
 import { getUser } from '@netlify/identity';
 import { eq } from 'drizzle-orm';
 import { database } from '../../db/index.js';
-import { proMembers, userData } from '../../db/schema.js';
+import { userData } from '../../db/schema.js';
 
 const MAX = 4_000_000;
-const DAY = 86_400_000;
-const ACTIVE = new Set(['active', 'trialing', 'past_due']);
 const headers = { 'Cache-Control': 'private, no-store' };
 const json = (body: unknown, status = 200) => Response.json(body, { status, headers });
-
-async function monthlyActive(userId: string) {
-  const [m] = await database().select({ id: proMembers.subscriptionId, status: proMembers.subscriptionStatus, end: proMembers.subscriptionPeriodEnd }).from(proMembers).where(eq(proMembers.userId, userId));
-  return !!(m && m.id && ACTIVE.has(m.status || '') && (!m.end || m.end > Date.now() - 3 * DAY));
-}
 
 export default async (req: Request) => {
   if (!['GET', 'PUT', 'DELETE'].includes(req.method)) return new Response('Method not allowed', { status: 405, headers });
@@ -35,7 +20,6 @@ export default async (req: Request) => {
       const [row] = await db.select().from(userData).where(eq(userData.userId, user.id));
       return json(row ? { updatedAt: row.updatedAt, size: row.size, device: row.device, data: row.data } : null);
     }
-    if (!(await monthlyActive(user.id))) return json({ error: 'plan_required' }, 402);
     if (req.method === 'DELETE') {
       await db.delete(userData).where(eq(userData.userId, user.id));
       return json({ ok: true });

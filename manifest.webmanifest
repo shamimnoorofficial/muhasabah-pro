@@ -120,7 +120,7 @@
       "sizes": "1080x1920",
       "type": "image/webp",
       "form_factor": "narrow",
-      "label": "Master your day, mind & soul — Prayer strip, live countdown and a 360° Muhasabah overview"
+      "label": "One post. A moment to reflect. — Quran, Hadith and wisdom in your personal swipe feed"
     },
     {
       "src": "/assets/screenshots/02-prayer-times.webp",
@@ -260,14 +260,14 @@
       "sizes": "1080x1920",
       "type": "image/webp",
       "form_factor": "narrow",
-      "label": "Free forever. Pro when you’re ready — Google Drive sync, cloud backup and the golden crest"
+      "label": "Your data. Free to take anywhere. — Free export, import and permission-based backups"
     },
     {
       "src": "/assets/screenshots/w-01-home.webp",
       "sizes": "1920x1080",
       "type": "image/webp",
       "form_factor": "wide",
-      "label": "Master your day, mind & soul — Prayer strip, live countdown and a 360° Muhasabah overview"
+      "label": "One post. A moment to reflect. — Quran, Hadith and wisdom in your personal swipe feed"
     },
     {
       "src": "/assets/screenshots/w-02-prayer-times.webp",
@@ -323,7 +323,7 @@
       "sizes": "1080x1920",
       "type": "image/webp",
       "form_factor": "narrow",
-      "label": "দিন, মন ও আত্মা — সব এক জায়গায় — নামাজের স্ট্রিপ, লাইভ কাউন্টডাউন ও ৩৬০° মুহাসাবা"
+      "label": "একটি পোস্ট, একটু আত্মচিন্তা — কুরআন, হাদিস ও প্রজ্ঞা — আপনার ব্যক্তিগত ফিডে"
     },
     {
       "src": "/assets/screenshots/02-prayer-times.bn.webp",
@@ -463,14 +463,14 @@
       "sizes": "1080x1920",
       "type": "image/webp",
       "form_factor": "narrow",
-      "label": "চিরকাল ফ্রি। প্রস্তুত হলে প্রো — Google Drive সিঙ্ক, ক্লাউড ব্যাকআপ ও গোল্ডেন ক্রেস্ট"
+      "label": "আপনার ডেটা, আপনার নিয়ন্ত্রণে — বিনামূল্যে এক্সপোর্ট, ইমপোর্ট ও অনুমতিভিত্তিক ব্যাকআপ"
     },
     {
       "src": "/assets/screenshots/w-01-home.bn.webp",
       "sizes": "1920x1080",
       "type": "image/webp",
       "form_factor": "wide",
-      "label": "দিন, মন ও আত্মা — সব এক জায়গায় — নামাজের স্ট্রিপ, লাইভ কাউন্টডাউন ও ৩৬০° মুহাসাবা"
+      "label": "একটি পোস্ট, একটু আত্মচিন্তা — কুরআন, হাদিস ও প্রজ্ঞা — আপনার ব্যক্তিগত ফিডে"
     },
     {
       "src": "/assets/screenshots/w-02-prayer-times.bn.webp",
@@ -520,6 +520,20 @@
       "type": "image/webp",
       "form_factor": "wide",
       "label": "মাসনুন দোয়া ও আল্লাহর ৯৯ নাম — হিসনুল মুসলিম ধাঁচে — অর্থ, সূত্র ও বুকমার্কসহ"
+    },
+    {
+      "src": "/assets/screenshots/22-seerah.webp",
+      "sizes": "1080x1920",
+      "type": "image/webp",
+      "form_factor": "narrow",
+      "label": "Seerah reader with source attribution and offline downloads"
+    },
+    {
+      "src": "/assets/screenshots/22-seerah.bn.webp",
+      "sizes": "1080x1920",
+      "type": "image/webp",
+      "form_factor": "narrow",
+      "label": "মূল উৎস ও অফলাইন ডাউনলোডসহ সীরাহ রিডার"
     }
   ],
   "shortcuts": [

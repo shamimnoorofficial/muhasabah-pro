@@ -42,7 +42,7 @@ const { chromium } = require('playwright');
       await page.getByRole('heading', { name: '[he] Reminders before deadlines', exact: true }).waitFor();
       assert.equal(await page.locator('.mhs-ftue-perm').count(), 1, 'notification step');
       await page.getByRole('button', { name: "[he] I'll explore myself", exact: true }).click();
-      await page.getByRole('heading', { name: '[he] Home', exact: true }).waitFor();
+      await page.getByRole('heading', { name: '[he] A moment to reflect', exact: true }).waitFor();
       assert.equal(await page.locator('html').getAttribute('dir'), 'rtl');
       assert.ok(asked.every(s => typeof s === 'string') && !asked.some(s => /^\d+$/.test(s)));
       await page.getByRole('button', { name: '[he] Settings', exact: true }).filter({ visible: true }).last().click();

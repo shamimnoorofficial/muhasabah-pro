@@ -90,7 +90,7 @@ function demo(now) {
 /* ---------- the shots: hook → daily value → depth → trust → Pro ---------- */
 // [file, en headline, en sub, bn headline, bn sub, setup(page), opts]
 const SHOTS = [
-  ['01-home', 'Master your day,<br>mind & soul', 'Prayer strip, live countdown and a 360° Muhasabah overview', 'দিন, মন ও আত্মা —<br>সব এক জায়গায়', 'নামাজের স্ট্রিপ, লাইভ কাউন্টডাউন ও ৩৬০° মুহাসাবা', async p => { await p.evaluate(() => window.scrollTo(0, 0)); }],
+  ['01-home', 'One post.<br>A moment to reflect.', 'Quran, Hadith and wisdom in your personal swipe feed', 'একটি পোস্ট,<br>একটু আত্মচিন্তা', 'কুরআন, হাদিস ও প্রজ্ঞা — আপনার ব্যক্তিগত ফিডে', async p => { await p.evaluate(() => window.MHSApp.nav('home')); await p.waitForTimeout(700); }],
   ['02-prayer-times', 'Never miss<br>a prayer', 'Start, end and live countdown for all five prayers', 'আর কোনো নামাজ<br>মিস নয়', 'পাঁচ ওয়াক্তের শুরু, শেষ ও লাইভ কাউন্টডাউন', async p => { await p.evaluate(() => window.MHSPrayerHub.open({ tab: 'times' })); await p.waitForTimeout(900); }],
   ['03-special-times', 'Sehri, Iftar,<br>Tahajjud & more', 'Ishraq, Chasht, Awwabin and forbidden times — all with countdowns', 'সেহরি, ইফতার,<br>তাহাজ্জুদ ও আরও', 'ইশরাক, চাশত, আউয়াবিন ও নিষিদ্ধ সময় — কাউন্টডাউনসহ', async p => { await p.evaluate(() => window.MHSPrayerHub.open({ tab: 'times' })); await p.waitForTimeout(700); await p.evaluate(() => { const s = document.querySelector('#mhs-prayerhub .mhs-ph-special'); if (s) s.scrollIntoView({ block: 'start' }); }); await p.waitForTimeout(300); }],
   ['04-widget', 'Your deen on the<br>home screen', 'Widget Wizard: pick prayers, amol, streaks — add in one tap', 'হোম স্ক্রিনেই<br>আপনার দ্বীন', 'উইজেট উইজার্ড: নামাজ, আমল, ধারা — এক ট্যাপে যোগ', async p => { await p.evaluate(() => window.MHSWidgetWizard.open()); await p.waitForTimeout(500); }, { widget: true }],
@@ -110,7 +110,8 @@ const SHOTS = [
   ['18-reminder', 'A reminder for<br>every moment', 'Quran · Hadith · Wisdom — tap to the source, share with one tap', 'প্রতিটি মুহূর্তের<br>স্মরণ', 'কুরআন · হাদিস · হিকমাহ — উৎসে যান, এক ট্যাপে শেয়ার', async p => { await p.evaluate(() => window.MHSReminder.open()); await p.waitForTimeout(1200); }],
   ['19-duas-names', 'Masnun duas &<br>99 Names of Allah', 'Hisnul Muslim style, with meaning, source and bookmarks', 'মাসনুন দোয়া ও<br>আল্লাহর ৯৯ নাম', 'হিসনুল মুসলিম ধাঁচে — অর্থ, সূত্র ও বুকমার্কসহ', async p => { await p.evaluate(() => window.MHSKnowledge.open({ tab: 'names' })); await p.waitForTimeout(1200); }],
   ['20-zikr', 'A tasbih that<br>feels real', 'Vibration, targets, rounds and history', 'সত্যিকারের অনুভূতির<br>তাসবিহ', 'কম্পন, লক্ষ্য, রাউন্ড ও ইতিহাস', async p => { await p.evaluate(() => window.MHSZikr.open({ zikr: 'subhanallah' })); await p.waitForTimeout(400); const z = p.locator('#mhs-zikr .mhs-zk-tap'); for (let i = 0; i < 23; i++) await z.click({ delay: 5 }); await p.waitForTimeout(600); }],
-  ['21-pro', 'Free forever.<br>Pro when you’re ready', 'Google Drive sync, cloud backup and the golden crest', 'চিরকাল ফ্রি।<br>প্রস্তুত হলে প্রো', 'Google Drive সিঙ্ক, ক্লাউড ব্যাকআপ ও গোল্ডেন ক্রেস্ট', async p => { await p.evaluate(() => window.MHSApp.nav('settings')); await p.waitForTimeout(600); await p.locator('mhs-plans').scrollIntoViewIfNeeded(); await p.evaluate(() => window.scrollBy(0, -80)); await p.waitForTimeout(300); }]
+  ['22-seerah', 'Read the Seerah.<br>Keep it with you.', 'Attributed source, reading languages and offline passages', 'নবীজির জীবনচরিত,<br>আপনার সঙ্গে', 'মূল উৎস, পড়ার ভাষা ও অফলাইন পাঠাংশ', async p => { await p.evaluate(() => window.MHSSeerah.open({page:15})); await p.locator('#mhs-seerah article').waitFor(); await p.waitForTimeout(500); }],
+  ['21-pro', 'Your data.<br>Free to take anywhere.', 'Free export, import and permission-based backups', 'আপনার ডেটা,<br>আপনার নিয়ন্ত্রণে', 'বিনামূল্যে এক্সপোর্ট, ইমপোর্ট ও অনুমতিভিত্তিক ব্যাকআপ', async p => { await p.evaluate(() => window.MHSApp.nav('settings')); await p.waitForTimeout(600); await p.locator('mhs-backup').scrollIntoViewIfNeeded(); await p.evaluate(() => window.scrollBy(0, -80)); await p.waitForTimeout(300); }]
 ];
 const PLAY_PICK = ['01-home', '02-prayer-times', '03-special-times', '07-essential-amol', '15-quran', '19-duas-names', '10-analytics', '04-widget'];
 const WIDE_PICK = ['01-home', '02-prayer-times', '07-essential-amol', '10-analytics', '13-notes', '14-ledger', '15-quran', '19-duas-names'];
@@ -201,6 +202,7 @@ async function icon512(browser) {
     await ctx.clock.setFixedTime(NOW);
     await ctx.route('**/api/**', r => r.fulfill({ status: 503, json: { error: 'off' } }));
     await ctx.route('**/.netlify/functions/**', r => r.fulfill({ json: null }));
+    if(process.env.SEERAH_CAPTURE_SOURCE) await ctx.route('**/api/seerah', r => r.request().method()==='GET' ? r.fulfill({body:fs.readFileSync(process.env.SEERAH_CAPTURE_SOURCE,'utf8'),contentType:'application/json'}) : r.fulfill({status:503,json:{error:'offline'}}));
     await ctx.addInitScript(([d, q, lang]) => {
       if (sessionStorage.getItem('seeded')) return; sessionStorage.setItem('seeded', '1');
       d.lang = lang;

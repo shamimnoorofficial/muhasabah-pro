@@ -27,6 +27,7 @@
     m.amol.forEach(function (id) { rows.push({ kind: "amol", id: "a" + id, title: id, lazy: ["amol", id], at: 0, go: function () { K.open({ tab: "amol", id: id }); }, remove: function () { K.toggleMark("amol", id); } }); });
     m.name.forEach(function (id) { rows.push({ kind: "name", id: "n" + id, title: id, lazy: ["names", id], at: 0, go: function () { K.open({ tab: "names", id: id }); }, remove: function () { K.toggleMark("name", id); } }); });
     m.wisdom.forEach(function (id) { rows.push({ kind: "wisdom", id: "w" + id, title: id, lazyW: id, at: 0, go: function () { window.MHSWisdomApp.open({ id: id }); }, remove: function () { K.toggleMark("wisdom", id); } }); });
+    if(window.MHSCollections) window.MHSCollections.collect().forEach(function(item){var at=rows.findIndex(function(r){return r.id===item.id;});if(at>=0){var original=rows[at];rows[at]=Object.assign({},original,{collection:item.collection,remove:function(){original.remove();item.remove();}});}else rows.push(item);});
     return rows;
   }
   function count() { return collect().length; }
@@ -43,9 +44,12 @@
     var b = sh.body; b.replaceChildren();
     var rows = collect();
     var chips = X.el("div", { class: "mhs-mini-chips", role: "tablist" });
-    var kinds = ["all", "quran", "hadith", "reminder", "dua", "amol", "name", "wisdom"];
+    var kinds = ["all", "quran", "hadith", "reminder", "dua", "amol", "name", "wisdom", "seerah", "journal"];
     kinds.forEach(function (k) { var n = k === "all" ? rows.length : rows.filter(function (r) { return r.kind === k; }).length; if (k !== "all" && !n) return; chips.appendChild(X.el("button", { type: "button", role: "tab", class: "mhs-chip" + (kind === k ? " is-on" : ""), text: t(k) + " · " + X.num(n), on: { click: function () { kind = k; render(); } } })); });
     b.appendChild(chips);
+    var names=window.MHSX.get("collections",{names:[]}).names,selected="";
+    var cs=X.el("select",{"aria-label":"Collection"},[X.el("option",{value:"",text:X.lang()==="bn"?"সব কালেকশন":"All collections"})].concat(names.map(function(n){return X.el("option",{value:n,text:n});})));
+    cs.onchange=function(){selected=cs.value;draw();};b.appendChild(cs);
     var box = window.MHSSearch.box({ ns: "bookmarks", placeholder: t("search"), value: q, onQuery: function (v) { q = v; draw(); } });
     b.appendChild(box.el);
     var list = X.el("div", { class: "mhs-mini-list" }); b.appendChild(list);
@@ -63,7 +67,7 @@
     function draw() {
       list.replaceChildren();
       var SR = window.MHSSearch, qq = q.trim();
-      var vis = rows.filter(function (r) { return kind === "all" || r.kind === kind; });
+      var vis = rows.filter(function (r) { return (!selected || r.collection===selected) && (kind === "all" || r.kind === kind); });
       if (qq) vis = SR.search(vis, qq, ["title", "sub"]).map(function (x) { return x.item; });
       if (!vis.length) { list.appendChild(X.el("p", { class: "mhs-kh-empty", text: t("none") })); return; }
       vis.forEach(function (r) {

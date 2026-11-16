@@ -1,0 +1,11 @@
+import assert from 'node:assert/strict';
+import { splitPassages, verifySource } from '../lib/seerah.ts';
+const source = 'First paragraph.\n\n' + 'A long paragraph with every word preserved. '.repeat(400) + '\n\nFinal paragraph.';
+const pages = splitPassages(source);
+assert.ok(pages.length > 2);
+assert.ok(pages.every(p => p.length <= 4000));
+assert.equal(pages.join(' ').replace(/\s+/g,' '), source.replace(/\s+/g,' '));
+assert.deepEqual(splitPassages(''), []);
+assert.deepEqual(splitPassages('One paragraph.'), ['One paragraph.']);
+assert.equal(verifySource('<html>source replaced</html>'), false);
+console.log('Seerah: stable passage boundaries, complete text preservation and changed-source rejection passed');

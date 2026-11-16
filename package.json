@@ -38,6 +38,8 @@
     "test:home": "node tests/home-actions.cjs",
     "test:suite": "node tests/suite.cjs",
     "test:growth": "node tests/growth.cjs",
-    "screenshots": "node tools/screenshots/capture.cjs"
+    "screenshots": "node tools/screenshots/capture.cjs",
+    "test:experience": "node tests/experience.cjs",
+    "test:seerah": "node tests/seerah.mjs && node tests/seerah.cjs"
   }
 }
