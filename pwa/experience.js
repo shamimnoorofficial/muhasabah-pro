@@ -134,7 +134,6 @@
     });
   }
   window.MHSRasm={get:rasm,list:RASM_ORDER.slice(),set:function(r){if(!RASM[r])return;X.set('quranRasm',r);offlineNoted=false;document.querySelectorAll('dialog#mhs-quran[open]').forEach(function(d){var p=X.get('reader:mhs-quran',null)||{size:20,arabic:'mushaf'};applyReader(d,p);rasmText(d);});},font:function(){return RASM[rasm()].font;},indopak:fetchIndo,text:fetchText,needsDownload:function(r){return !!(RASM[r||rasm()]||{}).src;}};
-  var TAJWEED_RULES=[['ham_wasl','Hamzat al-wasl / silent','হামযাতুল ওয়াসল / অনুচ্চারিত','همزة الوصل / لا يُنطق'],['madda_normal','Madd — 2 counts','মাদ — ২ হরকত','مد طبيعي ٢'],['madda_permissible','Madd — 2, 4 or 6','মাদ — ২, ৪ বা ৬','مد جائز ٢ ٤ ٦'],['madda_obligatory','Madd — 4 or 5','মাদ — ৪ বা ৫','مد واجب ٤ ٥'],['madda_necessary','Madd — 6 counts','মাদ — ৬ হরকত','مد لازم ٦'],['ghunnah','Ghunnah','গুন্নাহ','غنة'],['ikhafa','Ikhfa','ইখফা','إخفاء'],['idgham_ghunnah','Idgham with ghunnah','গুন্নাহসহ ইদগাম','إدغام بغنة'],['idgham_wo_ghunnah','Idgham without ghunnah','গুন্নাহ ছাড়া ইদগাম','إدغام بلا غنة'],['iqlab','Iqlab','ইকলাব','إقلاب'],['qalaqah','Qalqalah','কলকলা','قلقلة']];
   function rasmPicker(dialog){
     var cur=rasm();
     var opts=[
@@ -145,13 +144,11 @@
       {k:'imlaei',t:tr("Imla'i (simple spelling)",'ইমলায়ি (সহজ বানান)','الإملائي'),d:tr('Modern standard spelling · easiest for learners','আধুনিক প্রচলিত বানান · নতুনদের জন্য সহজ','الرسم الإملائي الحديث · الأسهل للمتعلمين')}
     ];
     var box=X.el('fieldset',{class:'mhs-rasm'},[X.el('legend',{text:tr('Mushaf script (Rasm / Khatt)','মুসহাফ লিপি (রসম / খাত্ত)','رسم المصحف (الخط)')})]);
-    var legend=X.el('div',{class:'mhs-tj-legend',hidden:cur!=='tajweed'},[X.el('b',{text:tr('Tajweed colours','তাজবিদের রং','ألوان التجويد')})].concat(TAJWEED_RULES.map(function(r){return X.el('span',{},[X.el('i',{class:'tj-dot tj-'+r[0],'aria-hidden':'true'}),tr(r[1],r[2],r[3])]);})));
     opts.forEach(function(o){
-      var input=X.el('input',{type:'radio',name:'mhs-rasm',value:o.k,checked:o.k===cur?true:null,on:{change:function(){window.MHSRasm.set(o.k);legend.hidden=o.k!=='tajweed';}}});
+      var input=X.el('input',{type:'radio',name:'mhs-rasm',value:o.k,checked:o.k===cur?true:null,on:{change:function(){window.MHSRasm.set(o.k);}}});
       var sample=X.el('span',{class:'mhs-rasm-sample',lang:'ar',dir:'rtl','aria-hidden':'true'});setBism(sample,o.k);
       box.appendChild(X.el('label',{class:'mhs-rasm-opt','data-rasm':o.k},[input,sample,X.el('b',{text:o.t}),X.el('small',{text:o.d})]));
     });
-    box.appendChild(legend);
     box.appendChild(X.el('p',{class:'mhs-settings-intro',text:tr('Indo-Pak, Tajweed and Imla\'i texts download per surah the first time and then work offline. Uthmani and Naskh work offline right away.','ইন্দো-পাক, তাজবিদ ও ইমলায়ি লিপি প্রতিটি সূরার জন্য প্রথমবার ডাউনলোড হয়, এরপর অফলাইনে চলে। উসমানি ও নাসখ শুরু থেকেই অফলাইনে চলে।','تُنزَّل نصوص الهندي والتجويد والإملائي لكل سورة أول مرة ثم تعمل دون اتصال. العثماني والنسخ يعملان دون اتصال فوراً.')}));
     return box;
   }
