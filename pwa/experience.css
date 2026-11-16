@@ -83,3 +83,62 @@ mhs-feed-home.mhs-home-stack{display:flex;flex-direction:column;gap:1.5rem;min-w
 .mhs-pref-field{min-width:0;display:flex;flex-direction:column;gap:9px}
 .mhs-pref-field :is(select,input){min-height:44px;width:100%;min-width:0;box-sizing:border-box;border-radius:12px;background:hsl(var(--background));color:hsl(var(--foreground));border:1px solid hsl(var(--border));padding:10px 12px}
 .mhs-pref-status{min-height:1.5em;line-height:1.5}
+
+/* + menu: one column aligned to the + button, each action shows its icon and a short visible
+ * label (speed-dial pattern) so people don't have to guess what a coloured circle opens. */
+.mhs-fab-menu{width:auto!important;min-width:0;max-width:min(17rem,calc(100vw - 32px));padding:6px!important;gap:4px!important;
+  -webkit-mask-image:linear-gradient(to bottom,#000 calc(100% - 28px),transparent);mask-image:linear-gradient(to bottom,#000 calc(100% - 28px),transparent)}
+.mhs-fab-menu.is-scrolled-end{-webkit-mask-image:none;mask-image:none}
+.mhs-fab-item button{width:100%!important;height:auto!important;min-height:48px!important;padding:4px 4px 4px 14px!important;border-radius:999px!important;
+  flex-direction:row!important;justify-content:flex-end!important;align-items:center!important;gap:10px!important;background:transparent;border-color:transparent;box-shadow:none;text-align:end}
+html[dir=rtl] .mhs-fab-item button{padding:4px 14px 4px 4px!important}
+.mhs-fab-item .lbl{display:block!important;order:0!important;flex:1 1 auto;min-width:0;font-size:13.5px;font-weight:600;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mhs-fab-item .lbl small{display:none!important}
+.mhs-fab-item .ic{order:1!important;flex:0 0 auto;width:40px!important;height:40px!important}
+@media(hover:hover){.mhs-fab-item button:hover{background:hsl(var(--foreground)/.07)}}
+.mhs-fab-item button:focus-visible{outline:2px solid hsl(var(--primary));outline-offset:-2px;background:hsl(var(--foreground)/.07)}
+@media(max-width:360px){.mhs-fab-item .lbl{font-size:12.5px}}
+
+
+/* Navigation icons: consistent outlined SVG icons (instead of text glyphs such as ⌂ ☑ ⚙ that
+ * render differently, or not at all, depending on the device font). The glyph stays in the DOM for
+ * the compiled app but is visually replaced; the icon follows the button text colour. */
+[data-tour^=nav-]>span:first-child,.mhs-todo-more{font-size:0!important;color:inherit}
+[data-tour^=nav-]>span:first-child::before,.mhs-todo-more::before{content:"";display:block;width:20px;height:20px;margin:auto;background:currentColor;-webkit-mask:var(--mhs-ico) center/contain no-repeat;mask:var(--mhs-ico) center/contain no-repeat}
+.mhs-side-nav [data-tour^=nav-]>span:first-child::before{width:18px;height:18px}
+.mhs-todo-more{display:inline-flex;align-items:center;justify-content:center}
+.mhs-todo-more::before{width:18px;height:18px}
+[data-tour=nav-home]{--mhs-ico:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1Z'/%3E%3C/svg%3E")}
+[data-tour=nav-today]{--mhs-ico:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 11l3 3L22 4'/%3E%3Cpath d='M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11'/%3E%3C/svg%3E")}
+[data-tour=nav-dashboard]{--mhs-ico:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 3v18h18'/%3E%3Cpath d='M8 17v-5'/%3E%3Cpath d='M13 17V8'/%3E%3Cpath d='M18 17v-8'/%3E%3C/svg%3E")}
+[data-tour=nav-ledger]{--mhs-ico:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 6h12'/%3E%3Cpath d='M9 12h12'/%3E%3Cpath d='M9 18h12'/%3E%3Cpath d='M4 6h.01'/%3E%3Cpath d='M4 12h.01'/%3E%3Cpath d='M4 18h.01'/%3E%3C/svg%3E")}
+[data-tour=nav-settings]{--mhs-ico:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2Z'/%3E%3Cpath d='M12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z'/%3E%3C/svg%3E")}
+.mhs-todo-more{--mhs-ico:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 4h-7'/%3E%3Cpath d='M10 4H3'/%3E%3Cpath d='M21 12h-9'/%3E%3Cpath d='M8 12H3'/%3E%3Cpath d='M21 20h-5'/%3E%3Cpath d='M12 20H3'/%3E%3Cpath d='M14 2v4'/%3E%3Cpath d='M8 10v4'/%3E%3Cpath d='M16 18v4'/%3E%3C/svg%3E")}
+
+/* Quick to-do sheet */
+.mhs-quick-todo-form{display:flex;gap:8px;align-items:stretch}
+.mhs-quick-todo-form input{flex:1 1 auto;min-width:0;min-height:46px;border-radius:12px;border:1px solid hsl(var(--border));background:hsl(var(--background));color:hsl(var(--foreground));padding:10px 14px;font:inherit}
+.mhs-quick-todo-form input:focus-visible{outline:2px solid hsl(var(--primary));outline-offset:1px}
+.mhs-quick-todo-form .mhs-btn{min-height:46px;padding-inline:18px;flex:0 0 auto}
+.mhs-quick-todo-more{margin-top:12px}
+
+/* Quran mushaf scripts (self-hosted so they also work offline) */
+@font-face{font-family:"KFGQPC Uthmanic Hafs";src:url(/fonts/uthmanic-hafs.woff2) format("woff2");font-display:swap}
+@font-face{font-family:"IndoPak Nastaleeq";src:url(/fonts/indopak-nastaleeq.woff2) format("woff2");font-display:swap}
+dialog#mhs-quran[data-rasm=indopak] .mhs-q-ayah .ar{line-height:2.4;word-spacing:.08em}
+dialog#mhs-quran[data-rasm=indopak] .mhs-q-bismillah{font-family:"IndoPak Nastaleeq",var(--mhs-arabic,serif)}
+dialog#mhs-quran[data-rasm=uthmani] .mhs-q-bismillah{font-family:"KFGQPC Uthmanic Hafs",var(--mhs-arabic,serif)}
+.mhs-rasm{border:0;padding:0;margin:0 0 4px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:10px}
+.mhs-rasm legend{font-weight:600;font-size:14px;margin-bottom:10px;padding:0}
+.mhs-rasm-opt{position:relative;display:grid;gap:4px;padding:14px 14px 12px;border-radius:16px;border:1.5px solid hsl(var(--border));background:hsl(var(--card));cursor:pointer;transition:border-color .2s,background .2s}
+.mhs-rasm-opt:has(input:checked){border-color:hsl(var(--primary));background:hsl(var(--primary)/.08)}
+.mhs-rasm-opt:has(input:focus-visible){outline:2px solid hsl(var(--primary));outline-offset:2px}
+.mhs-rasm-opt input{position:absolute;inset-inline-end:12px;top:12px;accent-color:hsl(var(--primary));width:18px;height:18px}
+.mhs-rasm-sample{font-size:1.45rem;line-height:1.9;color:hsl(var(--primary));text-align:center;padding:2px 22px 4px}
+.mhs-rasm-opt[data-rasm=uthmani] .mhs-rasm-sample{font-family:"KFGQPC Uthmanic Hafs",Amiri,serif}
+.mhs-rasm-opt[data-rasm=indopak] .mhs-rasm-sample{font-family:"IndoPak Nastaleeq",Amiri,serif;line-height:2.2}
+.mhs-rasm-opt b{font-size:14px}
+.mhs-rasm-opt small{font-size:12px;color:hsl(var(--muted-foreground));line-height:1.45}
+.mhs-rasm .mhs-settings-intro{grid-column:1/-1;margin:0;font-size:12px}
+.mhs-ph-tznote{border:1px solid hsl(38 92% 50%/.45);background:hsl(38 92% 50%/.1);border-radius:12px;padding:10px 12px;line-height:1.5}
+.mhs-ph-method{margin-top:-4px}

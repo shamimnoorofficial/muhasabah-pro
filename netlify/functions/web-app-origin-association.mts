@@ -4,7 +4,7 @@ import type { Config } from '@netlify/functions';
 
 export default async () =>
   Response.json(
-    { web_apps: [{ web_app_identity: 'https://muhasabah-pro.app/' }] },
+    { web_apps: [{ web_app_identity: 'https://muhasabah-pro.netlify.app/' }] },
     { headers: { 'Cache-Control': 'public, max-age=3600', 'Access-Control-Allow-Origin': '*' } },
   );
 

@@ -21,13 +21,10 @@ const BASE = process.env.BASE || 'http://localhost:8889';
   p.on('pageerror', e => { if (!/Access is denied for this document/.test(e.message)) errs.push(e.message); });
   await p.goto(BASE + '/?tab=dashboard'); await p.locator('#mhs-startup').waitFor({ state: 'detached' }); await p.waitForTimeout(1500);
 
-  // Phase 2 — Home prayer strip at the very top with 5 prayers, start/end and countdown headline
-  const strip = p.locator('mhs-prayer-strip'); await strip.waitFor();
-  assert.equal(await p.evaluate(() => document.querySelector('main .space-y-8').firstElementChild.tagName), 'MHS-PRAYER-STRIP', 'strip is first on Home');
-  assert.equal(await strip.locator('.mhs-ps-p').count(), 5);
-  assert.match(await strip.locator('.mhs-ps-headline').innerText(), /(starts|ends) in/);
-  assert.equal(await strip.locator('.mhs-ps-p.is-now, .mhs-ps-p.is-next').count() >= 1, true, 'current/next highlighted');
-  await strip.locator('.mhs-ps-more').click(); const hub = p.locator('#mhs-prayerhub'); await hub.waitFor();
+  // Phase 2 — prayer times are no longer duplicated on the dashboard; they open from the + menu.
+  assert.equal(await p.locator('main mhs-prayer-strip:visible').count(), 0, 'no prayer strip on the dashboard');
+  await p.locator('#mhs-fab').click(); await p.locator('.mhs-fab-menu.is-open').waitFor();
+  await p.locator('[data-action="prayer"]').click(); const hub = p.locator('#mhs-prayerhub'); await hub.waitFor();
 
   // Phase 3 — Prayer hub: times incl. Sehri/Iftar/forbidden/Tahajjud/Ishraq/Chasht/Awwabin/Witr, Qibla, Mosques, Essential Amol
   const ids = await hub.locator('.mhs-ph-row').evaluateAll(els => els.map(e => e.getAttribute('data-id')));
@@ -49,7 +46,7 @@ const BASE = process.env.BASE || 'http://localhost:8889';
 
   // Phase 1 — share service: footer + UTM on every share
   const txt = await p.evaluate(() => window.MHSShare.text({ medium: 'hadith', ar: 'إنما الأعمال بالنيات', text: 'Actions are by intentions.', src: 'Bukhari 1' }));
-  assert.match(txt, /https:\/\/muhasabah-pro\.app\?utm_source=app_share&utm_medium=hadith$/);
+  assert.match(txt, /https:\/\/muhasabah-pro\.netlify\.app\/\?utm_source=app_share&utm_medium=hadith$/);
   assert.match(txt, /— Muhasabah-Pro/);
   assert.equal(await p.evaluate(() => window.MHSShare.medium('bogus')), 'app');
   assert.ok(await p.evaluate(() => window.MHSShare.card({ medium: 'quran', ar: 'إِنَّ مَعَ الْعُسْرِ يُسْرًا', text: 'With hardship comes ease.', src: 'Quran 94:6' }).then(b => b.size > 20000)), 'image card');
@@ -78,7 +75,10 @@ const BASE = process.env.BASE || 'http://localhost:8889';
   await kh.locator('.mhs-kh-cat').first().click(); await kh.locator('.mhs-kh-item').first().waitFor();
   assert.ok(await kh.locator('.mhs-kh-item .mhs-kh-ar').count() >= 1, 'arabic shown');
   await kh.locator('.mhs-kh-item').first().getByRole('button', { name: /Save/ }).click();
-  assert.equal(await p.evaluate(() => window.MHSKnowledge.marks().dua.length), 1);
+  // Saving now asks which bookmark collection to use.
+  const picker = p.locator('#mhs-collection-picker'); await picker.waitFor();
+  await picker.getByRole('button', { name: 'Save', exact: true }).click(); await picker.waitFor({ state: 'detached' });
+  assert.equal(await p.evaluate(() => Object.values(window.MHSX.get('collections', { items: {} }).items).filter(i => i.kind === 'dua').length), 1, 'dua saved to a collection');
   await kh.locator('input[type=search]').fill('sleep'); await p.waitForTimeout(400); assert.ok(await kh.locator('.mhs-kh-item').count() >= 1, 'search');
   await kh.locator('.mhs-kh-tab').nth(2).click(); await kh.locator('.mhs-kh-name').first().waitFor(); assert.equal(await kh.locator('.mhs-kh-name').count(), 99);
   await kh.locator('.mhs-kh-name').nth(0).click(); assert.match(await kh.innerText(), /Rahman/i);
@@ -96,6 +96,8 @@ const BASE = process.env.BASE || 'http://localhost:8889';
   assert.ok(await p.evaluate(() => window.MHSReminder.pool().length) > 150, 'expanded pool');
   const first = await rf.locator('.mhs-rf-text').innerText();
   await rf.getByRole('button', { name: /Next/ }).click(); await p.waitForTimeout(300); assert.notEqual(await rf.locator('.mhs-rf-text').innerText(), first);
+  // Filters and notification times live in the feed settings panel.
+  await rf.getByRole('button', { name: 'Feed settings', exact: true }).click(); await rf.locator('.mhs-rf-notif').waitFor();
   assert.ok(await rf.locator('.mhs-rf-notif input[type=time]').count() >= 1, 'notification times');
   await rf.locator('.mhs-mini-chips .mhs-chip').nth(1).click(); await p.waitForTimeout(300); // Quran filter
   await rf.locator('button.mhs-rf-src').click(); await p.locator('#mhs-quran').waitFor(); await p.keyboard.press('Escape'); await p.waitForTimeout(300);
@@ -128,6 +130,6 @@ const BASE = process.env.BASE || 'http://localhost:8889';
   await fl.close();
 
   assert.equal(errs.length, 0, errs.join('\n'));
-  console.log('Growth suite: share, prayer strip & hub, essential amol, widget wizard, knowledge, wisdom, reminder, deep links, 3-day prompt, save feedback, defaults passed');
+  console.log('Growth suite: share, prayer hub, essential amol, widget wizard, knowledge, wisdom, reminder, deep links, 3-day prompt, save feedback, defaults passed');
   await b.close();
 })().catch(e => { console.error(e); process.exit(1); });

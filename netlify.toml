@@ -101,3 +101,10 @@
   to = "/?source=share"
   status = 302
   force = true
+
+# Self-hosted Quran mushaf fonts (KFGQPC Uthmanic Hafs, IndoPak Nastaleeq) — versioned by file name.
+[[headers]]
+  for = "/fonts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    Access-Control-Allow-Origin = "*"

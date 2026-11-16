@@ -2,7 +2,7 @@
  *
  *   MHSShare.share({ medium, title, ar, text, tl, meaning, src, url })  → navigator.share / clipboard
  *   MHSShare.text(payload)        → the formatted plain text (RTL-safe, with reference + footer + UTM link)
- *   MHSShare.link(medium)         → https://muhasabah-pro.app?utm_source=app_share&utm_medium=<medium>
+ *   MHSShare.link(medium)         → https://muhasabah-pro.netlify.app?utm_source=app_share&utm_medium=<medium>
  *   MHSShare.card(payload)        → Promise<Blob> — a 1080×1350 PNG card with watermark (canvas)
  *   MHSShare.shareCard(payload)   → shares the PNG (Web Share Level 2) or downloads it
  *   MHSShare.menu(payload)        → small bottom sheet: Share text · Share image · Copy

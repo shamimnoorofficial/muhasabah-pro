@@ -16,6 +16,7 @@ const assert=require('node:assert/strict');
    await page.goto((process.env.BASE||'http://localhost:8889')+'/');
    const card=page.locator('.mhs-rf-card'),content=page.locator('.mhs-story-content');
    await card.waitFor();await content.evaluate(n=>n.scrollIntoView({block:"center"}));
+   await page.waitForFunction(()=>{const c=document.querySelector('.mhs-rf-card');return c&&c.offsetHeight>=620;},null,{timeout:5000}).catch(()=>{});
    const height=await card.evaluate(n=>n.offsetHeight);
    assert(height>=620,'Card should be larger at this viewport');
    const cdp=await context.newCDPSession(page);

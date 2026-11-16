@@ -36,7 +36,7 @@ const assert = require('node:assert/strict');
     // old floating buttons gone; unified FAB present
     assert.equal(await p.locator('.mhs-journal-fab').count(), 0);
     await p.locator('#mhs-fab').click(); await p.locator('.mhs-fab-menu.is-open').waitFor();
-    assert.equal(await p.locator('.mhs-fab-item button').count(), 14);
+    assert.equal(await p.locator('.mhs-fab-item button').count(), 15);
     await p.screenshot({ path: `/tmp/mhs-fab-${viewport.width}.png` });
     // Quran
     await p.locator('[data-action="quran"]').click(); const q = p.locator('#mhs-quran'); await q.waitFor();
@@ -55,6 +55,7 @@ const assert = require('node:assert/strict');
     await p.locator('#mhs-fab').click(); await p.locator('[data-action="wisdom"]').click(); const w = p.locator('#mhs-wisdom'); await w.waitFor();
     await w.locator('.mhs-rf-card').waitFor(); const first = await w.locator('.mhs-rf-text').innerText();
     await w.getByRole('button', { name: /Next/ }).click(); await p.waitForTimeout(400); assert.notEqual(await w.locator('.mhs-rf-text').innerText(), first);
+    await w.getByRole('button', { name: 'Feed settings', exact: true }).click();
     await w.locator('.mhs-mini-ib[aria-label="Add own"]').click(); await w.locator('.mhs-es-form textarea').fill('Test my own saying'); await w.locator('.mhs-es-form button[type=submit]').click(); await p.waitForTimeout(300);
     assert.match(await w.innerText(), /Test my own saying/);
     await p.screenshot({ path: `/tmp/mhs-wisdom-${viewport.width}.png` });
@@ -70,20 +71,23 @@ const assert = require('node:assert/strict');
     if (await qb.locator('.mhs-qb').count()) assert.match(await qb.locator('.mhs-qb-info').innerText(), /27[7-9]°|280°/);
     await p.keyboard.press('Escape'); await p.waitForTimeout(300);
     // To Do section: overview + settings
-    await p.locator('#mhs-fab').click(); await p.locator('[data-action="todo"]').click(); const td = p.getByRole('dialog', { name: /New Todo/ }); await td.waitFor(); await td.getByRole('button', { name: 'Close', exact: true }).click(); await td.waitFor({ state: 'detached' });
+    await p.locator('#mhs-fab').click(); await p.locator('[data-action="todo"]').click(); const td = p.locator('#mhs-quick-todo'); await td.waitFor();
+    // The quick sheet adds a task in one step and links to the full form.
+    await td.locator('input').fill('Call my parents'); await td.locator('button[type=submit]').click(); await td.waitFor({ state: 'detached' });
+    await p.waitForFunction(() => JSON.stringify(window.MHSApp.data().todos).includes('Call my parents'));
+    await p.locator('[data-tour="nav-today"]:visible').first().click(); await p.locator('.mhs-todo-dash').waitFor();
     assert.ok(await p.locator('.mhs-todo-dash .mhs-td-tile').count() === 4);
     await p.locator('[data-tour="todo-settings"]').click(); await p.locator('#mhs-td-settings').waitFor();
     await p.locator('#mhs-td-settings input[type=number]').first().fill('15'); await p.locator('#mhs-td-settings input[type=number]').first().dispatchEvent('change');
     await p.screenshot({ path: `/tmp/mhs-todo-${viewport.width}.png`, fullPage: true });
     // Settings: storage preference panel
     await p.getByRole('button', { name: 'Settings', exact: true }).filter({ visible: true }).last().click();
-    await p.locator('mhs-sync .mhs-sy-card').first().waitFor(); assert.equal(await p.locator('mhs-sync .mhs-sy-card').count(), 3);
-    await p.locator('mhs-sync [data-a="pick-server"]').click(); assert.match(await p.locator('mhs-sync').innerText(), /sign in/i);
-    await p.locator('mhs-sync [data-a="pick-device"]').click();
+    // Data stays on the device (with free backup), so the storage chooser is no longer shown.
+    await p.locator('.mhs-preferences').first().waitFor(); assert.equal(await p.locator('mhs-sync:visible').count(), 0);
     await p.screenshot({ path: `/tmp/mhs-settings-${viewport.width}.png` });
     // persisted prefs
     const saved = await p.evaluate(() => JSON.parse(localStorage.getItem('muhasabah:data:v1')));
-    assert.equal(saved.todoPrefs.points, 15); assert.equal(saved.todos.length, 2);
+    assert.equal(saved.todoPrefs.points, 15); assert.equal(saved.todos.length, 3);
     assert.equal(errs.length, 0, errs.join('\n'));
     await ctx.close();
   }
@@ -103,8 +107,11 @@ const assert = require('node:assert/strict');
   await p.waitForTimeout(1200);
   const d = await p.evaluate(() => JSON.parse(localStorage.getItem('muhasabah:data:v1')));
   assert.equal(d.habits.length, 7, 'picked habits were created');
+  // The app lands on the Home feed; the habit checklist lives on the Dashboard.
+  const reflect = p.getByRole('button', { name: 'Continue', exact: true }); if (await reflect.count()) await reflect.first().click().catch(() => {});
+  await p.locator('[data-tour="nav-dashboard"]:visible').first().click(); await p.locator('[data-tour="home-check"]').waitFor();
   assert.ok(await p.locator('[data-tour="home-check"] .mhs-hc-check').count() >= 7);
   assert.equal(errs.length, 0, errs.join('\n'));
   await ctx.close(); await b.close();
-  console.log('Smoke: Home checklist, quick actions, Quran, Hadith, wisdom, Qibla, To Do settings, storage panel and onboarding habits passed');
+  console.log('Smoke: Home checklist, quick actions, Quran, Hadith, wisdom, Qibla, quick to-do, To Do settings and onboarding habits passed');
 })().catch(e => { console.error(e); process.exit(1); });
