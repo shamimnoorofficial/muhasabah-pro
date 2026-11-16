@@ -73,18 +73,20 @@
   }
 
   /* ---- UI ---- */
-  var sh = null, filter = "all", cur = null, adding = false, historyItems = [], historyAt = -1, configuring = false;
+  var sh = null, filter = "all", cur = null, adding = false, historyItems = [], historyAt = -1, configuring = false, gestureActive = false, deferredRender = false;
   function advance(step) { if (step < 0) { if (historyAt > 0) cur = historyItems[--historyAt]; } else if (historyAt < historyItems.length - 1) cur = historyItems[++historyAt]; else { if(cur && historyAt < 0) { historyItems.push(cur); historyAt = 0; } cur = pick(filter); if(cur) { historyItems.push(cur); historyAt = historyItems.length - 1; } } render(true); }
   function open(opts) {
     if (!window.MHSSheet) return;
     if (opts && opts.id) cur = pool().filter(function (r) { return r.id === opts.id; })[0] || null;
     if (sh && sh.dialog.open && !sh.embedded) { render(); return; }
-    sh = X.sheet({ id: "mhs-wisdom", title: t("title"), sub: t("sub"), onClose: function () { sh = null; } });
+    sh = X.sheet({ id: "mhs-wisdom", title: t("title"), sub: t("sub"), onClose: function () { gestureActive=false;deferredRender=false;sh = null; } });
     sh.body.classList.add("mhs-kh");
     render();
     loadExtra().then(function () { if (sh && sh.dialog.open && !cur) { cur = pick(filter); render(); } });
   }
   function render(next) {
+    if(gestureActive){deferredRender=true;return;}
+    if (!sh) return;
     var b = sh.body; b.replaceChildren(); sh.tools.replaceChildren();
     var RP = window.MHSReadPref; if (RP) { RP.apply(b); if(configuring) b.appendChild(RP.controls(b)); }
     sh.tools.appendChild(X.el("button", {type:"button",class:"mhs-mini-ib", "aria-label":X.lang()==="bn"?"ফিড সেটিংস":"Feed settings",on:{click:function(){configuring=!configuring;render();}}}, [sh.icon("M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8Z|M12 2v3|M12 19v3|M2 12h3|M19 12h3|M5 5l2 2|M17 17l2 2|M5 19l2-2|M17 7l2-2")]));
@@ -110,26 +112,62 @@
         a.tags && a.tags.length ? X.el("div", { class: "mhs-rf-tags" }, a.tags.slice(0, 4).map(function (g) { return X.el("span", { text: "#" + g }); })) : null,
         a.mine ? X.el("button", { type: "button", class: "mhs-chip", style: { marginTop: ".6rem" }, text: "🗑 " + t("delete"), on: { click: function () { lsSet("mhs:wisdom:custom", mine().filter(function (m) { return m.id !== a.id; })); X.toast(t("deleted")); cur = pick(filter); render(); } } }) : null
       ]);
-      if(String(a.text).length>650||String(a.ar||"").length>450) card.appendChild(X.el("button",{type:"button",class:"mhs-chip",text:X.lang()==="bn"?"আরও পড়ুন":"Read more","aria-expanded":"false",on:{click:function(e){var expanded=e.currentTarget.getAttribute("aria-expanded")==="true";card.querySelectorAll(".mhs-rf-text,.mhs-rf-ar").forEach(function(n){n.classList.toggle("is-collapsed",!expanded?false:(n.classList.contains("mhs-rf-ar")?String(a.ar||"").length>450:String(a.text).length>650));});e.currentTarget.setAttribute("aria-expanded",String(!expanded));e.currentTarget.textContent=X.lang()==="bn"?(expanded?"আরও পড়ুন":"সংক্ষিপ্ত করুন"):(expanded?"Read more":"Show less");}}}));
+      var content=X.el("div",{class:"mhs-story-content",tabindex:0,"aria-label":t(a.kind)});
+      while(card.firstChild)content.appendChild(card.firstChild);
+      content.querySelectorAll(".is-collapsed").forEach(function(n){n.classList.remove("is-collapsed");});
+      card.appendChild(content);
       var start=null; card.style.touchAction="pan-y";
-      card.addEventListener("pointerdown",function(e){if(e.target.closest("button"))return;start={x:e.clientX,y:e.clientY};});
-      card.addEventListener("pointerup",function(e){if(!start)return;var dx=e.clientX-start.x,dy=e.clientY-start.y;start=null;if(Math.abs(dx)>65 && Math.abs(dx)>Math.abs(dy)*1.5) advance((dx<0)!==(X.lang()==="ar")?1:-1);});
+      function begin(x,y){start={x:x,y:y,at:performance.now(),axis:null};gestureActive=true;}
+      function move(x,y,event){
+        if(!start)return;
+        var dx=x-start.x,dy=y-start.y;
+        if(!start.axis&&Math.max(Math.abs(dx),Math.abs(dy))>10)start.axis=Math.abs(dx)>Math.abs(dy)*1.15?"x":"y";
+        if(start.axis==="x"){
+          if(event.cancelable)event.preventDefault();
+          content.classList.add("is-swiping");
+          content.style.transform="translateX("+Math.max(-70,Math.min(70,dx*.3))+"px)";
+        }
+      }
+      function finish(x,y,cancelled,event){
+        if(!start)return;
+        var dx=x-start.x,dy=y-start.y,elapsed=Math.max(1,performance.now()-start.at);
+        var horizontal=start.axis!=="y"&&Math.abs(dx)>Math.abs(dy)*1.15;
+        var navigate=!cancelled&&horizontal&&(Math.abs(dx)>=40||(Math.abs(dx)>=22&&Math.abs(dx)/elapsed>.35));
+        start=null;gestureActive=false;content.style.transform="";content.classList.remove("is-swiping");
+        var refresh=deferredRender;deferredRender=false;
+        if(navigate){if(event&&event.cancelable)event.preventDefault();advance((dx<0)!==(document.documentElement.dir==="rtl")?1:-1);}
+        else if(refresh)render();
+      }
+      card.addEventListener("touchstart",function(e){if(e.touches.length!==1||e.target.closest("button"))return;begin(e.touches[0].clientX,e.touches[0].clientY);},{passive:true});
+      card.addEventListener("touchmove",function(e){if(e.touches.length!==1){finish(0,0,true);return;}move(e.touches[0].clientX,e.touches[0].clientY,e);},{passive:false});
+      card.addEventListener("touchend",function(e){var p=e.changedTouches[0];if(p)finish(p.clientX,p.clientY,false,e);},{passive:false});
+      card.addEventListener("touchcancel",function(){finish(0,0,true);},{passive:true});
+      card.addEventListener("pointerdown",function(e){if(e.pointerType==="touch"||e.button!==0||e.target.closest("button"))return;begin(e.clientX,e.clientY);card.setPointerCapture(e.pointerId);});
+      card.addEventListener("pointermove",function(e){if(e.pointerType!=="touch")move(e.clientX,e.clientY,e);});
+      card.addEventListener("pointerup",function(e){if(e.pointerType!=="touch")finish(e.clientX,e.clientY,false,e);});
+      card.addEventListener("pointercancel",function(e){if(e.pointerType!=="touch")finish(0,0,true);});
+      card.addEventListener("lostpointercapture",function(e){if(e.pointerType!=="touch")finish(0,0,true);});
       card.tabIndex=0;
-      card.addEventListener("keydown",function(e){if(e.target!==card)return;if(e.key==="ArrowRight"||e.key==="ArrowLeft"){e.preventDefault();advance((e.key==="ArrowRight")!==(X.lang()==="ar")?1:-1);}});
-      card.addEventListener("pointercancel",function(){start=null;});
+      card.addEventListener("keydown",function(e){if(e.target.closest("button"))return;if(e.key==="ArrowRight"||e.key==="ArrowLeft"){e.preventDefault();advance((e.key==="ArrowRight")!==(document.documentElement.dir==="rtl")?1:-1);}});
+      var progress=X.el("div",{class:"mhs-story-progress","aria-hidden":"true"});
+      for(var segment=0;segment<5;segment++) progress.appendChild(X.el("span",{class:segment<=Math.max(0,historyAt)%5?"is-seen":""}));
+      card.prepend(progress);
+      card.appendChild(X.el("span",{class:"mhs-story-hint",text:X.lang()==="bn"?"সোয়াইপ করে পরেরটি পড়ুন":X.lang()==="ar"?"اسحب للقراءة التالية":"Swipe to explore"}));
+      if(next)card.classList.add("mhs-story-enter");
       b.appendChild(card);
       var reactions=X.get("feedReactions",{});
-      b.appendChild(X.el("div",{class:"mhs-rf-actions"},[
-        X.el("button",{type:"button",text:"‹ "+(X.lang()==="bn"?"পূর্ববর্তী":"Previous"),disabled:historyAt<=0,on:{click:function(){advance(-1);}}}),
-        X.el("button",{type:"button",text:reactions[a.id]?"♥":"♡","aria-label":"React","aria-pressed":String(!!reactions[a.id]),on:{click:function(){reactions[a.id]=!reactions[a.id];X.set("feedReactions",reactions);render();}}}),
-        X.el("button",{type:"button",text:X.lang()==="bn"?"কালেকশনে রাখুন":"Save to collection",on:{click:function(){window.MHSCollections.choose({id:"r"+a.id,kind:"reminder",title:a.text,sub:a.src});}}})]));
-      var acts = X.el("div", { class: "mhs-rf-actions" }, [
-        X.el("button", { type: "button", on: { click: function () { advance(1); } } }, [X.el("span", { class: "ic", text: "↻" }), t("next")]),
-        X.el("button", { type: "button", on: { click: function () { window.MHSShare.menu({ medium: "reminder", eyebrow: t(a.kind), ar: a.ar, text: a.text, src: a.src, link: { id: a.id } }); } } }, [X.el("span", { class: "ic", text: "↗" }), t("share")]),
-        X.el("button", { type: "button", class: isFav ? "is-on" : "", "aria-pressed": String(isFav), on: { click: function () { var f = favs(), i = f.indexOf(a.id); if (i >= 0) f.splice(i, 1); else f.push(a.id); lsSet("mhs:wisdom:favs", f); render(); } } }, [X.el("span", { class: "ic", text: isFav ? "♥" : "♡" }), t(isFav ? "unfav" : "fav")]),
-        X.el("button", { type: "button", on: { click: function () { adding = true; render(); } } }, [X.el("span", { class: "ic", text: "✍️" }), t("add")])
+      function label(en,bn,ar){return X.lang()==="bn"?bn:X.lang()==="ar"?ar:en;}
+      function action(name,path,run,extra){return X.el("button",Object.assign({type:"button","aria-label":name,title:name,on:{click:run}},extra||{}),[sh.icon(path)]);}
+      var saved=window.MHSCollections&&window.MHSCollections.collect().some(function(i){return i.id==="r"+a.id;});
+      var actions=X.el("div",{class:"mhs-rf-actions mhs-story-actions"},[
+        action(label("Previous","পূর্ববর্তী","السابق"),"M15 18l-6-6 6-6",function(){advance(-1);},{disabled:historyAt<=0,class:"mhs-story-prev"}),
+        action(label("React","প্রতিক্রিয়া","إعجاب"),"M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z",function(){reactions[a.id]=!reactions[a.id];X.set("feedReactions",reactions);render();},{class:reactions[a.id]?"is-reacted":"","aria-pressed":String(!!reactions[a.id])}),
+        action(label("Save to collection","কালেকশনে রাখুন","حفظ في مجموعة"),"M19 21l-7-5-7 5V3h14Z",function(){window.MHSCollections.choose({id:"r"+a.id,kind:"reminder",title:a.text,sub:a.src});},{class:saved?"is-bookmarked":""}),
+        action(t("share"),"M18 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z|M6 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z|M18 22a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z|M8.6 10.5l6.8-4|M8.6 13.5l6.8 4",function(){window.MHSShare.menu({medium:"reminder",eyebrow:t(a.kind),ar:a.ar,text:a.text,src:a.src,link:{id:a.id}});}),
+        action(t("next"),"M9 18l6-6-6-6",function(){advance(1);},{class:"mhs-story-next"})
       ]);
-      acts.children[3].remove();acts.children[2].remove();b.appendChild(acts);
+      card.appendChild(actions);
+
     }
     if(configuring) {
       var sourceBox=X.el("fieldset",{class:"mhs-feed-sources"},[X.el("legend",{text:X.lang()==="bn"?"পোস্টের উৎস":"Post sources"})]);
@@ -212,11 +250,12 @@
   X.whenReady("MHSWisdom", function () { loadExtra().then(schedule); });
 
   window.MHSReminder = { mount: function(host){
+    gestureActive=false;deferredRender=false;
     if(sh && sh.dialog && sh.dialog.open && !sh.embedded) return;
     host.replaceChildren();var tools=X.el("div",{class:"mhs-mini-tools"}),body=X.el("div",{class:"mhs-mini-body mhs-kh"});
     host.append(X.el("header",{class:"mhs-feed-heading"},[X.el("div",{},[X.el("small",{text:"MUHASABAH"}),X.el("h1",{text:X.lang()==="bn"?"আজকের অনুপ্রেরণা":X.lang()==="ar"?"إلهام اليوم":"A moment to reflect"})]),tools]),body);
-    sh={embedded:true,host:host,dialog:{open:true},body:body,tools:tools,icon:X.icon,close:function(){window.MHSApp.nav("dashboard");}};render();loadExtra().then(function(){if(sh&&sh.host===host){cur=pick(filter);render();}});
-  }, unmount:function(host){if(sh&&sh.host===host)sh=null;}, open: open, pool: pool, pick: pick, schedule: schedule, cfg: ncfg, t: t };
+    sh={embedded:true,host:host,dialog:{open:true},body:body,tools:tools,icon:X.icon,close:function(){window.MHSApp.nav("dashboard");}};render();loadExtra().then(function(){if(sh&&sh.host===host){if(!cur)cur=pick(filter);render();}});
+  }, unmount:function(host){if(sh&&sh.host===host){gestureActive=false;deferredRender=false;sh=null;}}, open: open, pool: pool, pick: pick, schedule: schedule, cfg: ncfg, t: t };
   /* Route the unified menu "Get Reminder" item and legacy callers to the new feed. */
   X.whenReady("MHSWisdom", function (W) { W.open = function (o) { open(o); }; });
 })();
