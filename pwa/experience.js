@@ -207,7 +207,7 @@
       this.feed=X.el('section',{class:'mhs-home-feed'});
       this.summary=X.el('section',{class:'panel mhs-home-summary'});
       this.apps=X.el('section',{class:'panel mhs-home-apps'});
-      this.replaceChildren(this.prayer,this.feed,this.summary,this.apps);
+      this.replaceChildren(this.prayer,this.summary,this.apps,this.feed);
       var host=this;
       X.whenReady('MHSReminder',function(){if(host.isConnected)window.MHSReminder.mount(host.feed);});
       this.refresh=function(){if(host.isConnected)host.renderHome();};
