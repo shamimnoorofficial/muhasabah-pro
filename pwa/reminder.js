@@ -89,7 +89,7 @@
     if (!sh) return;
     var b = sh.body; b.replaceChildren(); sh.tools.replaceChildren();
     var RP = window.MHSReadPref; if (RP) { RP.apply(b); if(configuring) b.appendChild(RP.controls(b)); }
-    sh.tools.appendChild(X.el("button", {type:"button",class:"mhs-mini-ib", "aria-label":X.lang()==="bn"?"ফিড সেটিংস":"Feed settings",on:{click:function(){configuring=!configuring;render();}}}, [sh.icon("M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8Z|M12 2v3|M12 19v3|M2 12h3|M19 12h3|M5 5l2 2|M17 17l2 2|M5 19l2-2|M17 7l2-2")]));
+    sh.tools.appendChild(X.el("button", {type:"button",class:"mhs-mini-ib", "aria-expanded":String(configuring), "aria-label":X.lang()==="bn"?"ফিড সেটিংস":X.lang()==="ar"?"إعدادات الموجز":"Feed settings",on:{click:function(){configuring=!configuring;render();}}}, [sh.icon("M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8Z|M12 2v3|M12 19v3|M2 12h3|M19 12h3|M5 5l2 2|M17 17l2 2|M5 19l2-2|M17 7l2-2")]));
     if(configuring) sh.tools.appendChild(X.el("button", { type: "button", class: "mhs-mini-ib" + (adding ? " is-on" : ""), "aria-label": t("add"), title: t("add"), on: { click: function () { adding = !adding; render(); } } }, [sh.icon("M12 5v14|M5 12h14")]));
     var chips = X.el("div", { class: "mhs-mini-chips", role: "tablist" });
     [["all", t("all")], ["verse", "📖 " + t("verse")], ["hadith", "📚 " + t("hadith")], ["quote", "💡 " + t("quote")], ["favs", "♥ " + t("favs")], ["mine", "✍️ " + t("mine")]].forEach(function (o) {

@@ -21,7 +21,7 @@
     var tools=dialog.querySelector('.mhs-mini-tools');if(!tools)return;
     var id=dialog.id;
     if(id==='mhs-collection-picker'||id==='mhs-reader-settings'||id==='mhs-offline-download')return;
-    if(!tools.querySelector('[data-reader-settings]') && id!=='mhs-wisdom'){
+    if(['mhs-quran','mhs-hadith','mhs-knowledge','mhs-wisdom-app','mhs-seerah'].indexOf(id)>=0&&!tools.querySelector('[data-reader-settings]')){
       var b=button(tr('Settings','সেটিংস','الإعدادات'),function(){settings(dialog);},gear);b.className='mhs-mini-ib';b.dataset.readerSettings='1';tools.appendChild(b);
     }
     if(['mhs-quran','mhs-hadith','mhs-knowledge','mhs-wisdom-app','mhs-wisdom','mhs-seerah'].indexOf(id)>=0&&!tools.querySelector('[data-offline]')){
@@ -31,20 +31,22 @@
   function settings(dialog){
     var sh=X.sheet({id:'mhs-reader-settings',title:tr('Reader settings','পড়ার সেটিংস','إعدادات القراءة')});
     var key='reader:'+dialog.id,p=X.get(key,{size:20,arabic:'Amiri',mushaf:false});
-    var size=X.el('input',{type:'range',min:14,max:40,value:p.size,'aria-label':tr('Text size','অক্ষরের আকার','حجم النص')});
-    var font=X.el('select',{'aria-label':tr('Arabic font','আরবি ফন্ট','الخط العربي')},['Amiri','Noto Naskh Arabic','serif'].map(function(f){return X.el('option',{value:f,text:f,selected:p.arabic===f});}));
-    var mushaf=X.el('input',{type:'checkbox',checked:p.mushaf});
-    function apply(){p={size:Number(size.value),arabic:font.value,mushaf:mushaf.checked};X.set(key,p);applyReader(dialog,p);}
+    sh.body.classList.add('mhs-settings-panel');
+    sh.body.appendChild(X.el('p',{class:'mhs-settings-intro',text:tr('Make reading comfortable. Changes apply immediately.','স্বাচ্ছন্দ্যে পড়ুন। পরিবর্তন সঙ্গে সঙ্গে কার্যকর হয়।','خصص القراءة لراحتك. تطبق التغييرات فوراً.')}));
+    var size=X.el('input',{id:'mhs-reader-size',type:'range',min:14,max:40,value:p.size,'aria-label':tr('Text size','অক্ষরের আকার','حجم النص')});
+    var value=X.el('output',{'for':'mhs-reader-size',text:p.size+' px'});
+    var font=X.el('select',{id:'mhs-reader-font','aria-label':tr('Arabic font','আরবি ফন্ট','الخط العربي')},['Amiri','Noto Naskh Arabic','serif'].map(function(f){return X.el('option',{value:f,text:f,selected:p.arabic===f});}));
+    var mushaf=X.el('input',{id:'mhs-reader-mushaf',type:'checkbox',checked:p.mushaf});
+    function apply(){p={size:Number(size.value),arabic:font.value,mushaf:mushaf.checked};value.textContent=p.size+' px';X.set(key,p);applyReader(dialog,p);}
     size.oninput=apply;font.onchange=apply;mushaf.onchange=apply;
-    sh.body.append(X.el('label',{text:tr('Text size','অক্ষরের আকার','حجم النص')}),size,X.el('label',{text:tr('Arabic script','আরবি লিপি','الخط العربي')}),font);
-    if(dialog.id==='mhs-quran')sh.body.append(X.el('label',{},[mushaf,tr('Continuous Mushaf layout','একটানা মুসহাফ বিন্যাস','عرض المصحف المتصل')]));
+    sh.body.append(X.el('label',{class:'mhs-setting-row','for':'mhs-reader-size'},[X.el('span',{text:tr('Text size','অক্ষরের আকার','حجم النص')}),value,size]));
+    if(['mhs-quran','mhs-hadith','mhs-knowledge'].indexOf(dialog.id)>=0)sh.body.append(X.el('label',{class:'mhs-setting-row','for':'mhs-reader-font'},[tr('Arabic script','আরবি লিপি','الخط العربي'),font]));
+    if(dialog.id==='mhs-quran')sh.body.append(X.el('label',{class:'mhs-setting-row','for':'mhs-reader-mushaf'},[tr('Continuous Mushaf layout','একটানা মুসহাফ বিন্যাস','عرض المصحف المتصل'),mushaf]));
     if(dialog.id==='mhs-seerah'&&window.MHSSeerah)window.MHSSeerah.settings(sh.body);
-    // Move module-specific controls into settings, preserving their real event handlers.
-    var originals=dialog.querySelectorAll('.mhs-mini-tools > :not([data-reader-settings]):not([data-offline])');
-    originals.forEach(function(n){sh.body.appendChild(n);});
-    sh.dialog.addEventListener('close',function(){var tools=dialog.querySelector('.mhs-mini-tools');if(tools&&dialog.isConnected)originals.forEach(function(n){tools.appendChild(n);});});
+    // Keep search, navigation and app actions in their original toolbar.
   }
-  function applyReader(d,p){var b=d.querySelector('.mhs-mini-body');if(!b)return;b.style.fontSize=p.size+'px';b.style.setProperty('--mhs-ar-scale',p.size/20);b.style.setProperty('--mhs-tx-scale',p.size/20);b.style.setProperty('--mhs-q-size',p.size/16+'rem');b.style.setProperty('--reader-arabic',p.arabic);d.classList.toggle('mhs-mushaf',!!p.mushaf);}
+
+  function applyReader(d,p){var b=d.querySelector('.mhs-mini-body');if(!b)return;b.style.fontSize=p.size+'px';b.style.setProperty('--mhs-ar-scale',p.size/20);b.style.setProperty('--mhs-tx-scale',p.size/20);b.style.setProperty('--mhs-q-size',p.size/16+'rem');b.style.setProperty('--reader-arabic',p.arabic);b.style.setProperty('--mhs-arabic',p.arabic+', serif');d.classList.toggle('mhs-mushaf',!!p.mushaf);}
   async function download(dialog){
     var sh=X.sheet({id:'mhs-offline-download',title:tr('Offline library','অফলাইন লাইব্রেরি','مكتبة دون اتصال')});
     var status=X.el('p',{role:'status',text:tr('Choose a download. Keep this window open. Audio is streamed separately.','ডাউনলোড বেছে নিন। উইন্ডো খোলা রাখুন। অডিও আলাদাভাবে অনলাইনে চলে।','اختر تنزيلاً وأبق النافذة مفتوحة. الصوت يحتاج اتصالاً.')});sh.body.appendChild(status);
@@ -55,8 +57,19 @@
     else if(dialog.id==='mhs-seerah') {window.MHSSeerah.downloadPanel(sh.body,status,function(){return stop;});}
     else sh.body.appendChild(button(tr('Download library','লাইব্রেরি ডাউনলোড','تنزيل المكتبة'),function(){run(['duas','names','amol','wisdom','reminders'].map(function(k){return async function(){var r=await fetch('/data/'+k+'.json');if(!r.ok)throw Error();await(await caches.open('mhs-library')).put('/data/'+k+'.json',r);};}));}));
   }
+  function polishSettings(){
+    document.querySelectorAll('button').forEach(function(b){
+      var label=b.getAttribute('aria-label')||b.getAttribute('title')||b.textContent.trim();
+      if(!/^(settings|feed settings|সেটিংস|ফিড সেটিংস|الإعدادات|إعدادات الموجز)$/i.test(label)||b.dataset.settingsPolished)return;
+      b.dataset.settingsPolished='1';b.classList.add('mhs-settings-trigger');
+      b.title=label;if(!b.getAttribute('aria-label'))b.setAttribute('aria-label',label);
+      var svg=b.querySelector('svg');
+      if(svg)svg.replaceWith(X.icon(gear));
+      else if(b.classList.contains('mhs-mini-ib'))b.replaceChildren(X.icon(gear));
+    });
+  }
   var queued=false;
-  new MutationObserver(function(){if(queued)return;queued=true;requestAnimationFrame(function(){queued=false;document.querySelectorAll('dialog.mhs-mini[open]').forEach(function(d){decorate(d);var p=X.get('reader:'+d.id,null);if(p)applyReader(d,p);});});}).observe(document.body,{childList:true,subtree:true});
+  new MutationObserver(function(){if(queued)return;queued=true;requestAnimationFrame(function(){queued=false;polishSettings();document.querySelectorAll('dialog.mhs-mini[open]').forEach(function(d){decorate(d);var p=X.get('reader:'+d.id,null);if(p)applyReader(d,p);});});}).observe(document.body,{childList:true,subtree:true});
 
   customElements.define('mhs-feed-home',class extends HTMLElement {
     static get observedAttributes(){return ['lang'];}
