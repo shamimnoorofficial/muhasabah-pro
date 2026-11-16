@@ -246,8 +246,8 @@ button.is-failed{animation:mhsShake .4s;border-color:#ef5350!important}
 .mhs-jd-bm.is-on{border-color:hsl(var(--primary));color:hsl(var(--primary))}
 .mhs-jd{display:grid;gap:.55rem}
 .mhs-jd-h{display:flex;justify-content:space-between;align-items:center;gap:.5rem;font-size:13px;margin-top:.2rem}
-.mhs-jd-saved{font-size:12px;color:hsl(var(--primary));opacity:0}.mhs-jd-saved.is-on{animation:mhsFade 1.8s ease forwards}
-@keyframes mhsFade{0%{opacity:0;transform:translateY(3px)}15%,70%{opacity:1;transform:none}100%{opacity:0}}
+.mhs-jd-saved{font-size:12px;color:hsl(var(--primary));opacity:0}.mhs-jd-saved.is-on{animation:mhsJdSaved 1.8s ease forwards}
+@keyframes mhsJdSaved{0%{opacity:0;transform:translateY(3px)}15%,70%{opacity:1;transform:none}100%{opacity:0}}
 .mhs-jd-chips{display:flex;flex-wrap:wrap;gap:.4rem}
 .mhs-jd-chip{display:inline-flex;align-items:center;gap:.35rem;min-height:40px;padding:0 .8rem;border-radius:999px;border:1px solid hsl(var(--border));background:hsl(var(--card));color:inherit;font:inherit;font-size:13px;cursor:pointer;transition:background .15s,border-color .15s,transform .15s}
 .mhs-jd-chip .e{font-size:1.05rem}.mhs-jd-chip:active{transform:scale(.95)}
