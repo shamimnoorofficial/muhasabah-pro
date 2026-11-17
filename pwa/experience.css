@@ -32,7 +32,7 @@ mhs-feed-home.mhs-home-stack{display:flex;flex-direction:column;gap:1.5rem;min-w
 .mhs-fab-item button{width:48px;height:48px;min-height:48px!important;padding:4px!important;border-radius:50%;justify-content:center}
 .mhs-fab-item .lbl{display:none}
 .mhs-fab-item small{display:none}.mhs-fab-item .ic{width:36px;height:36px}
-@media(max-width:639px){:root{--mhs-fab-bottom:calc(5rem + env(safe-area-inset-bottom,0px))}nav.side-rail{bottom:0!important;padding-bottom:env(safe-area-inset-bottom,0px)!important;border-radius:1.2rem 1.2rem 0 0!important}main.rail-pad{padding-bottom:calc(10rem + env(safe-area-inset-bottom,0px))!important}}
+@media(max-width:639px){:root{--mhs-fab-bottom:calc(5rem + env(safe-area-inset-bottom,0px))}nav.side-rail{bottom:0!important;left:0!important;right:0!important;max-width:none!important;padding:.35rem max(.5rem,env(safe-area-inset-right,0px)) max(.4rem,env(safe-area-inset-bottom,0px)) max(.5rem,env(safe-area-inset-left,0px))!important;border-width:1px 0 0!important;border-radius:1.2rem 1.2rem 0 0!important}main.rail-pad{padding-bottom:calc(10rem + env(safe-area-inset-bottom,0px))!important}}
 /* A quiet, tactile story reader. No automatic advance while reading. */
 .mhs-rf-card{position:relative;display:flex;flex-direction:column;gap:1.1rem;height:clamp(420px,74dvh,660px);min-height:0!important;box-sizing:border-box;overflow:hidden;border:1px solid hsl(var(--primary)/.22)!important;background:radial-gradient(ellipse at 100% 0,hsl(var(--primary)/.13),transparent 65%),hsl(var(--card))!important;box-shadow:0 18px 55px hsl(var(--foreground)/.04);padding-top:2rem!important}
 .mhs-story-progress{display:flex;gap:5px;margin-bottom:.3rem;direction:ltr}.mhs-story-progress span{height:3px;flex:1;border-radius:9px;background:hsl(var(--foreground)/.12)}.mhs-story-progress .is-seen{background:hsl(var(--primary)/.8)}
@@ -341,3 +341,12 @@ dialog.mhs-sr .mhs-mini-tools>*{display:grid!important}
 .mhs-nav-toc-row.is-result b{font-weight:500;line-height:1.5}
 .mhs-nav-search-in{width:100%;min-height:48px;padding:0 1rem;border:1px solid hsl(var(--border));border-radius:14px;background:hsl(var(--card));color:inherit;font:inherit;box-sizing:border-box}
 .mhs-nav-search-status{margin:.6rem .2rem;color:hsl(var(--muted-foreground));font-size:13px}
+
+/* Bengali glyphs for the app's UI fonts. Inter and Sora have no Bengali, so without this every
+ * device falls back to its own system font (thin, mismatched or missing on Windows and older
+ * phones). These faces cover only the Bengali code points, so the self-hosted Noto Sans Bengali
+ * file is downloaded only when Bengali text is actually on screen. Licensed under the SIL OFL. */
+@font-face{font-family:"Inter";src:url(/fonts/noto-sans-bengali.woff2) format("woff2");font-weight:400 700;font-display:swap;unicode-range:U+0951-0952,U+0964-0965,U+0980-09FE,U+200C-200D,U+25CC}
+@font-face{font-family:"Sora";src:url(/fonts/noto-sans-bengali.woff2) format("woff2");font-weight:400 700;font-display:swap;unicode-range:U+0951-0952,U+0964-0965,U+0980-09FE,U+200C-200D,U+25CC}
+@font-face{font-family:"Noto Sans Bengali";src:url(/fonts/noto-sans-bengali.woff2) format("woff2");font-weight:400 700;font-display:swap;unicode-range:U+0951-0952,U+0964-0965,U+0980-09FE,U+200C-200D,U+25CC}
+@font-face{font-family:"JetBrains Mono";src:url(/fonts/noto-sans-bengali.woff2) format("woff2");font-weight:400 700;font-display:swap;unicode-range:U+0964-0965,U+0980-09FE,U+200C-200D}

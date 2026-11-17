@@ -23,10 +23,10 @@
         ])
       ]),
       X.el("nav", { class: "mhs-foot-links", "aria-label": "Legal" }, [
-        X.el("a", { href: "/about", text: t("about") }), X.el("span", { "aria-hidden": "true", text: "·" }),
-        X.el("a", { href: "/legal/privacy", text: t("privacy") }), X.el("span", { "aria-hidden": "true", text: "·" }),
-        X.el("a", { href: "/legal/terms", text: t("terms") }), X.el("span", { "aria-hidden": "true", text: "·" }),
-        X.el("a", { href: "/legal/refund", text: t("refund") }), X.el("span", { "aria-hidden": "true", text: "·" }),
+        X.el("a", { href: "/about", text: t("about") }),
+        X.el("a", { href: "/legal/privacy", text: t("privacy") }),
+        X.el("a", { href: "/legal/terms", text: t("terms") }),
+        X.el("a", { href: "/legal/refund", text: t("refund") }),
         X.el("a", { href: "/legal/content-rating", text: t("rating") })
       ])
     ]));

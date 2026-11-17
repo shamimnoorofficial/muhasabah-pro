@@ -8,9 +8,9 @@
   if (window.customElements && customElements.get("mhs-prayer-strip")) return;
   var X = window.MHSX, T = function () { return window.MHSTimes; };
   var t = X.tr({
-    en: { more: "More", eyebrow: "Prayer times", allow: "Use my location", noLoc: "Allow location or pick a city to see today's prayer times.", locating: "Finding your location…", until: "until", today: "Today", hub: "Open Prayer & Qibla hub" },
-    bn: { more: "আরো জানুন", eyebrow: "নামাজের সময়", allow: "আমার লোকেশন ব্যবহার করুন", noLoc: "আজকের নামাজের সময় দেখতে লোকেশন অনুমতি দিন বা একটি শহর বেছে নিন।", locating: "লোকেশন খোঁজা হচ্ছে…", until: "পর্যন্ত", today: "আজ", hub: "নামাজ ও কিবলা হাব খুলুন" },
-    ar: { more: "المزيد", eyebrow: "مواقيت الصلاة", allow: "استخدم موقعي", noLoc: "اسمح بالموقع أو اختر مدينة لعرض مواقيت اليوم.", locating: "جارٍ تحديد موقعك…", until: "حتى", today: "اليوم", hub: "افتح الصلاة والقبلة" }
+    en: { more: "More", city: "Pick a city", eyebrow: "Prayer times", allow: "Use my location", noLoc: "Allow location or pick a city to see today's prayer times.", locating: "Finding your location…", until: "until", today: "Today", hub: "Open Prayer & Qibla hub" },
+    bn: { more: "আরো জানুন", city: "শহর বেছে নিন", eyebrow: "নামাজের সময়", allow: "আমার লোকেশন ব্যবহার করুন", noLoc: "আজকের নামাজের সময় দেখতে লোকেশন অনুমতি দিন বা একটি শহর বেছে নিন।", locating: "লোকেশন খোঁজা হচ্ছে…", until: "পর্যন্ত", today: "আজ", hub: "নামাজ ও কিবলা হাব খুলুন" },
+    ar: { more: "المزيد", city: "اختر مدينة", eyebrow: "مواقيت الصلاة", allow: "استخدم موقعي", noLoc: "اسمح بالموقع أو اختر مدينة لعرض مواقيت اليوم.", locating: "جارٍ تحديد موقعك…", until: "حتى", today: "اليوم", hub: "افتح الصلاة والقبلة" }
   });
 
   function openHub(tab) { X.whenReady("MHSPrayerHub", function (h) { h.open({ tab: tab || "times" }); }); }
@@ -46,7 +46,7 @@
           var P = window.MHSPrayer;
           (P && P.enableLocation ? P.enableLocation() : Promise.resolve("unsupported")).then(function () { host.render(); });
         } } });
-        wrap.append(msg, X.el("div", { class: "mhs-ps-actions" }, [btn, X.el("button", { type: "button", class: "mhs-btn", text: t("more"), on: { click: function () { openHub("settings"); } } })]));
+        wrap.append(msg, X.el("div", { class: "mhs-ps-actions" }, [btn, X.el("button", { type: "button", class: "mhs-btn", text: t("city"), on: { click: function () { openHub("settings"); } } })]));
         this.replaceChildren(wrap); return;
       }
       var grid = X.el("div", { class: "mhs-ps-grid", role: "list" });

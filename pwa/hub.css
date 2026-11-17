@@ -279,3 +279,8 @@ dialog.mhs-eng .later{background:transparent;border:0;color:hsl(var(--muted-fore
 
 .mhs-ov-share{margin-top:.55rem}
 .mhs-ov-head .mhs-ov-share{font-size:12px}
+
+/* No-location state: the headline is empty, so don't reserve a line for it — keeps the
+ * "More" pill level with the eyebrow instead of floating below it. */
+.mhs-ps-head{align-items:center}
+.mhs-ps-headline:empty{display:none}
