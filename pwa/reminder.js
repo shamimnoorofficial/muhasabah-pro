@@ -25,6 +25,16 @@
   function L(o) { if (!o) return ""; if (typeof o === "string") return o; return o[X.lang()] || o.en || o.bn || ""; }
   function surahName(s) { try { var r = window.MHSQuran.surahs[s - 1]; return X.lang() === "ar" ? r[1] : r[2]; } catch (e) { return "Surah " + s; } }
   var BOOKS = { bukhari: "Sahih al-Bukhari", muslim: "Sahih Muslim", abudawud: "Sunan Abi Dawud", tirmidhi: "Jami' at-Tirmidhi", nasai: "Sunan an-Nasa'i", ibnmajah: "Sunan Ibn Majah", malik: "Muwatta Malik", ahmad: "Musnad Ahmad" };
+  var BOOKS_L = {
+    bn: { bukhari: "সহীহ বুখারী", muslim: "সহীহ মুসলিম", abudawud: "সুনান আবু দাউদ", tirmidhi: "জামে তিরমিযী", nasai: "সুনান নাসাঈ", ibnmajah: "সুনান ইবনে মাজাহ", malik: "মুয়াত্তা মালিক", ahmad: "মুসনাদ আহমাদ" },
+    ar: { bukhari: "صحيح البخاري", muslim: "صحيح مسلم", abudawud: "سنن أبي داود", tirmidhi: "جامع الترمذي", nasai: "سنن النسائي", ibnmajah: "سنن ابن ماجه", malik: "موطأ مالك", ahmad: "مسند أحمد" }
+  };
+  /* Hadith reference in the reader's language, e.g. "সহীহ বুখারী ৭৫৫৪" instead of "Sahih al-Bukhari 7554". */
+  function hadithSrc(h) {
+    var names = BOOKS_L[X.lang()];
+    if (names && names[h.book] && h.n != null) return names[h.book] + " " + (X.num ? X.num(h.n, { useGrouping: false }) : h.n);
+    return h.src || (BOOKS[h.book] || h.book) + " " + h.n;
+  }
 
   /* ---- pool: legacy built-ins + /data/reminders.json + /data/wisdom.json + user items ---- */
   var extra = null, wis = null, kdata = null, loading = null;
@@ -53,7 +63,7 @@
     var legacy = window.MHSWisdom && window.MHSWisdom.data ? window.MHSWisdom.data() : [];
     if (extra) {
       (extra.verses || []).forEach(function (v) { push({ id: "v" + v.s + ":" + v.a, kind: "verse", ar: v.ar, text: v[X.lang()] || v.en, ctx: L(v.context), tags: v.topic || [], src: surahName(v.s) + " " + v.s + ":" + v.a, go: function () { window.MHSQuran && window.MHSQuran.open({ surah: v.s, ayah: v.a }); }, goLabel: t("openQ") }); });
-      (extra.hadiths || []).forEach(function (h) { push({ id: "h" + h.book + ":" + h.n, kind: "hadith", ar: h.ar, text: h[X.lang()] || h.en, tags: h.topic || [], src: h.src || (BOOKS[h.book] || h.book) + " " + h.n, go: function () { window.MHSHadith && window.MHSHadith.open({ book: h.book, number: h.n }); }, goLabel: t("openH") }); });
+      (extra.hadiths || []).forEach(function (h) { push({ id: "h" + h.book + ":" + h.n, kind: "hadith", ar: h.ar, text: h[X.lang()] || h.en, tags: h.topic || [], src: hadithSrc(h), go: function () { window.MHSHadith && window.MHSHadith.open({ book: h.book, number: h.n }); }, goLabel: t("openH") }); });
     }
     if (wis) (wis.items || []).forEach(function (w) {
       var author = (wis.authors || []).filter(function (a) { return a.id === w.author; })[0];
