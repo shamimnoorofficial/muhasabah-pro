@@ -116,10 +116,24 @@
     return card;
   }
 
+  /* Explicit Hijri month names: some engines lack Bengali Hijri data and print Gregorian months with a BCE era. */
+  var HIJRI_MONTHS = {
+    en: ["Muharram", "Safar", "Rabi al-Awwal", "Rabi al-Thani", "Jumada al-Ula", "Jumada al-Akhirah", "Rajab", "Shaban", "Ramadan", "Shawwal", "Dhu al-Qadah", "Dhu al-Hijjah"],
+    bn: ["মুহাররম", "সফর", "রবিউল আউয়াল", "রবিউস সানি", "জমাদিউল আউয়াল", "জমাদিউস সানি", "রজব", "শাবান", "রমজান", "শাওয়াল", "জিলকদ", "জিলহজ"],
+    ar: ["محرم", "صفر", "ربيع الأول", "ربيع الآخر", "جمادى الأولى", "جمادى الآخرة", "رجب", "شعبان", "رمضان", "شوال", "ذو القعدة", "ذو الحجة"]
+  };
+  function hijriText(d) {
+    var parts = new Intl.DateTimeFormat("en-u-ca-islamic-umalqura-nu-latn", { day: "numeric", month: "numeric", year: "numeric" }).formatToParts(d), v = {};
+    parts.forEach(function (p) { v[p.type] = Number(p.value); });
+    if (!(v.year > 0 && v.month >= 1 && v.month <= 12)) return "";
+    var code = HIJRI_MONTHS[lang] ? lang : "en", digits = code === "bn" ? "০১২৩৪৫৬৭৮৯" : code === "ar" ? "٠١٢٣٤٥٦٧٨٩" : "";
+    var n = function (x) { return digits ? String(x).replace(/\d/g, function (c) { return digits[c]; }) : String(x); };
+    return n(v.day) + " " + HIJRI_MONTHS[code][v.month - 1] + " " + n(v.year) + (code === "bn" ? " হিজরি" : code === "ar" ? " هـ" : " AH");
+  }
   /* Today's date in Hijri and Gregorian, in the widget language. */
   function hijriCard() {
     var d = new Date(), loc = lang === "bn" ? "bn-BD" : lang === "ar" ? "ar-SA" : "en-GB", h = "", g = "";
-    try { h = new Intl.DateTimeFormat(loc + "-u-ca-islamic-umalqura", { day: "numeric", month: "long", year: "numeric" }).format(d); } catch (e) {}
+    try { h = hijriText(d); } catch (e) {}
     try { g = d.toLocaleDateString(loc, { weekday: "long", day: "numeric", month: "long" }); } catch (e) { g = d.toDateString(); }
     return U.el("section", { class: "wg-card wg-date" }, [U.el("b", { text: h || g }), h ? U.el("small", { text: g }) : null]);
   }
