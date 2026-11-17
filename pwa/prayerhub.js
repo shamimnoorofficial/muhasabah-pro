@@ -91,7 +91,7 @@
     var card = X.el("div", { class: "mhs-ph-card" }, [X.el("h3", { text: "📍 " + t("loc") }), X.el("p", { class: "mhs-mini-note", text: t("noLoc") }), X.el("div", { class: "mhs-actions" }, [
       X.el("button", { type: "button", class: "mhs-btn primary", text: t("allow"), on: { click: function (e) {
         e.currentTarget.disabled = true; msg.textContent = t("locating");
-        var P = window.MHSPrayer; (P && P.enableLocation ? P.enableLocation() : Promise.resolve("unsupported")).then(function (r) { if (r === "granted" || T().hasLocation()) render(); else { e.target.disabled = false; msg.textContent = t("denied"); } });
+        var P = window.MHSPrayer; var btn = e.currentTarget; (P && P.enableLocation ? P.enableLocation() : Promise.resolve("unsupported")).then(function (r) { if (r === "granted" || T().hasLocation()) render(); else { btn.disabled = false; msg.textContent = t("denied"); } });
       } } }),
       citySelect(function () { render(); })
     ]), msg]);
@@ -228,7 +228,7 @@
     var placeIn = X.el("input", { type: "text", maxlength: "60", value: base.place && base.src !== "gps" ? base.place : "", "aria-label": t("place"), placeholder: t("place") });
     b.appendChild(sec("📍 " + t("loc"), [
       X.el("p", { class: "mhs-mini-note", text: (base.lat != null ? (base.place || base.lat + ", " + base.lng) + " · " + (t("src")[base.src] || t("src").manual) : t("noLoc")) }),
-      X.el("div", { class: "mhs-actions" }, [X.el("button", { type: "button", class: "mhs-btn primary", text: "📍 " + t("allow"), on: { click: function (e) { e.currentTarget.disabled = true; msg.textContent = t("locating"); (window.MHSPrayer.enableLocation ? window.MHSPrayer.enableLocation() : Promise.resolve()).then(function () { render(); }); } } }), citySelect(function () { render(); })]),
+      X.el("div", { class: "mhs-actions" }, [X.el("button", { type: "button", class: "mhs-btn primary", text: "📍 " + t("allow"), on: { click: function (e) { var btn = e.currentTarget; btn.disabled = true; msg.textContent = t("locating"); (window.MHSPrayer.enableLocation ? window.MHSPrayer.enableLocation() : Promise.resolve("unsupported")).then(function (r) { if (r === "granted") { X.toast(t("saved")); render(); } else { btn.disabled = false; msg.textContent = t("denied"); } }); } } }), citySelect(function () { render(); })]),
       X.el("div", { class: "mhs-ph-grid3" }, [latIn, lngIn, placeIn]),
       X.el("div", { class: "mhs-actions" }, [X.el("button", { type: "button", class: "mhs-btn", text: t("apply"), on: { click: function () { var la = parseFloat(latIn.value), ln = parseFloat(lngIn.value); if (isNaN(la) || isNaN(ln)) return; M.setBase({ lat: la, lng: ln, place: placeIn.value.trim() || la.toFixed(3) + ", " + ln.toFixed(3), src: "manual", at: Date.now(), on: true }); X.toast(t("saved")); render(); } } })]),
       msg
