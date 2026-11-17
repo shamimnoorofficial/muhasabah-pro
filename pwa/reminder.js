@@ -160,43 +160,11 @@
       while(card.firstChild)content.appendChild(card.firstChild);
       content.querySelectorAll(".is-collapsed").forEach(function(n){n.classList.remove("is-collapsed");});
       card.appendChild(content);
-      var start=null; card.style.touchAction="pan-y";
-      function begin(x,y){start={x:x,y:y,at:performance.now(),axis:null};gestureActive=true;}
-      function move(x,y,event){
-        if(!start)return;
-        var dx=x-start.x,dy=y-start.y;
-        if(!start.axis&&Math.max(Math.abs(dx),Math.abs(dy))>10)start.axis=Math.abs(dx)>Math.abs(dy)*1.15?"x":"y";
-        if(start.axis==="x"){
-          if(event.cancelable)event.preventDefault();
-          content.classList.add("is-swiping");
-          content.style.transform="translateX("+Math.max(-70,Math.min(70,dx*.3))+"px)";
-        }
-      }
-      function finish(x,y,cancelled,event){
-        if(!start)return;
-        var dx=x-start.x,dy=y-start.y,elapsed=Math.max(1,performance.now()-start.at);
-        var horizontal=start.axis!=="y"&&Math.abs(dx)>Math.abs(dy)*1.15;
-        var navigate=!cancelled&&horizontal&&(Math.abs(dx)>=40||(Math.abs(dx)>=22&&Math.abs(dx)/elapsed>.35));
-        start=null;gestureActive=false;content.style.transform="";content.classList.remove("is-swiping");
-        var refresh=deferredRender;deferredRender=false;
-        if(navigate){if(event&&event.cancelable)event.preventDefault();advance((dx<0)!==(document.documentElement.dir==="rtl")?1:-1);}
-        else if(refresh)render();
-      }
-      card.addEventListener("touchstart",function(e){if(e.touches.length!==1||e.target.closest("button"))return;begin(e.touches[0].clientX,e.touches[0].clientY);},{passive:true});
-      card.addEventListener("touchmove",function(e){if(e.touches.length!==1){finish(0,0,true);return;}move(e.touches[0].clientX,e.touches[0].clientY,e);},{passive:false});
-      card.addEventListener("touchend",function(e){var p=e.changedTouches[0];if(p)finish(p.clientX,p.clientY,false,e);},{passive:false});
-      card.addEventListener("touchcancel",function(){finish(0,0,true);},{passive:true});
-      card.addEventListener("pointerdown",function(e){if(e.pointerType==="touch"||e.button!==0||e.target.closest("button"))return;begin(e.clientX,e.clientY);card.setPointerCapture(e.pointerId);});
-      card.addEventListener("pointermove",function(e){if(e.pointerType!=="touch")move(e.clientX,e.clientY,e);});
-      card.addEventListener("pointerup",function(e){if(e.pointerType!=="touch")finish(e.clientX,e.clientY,false,e);});
-      card.addEventListener("pointercancel",function(e){if(e.pointerType!=="touch")finish(0,0,true);});
-      card.addEventListener("lostpointercapture",function(e){if(e.pointerType!=="touch")finish(0,0,true);});
       card.tabIndex=0;
       card.addEventListener("keydown",function(e){if(e.target.closest("button"))return;if(e.key==="ArrowRight"||e.key==="ArrowLeft"){e.preventDefault();advance((e.key==="ArrowRight")!==(document.documentElement.dir==="rtl")?1:-1);}});
       var progress=X.el("div",{class:"mhs-story-progress","aria-hidden":"true"});
       for(var segment=0;segment<5;segment++) progress.appendChild(X.el("span",{class:segment<=Math.max(0,historyAt)%5?"is-seen":""}));
       card.prepend(progress);
-      card.appendChild(X.el("span",{class:"mhs-story-hint",text:X.lang()==="bn"?"সোয়াইপ করে পরেরটি পড়ুন":X.lang()==="ar"?"اسحب للقراءة التالية":"Swipe to explore"}));
       if(next)card.classList.add("mhs-story-enter");
       b.appendChild(card);
       var reactions=X.get("feedReactions",{});

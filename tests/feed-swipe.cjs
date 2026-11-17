@@ -31,15 +31,14 @@ const assert=require('node:assert/strict');
     return before;
    }
    const next=lang==='ar'?95:-95;
+   assert.equal(await page.locator('.mhs-story-hint').count(),0,'Swipe hint is gone');
    const original=await swipe(next);
-   assert.equal(await page.locator('.mhs-story-prev').isDisabled(),false,'Touch swipe advances');
-   await swipe(-next);
-   assert.equal(await page.locator('.mhs-rf-text').innerText(),original,'Reverse swipe restores previous post');
+   assert.equal(await page.locator('.mhs-rf-text').innerText(),original,'Horizontal swipe no longer changes the post');
    assert.equal(await page.locator('.mhs-story-prev').isDisabled(),true);
-   await swipe(next,0,true);
-   assert.equal(await page.locator('.mhs-story-prev').isDisabled(),true,'Cancelled touch does not advance');
-   await swipe(next);
-   assert.equal(await page.locator('.mhs-story-prev').isDisabled(),false,'Swipe recovers after cancellation');
+   await page.locator('.mhs-story-next').click();await page.waitForTimeout(350);
+   assert.equal(await page.locator('.mhs-story-prev').isDisabled(),false,'Next button advances');
+   await page.locator('.mhs-story-prev').click();await page.waitForTimeout(350);
+   assert.equal(await page.locator('.mhs-rf-text').innerText(),original,'Previous button restores the post');
    await content.evaluate(n=>{n.querySelector('.mhs-rf-text').textContent='A long reflection. '.repeat(700);});
    await swipe(5,-65);
    assert(await content.evaluate(n=>n.scrollTop>0),'Vertical touch still scrolls long posts');
@@ -47,6 +46,6 @@ const assert=require('node:assert/strict');
    assert.deepEqual(errors,[]);
    await context.close();
   }
-  console.log('Feed touch: larger fixed card, forward/reverse swipes, RTL, cancellation recovery and vertical reading passed');
+  console.log('Feed touch: larger fixed card, no swipe navigation, previous/next buttons and vertical reading passed');
  }finally{await browser.close();}
 })().catch(e=>{console.error(e);process.exitCode=1;});

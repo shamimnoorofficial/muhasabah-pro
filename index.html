@@ -76,6 +76,7 @@
  <link rel="stylesheet" href="/pwa/pro.css">
  <link rel="stylesheet" href="/pwa/polish.css">
  <link rel="stylesheet" href="/pwa/chrome.css">
+ <link rel="stylesheet" href="/pwa/install.css">
  <link rel="stylesheet" href="/pwa/onboarding.css">
  <link rel="stylesheet" href="/pwa/home.css">
  <link rel="stylesheet" href="/pwa/actions.css">
@@ -141,11 +142,15 @@
 <link rel="stylesheet" href="/pwa/experience.css">
 
 
-<div id="mhs-install-bar" role="dialog" aria-label="Install Muhasabah Pro" hidden>
-  <img class="ico" src="/icons/icon-96.png" width="44" height="44" alt="" decoding="async">
-  <div class="txt"><b>Install Muhasabah Pro</b><span>Islamic Life Tracker · Free · offline</span><span class="mhs-safe">Rated Everyone · All ages</span></div>
-  <button type="button" class="go" id="mhs-install-btn">Install</button>
-  <button type="button" class="x" id="mhs-install-dismiss" aria-label="Dismiss">×</button>
+<div id="mhs-install-bar" role="dialog" aria-modal="false" aria-labelledby="mhs-install-title" aria-describedby="mhs-install-desc" hidden>
+  <div class="head">
+    <img class="ico" src="/icons/icon-96.png" width="48" height="48" alt="" decoding="async">
+    <div class="txt"><b id="mhs-install-title">Install Muhasabah Pro</b><span id="mhs-install-desc">Free · works offline · opens like an app</span><span class="host" id="mhs-install-host">muhasabah-pro.netlify.app</span></div>
+  </div>
+  <div class="acts">
+    <button type="button" class="later" id="mhs-install-dismiss">Not now</button>
+    <button type="button" class="go" id="mhs-install-btn">Install</button>
+  </div>
 </div>
 <script>
 (function(){
