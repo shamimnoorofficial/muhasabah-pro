@@ -113,13 +113,33 @@
     quran: ["#00e676", "#00b8d4"], hadith: ["#ffd54f", "#ff8f00"], wisdom: ["#ff4081", "#e040fb"], dua: ["#7c4dff", "#00b8d4"], names: ["#ffd54f", "#00e676"],
     amol: ["#00e676", "#ffd54f"], reminder: ["#00b8d4", "#7c4dff"], zikr: ["#00e676", "#7c4dff"], streak: ["#ff8f00", "#ff4081"], app: ["#00e676", "#00b8d4"]
   };
-  function fontsReady() { return document.fonts && document.fonts.ready ? document.fonts.ready.catch(function () {}) : Promise.resolve(); }
+  /* Canvas text never triggers a webfont download on its own, so document.fonts.ready alone can
+   * resolve before Amiri / Noto Sans Bengali are loaded — Arabic then falls back to a system font with
+   * misplaced harakat and Bengali to a thin device font. Load every face the card uses explicitly. */
+  var AR_FONT = "Amiri, 'Scheherazade New', 'Noto Naskh Arabic', serif";
+  var BN_FONT = "'Noto Sans Bengali'";
+  function fontsReady(p) {
+    var fs = document.fonts;
+    if (!fs || !fs.load) return Promise.resolve();
+    var sample = [p.eyebrow, p.ar, p.text, p.meaning, p.src, p.by].join(" ") + " অআ";
+    var faces = ["400 64px " + AR_FONT, "700 64px Amiri", "500 44px Inter", "600 26px Inter", "600 26px Sora", "700 34px Sora",
+      "500 44px " + BN_FONT, "600 26px " + BN_FONT, "700 34px " + BN_FONT];
+    var all = Promise.all(faces.map(function (f) { return fs.load(f, sample).catch(function () {}); }))
+      .then(function () { return fs.ready; }).catch(function () {});
+    return Promise.race([all, new Promise(function (r) { setTimeout(r, 2500); })]);
+  }
+  /* Spaced-out capitals only suit Latin script; spacing Bengali or Arabic letters splits vowel signs
+   * and joined letters apart (হাদিস became "হ া দ ি স"). */
+  function eyebrowText(str) {
+    str = String(str || "");
+    return /^[\x00-\x7F]*$/.test(str) ? str.toUpperCase().split("").join(" ") : str;
+  }
   function card(p) {
     p = p || {};
     var W = 1080, H = 1350, m = medium(p.medium), hue = THEMES[m] || THEMES.app;
     var c = document.createElement("canvas"); c.width = W; c.height = H;
     var ctx = c.getContext("2d");
-    return fontsReady().then(function () {
+    return fontsReady(p).then(function () {
       // background
       var g = ctx.createLinearGradient(0, 0, 0, H); g.addColorStop(0, "#0d1118"); g.addColorStop(1, "#06080d");
       ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
@@ -136,14 +156,15 @@
       ctx.save(); roundRect(ctx, px, py, pw, ph, 48); ctx.fillStyle = "rgba(20,26,36,0.78)"; ctx.fill();
       ctx.strokeStyle = "rgba(255,255,255,0.1)"; ctx.lineWidth = 2; ctx.stroke(); ctx.restore();
       // eyebrow
-      ctx.fillStyle = hue[0]; ctx.font = "600 26px Sora, Inter, system-ui, sans-serif"; ctx.textAlign = "center"; ctx.textBaseline = "top";
-      ctx.fillText(String(p.eyebrow || p.kind || m).toUpperCase().split("").join(" "), W / 2, py + 54);
+      var eb = eyebrowText(p.eyebrow || p.kind || m), latin = /^[\x00-\x7F]*$/.test(eb);
+      ctx.fillStyle = hue[0]; ctx.font = (latin ? "600 26px " : "600 30px ") + "Sora, Inter, " + BN_FONT + ", " + AR_FONT + ", system-ui, sans-serif"; ctx.textAlign = "center"; ctx.textBaseline = "top";
+      ctx.fillText(eb, W / 2, py + 54);
       var cy = py + 120, maxW = pw - 140;
       // arabic
       if (p.ar) {
         ctx.fillStyle = "#eef6f1"; ctx.direction = "rtl";
         var size = String(p.ar).length > 160 ? 46 : String(p.ar).length > 90 ? 54 : 64;
-        ctx.font = "400 " + size + "px Amiri, 'Scheherazade New', 'Noto Naskh Arabic', serif";
+        ctx.font = "400 " + size + "px " + AR_FONT;
         var al = wrap(ctx, p.ar, maxW).slice(0, 7);
         al.forEach(function (ln) { ctx.fillText(ln, W / 2, cy); cy += size * 1.75; });
         ctx.direction = "ltr"; cy += 20;
@@ -157,7 +178,7 @@
       if (main) {
         ctx.fillStyle = "#eef6f1";
         var ms = main.length > 320 ? 30 : main.length > 200 ? 34 : main.length > 120 ? 38 : 44;
-        ctx.font = "500 " + ms + "px Inter, 'Noto Sans Bengali', system-ui, sans-serif";
+        ctx.font = "500 " + ms + "px Inter, " + BN_FONT + ", " + AR_FONT + ", system-ui, sans-serif";
         ctx.direction = RTL.test(main.charAt(0)) ? "rtl" : "ltr";
         var ml = wrap(ctx, main, maxW).slice(0, 10);
         ml.forEach(function (ln) { ctx.fillText(ln, W / 2, cy); cy += ms * 1.5; });
@@ -167,13 +188,13 @@
       var ref = p.src || p.by;
       if (ref) {
         cy = Math.max(cy + 24, py + ph - 140);
-        ctx.fillStyle = hue[0]; ctx.font = "600 26px Inter, system-ui, sans-serif";
+        ctx.fillStyle = hue[0]; ctx.font = "600 26px Inter, " + BN_FONT + ", " + AR_FONT + ", system-ui, sans-serif";
         ctx.fillText("— " + ref, W / 2, cy);
       }
       // footer brand
       ctx.textAlign = "center"; ctx.fillStyle = "#cfe9da"; ctx.font = "700 34px Sora, Inter, system-ui, sans-serif";
       ctx.fillText(C.brand, W / 2, H - 132);
-      ctx.fillStyle = "#6f857a"; ctx.font = "500 26px Inter, system-ui, sans-serif";
+      ctx.fillStyle = "#6f857a"; ctx.font = "500 26px Inter, " + BN_FONT + ", " + AR_FONT + ", system-ui, sans-serif";
       ctx.fillText(C.watermark + "   ·   " + (lang() === "bn" ? "ফ্রি · অফলাইন · ব্যক্তিগত" : lang() === "ar" ? "مجاني · دون إنترنت · خاص" : "Free · Offline · Private"), W / 2, H - 82);
       // crest
       ctx.save(); ctx.translate(W / 2, 92); ctx.fillStyle = hue[0]; ctx.shadowColor = hue[0]; ctx.shadowBlur = 30;

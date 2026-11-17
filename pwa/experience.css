@@ -350,3 +350,8 @@ dialog.mhs-sr .mhs-mini-tools>*{display:grid!important}
 @font-face{font-family:"Sora";src:url(/fonts/noto-sans-bengali.woff2) format("woff2");font-weight:400 700;font-display:swap;unicode-range:U+0951-0952,U+0964-0965,U+0980-09FE,U+200C-200D,U+25CC}
 @font-face{font-family:"Noto Sans Bengali";src:url(/fonts/noto-sans-bengali.woff2) format("woff2");font-weight:400 700;font-display:swap;unicode-range:U+0951-0952,U+0964-0965,U+0980-09FE,U+200C-200D,U+25CC}
 @font-face{font-family:"JetBrains Mono";src:url(/fonts/noto-sans-bengali.woff2) format("woff2");font-weight:400 700;font-display:swap;unicode-range:U+0964-0965,U+0980-09FE,U+200C-200D}
+/* Letter-spacing pulls apart scripts whose letters join or stack: Bengali vowel signs and conjuncts
+ * (হাদিস → হ া দ ি স) and connected Arabic-script letters. Eyebrows and labels keep their tracking
+ * in Latin scripts only. */
+html:is(:lang(bn),:lang(as),:lang(hi),:lang(mr),:lang(ne),:lang(ar),:lang(fa),:lang(ur),:lang(ps),:lang(ta),:lang(te),:lang(kn),:lang(ml),:lang(gu),:lang(pa),:lang(si),:lang(th),:lang(my)) *{letter-spacing:normal!important}
+:is(.ar,[lang=ar],[dir=rtl]):not(html){letter-spacing:normal!important}
