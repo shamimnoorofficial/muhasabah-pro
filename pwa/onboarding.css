@@ -6,3 +6,6 @@
 .mhs-ftue-top,.mhs-ftue-dots,.mhs-ftue-actions{flex-shrink:0}
 .mhs-ftue-slide{flex:1 1 auto;min-height:0;overflow-y:auto;overscroll-behavior:contain;margin:-.35rem;padding:.35rem;scrollbar-width:thin}
 @media(max-height:760px){.mhs-ftue-card{gap:1rem;padding:1.15rem}}
+.mhs-ftue-citybox{width:100%;max-width:16rem;display:flex;flex-direction:column;gap:.35rem;text-align:center}
+.mhs-ftue-city{appearance:auto;cursor:pointer}
+.mhs-ftue-perm .mhs-ftue-retry{min-height:40px}
