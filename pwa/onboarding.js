@@ -251,9 +251,7 @@
       });
       var g = a.kind === "lang" ? O() : a.kind === "habits" ? M() : a.kind ? s(a.kind) : null, c = e("div", { class: "mhs-ftue-card" + (a.kind === "lang" || a.kind === "habits" ? " is-lang" : "") }, [e("div", { class: "mhs-ftue-top" }, [e("img", { src: "/icons/logo.webp", alt: "", width: "36", height: "36", class: "mhs-ftue-logo" }), l ? null : e("button", { type: "button", class: "mhs-ftue-link", text: r("skip"), on: { click: function() {
         d(t < V ? V : t + 1);
-      } } })]), e("div", { class: "mhs-ftue-slide" + (a.kind === "lang" || a.kind === "habits" ? " is-compact" : ""), "aria-live": "polite" }, [e("div", { class: "mhs-ftue-art", "aria-hidden": "true", text: a.icon }), e("h2", { id: "mhs-ftue-h", text: r(a.t) }), e("p", { text: r(a.b) }), g]), p, e("div", { class: "mhs-ftue-actions" + (l ? " is-final" : "") }, l ? [e("button", { type: "button", class: "mhs-ftue-btn " + (y.notif === "prompt" || y.notif === "error" ? "ghost" : "primary"), text: r("startTour"), on: { click: function() {
-        u(true);
-      } } }), e("button", { type: "button", class: "mhs-ftue-btn ghost", text: r("explore"), on: { click: function() {
+      } } })]), e("div", { class: "mhs-ftue-slide" + (a.kind === "lang" || a.kind === "habits" ? " is-compact" : ""), "aria-live": "polite" }, [e("div", { class: "mhs-ftue-art", "aria-hidden": "true", text: a.icon }), e("h2", { id: "mhs-ftue-h", text: r(a.t) }), e("p", { text: r(a.b) }), g]), p, e("div", { class: "mhs-ftue-actions" + (l ? " is-final" : "") }, l ? [e("button", { type: "button", class: "mhs-ftue-btn " + (y.notif === "prompt" || y.notif === "error" ? "ghost" : "primary"), text: r("done"), on: { click: function() {
         j({ tour: 1 }), u(false);
       } } })] : [t > 0 ? e("button", { type: "button", class: "mhs-ftue-btn ghost", text: r("back"), on: { click: function() {
         d(t - 1);
@@ -407,16 +405,15 @@
   function dt() {
     if (!H) {
       var n = D();
-      if (!n.intro) return et(function(t) {
-        t ? z(I) : I();
+      if (!n.intro) return et(function() {
+        j({ tour: 1 });
       });
-      if (!n.tour) return z(I);
-      I();
+      n.tour || j({ tour: 1 });
     }
   }
   function ot() {
     var n = D();
-    if (n.firstRun && n.intro && n.tour) return I();
+    if (n.firstRun && n.intro && n.tour) return;
     var t = false;
     function o() {
       if (!t) {
@@ -445,19 +442,13 @@
     render(t) {
       var o = this, i = e("div", { class: "panel mhs-panel mhs-tour-panel", dir: document.documentElement.dir || "ltr" }, [e("div", { class: "mhs-head" }, [e("h3", { class: "mhs-title", text: "\u{1F9ED} " + r("panelTitle") }), e("p", { class: "mhs-muted", text: r("panelSub") })]), e("div", { class: "mhs-actions" }, [e("button", { type: "button", class: "mhs-btn primary", text: r("replay"), on: { click: function() {
         window.MHSTour.replay();
-      } } }), e("button", { type: "button", class: "mhs-btn", text: r("tips"), on: { click: function() {
-        window.MHSTour.resetTips(), o.render(r("tipsOn"));
       } } })]), t ? e("div", { class: "mhs-status", role: "status", text: t }) : null]);
       this.replaceChildren(i);
     }
   }
   window.customElements && !customElements.get("mhs-tour") && customElements.define("mhs-tour", bt), window.MHSTour = { replay: function() {
-    H || (j({ firstRun: 1, intro: 0, tour: 0 }), window.scrollTo(0, 0), et(function(n) {
-      n ? z(I) : I();
+    H || (j({ firstRun: 1, intro: 0, tour: 1 }), window.scrollTo(0, 0), et(function() {
+      j({ tour: 1 });
     }));
-  }, tour: function() {
-    H || z(I);
-  }, resetTips: function() {
-    j({ tips: {}, intro: 1, tour: 1 }), I(), Y();
   } }, document.body ? ot() : document.addEventListener("DOMContentLoaded", ot);
 })();
