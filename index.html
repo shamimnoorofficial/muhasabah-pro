@@ -152,7 +152,11 @@
   var root=document.documentElement, pending=null, focusEl=null;
   function kbHeight(){
     var vv=window.visualViewport; if(!vv) return 0;
-    var h=window.innerHeight-vv.height-vv.offsetTop; return h<40?0:Math.round(h);
+    /* Only a focused text field can open the keyboard; a pinch-zoomed or toolbar-resized viewport is not a keyboard. */
+    var a=document.activeElement, tag=a&&a.tagName;
+    if(!(tag==="INPUT"||tag==="TEXTAREA"||tag==="SELECT"||(a&&a.isContentEditable))) return 0;
+    if(vv.scale&&vv.scale>1.01) return 0;
+    var h=window.innerHeight-vv.height-vv.offsetTop; return h<80?0:Math.round(h);
   }
   function keepVisible(el){
     if(!el||!el.getBoundingClientRect) return;
