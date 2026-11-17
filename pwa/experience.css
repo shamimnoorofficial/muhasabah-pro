@@ -167,8 +167,19 @@ dialog.mhs-sr[data-sr-theme=paper]{--sr-bg:#fbfaf7;--sr-fg:#1f2328}
 dialog.mhs-sr[data-sr-theme=night]{--sr-bg:#000;--sr-fg:#cfd6d2}
 dialog.mhs-sr .mhs-mini-body{background:var(--sr-bg);color:var(--sr-fg);transition:background .25s,color .25s}
 dialog.mhs-sr:is([data-sr-theme=sepia],[data-sr-theme=paper]) .mhs-mini-body :is(.mhs-mini-note,.mhs-sr-label,.mhs-sr-credit){color:color-mix(in srgb,var(--sr-fg) 70%,transparent)}
-.mhs-sr-text{max-width:40rem;margin-inline:auto;padding:.25rem .2rem 1rem;font-size:calc(1.08rem * var(--mhs-tx-scale,1));line-height:var(--sr-leading);font-family:Georgia,"Iowan Old Style","Noto Serif","Noto Serif Bengali","Noto Naskh Arabic",serif;hyphens:auto;-webkit-hyphens:auto;overflow-wrap:break-word}
+.mhs-sr-text{max-width:40rem;margin-inline:auto;padding:.25rem .2rem 1rem;font-size:calc(1.08rem * var(--mhs-tx-scale,1));line-height:var(--sr-leading);font-family:Georgia,"Iowan Old Style","Noto Serif","Noto Serif Bengali","Noto Sans Bengali",Amiri,"Noto Naskh Arabic",serif;hyphens:auto;-webkit-hyphens:auto;overflow-wrap:break-word}
 dialog.mhs-sr[data-sr-face=sans] .mhs-sr-text{font-family:Inter,system-ui,"Noto Sans Bengali","Noto Sans Arabic",sans-serif}
+/* Scripts by language: Bengali uses the bundled Noto Sans Bengali (no serif Bengali is bundled, and
+ * Georgia has none), Arabic-script pages use Amiri with room for vowel marks, and headings use the
+ * same face as the text so they never fall back to a device font. No automatic hyphens in scripts
+ * whose words must not be broken with a Latin hyphen. */
+.mhs-sr-text:is(:lang(bn),:lang(as)){font-family:"Noto Serif Bengali","Noto Sans Bengali",Georgia,Amiri,serif}
+dialog.mhs-sr[data-sr-face=sans] .mhs-sr-text:is(:lang(bn),:lang(as)){font-family:"Noto Sans Bengali",Inter,system-ui,Amiri,sans-serif}
+.mhs-sr-text:is(:lang(ar),:lang(fa),:lang(ps),:lang(sd),:lang(ug),:lang(ckb)){font-family:Amiri,"Noto Naskh Arabic","Scheherazade New",serif;font-size:calc(1.2rem * var(--mhs-tx-scale,1));line-height:calc(var(--sr-leading) + .2)}
+dialog.mhs-sr[data-sr-face=sans] .mhs-sr-text:is(:lang(ar),:lang(fa),:lang(ps),:lang(sd),:lang(ug),:lang(ckb)){font-family:"Noto Sans Arabic","Noto Naskh Arabic",Amiri,system-ui,sans-serif}
+.mhs-sr-text:lang(ur){font-family:"Noto Nastaliq Urdu","Jameel Noori Nastaleeq",Amiri,serif;font-size:calc(1.2rem * var(--mhs-tx-scale,1));line-height:calc(var(--sr-leading) + .5)}
+.mhs-sr-text:not(:lang(en)) :is(.mhs-sr-chapter,.mhs-sr-section){font-family:inherit}
+.mhs-sr-text:is(:lang(bn),:lang(as),:lang(hi),:lang(mr),:lang(ne),:lang(ar),:lang(fa),:lang(ur),:lang(ps),:lang(sd),:lang(ug),:lang(ckb),:lang(ta),:lang(te),:lang(kn),:lang(ml),:lang(gu),:lang(pa),:lang(si),:lang(th),:lang(my)){hyphens:manual;-webkit-hyphens:manual}
 .mhs-sr-justify .mhs-sr-text p{text-align:justify}
 .mhs-sr-text p{margin:0 0 1em}
 .mhs-sr-text[lang=bn]{line-height:calc(var(--sr-leading) + .1)}
