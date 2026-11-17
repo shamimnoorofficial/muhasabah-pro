@@ -13,7 +13,7 @@ import { getStore } from '@netlify/blobs';
 import { createHash, timingSafeEqual } from 'node:crypto';
 
 const FILES: Record<string, { key: string; name: string; type: string }> = {
-  aab: { key: 'app-release-bundle.aab', name: 'muhasabah-pro-1.4.0.aab', type: 'application/octet-stream' },
+  aab: { key: 'app-release-bundle.aab', name: 'muhasabah-pro.aab', type: 'application/octet-stream' },
   keystore: { key: 'android.keystore', name: 'muhasabah-upload.keystore', type: 'application/octet-stream' },
 };
 
@@ -33,7 +33,7 @@ function page(message = '', status = 200) {
 h1{font-size:1.3rem}form{background:#141a26;padding:20px;border-radius:12px;display:grid;gap:12px}
 input,select,button{font:inherit;padding:10px;border-radius:8px;border:1px solid #2a3346;background:#0a0d14;color:inherit}
 button{background:#3b82f6;border:0;cursor:pointer;font-weight:600}.err{color:#f87171}small{color:#9aa3b5}</style></head><body>
-<h1>Muhasabah Pro — Android release (v1.4.0, code 1)</h1>
+<h1>Muhasabah Pro — Android release</h1>
 <p>Enter the <b>ANDROID_KEYSTORE_PASSWORD</b> you set in Netlify to download.</p>
 ${message ? `<p class="err">${message}</p>` : ''}
 <form method="post"><select name="file">

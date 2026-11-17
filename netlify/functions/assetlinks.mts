@@ -5,14 +5,23 @@
  * Android checks this file to confirm that the Play Store app and this website belong
  * together. When the check passes, the app opens full-screen without a browser URL bar.
  *
- * Configure with environment variables (no code change or redeploy of code needed):
- *   TWA_PACKAGE_NAME         Android package id, defaults to "com.shamimnoor.muhasabahpro"
+ * If the Android app shows a browser address bar at the top, this file is missing the
+ * fingerprint of the key the installed app was signed with. Apps installed from Google Play are
+ * re-signed by Google, so the "App signing key certificate" SHA-256 must be listed here.
+ *
+ * Configure with environment variables (no code change needed, just a redeploy):
+ *   TWA_PACKAGE_NAME         Android package id(s), defaults to "com.shamimnoor.muhasabahpro".
+ *                            Several ids may be listed (commas or spaces), e.g. when a PWABuilder
+ *                            build uses a different package id.
  *   TWA_SHA256_FINGERPRINTS  One or more SHA-256 signing-certificate fingerprints,
  *                            separated by commas or spaces. Add both the Play App Signing
  *                            key (Play Console → Test and release → App integrity) and the
  *                            upload/local key used by `bubblewrap build` if you sideload.
  *
- * The upload key fingerprint (UPLOAD_KEY_FINGERPRINT) is always included.
+ *   TWA_ASSETLINKS_JSON      Optional: paste the whole assetlinks.json that PWABuilder or
+ *                            `bubblewrap fingerprint` generated. Its statements are merged in.
+ *
+ * The upload key fingerprint (UPLOAD_KEY_FINGERPRINT) is always included for the default package.
  */
 import type { Config } from '@netlify/functions';
 
@@ -29,23 +38,60 @@ export function normaliseFingerprint(raw: string): string | null {
   return hex.match(/.{2}/g)!.join(':');
 }
 
-export function buildAssetLinks(packageName: string | undefined, fingerprints: string | undefined) {
-  const pkg = (packageName || '').trim() || DEFAULT_PACKAGE;
-  if (!PACKAGE_RE.test(pkg)) return [];
-  const prints = [...new Set(
-    [UPLOAD_KEY_FINGERPRINT, ...(fingerprints || '').split(/[\s,;]+/)]
-      .map((f) => normaliseFingerprint(f))
-      .filter((f): f is string => !!f),
-  )];
-  if (!prints.length) return [];
-  return [{
-    relation: ['delegate_permission/common.handle_all_urls'],
-    target: { namespace: 'android_app', package_name: pkg, sha256_cert_fingerprints: prints },
-  }];
+const RELATION = 'delegate_permission/common.handle_all_urls';
+
+type Statement = {
+  relation: string[];
+  target: { namespace: 'android_app'; package_name: string; sha256_cert_fingerprints: string[] };
+};
+
+/** Statements from a pasted assetlinks.json (PWABuilder / Bubblewrap output); invalid parts are ignored. */
+export function parseExtraStatements(raw: string | undefined): Statement[] {
+  if (!raw || !raw.trim()) return [];
+  let data: unknown;
+  try { data = JSON.parse(raw); } catch { return []; }
+  const list = Array.isArray(data) ? data : [data];
+  const out: Statement[] = [];
+  for (const item of list) {
+    const target = (item as any)?.target;
+    if (!target || target.namespace !== 'android_app') continue;
+    const pkg = String(target.package_name || '').trim();
+    if (!PACKAGE_RE.test(pkg)) continue;
+    const prints = (Array.isArray(target.sha256_cert_fingerprints) ? target.sha256_cert_fingerprints : [])
+      .map((f: unknown) => normaliseFingerprint(String(f)))
+      .filter((f: string | null): f is string => !!f);
+    if (!prints.length) continue;
+    out.push({ relation: [RELATION], target: { namespace: 'android_app', package_name: pkg, sha256_cert_fingerprints: prints } });
+  }
+  return out;
+}
+
+export function buildAssetLinks(packageName: string | undefined, fingerprints: string | undefined, extraJson?: string) {
+  const pkgs = (packageName || '').split(/[\s,;]+/).map((p) => p.trim()).filter((p) => PACKAGE_RE.test(p));
+  if (!pkgs.length) pkgs.push(DEFAULT_PACKAGE);
+  const configured = (fingerprints || '').split(/[\s,;]+/)
+    .map((f) => normaliseFingerprint(f))
+    .filter((f): f is string => !!f);
+
+  // One statement per package; fingerprints merged and de-duplicated.
+  const byPkg = new Map<string, Set<string>>();
+  const add = (pkg: string, prints: string[]) => {
+    if (!prints.length) return;
+    const set = byPkg.get(pkg) || new Set<string>();
+    prints.forEach((p) => set.add(p));
+    byPkg.set(pkg, set);
+  };
+  for (const pkg of pkgs) add(pkg, pkg === DEFAULT_PACKAGE ? [UPLOAD_KEY_FINGERPRINT, ...configured] : configured);
+  for (const st of parseExtraStatements(extraJson)) add(st.target.package_name, st.target.sha256_cert_fingerprints);
+
+  return [...byPkg].map(([pkg, prints]) => ({
+    relation: [RELATION],
+    target: { namespace: 'android_app', package_name: pkg, sha256_cert_fingerprints: [...prints] },
+  }));
 }
 
 export default async () => {
-  const body = buildAssetLinks(process.env.TWA_PACKAGE_NAME, process.env.TWA_SHA256_FINGERPRINTS);
+  const body = buildAssetLinks(process.env.TWA_PACKAGE_NAME, process.env.TWA_SHA256_FINGERPRINTS, process.env.TWA_ASSETLINKS_JSON);
   return new Response(JSON.stringify(body, null, 2), {
     headers: {
       'Content-Type': 'application/json',
