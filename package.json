@@ -45,6 +45,7 @@
     "test:checklists": "node tests/checklists.cjs",
     "test:widget": "node tests/widget-responsive.cjs",
     "test:nav": "node tests/mini-nav.cjs",
-    "test:onboarding": "node tests/onboarding-location.cjs"
+    "test:onboarding": "node tests/onboarding-location.cjs",
+    "test:location": "node tests/location-calendar.cjs"
   }
 }

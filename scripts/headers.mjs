@@ -33,7 +33,7 @@ const csp = [
   "font-src 'self' data: https://fonts.gstatic.com",
   "img-src 'self' data: blob: https:",
   "media-src 'self' data: blob:",
-  "connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com https://api.stripe.com https://*.lemonsqueezy.com https://accounts.google.com https://oauth2.googleapis.com https://www.googleapis.com https://api.alquran.cloud https://api.quran.com https://cdn.jsdelivr.net",
+  "connect-src 'self' https://nominatim.openstreetmap.org https://fonts.googleapis.com https://fonts.gstatic.com https://api.stripe.com https://*.lemonsqueezy.com https://accounts.google.com https://oauth2.googleapis.com https://www.googleapis.com https://api.alquran.cloud https://api.quran.com https://cdn.jsdelivr.net",
   "frame-src 'self' https://js.stripe.com https://hooks.stripe.com https://*.lemonsqueezy.com https://accounts.google.com https://maps.google.com https://www.google.com",
   "worker-src 'self'",
   "manifest-src 'self'",

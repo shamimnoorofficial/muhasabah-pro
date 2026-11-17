@@ -72,7 +72,8 @@
 
   /* ---- raw day times with adjustments + high-latitude rule ---- */
   var cache = {};
-  function dayKey(d) { return d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate(); }
+  function dayKey(d) { var c=window.MHSPrayer.civil(d); return c.year+"-"+c.month+"-"+c.day; }
+  function nextDate(d) { return window.MHSPrayer.shiftDay(d,1); }
   function raw(date) {
     if (!window.MHSPrayer || !window.MHSPrayer.day) return null;
     var d = date ? new Date(date) : new Date();
@@ -91,7 +92,7 @@
     r.maghrib = r.sunset;
     r.midnight = r.sunset + ((r.fajr + DAY) - r.sunset) / 2;
     r.ishaEnd = r.midnight;
-    r.date = new Date(d.getFullYear(), d.getMonth(), d.getDate()).getTime();
+    r.date = window.MHSPrayer.dayStart(d);
     var keys = Object.keys(cache); if (keys.length > 30) cache = {};
     cache[key] = r;
     return r;
@@ -103,7 +104,7 @@
    * with night windows (tahajjud/witr/sehri) spanning into the following morning. */
   function windows(date) {
     var r = raw(date); if (!r) return [];
-    var d = new Date(r.date), nextDay = raw(r.date + DAY) || {};
+    var dc = window.MHSPrayer.civil(r.date), d = new Date(dc.year,dc.month-1,dc.day), nextDay = raw(nextDate(r.date)) || {};
     var nextFajr = nextDay.fajr || (r.fajr + DAY);
     var night = nextFajr - r.sunset;
     var isFri = d.getDay() === 5;
@@ -134,13 +135,13 @@
   function status(now) {
     now = now || Date.now();
     var r = raw(now); if (!r) return null;
-    var w = windows(now), tomorrow = windows(r.date + DAY);
+    var w = windows(now), tomorrow = windows(nextDate(r.date));
     var fard = w.filter(function (x) { return x.kind === "fard"; });
     var active = null, next = null, forbidden = null;
     fard.forEach(function (x) { if (now >= x.start && now < (x.softEnd || x.end)) active = x; });
     fard.forEach(function (x) { if (!next && now < x.start) next = x; });
     if (!next) next = tomorrow.filter(function (x) { return x.kind === "fard"; })[0];
-    if (next) next = Object.assign({}, next, { tomorrow: next.start > r.date + DAY });
+    if (next) next = Object.assign({}, next, { tomorrow: next.start >= window.MHSPrayer.dayStart(nextDate(r.date)) });
     w.filter(function (x) { return x.kind === "forbidden"; }).forEach(function (x) { if (now >= x.start && now < x.end) forbidden = x; });
     // Isha "active" continues until next Fajr for display; but midnight is the preferred end.
     var inIsha = !active && now >= r.isha && now < (tomorrow[1] ? tomorrow[1].start : r.fajr + DAY);
@@ -165,7 +166,8 @@
   function pad(n) { return (n < 10 ? "0" : "") + n; }
   function fmt(ts, opts) {
     if (ts == null || isNaN(ts)) return "—";
-    var d = new Date(ts), h = d.getHours(), m = d.getMinutes(), c = cfg();
+    var d = new Date(ts), h = d.getHours(), m = d.getMinutes(), c = cfg(), zone = base() && base().timeZone;
+    if(zone) try { var parts=new Intl.DateTimeFormat("en-GB",{timeZone:zone,hour:"numeric",minute:"numeric",hourCycle:"h23"}).formatToParts(d); h=+parts.find(function(p){return p.type==="hour";}).value; m=+parts.find(function(p){return p.type==="minute";}).value; } catch(e) {}
     if (c.clock === "24") return digits(pad(h) + ":" + pad(m));
     var ap = h >= 12 ? (lang() === "bn" ? "" : lang() === "ar" ? "م" : "PM") : (lang() === "bn" ? "" : lang() === "ar" ? "ص" : "AM");
     var hh = h % 12 || 12;

@@ -159,19 +159,9 @@
           N("loc");
         } } }));
       }
-      if (l !== "asking" && !(l === "granted" && c2 && c2.src === "gps") && P2 && P2.cities && P2.pickCity) {
-        var cur = "";
-        P2.cities.forEach(function(c, i) {
-          c2 && c2.src === "city" && c[1] === c2.lat && c[2] === c2.lng && (cur = String(i));
-        });
-        var sel = e("select", { class: "mhs-ftue-search mhs-ftue-city", "aria-label": r("orCity"), on: { change: function() {
-          sel.value !== "" && P2.pickCity(sel.value) && m();
-        } } }, [e("option", { value: "", text: r("cityPick") })].concat(P2.cities.map(function(c, i) {
-          return e("option", { value: String(i), text: c[0] });
-        })));
-        sel.value = cur;
-        if (cur !== "") g.push(e("div", { class: "mhs-ftue-ok", role: "status", text: r("locSet").replace("{place}", c2.place) }));
-        g.push(e("label", { class: "mhs-ftue-citybox" }, [e("small", { class: "mhs-ftue-note", text: r("orCity") }), sel]));
+      if (l !== "asking" && window.MHSLocation) {
+        if (c2 && c2.src === "city") g.push(e("div", {class:"mhs-ftue-ok", role:"status", text:r("locSet").replace("{place}",c2.place)}));
+        g.push(window.MHSLocation.create(function(){ m(); }, {noGPS:true}));
       }
       g.push(e("small", { class: "mhs-ftue-note", text: r("optional") }));
       return e("div", { class: "mhs-ftue-perm" }, g);

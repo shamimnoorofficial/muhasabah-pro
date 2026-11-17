@@ -39,9 +39,14 @@ async function toLocationStep(page) {
     assert.match(await page.locator('.mhs-ftue-perm').innerText(), /Turn on your phone's location/);
     const calls = await page.evaluate(() => window.__geoCalls);
     assert.equal(calls.length, 2); assert.equal(calls[0].enableHighAccuracy, false); assert.equal(calls[1].enableHighAccuracy, true);
-    await page.locator('.mhs-ftue-city').selectOption({ label: 'Chattogram' });
+    const picker = page.locator('.mhs-location-picker');
+    await picker.getByRole('combobox', {name:'Country / territory',exact:true}).selectOption('BD');
+    await picker.getByRole('combobox', {name:'Division / state / province',exact:true}).selectOption('1');
+    await picker.getByRole('combobox', {name:'District / county',exact:true}).selectOption('1');
+    await picker.getByRole('combobox', {name:'Upazila / city / town',exact:true}).selectOption('1');
+    await picker.getByRole('button', {name:'Confirm location',exact:true}).click();
     await page.locator('.mhs-ftue-ok', { hasText: 'Chattogram' }).waitFor();
-    assert.deepEqual(await page.evaluate(() => { const c = MHSPrayer.config(); return [c.src, c.place, c.on]; }), ['city', 'Chattogram', true]);
+    assert.deepEqual(await page.evaluate(() => { const c = MHSPrayer.config(); return [c.src, c.place, c.on]; }), ['city', 'Debidwar, Cumilla, Chattogram, Bangladesh', true]);
     assert.match(await page.locator('.mhs-ftue-next').getAttribute('class'), /primary/);
     await ctx.close();
 
@@ -53,7 +58,7 @@ async function toLocationStep(page) {
     await page.locator('.mhs-ftue-allow').click();
     await page.locator('.mhs-ftue-warn', { hasText: 'Location is blocked' }).waitFor();
     assert.equal(await page.locator('.mhs-ftue-retry').count(), 1);
-    assert.equal(await page.locator('.mhs-ftue-city').count(), 1);
+    assert.equal(await page.locator('.mhs-location-picker').count(), 1);
     assert.equal(await page.evaluate(() => window.__geoCalls.length), 1, 'no high-accuracy retry after a denial');
     await ctx.close();
 
