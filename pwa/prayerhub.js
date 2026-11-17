@@ -28,6 +28,7 @@
    * e.g. Fajr at "10:56 PM". The solar offset (longitude / 15) is a close stand-in for the zone. */
   function clockNote(base) {
     if (!base || base.lat == null || base.lng == null) return null;
+    if (base.timeZone) return X.el("p", {class:"mhs-mini-note",text:base.timeZone});
     var dev = -new Date().getTimezoneOffset() / 60, solar = base.lng / 15;
     if (Math.abs(dev - solar) < 2.5) return null;
     var sign = dev >= 0 ? "+" : "−", hrs = Math.floor(Math.abs(dev)), mins = Math.round((Math.abs(dev) - hrs) * 60);
@@ -52,7 +53,7 @@
     return [["auto", autoLabel("method")]].concat(keys.map(function (k) { return [k, (H[k] && H[k].name) || METHODS[k]]; }));
   }
   var METHODS = { karachi: "Karachi (Univ. of Islamic Sciences)", mwl: "Muslim World League", isna: "ISNA (North America)", egypt: "Egyptian Authority", makkah: "Umm al-Qura (Makkah)" };
-  var CITIES = [["Dhaka", 23.8103, 90.4125], ["Chattogram", 22.3569, 91.7832], ["Sylhet", 24.8949, 91.8687], ["Rajshahi", 24.3745, 88.6042], ["Khulna", 22.8456, 89.5403], ["Barishal", 22.701, 90.3535], ["Rangpur", 25.7439, 89.2752], ["Mymensingh", 24.7471, 90.4203], ["Cumilla", 23.4607, 91.1809], ["Cox's Bazar", 21.4272, 92.0058], ["Kolkata", 22.5726, 88.3639], ["Delhi", 28.6139, 77.209], ["Mumbai", 19.076, 72.8777], ["Karachi", 24.8607, 67.0011], ["Lahore", 31.5204, 74.3587], ["Makkah", 21.3891, 39.8579], ["Madinah", 24.5247, 39.5692], ["Riyadh", 24.7136, 46.6753], ["Jeddah", 21.4858, 39.1925], ["Dubai", 25.2048, 55.2708], ["Doha", 25.2854, 51.531], ["Kuwait City", 29.3759, 47.9774], ["Muscat", 23.588, 58.3829], ["Kuala Lumpur", 3.139, 101.6869], ["Singapore", 1.3521, 103.8198], ["Jakarta", -6.2088, 106.8456], ["Istanbul", 41.0082, 28.9784], ["Cairo", 30.0444, 31.2357], ["London", 51.5074, -0.1278], ["Birmingham", 52.4862, -1.8904], ["Paris", 48.8566, 2.3522], ["Berlin", 52.52, 13.405], ["Rome", 41.9028, 12.4964], ["New York", 40.7128, -74.006], ["Toronto", 43.6532, -79.3832], ["Chicago", 41.8781, -87.6298], ["Sydney", -33.8688, 151.2093], ["Tokyo", 35.6762, 139.6503]];
+
 
   var sh = null, tab = "times", view = "tabs", iv = null, compass = null;
   function open(opts) {
@@ -98,9 +99,7 @@
     return card;
   }
   function citySelect(onPick) {
-    var sel = X.el("select", { class: "mhs-select", "aria-label": t("city") }, [X.el("option", { value: "", text: t("city") })].concat(CITIES.map(function (c, i) { return X.el("option", { value: String(i), text: c[0] }); })));
-    sel.addEventListener("change", function () { if (sel.value === "") return; var c = CITIES[+sel.value]; T().setBase({ lat: c[1], lng: c[2], place: c[0], src: "city", at: Date.now(), on: true }); onPick && onPick(); });
-    return sel;
+    return window.MHSLocation.create(onPick, {noGPS:true});
   }
 
   /* ---- Tab A: times ---- */
@@ -108,6 +107,7 @@
     var M = T(), base = M.base();
     var hero = X.el("div", { class: "mhs-ph-hero" });
     var list = X.el("div", { class: "mhs-ph-list" });
+    if (window.MHSPrayerCalendar) b.append(window.MHSPrayerCalendar.create());
     b.append(hero, X.el("p", { class: "mhs-mini-note mhs-ph-locline" }, ["📍 " + (base.place || "") + " · " + (t("src")[base.src] || t("src").manual) + (navigator.onLine ? "" : " · " + t("lastKnown"))]));
     var tzNote = clockNote(base); if (tzNote) b.append(tzNote);
     var rz = window.MHSPrayer && window.MHSPrayer.resolve && window.MHSPrayer.resolve(), mm = rz && window.MHSPrayer.methods && window.MHSPrayer.methods[rz.method];
@@ -222,16 +222,11 @@
     function select(opts, val, on) { var s = X.el("select", { class: "mhs-select" }, opts.map(function (o) { return X.el("option", { value: o[0], text: o[1], selected: o[0] === val ? true : null }); })); s.addEventListener("change", function () { on(s.value); }); return s; }
     function row(label, ctl) { return X.el("label", { class: "mhs-ph-set" }, [X.el("span", { text: label }), ctl]); }
     var msg = X.el("p", { class: "mhs-mini-note", role: "status" });
+    if (window.MHSPrayerCalendar) b.append(window.MHSPrayerCalendar.settings());
     // location
-    var latIn = X.el("input", { type: "number", step: "0.0001", min: "-90", max: "90", value: base.lat != null ? base.lat : "", "aria-label": t("lat"), placeholder: t("lat"), inputmode: "decimal" });
-    var lngIn = X.el("input", { type: "number", step: "0.0001", min: "-180", max: "180", value: base.lng != null ? base.lng : "", "aria-label": t("lng"), placeholder: t("lng"), inputmode: "decimal" });
-    var placeIn = X.el("input", { type: "text", maxlength: "60", value: base.place && base.src !== "gps" ? base.place : "", "aria-label": t("place"), placeholder: t("place") });
-    b.appendChild(sec("📍 " + t("loc"), [
-      X.el("p", { class: "mhs-mini-note", text: (base.lat != null ? (base.place || base.lat + ", " + base.lng) + " · " + (t("src")[base.src] || t("src").manual) : t("noLoc")) }),
-      X.el("div", { class: "mhs-actions" }, [X.el("button", { type: "button", class: "mhs-btn primary", text: "📍 " + t("allow"), on: { click: function (e) { var btn = e.currentTarget; btn.disabled = true; msg.textContent = t("locating"); (window.MHSPrayer.enableLocation ? window.MHSPrayer.enableLocation() : Promise.resolve("unsupported")).then(function (r) { if (r === "granted") { X.toast(t("saved")); render(); } else { btn.disabled = false; msg.textContent = t("denied"); } }); } } }), citySelect(function () { render(); })]),
-      X.el("div", { class: "mhs-ph-grid3" }, [latIn, lngIn, placeIn]),
-      X.el("div", { class: "mhs-actions" }, [X.el("button", { type: "button", class: "mhs-btn", text: t("apply"), on: { click: function () { var la = parseFloat(latIn.value), ln = parseFloat(lngIn.value); if (isNaN(la) || isNaN(ln)) return; M.setBase({ lat: la, lng: ln, place: placeIn.value.trim() || la.toFixed(3) + ", " + ln.toFixed(3), src: "manual", at: Date.now(), on: true }); X.toast(t("saved")); render(); } } })]),
-      msg
+    b.appendChild(sec(t("loc"), [
+      X.el("p", {class:"mhs-mini-note",text:base.place || t("noLoc")}),
+      window.MHSLocation.create(function(){render();})
     ]));
     // method & madhab & hi-lat & clock
     b.appendChild(sec("🧮 " + t("method"), [

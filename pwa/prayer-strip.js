@@ -39,6 +39,7 @@
         X.el("button", { type: "button", class: "mhs-ps-more", "aria-label": t("hub"), on: { click: function () { openHub("times"); } } }, [t("more"), X.el("span", { "aria-hidden": "true", text: " ›" })])
       ]);
       wrap.appendChild(head);
+      if (window.MHSPrayerCalendar) wrap.appendChild(window.MHSPrayerCalendar.create());
       if (!M.hasLocation()) {
         var msg = X.el("p", { class: "mhs-ps-msg", text: t("noLoc") });
         var btn = X.el("button", { type: "button", class: "mhs-btn primary", text: t("allow"), on: { click: function () {

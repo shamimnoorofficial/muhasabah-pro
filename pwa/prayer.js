@@ -8,7 +8,7 @@
       a = JSON.parse(localStorage.getItem(Y)) || {};
     } catch {
     }
-    return { on: a.on !== false, src: a.src || "", at: typeof a.at == "number" ? a.at : 0, asked: !!a.asked, lat: typeof a.lat == "number" ? a.lat : null, lng: typeof a.lng == "number" ? a.lng : null, place: a.place || "", method: H[a.method] && !(!a.mv && a.method === "karachi" && a.asr !== "standard") ? a.method : "auto", asr: a.mv && (a.asr === "standard" || a.asr === "hanafi") ? a.asr : a.asr === "standard" ? "standard" : "auto", mv: a.mv || 0, links: a.links && typeof a.links == "object" ? a.links : {} };
+    return { on: a.on !== false, src: a.src || "", at: typeof a.at == "number" ? a.at : 0, asked: !!a.asked, accuracy: Number.isFinite(a.accuracy) ? a.accuracy : null, timeZone: a.timeZone || "", lat: typeof a.lat == "number" ? a.lat : null, lng: typeof a.lng == "number" ? a.lng : null, place: a.place || "", method: H[a.method] && !(!a.mv && a.method === "karachi" && a.asr !== "standard") ? a.method : "auto", asr: a.mv && (a.asr === "standard" || a.asr === "hanafi") ? a.asr : a.asr === "standard" ? "standard" : "auto", mv: a.mv || 0, links: a.links && typeof a.links == "object" ? a.links : {} };
   }
   var S = {};
   function A(a) {
@@ -107,10 +107,23 @@
     var r2 = mhsRegion(t);
     return { method: t.method === "auto" || !H[t.method] ? r2.method : t.method, asr: t.asr === "auto" || t.asr !== "hanafi" && t.asr !== "standard" ? r2.asr : t.asr };
   }
+  function civil(date) {
+    var d=new Date(date == null ? Date.now() : date), zone=b().timeZone;
+    if(zone) try { var parts=new Intl.DateTimeFormat("en-CA",{timeZone:zone,year:"numeric",month:"numeric",day:"numeric"}).formatToParts(d), get=function(k){return +parts.find(function(p){return p.type===k;}).value;}; return {year:get("year"),month:get("month"),day:get("day")}; } catch(e) {}
+    return {year:d.getFullYear(),month:d.getMonth()+1,day:d.getDate()};
+  }
+  function dayStart(date) {
+    var c=civil(date), zone=b().timeZone;
+    if(!zone)return new Date(c.year,c.month-1,c.day).getTime();
+    try { var target=Date.UTC(c.year,c.month-1,c.day), guess=target;
+      for(var i=0;i<3;i++){var parts=new Intl.DateTimeFormat("en-GB",{timeZone:zone,year:"numeric",month:"numeric",day:"numeric",hour:"numeric",minute:"numeric",second:"numeric",hourCycle:"h23"}).formatToParts(new Date(guess)), get=function(k){return +parts.find(function(p){return p.type===k;}).value;}; var represented=Date.UTC(get("year"),get("month")-1,get("day"),get("hour"),get("minute"),get("second"));guess+=target-represented;}return guess;
+    }catch(e){return new Date(c.year,c.month-1,c.day).getTime();}
+  }
+  function shiftDay(date,n) { var start=dayStart(date); return start+n*864e5+12*36e5; }
   function T(a) {
     var t = b(), rz = mhsResolve(t);
     if (t.lat === null || t.lng === null) return null;
-    var e = a ? new Date(a) : /* @__PURE__ */ new Date(), s = e.getFullYear(), c = e.getMonth(), u = e.getDate(), y = s + "-" + c + "-" + u + "|" + t.lat + "," + t.lng + "|" + rz.method + "|" + rz.asr;
+    var e = a ? new Date(a) : /* @__PURE__ */ new Date(), dc = civil(e), s = dc.year, c = dc.month-1, u = dc.day, y = s + "-" + c + "-" + u + "|" + t.lat + "," + t.lng + "|" + rz.method + "|" + rz.asr;
     if (y in S) return S[y];
     var v = la(s, c + 1, u, t.lat, t.lng, rz.method, rz.asr === "hanafi" ? 2 : 1), f = null;
     if (v) {
@@ -122,7 +135,7 @@
       mo && Object.keys(mo).forEach(function(d) {
         f[d] != null && (f[d] += mo[d] * 6e4);
       });
-      var m = new Date(s, c, u, 23, 59, 59, 0).getTime();
+      var m = dayStart(shiftDay(e, 1)) - 1000;
       f.ishaEnd = Math.min(f.midnight, m);
     }
     var i = Object.keys(S);
@@ -172,7 +185,7 @@
       var dy = (c[1] - t.lat) * 111, dx = (c[2] - t.lng) * 111 * Math.cos(t.lat * C), km = Math.sqrt(dx * dx + dy * dy);
       km < best && (best = km, near = c[0]);
     });
-    t.place = "\u{1F4CD} " + (near ? near + " \xB7 " : "") + t.lat.toFixed(3) + ", " + t.lng.toFixed(3), t.src = "gps", t.at = Date.now(), t.asked = true, A(t);
+    t.place = "\u{1F4CD} " + (near ? near + " \xB7 " : "") + t.lat.toFixed(3) + ", " + t.lng.toFixed(3), t.src = "gps", t.timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone, t.accuracy = a.coords.accuracy, t.at = Date.now(), t.asked = true, A(t);
   }
   // Ask the device for its position. A quick network/cached fix is tried first; if that times out or
   // is unavailable (GPS-only phones, network location switched off), retry once with high accuracy.
@@ -187,6 +200,7 @@
       locBusy.push([a, t]);
       return;
     }
+    var initialAt = b().at;
     locBusy = [[a, t]];
     function done(ok, err) {
       var q2 = locBusy || [];
@@ -203,10 +217,16 @@
       s.asked = true, A(s), done(false, e || { code: 2 });
     }
     function win(e) {
+      var current=b();
+      if (current.at !== initialAt && (current.src === "city" || current.src === "manual")) return done(true);
       Q(e), done(true);
     }
     try {
-      navigator.geolocation.getCurrentPosition(win, function(e) {
+      navigator.geolocation.getCurrentPosition(function(e) {
+        if (e.coords.accuracy > 1000) {
+          try { navigator.geolocation.getCurrentPosition(win, function(){ win(e); }, {enableHighAccuracy:true,timeout:2e4,maximumAge:0}); } catch(x) { win(e); }
+        } else win(e);
+      }, function(e) {
         if (e && e.code === 1) return fail(e);
         try {
           navigator.geolocation.getCurrentPosition(win, fail, { enableHighAccuracy: true, timeout: 2e4, maximumAge: 0 });
@@ -274,7 +294,7 @@
         var e = ua(ca[t]);
         e && (a.lat = e[1], a.lng = e[2], a.place = e[0], a.src = "tz", A(a));
       }
-      if (a = b(), a.src !== "city") {
+      if (a = b(), a.src !== "city" && a.src !== "manual") {
         var s = Date.now() - a.at > 36e5, c = navigator.permissions && navigator.permissions.query ? navigator.permissions.query({ name: "geolocation" }).then(function(u) {
           return u.state;
         }, function() {
@@ -320,8 +340,14 @@
   function w(a) {
     if (!a && a !== 0) return "\u2014";
     var t = new Date(a);
+    if (b().timeZone) try { return new Intl.DateTimeFormat("en-GB",{timeZone:b().timeZone,hour:"2-digit",minute:"2-digit",hourCycle:"h23"}).format(t); } catch(e) {}
     return String(t.getHours()).padStart(2, "0") + ":" + String(t.getMinutes()).padStart(2, "0");
   }
+  q.civil = civil; q.dayStart = dayStart; q.shiftDay = shiftDay;
+  q.setLocation = function(p) {
+    if (!p || !Number.isFinite(p.lat) || !Number.isFinite(p.lng) || Math.abs(p.lat)>90 || Math.abs(p.lng)>180) return false;
+    var c=b(); Object.assign(c,{lat:p.lat,lng:p.lng,place:p.place || p.lat+", "+p.lng,src:"city",timeZone:p.tz || p.timeZone || "",accuracy:null,on:true,asked:true,at:Date.now()}); I(c); A(c); return true;
+  };
   q.name = N, q.hm = w;
   function n(a, t, e) {
     var s = document.createElement(a);
@@ -404,23 +430,10 @@
         return o.lat === null;
       }
       s.appendChild(n("label", { class: "mhs-switch" }, [c, n("span", { text: r("enable") })]));
-      var y = [["", r("pick")]].concat(M.map(function(o, l) {
-        return [String(l), o[0]];
-      })), v = "";
-      M.forEach(function(o, l) {
-        o[1] === e.lat && o[2] === e.lng && (v = String(l));
-      });
       var f = n("div", { class: "mhs-sec" }, [n("div", { class: "mhs-label", text: r("loc") }), n("div", { class: "mhs-status" + (e.lat !== null ? " ok" : ""), text: e.lat !== null ? (e.place || e.lat + ", " + e.lng) + " \u2022 " + r(e.src === "gps" ? "srcGps" : e.src === "tz" ? "srcTz" : "srcCity") : r("noLoc") }), t._msg ? n("div", { class: "mhs-status warn", text: t._msg }) : null, n("div", { class: "mhs-actions" }, [n("button", { type: "button", class: "mhs-btn primary", on: { click: function() {
         t.locate();
-      } } }, [r("useLoc")]), K(y, v, function(o) {
-        if (o !== "") {
-          var l = M[+o];
-          t._msg = "", t.update(function(p) {
-            p.lat = l[1], p.lng = l[2], p.place = l[0], p.src = "city", p.at = Date.now(), p.on || (p.on = true, I(p));
-          });
-        }
-      })]), n("p", { class: "mhs-muted", text: r("locNote") })]);
-      s.appendChild(f), s.appendChild(n("div", { class: "mhs-sec mhs-row" }, [n("div", { class: "mhs-grow" }, [n("div", { class: "mhs-label", text: r("method") }), K(Object.keys(H).map(function(o) {
+      } } }, [r("useLoc")]), window.MHSLocation ? window.MHSLocation.create(function(){ t.render(); }, {noGPS:true}) : n("span")]), n("p", { class: "mhs-muted", text: r("locNote") + (e.src === "gps" && e.accuracy !== null ? " · GPS ±" + Math.round(e.accuracy) + " m" : "") })]);
+      s.appendChild(f), window.MHSPrayerCalendar && s.appendChild(window.MHSPrayerCalendar.create()), window.MHSPrayerCalendar && s.appendChild(window.MHSPrayerCalendar.settings()), s.appendChild(n("div", { class: "mhs-sec mhs-row" }, [n("div", { class: "mhs-grow" }, [n("div", { class: "mhs-label", text: r("method") }), K(Object.keys(H).map(function(o) {
         return [o, H[o].name];
       }), e.method, function(o) {
         t.update(function(l) {
@@ -499,6 +512,7 @@
           d.textContent = "\u{1F4CD} " + r("locFail");
         });
       } } }, ["\u{1F4CD} " + (t.lat !== null ? t.src === "gps" ? r("srcGps") : t.place : r("useLoc"))])]);
+      window.MHSPrayerCalendar && e.appendChild(window.MHSPrayerCalendar.create());
       if (e.appendChild(c), !s) {
         e.appendChild(n("p", { class: "mhs-muted", text: r("setLoc") })), this.replaceChildren(e);
         return;
