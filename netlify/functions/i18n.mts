@@ -31,7 +31,7 @@ async function translate(lang: string, name: string, strings: string[]): Promise
     model: 'claude-haiku-5-5',
     max_tokens: 8000,
     system:
-      `You translate the user interface of "Muhasabah", an Islamic habit tracker and private journal, from English into ${name} (${lang}). ` +
+      `You translate the user interface of "Muhasabah", an Islamic life tracker (habits, prayer times, Quran, Hadith, duas, journal), from English into ${name} (${lang}). ` +
       'Write natural, concise interface wording a native speaker expects in a mobile app. Keep the same tone and capitalization style. ' +
       'Keep emojis, symbols (•, →, ·, ▲, %, +, −), numbers, currency amounts, "{name}" placeholders and line breaks exactly. ' +
       'Never translate the brand names Muhasabah, Muhasabah Pro, Pro, Stripe, Google Drive, PayPal, Hijri or AH. ' +

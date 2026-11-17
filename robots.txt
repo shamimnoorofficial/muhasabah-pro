@@ -1,0 +1,19 @@
+# Muhasabah Pro — Islamic Life Tracker
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /.netlify/
+Disallow: /offline.html
+Disallow: /share-target
+Disallow: /widgets/
+Disallow: /tests/
+Disallow: /tools/
+Disallow: /db/
+Disallow: /lib/
+Disallow: /scripts/
+Disallow: /src/
+Disallow: /netlify/
+Disallow: /node_modules/
+Disallow: /android/
+
+Sitemap: https://muhasabah-pro.netlify.app/sitemap.xml
