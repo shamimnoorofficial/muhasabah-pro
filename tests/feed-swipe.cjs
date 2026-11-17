@@ -39,13 +39,25 @@ const assert=require('node:assert/strict');
    assert.equal(await page.locator('.mhs-story-prev').isDisabled(),false,'Next button advances');
    await page.locator('.mhs-story-prev').click();await page.waitForTimeout(350);
    assert.equal(await page.locator('.mhs-rf-text').innerText(),original,'Previous button restores the post');
+   async function pageScrollsOverCard(label){
+    await page.evaluate(()=>window.scrollTo(0,0));await page.waitForTimeout(150);
+    const r=await card.boundingBox(),vh=page.viewportSize().height,x=r.x+r.width/2,y=Math.min(vh-120,Math.max(r.y+40,vh*.6));
+    const before=await page.evaluate(()=>window.scrollY);
+    await cdp.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[{x,y}]});
+    for(let step=1;step<=8;step++)await cdp.send('Input.dispatchTouchEvent',{type:'touchMove',touchPoints:[{x,y:y-220*step/8}]});
+    await cdp.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});
+    await page.waitForTimeout(500);
+    assert(await page.evaluate(()=>window.scrollY)>before,'Vertical swipe over the feed card scrolls the page ('+label+')');
+    assert.equal(await content.evaluate(n=>n.scrollTop),0,'Feed card has no nested scroll area ('+label+')');
+   }
+   await pageScrollsOverCard('short post');
    await content.evaluate(n=>{n.querySelector('.mhs-rf-text').textContent='A long reflection. '.repeat(700);});
-   await swipe(5,-65);
-   assert(await content.evaluate(n=>n.scrollTop>0),'Vertical touch still scrolls long posts');
-   assert.equal(await card.evaluate(n=>n.offsetHeight),height);
+   await page.waitForTimeout(100);
+   assert(await card.evaluate(n=>n.offsetHeight)>height,'Long posts grow the card instead of scrolling inside it');
+   await pageScrollsOverCard('long post');
    assert.deepEqual(errors,[]);
    await context.close();
   }
-  console.log('Feed touch: larger fixed card, no swipe navigation, previous/next buttons and vertical reading passed');
+  console.log('Feed touch: larger card, no swipe navigation, previous/next buttons and page scrolling over the card passed');
  }finally{await browser.close();}
 })().catch(e=>{console.error(e);process.exitCode=1;});
