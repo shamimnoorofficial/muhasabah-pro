@@ -59,6 +59,10 @@ mhs-feed-home.mhs-home-stack{display:flex;flex-direction:column;gap:1.5rem;min-w
 @media(max-width:360px){.mhs-rf-card{padding:1rem!important;gap:.75rem}.mhs-story-actions button{width:40px;padding:8px!important}}
 
 .mhs-story-content{touch-action:pan-y}
+/* Home feed: the card grows with the post so a vertical swipe over it always scrolls the page.
+   No nested scroll area means no scroll trapping on touch screens. */
+mhs-feed-home .mhs-rf-card{height:auto!important;min-height:clamp(420px,74dvh,660px)!important;touch-action:pan-y}
+mhs-feed-home .mhs-story-content{flex:1 0 auto;overflow:visible;overscroll-behavior:auto;touch-action:pan-y}
 
 /* Shared settings surfaces, using the app's existing theme palette. */
 .mhs-settings-trigger{min-width:44px;min-height:44px;border-radius:14px;transition:background .18s,color .18s;touch-action:manipulation}
