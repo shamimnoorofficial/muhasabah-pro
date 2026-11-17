@@ -60,6 +60,7 @@
   for = "/widgets/*"
   [headers.values]
     Cache-Control = "no-cache"
+    X-Robots-Tag = "noindex"
     Access-Control-Allow-Origin = "*"
     Cross-Origin-Resource-Policy = "cross-origin"
 
@@ -108,3 +109,21 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
     Access-Control-Allow-Origin = "*"
+
+# SEO: public landing page, sitemap and robots file — always revalidated so search engines see fresh copies.
+[[headers]]
+  for = "/about"
+  [headers.values]
+    Cache-Control = "no-cache"
+
+[[headers]]
+  for = "/sitemap.xml"
+  [headers.values]
+    Content-Type = "application/xml; charset=utf-8"
+    Cache-Control = "public, max-age=3600"
+
+[[headers]]
+  for = "/robots.txt"
+  [headers.values]
+    Content-Type = "text/plain; charset=utf-8"
+    Cache-Control = "public, max-age=3600"
