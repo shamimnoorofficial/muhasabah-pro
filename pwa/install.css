@@ -1,0 +1,53 @@
+/* Install prompt — banner + guide sheet. Follows the standard PWA install-promotion pattern:
+   app icon, name, one-line description, origin, a secondary "Not now" and a primary "Install" action. */
+#mhs-install-bar{--ib-bg:hsl(var(--popover,221 27% 8%));--ib-fg:hsl(var(--popover-foreground,210 20% 96%));--ib-muted:hsl(var(--muted-foreground,220 9% 62%));--ib-line:hsl(var(--border,220 14% 18%));--ib-pri:hsl(var(--primary,145 100% 39%));--ib-on-pri:hsl(var(--primary-foreground,150 45% 5%));
+  position:fixed;z-index:80;left:12px;right:12px;bottom:calc(var(--nf-badge-space,4.25rem) + 4.5rem + env(safe-area-inset-bottom,0px));
+  display:none;flex-direction:column;gap:14px;box-sizing:border-box;max-width:26rem;margin:0 auto;padding:16px;
+  background:var(--ib-bg);color:var(--ib-fg);border:1px solid var(--ib-line);border-radius:20px;
+  box-shadow:0 1px 2px rgba(0,0,0,.25),0 12px 32px rgba(0,0,0,.35);font-family:inherit;text-align:start}
+#mhs-install-bar.show{display:flex;animation:mhsInstallIn .28s cubic-bezier(.2,.8,.2,1)}
+#mhs-install-bar[hidden]{display:none!important}
+html.kb-open #mhs-install-bar{display:none!important}
+#mhs-install-bar .head{display:flex;align-items:center;gap:12px;min-width:0}
+#mhs-install-bar .ico{width:48px;height:48px;border-radius:12px;flex-shrink:0;background:#0a0d14;box-shadow:0 0 0 1px var(--ib-line)}
+#mhs-install-bar .txt{display:flex;flex-direction:column;gap:2px;flex:1;min-width:0}
+#mhs-install-bar .txt b{font-size:15px;line-height:1.3;font-weight:600;margin:0}
+#mhs-install-bar .txt span{font-size:13px;line-height:1.4;color:var(--ib-muted)}
+#mhs-install-bar .txt .host{font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;direction:ltr;unicode-bidi:isolate}
+#mhs-install-bar .acts{display:flex;justify-content:flex-end;gap:8px}
+#mhs-install-bar button,#mhs-install-sheet .row button,#mhs-install-sheet .row a.b{-webkit-appearance:none;appearance:none;border:0;margin:0;min-height:40px;padding:0 20px;border-radius:999px;font:inherit;font-size:14px;font-weight:600;line-height:1;letter-spacing:.01em;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;text-decoration:none;transition:background-color .15s,filter .15s}
+#mhs-install-bar .later,#mhs-install-sheet .ghost{background:transparent;color:var(--ib-pri)}
+#mhs-install-bar .later:hover,#mhs-install-sheet .ghost:hover{background:color-mix(in srgb,var(--ib-pri) 10%,transparent)}
+#mhs-install-bar .go,#mhs-install-sheet .go{background:var(--ib-pri);color:var(--ib-on-pri)}
+#mhs-install-bar .go:hover,#mhs-install-sheet .go:hover{filter:brightness(1.08)}
+#mhs-install-bar button:focus-visible,#mhs-install-sheet button:focus-visible,#mhs-install-sheet a.b:focus-visible{outline:2px solid var(--ib-pri);outline-offset:2px}
+#mhs-install-bar .go[aria-busy=true]{opacity:.75;cursor:progress}
+@media(min-width:640px){#mhs-install-bar{bottom:24px;flex-direction:row;align-items:center;max-width:34rem}#mhs-install-bar .head{flex:1}}
+@keyframes mhsInstallIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+
+/* guide sheet (manual steps for browsers without a native prompt) */
+#mhs-install-sheet{--ib-bg:hsl(var(--popover,221 27% 8%));--ib-fg:hsl(var(--popover-foreground,210 20% 96%));--ib-muted:hsl(var(--muted-foreground,220 9% 62%));--ib-line:hsl(var(--border,220 14% 18%));--ib-pri:hsl(var(--primary,145 100% 39%));--ib-on-pri:hsl(var(--primary-foreground,150 45% 5%));--ib-soft:hsl(var(--secondary,220 16% 13%));
+  position:fixed;inset:0;z-index:2147483000;display:flex;align-items:flex-end;justify-content:center;background:rgba(0,0,0,.5);box-sizing:border-box;animation:mhsScrimIn .2s ease-out}
+#mhs-install-sheet .card{position:relative;box-sizing:border-box;width:100%;max-width:30rem;max-height:calc(100dvh - 24px);overflow-y:auto;overscroll-behavior:contain;
+  background:var(--ib-bg);color:var(--ib-fg);border-radius:28px 28px 0 0;padding:8px 24px calc(20px + env(safe-area-inset-bottom,0px));
+  box-shadow:0 -8px 32px rgba(0,0,0,.35);animation:mhsSheetIn .26s cubic-bezier(.2,.8,.2,1);font-family:inherit;text-align:start}
+#mhs-install-sheet .handle{width:32px;height:4px;border-radius:2px;background:var(--ib-muted);opacity:.45;margin:6px auto 18px}
+#mhs-install-sheet .hd{display:flex;align-items:center;gap:14px;margin:0 0 16px;padding-inline-end:40px}
+#mhs-install-sheet .hd img{width:48px;height:48px;border-radius:12px;flex-shrink:0;box-shadow:0 0 0 1px var(--ib-line)}
+#mhs-install-sheet .hd div{display:flex;flex-direction:column;gap:2px;min-width:0}
+#mhs-install-sheet h3{font-size:18px;line-height:1.3;font-weight:600;margin:0}
+#mhs-install-sheet .hd span{font-size:13px;color:var(--ib-muted);direction:ltr;unicode-bidi:isolate;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#mhs-install-sheet .x{position:absolute;top:22px;inset-inline-end:16px;width:40px;height:40px;padding:0;border:0;border-radius:50%;display:grid;place-items:center;background:transparent;color:var(--ib-muted);cursor:pointer}
+#mhs-install-sheet .x:hover{background:var(--ib-soft);color:var(--ib-fg)}
+#mhs-install-sheet .x svg{width:22px;height:22px}
+#mhs-install-sheet .perks{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 16px;padding:0;list-style:none}
+#mhs-install-sheet .perks li{font-size:12px;line-height:1;padding:7px 10px;border-radius:8px;background:var(--ib-soft);color:var(--ib-fg)}
+#mhs-install-sheet p{font-size:14px;line-height:1.55;color:var(--ib-muted);margin:0 0 16px}
+#mhs-install-sheet ol{margin:0 0 20px;padding:0;list-style:none;counter-reset:s;display:flex;flex-direction:column;gap:12px}
+#mhs-install-sheet ol li{counter-increment:s;position:relative;min-height:28px;padding-inline-start:40px;font-size:14px;line-height:1.5;color:var(--ib-fg);display:flex;align-items:center}
+#mhs-install-sheet ol li:before{content:counter(s);position:absolute;inset-inline-start:0;top:0;width:28px;height:28px;border-radius:50%;background:color-mix(in srgb,var(--ib-pri) 16%,transparent);color:var(--ib-pri);font-size:13px;font-weight:600;display:grid;place-items:center}
+#mhs-install-sheet .row{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}
+@media(min-width:640px){#mhs-install-sheet{align-items:center;padding:24px}#mhs-install-sheet .card{border-radius:28px;padding:24px}#mhs-install-sheet .handle{display:none}#mhs-install-sheet .x{top:20px}}
+@keyframes mhsSheetIn{from{transform:translateY(32px);opacity:0}to{transform:none;opacity:1}}
+@keyframes mhsScrimIn{from{opacity:0}to{opacity:1}}
+@media(prefers-reduced-motion:reduce){#mhs-install-bar.show,#mhs-install-sheet,#mhs-install-sheet .card{animation:none}#mhs-install-bar .go:hover,#mhs-install-sheet .go:hover{filter:none}}
