@@ -55,7 +55,23 @@
     return pendingFull;
   }
   function pkey(lang, p) { return 'seerah:' + V + ':' + lang + ':' + p; }
-  function valid(r, lang, p) { return r && typeof r.text === 'string' && r.text.trim() && r.lang === lang && r.page === p; }
+  /* Native script of languages that do not use the Latin alphabet (same rule as the server): a saved
+   * "translation" that is really English is not shown as that language. */
+  var AR = '\u0600-\u06FF\u0750-\u077F\uFB50-\uFDFF\uFE70-\uFEFF', CY = '\u0400-\u04FF', DE = '\u0900-\u097F', BN = '\u0980-\u09FF', HE = '\u0590-\u05FF', HAN = '\u3400-\u9FFF', ET = '\u1200-\u139F';
+  var SCRIPT = { bn: BN, as: BN, ar: AR, fa: AR, ur: AR, ps: AR, sd: AR, ug: AR, ckb: AR, he: HE, yi: HE, dv: '\u0780-\u07BF', hi: DE, mr: DE, ne: DE,
+    pa: '\u0A00-\u0A7F', gu: '\u0A80-\u0AFF', or: '\u0B00-\u0B7F', ta: '\u0B80-\u0BFF', te: '\u0C00-\u0C7F', kn: '\u0C80-\u0CFF', ml: '\u0D00-\u0D7F', si: '\u0D80-\u0DFF',
+    th: '\u0E00-\u0E7F', lo: '\u0E80-\u0EFF', my: '\u1000-\u109F', ka: '\u10A0-\u10FF', hy: '\u0530-\u058F', am: ET, ti: ET, km: '\u1780-\u17FF', el: '\u0370-\u03FF\u1F00-\u1FFF',
+    ru: CY, uk: CY, be: CY, bg: CY, mk: CY, sr: CY, kk: CY, ky: CY, tg: CY, tt: CY, mn: CY, 'zh-CN': HAN, 'zh-TW': HAN, ja: '\u3040-\u30FF' + HAN, ko: '\uAC00-\uD7AF\u1100-\u11FF' };
+  function inScript(lang, text) {
+    var range = SCRIPT[lang]; if (!range) return true;
+    var body = AR.indexOf(range) === 0 ? String(text) : String(text).replace(new RegExp('[' + AR + ']+', 'g'), ' ');
+    var native = (body.match(new RegExp('[' + range + ']', 'g')) || []).length, latin = (body.match(/[A-Za-z\u00C0-\u024F]/g) || []).length;
+    return native + latin < 12 || native / (native + latin) >= 0.7;
+  }
+  function valid(r, lang, p) { return !!(r && typeof r.text === 'string' && r.text.trim() && r.lang === lang && r.page === p && inScript(lang, r.text)); }
+  /* One Unicode form for searching, so Bengali letters typed as two code points (য + ়) still match. */
+  function nfc(s) { s = String(s); try { return s.normalize('NFC'); } catch (e) { return s; } }
+  function fold(s) { return nfc(s).toLocaleLowerCase(); }
   /* One page in a language: memory → device → shared cache → translate (English needs no translation). */
   function passage(p, lang, opts) {
     var k = lang + ':' + p;
@@ -85,9 +101,9 @@
       var english = m.chapters.map(function (c) { return c.title; });
       if (lang === 'en') return (tocs.en = english);
       return idb('seerah:' + V + ':toc:' + lang).then(function (saved) {
-        if (Array.isArray(saved) && saved.length === english.length) return (tocs[lang] = saved);
+        if (Array.isArray(saved) && saved.length === english.length && inScript(lang, saved.join(' '))) return (tocs[lang] = saved);
         return fetch('/api/seerah?view=toc&lang=' + encodeURIComponent(lang)).then(function (r) { return r.ok ? r.json() : null; }).then(function (d) {
-          if (d && Array.isArray(d.titles) && d.titles.length === english.length) { idbSet('seerah:' + V + ':toc:' + lang, d.titles); return (tocs[lang] = d.titles); }
+          if (d && Array.isArray(d.titles) && d.titles.length === english.length && inScript(lang, d.titles.join(' '))) { idbSet('seerah:' + V + ':toc:' + lang, d.titles); return (tocs[lang] = d.titles); }
           return english;
         }).catch(function () { return english; });
       });
@@ -157,9 +173,9 @@
     return a;
   }
   function mark(root, q) {
-    var lower = q.toLocaleLowerCase(), first = null;
+    var lower = fold(q), first = null;
     root.querySelectorAll('p,h3,h4').forEach(function (n) {
-      var s = n.textContent, i = s.toLocaleLowerCase().indexOf(lower); if (i < 0) return;
+      var s = nfc(n.textContent), i = fold(s).indexOf(lower); if (i < 0) return;
       n.replaceChildren(document.createTextNode(s.slice(0, i)), X.el('mark', { text: s.slice(i, i + q.length) }), document.createTextNode(s.slice(i + q.length)));
       first = first || n;
     });
@@ -204,7 +220,7 @@
   function credit() {
     var m = meta || {};
     return X.el('p', { class: 'mhs-sr-credit' }, [
-      (m.author || 'Safiur Rahman al-Mubarakpuri') + ' · ' + t('English translation: ', 'ইংরেজি অনুবাদ: ', 'الترجمة الإنجليزية: ') + (m.translator || 'Issam Diab') + ' · ',
+      t(m.author || 'Safiur Rahman al-Mubarakpuri', 'সফিউর রহমান মুবারকপুরী', 'صفي الرحمن المباركفوري') + ' · ' + t('English translation: ', 'ইংরেজি অনুবাদ: ', 'الترجمة الإنجليزية: ') + t(m.translator || 'Issam Diab', 'ইসাম দিয়াব', 'عصام دياب') + ' · ',
       X.el('a', { href: m.source || 'https://archive.org/details/en_The_Sealed_Nectar', target: '_blank', rel: 'noopener noreferrer', text: t('Source edition', 'মূল সংস্করণ', 'النسخة الأصلية') }), ' · ',
       X.el('a', { href: m.pdf || 'https://archive.org/download/en_The_Sealed_Nectar/en_The_Sealed_Nectar.pdf', target: '_blank', rel: 'noopener noreferrer', text: 'PDF' })
     ]);
@@ -262,7 +278,7 @@
   function bookmark() {
     if (!meta || !window.MHSCollections) return;
     var lang = readLang(), p = pages[lang + ':' + page] || pages['en:' + page], c = chapterAt(page);
-    var snippet = p ? excerpt(p.text, 140) : '';
+    var snippet = p ? excerpt(p.text, 140, p.lang) : '';
     window.MHSCollections.choose({ id: markId(page), kind: 'seerah', page: page, edition: V, title: chapterTitle(c, lang) || title(), sub: title() + ' · ' + t('Page ', 'পৃষ্ঠা ', 'صفحة ') + num(page + 1) + (snippet ? ' — ' + snippet : '') }, { onDone: syncMark });
   }
   async function renderToc(my) {
@@ -292,10 +308,10 @@
     meta.chapters.forEach(function (c, i) {
       if (c.level === 1) chapterNo++;
       var row = X.el('button', { type: 'button', class: 'mhs-sr-entry lv' + c.level + (i === current ? ' is-current' : ''), 'aria-current': i === current ? 'location' : null, on: { click: function () { page = c.page; target = c.index; view = 'read'; show(); } } }, [
-        c.level === 1 ? X.el('span', { class: 'no', text: num(chapterNo) }) : null, X.el('span', { class: 'tt', text: titles[i] || c.title }), X.el('span', { class: 'pg', text: num(c.page + 1) })]);
-      row.dataset.q = ((titles[i] || '') + ' ' + c.title).toLocaleLowerCase(); rows.push(row); nav.appendChild(row);
+        c.level === 1 ? X.el('span', { class: 'no', text: num(chapterNo) }) : null, X.el('span', { class: 'tt', text: titles[i] || c.title, lang: lang !== 'en' && (titles[i] || c.title) === c.title ? 'en' : null }), X.el('span', { class: 'pg', text: num(c.page + 1) })]);
+      row.dataset.q = fold((titles[i] || '') + ' ' + c.title); rows.push(row); nav.appendChild(row);
     });
-    filter.oninput = function () { var q = filter.value.trim().toLocaleLowerCase(); rows.forEach(function (r) { r.hidden = !!q && r.dataset.q.indexOf(q) < 0; }); };
+    filter.oninput = function () { var q = fold(filter.value.trim()); rows.forEach(function (r) { r.hidden = !!q && r.dataset.q.indexOf(q) < 0; }); };
     if (lang !== 'en' && titles[0] === meta.chapters[0].title) b.appendChild(X.el('p', { class: 'mhs-mini-note', text: t('Chapter titles are shown in English until their translation is available.', 'অনুবাদ পাওয়া না যাওয়া পর্যন্ত অধ্যায়ের নাম ইংরেজিতে দেখানো হচ্ছে।', 'تظهر العناوين بالإنجليزية حتى تتوفر ترجمتها.') }));
     b.append(filter, nav);
     var cur = nav.querySelector('.is-current'); if (cur) setTimeout(function () { cur.scrollIntoView({ block: 'center' }); }, 40);
@@ -310,18 +326,20 @@
     b.replaceChildren(form, status, results); setTimeout(function () { input.focus(); }, 60);
     async function run() {
       var q = input.value.trim(); if (q.length < 2) return;
-      var lang = readLang(), lower = q.toLocaleLowerCase(), hits = [];
-      Object.keys(pages).forEach(function (k) { var p = pages[k]; if (p.lang === lang && lang !== 'en') { var i = p.text.toLocaleLowerCase().indexOf(lower); if (i >= 0) hits.push({ page: p.page, text: p.text, at: i, lang: lang }); } });
+      var lang = readLang(), lower = fold(q), hits = [];
+      Object.keys(pages).forEach(function (k) { var p = pages[k]; if (p.lang === lang && lang !== 'en') { var i = fold(p.text).indexOf(lower); if (i >= 0) hits.push({ page: p.page, text: nfc(p.text), at: i, lang: lang }); } });
       if (!full) status.textContent = t('Downloading the book for searching (once)…', 'খোঁজার জন্য বইটি ডাউনলোড হচ্ছে (একবারই)…', 'جارٍ تنزيل الكتاب للبحث (مرة واحدة)…');
       try { await loadFull(); } catch (e) { if (!hits.length) { status.textContent = t('Search needs the book downloaded once. Connect to the internet and try again.', 'খুঁজতে বইটি একবার ডাউনলোড করতে হবে। ইন্টারনেট চালু করে আবার চেষ্টা করুন।', 'يحتاج البحث إلى تنزيل الكتاب مرة.'); return; } }
       if (my !== token || !sh) return;
-      if (full) full.pages.forEach(function (p, n) { var i = p.toLocaleLowerCase().indexOf(lower); if (i >= 0 && !hits.some(function (h) { return h.page === n; })) hits.push({ page: n, text: p, at: i, lang: 'en' }); });
+      if (full) full.pages.forEach(function (p, n) { var i = fold(p).indexOf(lower); if (i >= 0 && !hits.some(function (h) { return h.page === n; })) hits.push({ page: n, text: p, at: i, lang: 'en' }); });
       hits.sort(function (a, c) { return a.page - c.page; });
-      status.textContent = hits.length ? num(hits.length) + t(' pages found', 'টি পৃষ্ঠায় পাওয়া গেছে', ' صفحة') : t('No matches. Try another spelling, e.g. Makkah / Mecca.', 'পাওয়া যায়নি। অন্য বানানে চেষ্টা করুন।', 'لا نتائج. جرّب تهجئة أخرى.');
+      status.textContent = hits.length ? num(hits.length) + t(' pages found', 'টি পৃষ্ঠায় পাওয়া গেছে', ' صفحة') : (lang !== 'en' && !/[A-Za-z]/.test(q)
+        ? t('No matches. Search covers the original English and the pages translated on this device; try the English spelling, e.g. Badr.', 'পাওয়া যায়নি। খোঁজা হয় মূল ইংরেজিতে ও এই ডিভাইসে অনূদিত পৃষ্ঠাগুলোতে; ইংরেজি বানানেও চেষ্টা করুন, যেমন Badr।', 'لا نتائج. يشمل البحث الأصل الإنجليزي والصفحات المترجمة على هذا الجهاز؛ جرّب التهجئة الإنجليزية مثل Badr.')
+        : t('No matches. Try another spelling, e.g. Makkah / Mecca.', 'পাওয়া যায়নি। অন্য বানানে চেষ্টা করুন, যেমন Makkah / Mecca।', 'لا نتائج. جرّب تهجئة أخرى.'));
       results.replaceChildren();
       hits.slice(0, 80).forEach(function (h) {
         var s = Math.max(0, h.at - 70), snippet = (s ? '…' : '') + h.text.slice(s, h.at + q.length + 90).replace(/^#+ /gm, '').replace(/\s+/g, ' ') + '…';
-        var i = snippet.toLocaleLowerCase().indexOf(lower);
+        var i = fold(snippet).indexOf(lower);
         results.appendChild(X.el('button', { type: 'button', class: 'mhs-sr-row', lang: h.lang, on: { click: function () { page = h.page; highlight = q; original = h.lang === 'en' && readLang() !== 'en'; view = 'read'; show(); } } }, [
           X.el('b', { text: chapterTitle(chapterAt(h.page), readLang()) + ' · ' + t('Page ', 'পৃষ্ঠা ', 'صفحة ') + num(h.page + 1) }),
           X.el('small', {}, i >= 0 ? [snippet.slice(0, i), X.el('mark', { text: snippet.slice(i, i + q.length) }), snippet.slice(i + q.length)] : [snippet])]));
@@ -375,7 +393,7 @@
   /* ---------- Home feed ---------- */
   var END = /[.!?।۔。؟"”’)\]]$/;
   /* A short, complete passage: whole sentences from one paragraph, never a heading or a fragment. */
-  function excerpt(text, max) {
+  function excerpt(text, max, lang) {
     max = max || 620;
     var paras = String(text).split(/\n{2,}/).map(function (s) { return s.trim(); }).filter(function (s) { return s && !/^#/.test(s); });
     var good = paras.filter(function (s) { return s.length >= 160 && END.test(s) && !/^[a-z,;)\]]/.test(s); });
@@ -383,15 +401,15 @@
     if (p.length <= max) return p;
     var out = '';
     try {
-      var seg = new Intl.Segmenter(undefined, { granularity: 'sentence' });
+      var seg = new Intl.Segmenter(lang || undefined, { granularity: 'sentence' });
       for (var it = seg.segment(p)[Symbol.iterator](), n = it.next(); !n.done; n = it.next()) { if ((out + n.value.segment).length > max) break; out += n.value.segment; }
-    } catch (e) { out = p.slice(0, max).replace(/[^.!?।۔]*$/, ''); }
+    } catch (e) { out = p.slice(0, max).replace(/[^.!?।۔؟]*$/, ''); }
     out = out.trim();
     return out.length > 120 ? out : p.slice(0, max).replace(/\s+\S*$/, '') + '…';
   }
   function post(d, lang) {
     var c = chapterAt(d.page);
-    return { id: 's:' + d.page, lang: lang, kind: 'seerah', text: excerpt(d.text), page: d.page, chapter: chapterTitle(c, lang),
+    return { id: 's:' + d.page, lang: lang, kind: 'seerah', text: excerpt(d.text, 0, lang), page: d.page, chapter: chapterTitle(c, lang),
       src: title() + ' · ' + t('Page ', 'পৃষ্ঠা ', 'صفحة ') + num(d.page + 1), goLabel: t('Continue reading', 'পড়া চালিয়ে যান', 'تابع القراءة'),
       go: function () { open({ page: d.page }); } };
   }

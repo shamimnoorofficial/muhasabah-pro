@@ -219,7 +219,49 @@ export function verifySource(text: string) {
   return createHash('sha256').update(text).digest('hex') === SEERAH.sha256;
 }
 
-/* Tidy a machine translation: the honorific ligature, no leftover scan markers. */
-export function tidyTranslation(text: string): string {
-  return String(text).replace(/\s*[[(]\s*pbuh\s*[\])]/gi, ' ﷺ').replace(/ﷺ\s+([,.;:!?)\]।])/g, 'ﷺ$1').replace(/[ \t]{2,}/g, ' ').trim();
+/* Native script of each language that does not use the Latin alphabet. Used to reject a machine
+ * translation that came back in English (or transliterated into Latin letters) instead of the
+ * reader's language. Latin-script languages are not checked this way. */
+const SCRIPTS: Record<string, RegExp> = {
+  bn: /[\u0980-\u09FF]/g, as: /[\u0980-\u09FF]/g,
+  ar: /[\u0600-\u06FF\u0750-\u077F\uFB50-\uFDFF\uFE70-\uFEFF]/g, fa: /[\u0600-\u06FF\uFB50-\uFDFF\uFE70-\uFEFF]/g, ur: /[\u0600-\u06FF\uFB50-\uFDFF\uFE70-\uFEFF]/g,
+  ps: /[\u0600-\u06FF\uFB50-\uFDFF\uFE70-\uFEFF]/g, sd: /[\u0600-\u06FF\uFB50-\uFDFF\uFE70-\uFEFF]/g, ug: /[\u0600-\u06FF\uFB50-\uFDFF\uFE70-\uFEFF]/g, ckb: /[\u0600-\u06FF\uFB50-\uFDFF\uFE70-\uFEFF]/g,
+  he: /[\u0590-\u05FF]/g, yi: /[\u0590-\u05FF]/g, dv: /[\u0780-\u07BF]/g,
+  hi: /[\u0900-\u097F]/g, mr: /[\u0900-\u097F]/g, ne: /[\u0900-\u097F]/g,
+  pa: /[\u0A00-\u0A7F]/g, gu: /[\u0A80-\u0AFF]/g, or: /[\u0B00-\u0B7F]/g, ta: /[\u0B80-\u0BFF]/g, te: /[\u0C00-\u0C7F]/g,
+  kn: /[\u0C80-\u0CFF]/g, ml: /[\u0D00-\u0D7F]/g, si: /[\u0D80-\u0DFF]/g, th: /[\u0E00-\u0E7F]/g, lo: /[\u0E80-\u0EFF]/g,
+  my: /[\u1000-\u109F]/g, ka: /[\u10A0-\u10FF]/g, hy: /[\u0530-\u058F]/g, am: /[\u1200-\u139F]/g, ti: /[\u1200-\u139F]/g, km: /[\u1780-\u17FF]/g,
+  el: /[\u0370-\u03FF\u1F00-\u1FFF]/g,
+  ru: /[\u0400-\u04FF]/g, uk: /[\u0400-\u04FF]/g, be: /[\u0400-\u04FF]/g, bg: /[\u0400-\u04FF]/g, mk: /[\u0400-\u04FF]/g, sr: /[\u0400-\u04FF]/g,
+  kk: /[\u0400-\u04FF]/g, ky: /[\u0400-\u04FF]/g, tg: /[\u0400-\u04FF]/g, tt: /[\u0400-\u04FF]/g, mn: /[\u0400-\u04FF]/g,
+  'zh-CN': /[\u3400-\u9FFF]/g, 'zh-TW': /[\u3400-\u9FFF]/g, ja: /[\u3040-\u30FF\u3400-\u9FFF]/g, ko: /[\uAC00-\uD7AF\u1100-\u11FF]/g,
+};
+/* True when the text is written in the language's own script: at least 70% of its letters are in that
+ * script once quoted Arabic is set aside (the book quotes the Quran verbatim). Latin-script languages
+ * always pass. Short scraps (a name, a number) pass too. */
+export function inScript(lang: string, text: string): boolean {
+  const re = SCRIPTS[lang];
+  if (!re) return true;
+  const arabic = /^(ar|fa|ur|ps|sd|ug|ckb)$/.test(lang);
+  const body = arabic ? String(text) : String(text).replace(/[\u0600-\u06FF\u0750-\u077F\uFB50-\uFDFF\uFE70-\uFEFF]+/g, ' ');
+  const native = (body.match(re) || []).length, latin = (body.match(/[A-Za-z\u00C0-\u024F]/g) || []).length;
+  if (native + latin < 12) return true;
+  return native / (native + latin) >= 0.7;
+}
+export const headingCount = (text: string) => (String(text).match(/^#{1,2} /gm) || []).length;
+
+/* Honorifics the model sometimes leaves in English, by language. */
+const HONORIFICS: Record<string, [RegExp, string][]> = {
+  bn: [[/\(\s*RA\s*\)/g, '(রা.)'], [/\(\s*AS\s*\)/g, '(আ.)'], [/\(\s*রাঃ?\s*\)/g, '(রা.)'], [/\(\s*আঃ?\s*\)/g, '(আ.)'], [/\(\s*সাঃ?\.?\s*\)|\(\s*সাল্লাল্লাহু আলাইহি ওয়াসাল্লাম\s*\)/g, 'ﷺ']],
+  ar: [[/\(\s*RA\s*\)/g, '(رضي الله عنه)'], [/\(\s*AS\s*\)/g, '(عليه السلام)']],
+};
+/* Tidy a machine translation: the honorific ligature, no leftover scan markers or chat preambles,
+ * honorifics in the reader's language and one Unicode form so search and highlights match. */
+export function tidyTranslation(text: string, lang = ''): string {
+  let out = String(text).normalize('NFC')
+    .replace(/^\s*(?:here(?:'s| is) (?:the|my) [^\n]*translation[^\n]*:|translation:)\s*\n+/i, '')
+    .replace(/\*\*([^*\n]+)\*\*/g, '$1')
+    .replace(/\s*[[(]\s*pbuh\s*[\])]/gi, ' ﷺ');
+  for (const [re, to] of HONORIFICS[lang] || []) out = out.replace(re, to);
+  return out.replace(/ﷺ\s*ﷺ/g, 'ﷺ').replace(/ﷺ\s+([,.;:!?)\]।،؛])/g, 'ﷺ$1').replace(/[ \t]{2,}/g, ' ').replace(/\n{3,}/g, '\n\n').trim();
 }
