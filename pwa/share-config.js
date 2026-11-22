@@ -12,7 +12,7 @@
     /* Allowed utm_medium values. Anything else falls back to "app". */
     mediums: ["quran", "hadith", "wisdom", "dua", "amol", "names", "reminder", "zikr", "streak", "journal", "seerah", "invite", "prayer", "widget", "app"],
     /* Signature line shown under every share, per language. */
-    signature: { en: "— Muhasabah-Pro", bn: "— মুহাসাবা-প্রো", ar: "— محاسبة برو" },
+    signature: { en: "— Muhasabah: Islamic Lifestyle", bn: "— মুহাসাবা: ইসলামিক লাইফস্টাইল", ar: "— محاسبة برو" },
     /* Invite / promo copy used by the 3-day engagement prompt and "Invite a friend". */
     invite: {
       en: "I use Muhasabah-Pro for prayer times, Quran, Hadith, daily amol and habit tracking — free, offline and private. Try it:",

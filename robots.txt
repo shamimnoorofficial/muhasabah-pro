@@ -1,4 +1,4 @@
-# Muhasabah Pro — Islamic Life Tracker
+# Muhasabah: Islamic Lifestyle
 User-agent: *
 Allow: /
 Disallow: /api/

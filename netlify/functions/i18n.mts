@@ -34,7 +34,7 @@ async function translate(lang: string, name: string, strings: string[]): Promise
       `You translate the user interface of "Muhasabah", an Islamic life tracker (habits, prayer times, Quran, Hadith, duas, journal), from English into ${name} (${lang}). ` +
       'Write natural, concise interface wording a native speaker expects in a mobile app. Keep the same tone and capitalization style. ' +
       'Keep emojis, symbols (•, →, ·, ▲, %, +, −), numbers, currency amounts, "{name}" placeholders and line breaks exactly. ' +
-      'Never translate the brand names Muhasabah, Muhasabah Pro, Pro, Stripe, Google Drive, PayPal, Hijri or AH. ' +
+      'Never translate the brand names Muhasabah, Muhasabah: Islamic Lifestyle, Muhasabah Pro, Pro, Stripe, Google Drive, PayPal, Hijri or AH. ' +
       'For Islamic terms (Fajr, Dhuhr, Asr, Maghrib, Isha, Salah, Quran, Sunnah, Fard, Dua, Dhikr, Waqt, Hanafi, Shafi\'i) use the form Muslims who speak this language normally use. ' +
       'Reply with only a JSON object that maps every input key to its translation.',
     messages: [{ role: 'user', content: JSON.stringify(input) }],
