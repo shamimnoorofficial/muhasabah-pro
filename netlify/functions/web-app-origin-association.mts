@@ -1,5 +1,5 @@
 /* Web App Origin Association for the manifest's "scope_extensions":
- * confirms that the Muhasabah Pro web app may also handle links on the site's other origins. */
+ * confirms that the Muhasabah: Islamic Lifestyle web app may also handle links on the site's other origins. */
 import type { Config } from '@netlify/functions';
 
 export default async () =>

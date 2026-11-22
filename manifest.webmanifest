@@ -1,8 +1,8 @@
 {
   "id": "/",
-  "name": "Muhasabah Pro",
+  "name": "Muhasabah: Islamic Lifestyle",
   "short_name": "Muhasabah",
-  "description": "Muhasabah Pro — Islamic Life Tracker. Your whole Muslim day in one app: a personal Reminder feed (Quran, Hadith, Hikmah, Duas and Seerah — you choose the mix), prayer times with live countdowns (Sehri, Iftar, Tahajjud, Ishraq, forbidden times), Qibla compass, nearby mosques, essential daily amol, the Quran with full-text search, Hadith, the Seerah, Masnun duas and the 99 Names of Allah, habits, to-dos, Keep-style notes, a ledger (hisab khata), zikr counter, a private diary, bookmarks across every app and home-screen widgets — with a 360° Nafs · Qalb · Ruh analytics dashboard. Free, works offline, data stays on your device. No ads.",
+  "description": "Muhasabah: Islamic Lifestyle. Your whole Muslim day in one app: a personal Reminder feed (Quran, Hadith, Hikmah, Duas and Seerah — you choose the mix), prayer times with live countdowns (Sehri, Iftar, Tahajjud, Ishraq, forbidden times), Qibla compass, nearby mosques, essential daily amol, the Quran with full-text search, Hadith, the Seerah, Masnun duas and the 99 Names of Allah, habits, to-dos, Keep-style notes, a ledger (hisab khata), zikr counter, a private diary, bookmarks across every app and home-screen widgets — with a 360° Nafs · Qalb · Ruh analytics dashboard. Free, works offline, data stays on your device. No ads.",
   "lang": "en",
   "dir": "ltr",
   "start_url": "/?source=pwa",
