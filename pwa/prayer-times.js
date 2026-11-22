@@ -169,14 +169,12 @@
     var d = new Date(ts), h = d.getHours(), m = d.getMinutes(), c = cfg(), zone = base() && base().timeZone;
     if(zone) try { var parts=new Intl.DateTimeFormat("en-GB",{timeZone:zone,hour:"numeric",minute:"numeric",hourCycle:"h23"}).formatToParts(d); h=+parts.find(function(p){return p.type==="hour";}).value; m=+parts.find(function(p){return p.type==="minute";}).value; } catch(e) {}
     if (c.clock === "24") return digits(pad(h) + ":" + pad(m));
-    var ap = h >= 12 ? (lang() === "bn" ? "" : lang() === "ar" ? "م" : "PM") : (lang() === "bn" ? "" : lang() === "ar" ? "ص" : "AM");
+    var ap = h >= 12 ? (lang() === "ar" ? "م" : "PM") : (lang() === "ar" ? "ص" : "AM");
     var hh = h % 12 || 12;
     var s = digits(hh + ":" + pad(m));
-    if (lang() === "bn") s = bnPeriod(h) + " " + s;
-    else if (!(opts && opts.noAmPm)) s += " " + ap;
+    if (!(opts && opts.noAmPm)) s += " " + ap;
     return s;
   }
-  function bnPeriod(h) { return h < 4 ? "রাত" : h < 6 ? "ভোর" : h < 12 ? "সকাল" : h < 15 ? "দুপুর" : h < 18 ? "বিকাল" : h < 20 ? "সন্ধ্যা" : "রাত"; }
   function countdown(ms, withSec) {
     if (ms == null || isNaN(ms)) return "—";
     ms = Math.max(0, ms);

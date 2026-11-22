@@ -121,7 +121,7 @@
         var row = X.el("div", { class: "mhs-ph-row", "data-id": w.id }, [
           X.el("span", { class: "ic", "aria-hidden": "true", text: w.icon }),
           X.el("div", { class: "nm" }, [X.el("b", { text: w.name }), w.sub ? X.el("small", { text: w.sub }) : null, w.approx ? X.el("small", { text: t("approx") }) : null]),
-          X.el("div", { class: "tm" }, [X.el("span", { class: "num s" }), X.el("span", { class: "num e" })]),
+          X.el("div", { class: "tm", translate: "no" }, [X.el("span", { class: "num s" }), X.el("span", { class: "num e" })]),
           X.el("span", { class: "num cd" })
         ]);
         rows[w.id] = row; sec.appendChild(row);
@@ -138,7 +138,7 @@
           X.el("b", { class: "num", text: s.forbidden ? M.countdown(s.forbidden.end - now, true) : s.active ? M.countdown(s.active.end - now, true) : s.next ? M.countdown(s.next.start - now, true) : "—" }),
           X.el("span", { text: s.headline })
         ]),
-        X.el("div", { class: "mhs-ph-hero-next" }, s.next ? [X.el("small", { text: t("next") + (s.next.tomorrow ? " · " + t("tomorrow") : "") }), X.el("b", { text: s.next.icon + " " + s.next.name }), X.el("span", { class: "num", text: M.fmt(s.next.start) })] : [])
+        X.el("div", { class: "mhs-ph-hero-next" }, s.next ? [X.el("small", { text: t("next") + (s.next.tomorrow ? " · " + t("tomorrow") : "") }), X.el("b", { text: s.next.icon + " " + s.next.name }), X.el("span", { class: "num", translate: "no", text: M.fmt(s.next.start) })] : [])
       );
       s.windows.forEach(function (w) {
         var row = rows[w.id]; if (!row) return;

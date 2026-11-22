@@ -284,3 +284,25 @@ dialog.mhs-eng .later{background:transparent;border:0;color:hsl(var(--muted-fore
  * "More" pill level with the eyebrow instead of floating below it. */
 .mhs-ps-head{align-items:center}
 .mhs-ps-headline:empty{display:none}
+
+/* Prayer times on narrow phones: times never wrap mid-value, names get the room they need, and the
+ * countdown sits under the name instead of squeezing the row into a fourth column. */
+.mhs-ph-row .tm .s,.mhs-ph-row .tm .e,.mhs-ps-s,.mhs-ph-hero-next .num{white-space:nowrap}
+.mhs-ph-row .nm{min-width:0;overflow-wrap:anywhere}
+@media(max-width:420px){
+  .mhs-ph-row{grid-template-columns:auto minmax(0,1fr) auto;column-gap:.55rem;row-gap:.05rem;padding:.5rem .6rem}
+  .mhs-ph-row .ic{grid-column:1;grid-row:1 / span 2}
+  .mhs-ph-row .nm{grid-column:2;grid-row:1}
+  .mhs-ph-row .tm{grid-column:3;grid-row:1 / span 2}
+  .mhs-ph-row .cd{grid-column:2;grid-row:2;min-width:0;text-align:start;font-size:11px}
+  .mhs-ph-row .cd:empty{display:none}
+}
+@media(max-width:380px){
+  .mhs-ps-grid{gap:.25rem}
+  .mhs-ps-p{padding:.5rem .1rem .45rem}
+  .mhs-ps-n{font-size:10.5px;white-space:normal;overflow-wrap:anywhere;line-height:1.2}
+  .mhs-ps-s{font-size:11.5px}
+  .mhs-ps-cd{font-size:9.5px;white-space:normal;line-height:1.2;text-overflow:clip}
+  .mhs-ps-head{gap:.5rem}
+  .mhs-ps-more{padding:0 .7rem}
+}
