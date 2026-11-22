@@ -80,7 +80,7 @@
       s.windows.forEach(function (w) {
         var row = rows[w.id]; if (!row) return;
         var tm = row.querySelector(".tm"), cd = row.querySelector(".cd");
-        tm.replaceChildren.apply(tm, [f.start !== false ? U.el("span", { text: M.fmt(w.start) }) : null, f.end !== false && !w.point ? U.el("small", { text: "→ " + M.fmt(w.end) }) : null].filter(Boolean));
+        tm.replaceChildren.apply(tm, [f.start !== false ? U.el("span", { translate: "no", text: M.fmt(w.start) }) : null, f.end !== false && !w.point ? U.el("small", { translate: "no", text: "→ " + M.fmt(w.end) }) : null].filter(Boolean));
         var live = now >= w.start && now < w.end, past = now >= w.end;
         if (f.highlight !== false) { row.classList.toggle("is-live", live); row.classList.toggle("is-past", past && !w.point); row.classList.toggle("is-next", !!(s.next && s.next.id === w.id && !s.next.tomorrow)); }
         cd.textContent = f.countdown === false ? "" : live ? M.countdown(w.end - now) + " " + t("left") : now < w.start ? t("in") + " " + M.countdown(w.start - now) : w.point ? "" : t("ended");

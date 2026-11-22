@@ -29,7 +29,7 @@ const BASE = process.env.BASE || 'http://localhost:8889';
   await p.locator('mhs-overview .mhs-ov').waitFor();
   assert.equal(await p.locator('mhs-overview .mhs-ov-tile').count(), 12);
   const dev = p.locator('mhs-footer a.mhs-foot-dev');
-  assert.equal(await dev.getAttribute('href'), 'https://github.com/shamimnoorofficial');
+  assert.equal(await dev.getAttribute('href'), 'https://shamimnoor.dev');
   assert.equal(await dev.getAttribute('target'), '_blank');
   assert.match(await dev.getAttribute('rel'), /noopener/);
   assert.match(await dev.innerText(), /Developed by\s*Shamim Noor/);
