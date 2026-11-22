@@ -48,16 +48,17 @@ const assert=require('node:assert/strict');
     await cdp.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});
     await page.waitForTimeout(500);
     assert(await page.evaluate(()=>window.scrollY)>before,'Vertical swipe over the feed card scrolls the page ('+label+')');
-    assert.equal(await content.evaluate(n=>n.scrollTop),0,'Feed card has no nested scroll area ('+label+')');
    }
    await pageScrollsOverCard('short post');
    await content.evaluate(n=>{n.querySelector('.mhs-rf-text').textContent='A long reflection. '.repeat(700);});
    await page.waitForTimeout(100);
-   assert(await card.evaluate(n=>n.offsetHeight)>height,'Long posts grow the card instead of scrolling inside it');
-   await pageScrollsOverCard('long post');
+   assert.equal(await card.evaluate(n=>n.offsetHeight),height,'Long posts keep the same card size');
+   assert(await content.evaluate(n=>n.scrollHeight>n.clientHeight),'Long posts scroll inside the card');
+   await page.locator('.mhs-story-next').click();await page.waitForTimeout(350);
+   assert.equal(await card.evaluate(n=>n.offsetHeight),height,'Card size stays the same on the next post');
    assert.deepEqual(errors,[]);
    await context.close();
   }
-  console.log('Feed touch: larger card, no swipe navigation, previous/next buttons and page scrolling over the card passed');
+  console.log('Feed touch: larger card, no swipe navigation, previous/next buttons and fixed card size and page scrolling over the card passed');
  }finally{await browser.close();}
 })().catch(e=>{console.error(e);process.exitCode=1;});
